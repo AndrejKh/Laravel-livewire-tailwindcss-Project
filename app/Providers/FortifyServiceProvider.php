@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 
+/* use Laravel\Fortify\Contracts\RegisterViewResponse;
+use Laravel\Fortify\Http\Responses\SimpleViewResponse; */
+
+
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +27,12 @@ class FortifyServiceProvider extends ServiceProvider
     {
         //
     }
+/*     public function registerSellerView($view)
+    {
+        app()->singleton(RegisterViewResponse::class, function () use ($view) {
+            return new SimpleViewResponse($view);
+        });
+    } */
 
     /**
      * Bootstrap any application services.
@@ -31,6 +41,9 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //agrego la vista para registrarse como vendedor
+        // $this->registerSellerView(fn () => view('auth.register_seller'));
+
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
@@ -44,4 +57,6 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
     }
+
+
 }

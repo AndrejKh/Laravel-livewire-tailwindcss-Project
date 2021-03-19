@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
@@ -22,22 +25,56 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => $this->passwordRules(),
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
-        ])->validate();
+        if($input['role'] === 'seller'){
 
-        return DB::transaction(function () use ($input) {
-            return tap(User::create([
-                'name' => $input['name'],
-                'email' => $input['email'],
-                'password' => Hash::make($input['password']),
-            ]), function (User $user) {
-                $this->createTeam($user);
+            Validator::make($input, [
+                'name' => ['required', 'string', 'max:255'],
+                'state_id' => ['required'],
+                'type_identity' => ['required', 'string'],
+                'doc_identity' => ['required', 'string'],
+                'phone' => ['required', 'string'],
+                'role' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => $this->passwordRules(),
+                'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+            ])->validate();
+
+            return DB::transaction(function () use ($input) {
+                return tap(User::create([
+                    'name' => $input['name'],
+                    'email' => $input['email'],
+                    'type_identity' => $input['state_id'],
+                    'doc_identity' => $input['state_id'],
+                    'state_id' => $input['state_id'],
+                    'phone' => $input['phone'],
+                    'password' => Hash::make($input['password']),
+                ])->assignRole($input['role']), function (User $user) {
+                    $this->createTeam($user);
+                });
             });
-        });
+
+        }else{
+
+            Validator::make($input, [
+                'name' => ['required', 'string', 'max:255'],
+                'role' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => $this->passwordRules(),
+                'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+            ])->validate();
+
+            return DB::transaction(function () use ($input) {
+                return tap(User::create([
+                    'name' => $input['name'],
+                    'email' => $input['email'],
+                    'password' => Hash::make($input['password']),
+                ])->assignRole($input['role']), function (User $user) {
+                    $this->createTeam($user);
+                });
+            });
+
+        }
+
     }
 
     /**
