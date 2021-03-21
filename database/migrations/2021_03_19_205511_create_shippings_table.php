@@ -15,6 +15,7 @@ class CreateShippingsTable extends Migration
     {
         Schema::create('shippings', function (Blueprint $table) {
             $table->id();
+            /* Direccion de envio del comprador, id del comprador */
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('city_id')->constrained()->onDelete('cascade');
             $table->text('delivery_zone');

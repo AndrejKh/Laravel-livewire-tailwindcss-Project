@@ -28,7 +28,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','type_identity','doc_identity','address','phone','status'
     ];
 
     /**
@@ -60,4 +60,39 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    //Relacion uno a muchos inversa
+    public function state(){
+        return $this->belongsTo('App\Models\State');
+    }
+
+    //Relacion uno a muchos inversa
+    public function city(){
+        return $this->belongsTo('App\Models\City');
+    }
+
+    //Relacion uno a muchos
+    public function brands(){
+        return $this->hasMany('App\Models\Brand');
+    }
+
+    //Relacion uno a muchos
+    public function items(){
+        return $this->hasMany('App\Models\Item');
+    }
+
+     //Relacion uno a muchos
+     public function ratings(){
+        return $this->hasMany('App\Models\Rating');
+    }
+
+    //Relacion uno a muchos
+    public function orders(){
+        return $this->hasMany('App\Models\Order');
+    }
+
+    //Relacion uno a muchos, direcciones de envio de los compradores, lugares donde se recibiran los pedidos.
+    public function shippings(){
+        return $this->hasMany('App\Models\Shipping');
+    }
 }

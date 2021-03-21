@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Article extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'image','status'
-    ];
+    //Relacion uno a muchos Inversa
+    public function order(){
+        return $this->belongsTo('App\Models\Order');
+    }
 
     //Relacion uno a muchos Inversa
     public function product(){

@@ -15,6 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('brand_id')->constrained()->onDelete('cascade');
             /* Comprador id */
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->float('amount');
