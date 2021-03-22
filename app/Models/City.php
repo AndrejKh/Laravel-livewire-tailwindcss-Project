@@ -15,7 +15,7 @@ class City extends Model
      * @var array
      */
     protected $fillable = [
-        'city','slug','status'
+        'city','slug','status','state_id'
     ];
 
     //Relacion uno a muchos Inversa

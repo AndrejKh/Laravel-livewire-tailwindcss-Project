@@ -15,7 +15,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'category','description','photo','slug','status'
+        'category','description','padre_id','photo','slug','status'
     ];
 
     //Relacion uno a uno, en misma tabla
@@ -24,8 +24,11 @@ class Category extends Model
         return $category_father;
     }
 
-    //Relacion uno a muchos Inversa
-    public function prodcut(){
-        return $this->belongsTo('App\Models\Product');
+    //Relacion uno a muchos
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product');
     }
+
+
 }

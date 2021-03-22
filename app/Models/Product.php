@@ -15,7 +15,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'title','description','slug','photo_main_product','status'
+        'title','description','slug','photo_main_product','category_id','status'
     ];
 
     //Relacion uno a muchos
@@ -24,10 +24,9 @@ class Product extends Model
         return $this->hasMany('App\Models\Image');
     }
 
-    //Relacion uno a muchos
-    public function categories()
-    {
-        return $this->hasMany('App\Models\Category');
+    //Relacion uno a muchos Inversa
+    public function category(){
+        return $this->belongsTo('App\Models\Category');
     }
 
     //Relacion uno a muchos
