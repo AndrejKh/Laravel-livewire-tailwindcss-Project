@@ -2,20 +2,19 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\State;
+use App\Models\User;
 use Livewire\Component;
 
 //clase para crear paginacion dinamica, sin que se recargue la pagina
 use Livewire\WithPagination;
 
-class StateComponent extends Component
+class UserComponent extends Component
 {
+
     //ahora uso la clase dentro del componente y listo!
     use WithPagination;
 
-    protected $queryString = ['status' => ['except' => 'active'], 'search' => ['except' => ''], 'perPage'  => ['except' => '10']];
-
-    public $state_id, $state, $code, $category_id, $message_alert, $color_alert;
+    public $message_alert, $color_alert;
 
     public $search = '';
     public $status = 'active';
@@ -23,6 +22,13 @@ class StateComponent extends Component
     public $action = 'store';
 
     public $show_alert = 'false';
+
+    // protected $queryString = ['status' => ['except' => 'active'], 'search' => ['except' => ''], 'perPage'  => ['except' => '10']];
+
+/*     public $state_id, $state, $code, $category_id, $message_alert, $color_alert;
+
+
+
 
     //reglas de validacion, protected indica que solo se usara en este modelo
     protected $rules = [
@@ -37,17 +43,23 @@ class StateComponent extends Component
     // para cambiar los nombres de los atributos de validacion que vienen por default
     protected $messages = [
         'state.required' => 'Este campo () es necesario'
-    ];
+    ]; */
 
 
     public function render()
     {
         //Obtengo los posts ordenados por id, desde el ultimo, con paginacion
-        $estados = State::latest('id')->where('status', $this->status)->where('state', 'LIKE', "%{$this->search}%")->paginate($this->perPage);
-        return view('livewire.state-component', compact('estados'));
+        $usuarios = User::latest('id')->
+                            where('status', $this->status)->
+                            where('name', 'LIKE', "%{$this->search}%")->
+                            orWhere('email', 'LIKE', "%{$this->search}%")->
+                            orWhere('doc_identity', 'LIKE', "%{$this->search}%")->
+                            orWhere('address', 'LIKE', "%{$this->search}%")->
+                            paginate($this->perPage);
+        return view('livewire.user-component', compact('usuarios'));
     }
 
-    public function agregar()
+/*     public function agregar()
     {
         //en este caso se ignorara las reglas de validacion de $rules, y considerara las que se le asignan
         $this->validate([
@@ -107,7 +119,7 @@ class StateComponent extends Component
         $this->color_alert = 'red';
         $this->message_alert = 'eliminado';
     }
-
+ */
     public function close_alert()
     {
         $this->show_alert = 'false';

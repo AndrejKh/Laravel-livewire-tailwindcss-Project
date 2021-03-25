@@ -10,7 +10,7 @@
             @csrf
 
             <div>
-                <x-jet-label for="name" value="Nombre" />
+                <x-jet-label for="name" value="Razón Social" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
@@ -26,12 +26,12 @@
                         <div class="absolute inset-y-0 left-0 flex items-center">
                             <label for="type_identity" class="sr-only">Tipo de documento</label>
                             <select id="type_identity" name="type_identity" class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md" >
-                                <option value="ci.">C.I.</option>
+                                {{-- <option value="ci.">C.I.</option> --}}
                                 <option value="rif">RIF</option>
-                                <option value="passport">Pasaporte</option>
+                                {{-- <option value="passport">Pasaporte</option> --}}
                             </select>
                         </div>
-                        <x-jet-input id="doc_identity" class="block mt-1 w-full pl-28" type="text" name="doc_identity" required />
+                        <x-jet-input id="doc_identity" class="block mt-1 w-full pl-28" type="text" name="doc_identity" :value="old('doc_identity')" required />
 
                     </div>
                 </div>
@@ -39,7 +39,7 @@
 
             <div class="mt-4">
                 <x-jet-label for="phone" value="Número telefonico" />
-                <x-jet-input id="phone" class="block mt-1 w-full" type="text" name="phone" required placeholder="Ej. 0424-0000000" />
+                <x-jet-input id="phone" class="block mt-1 w-full" type="text" name="phone" required placeholder="Ej. 0424-0000000" :value="old('phone')" />
             </div>
 
             <div class="mt-4">

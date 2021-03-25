@@ -23,7 +23,6 @@ class CategoryComponent extends Component
     public $status = 'active';
     public $perPage = 10;
     public $action = 'store';
-
     public $show_alert = 'false';
 
     //reglas de validacion, protected indica que solo se usara en este modelo
@@ -157,10 +156,6 @@ class CategoryComponent extends Component
     {
         $category_father_name = Category::find($category_id);
         return $category_father_name;
-    }
-
-    public function close_alert(){
-        $this->show_alert = 'false';
     }
 
     public function clean(){

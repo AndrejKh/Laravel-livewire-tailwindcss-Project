@@ -15,7 +15,7 @@ class Item extends Model
      * @var array
      */
     protected $fillable = [
-        'quantity','price','status'
+        'product_id','user_id','quantity','price','status'
     ];
 
     //Relacion uno a muchos Inversa

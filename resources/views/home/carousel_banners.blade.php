@@ -1,0 +1,30 @@
+<style>
+
+</style>
+@if ( $carousel_banners && count($carousel_banners) > 0)
+<div class="owl-carousel owl-theme w-full" id="carousel_banners_home">
+
+    @foreach ($carousel_banners as $banner)
+    <div class="item h-56 md:h-64 lg:h-80 xl:h-96 ">
+
+        <img src="/storage/{{$banner->banner}}">
+    </div>
+    @endforeach
+</div>
+<script>
+    $('#carousel_banners_home').owlCarousel({
+        loop:true,
+        margin:0,
+        nav:true,
+        navText: ['<img src="{{asset('icons/arrow_left.svg')}}"/>', '<img src="{{asset('icons/arrow_right.svg')}}"/>'],
+        responsive:{
+            0:{
+                items:1
+            }
+        }
+    })
+</script>
+@endif
+
+
+

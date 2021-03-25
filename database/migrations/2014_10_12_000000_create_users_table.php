@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('type_identity')->nullable();
             $table->string('doc_identity')->nullable();
 
-            $table->unsignedInteger('state_id')->nullable()->constrained();
-            $table->unsignedInteger('city_id')->nullable()->constrained();
+            $table->foreignId('state_id')->nullable()->constrained()->onDelete('set Null');
+            $table->foreignId('city_id')->nullable()->constrained()->onDelete('set Null');
 
             $table->string('address')->nullable();
             $table->string('phone')->nullable();

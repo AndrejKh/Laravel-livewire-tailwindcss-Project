@@ -32838,6 +32838,52 @@ select {
   }
 }
 
+.owl-dots{
+  position:absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.owl-nav{
+  position:absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+}
+
+.owl-nav button{
+  background-color:#222!important;
+  opacity: 0.4;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%!important;
+  display: flex!important;
+  align-items: center;
+  justify-content: center;
+}
+
+.owl-nav button:hover{
+  opacity: 0.8;
+}
+
+.owl-nav .owl-prev{
+  position:absolute;
+  left: 50px;
+}
+
+.owl-nav .owl-next{
+  position:absolute;
+  right: 50px;
+}
+
+@media (max-width: 640px) {
+  .owl-nav{
+    display: none;
+  }
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

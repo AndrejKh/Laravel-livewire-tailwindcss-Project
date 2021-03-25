@@ -3,3 +3,5 @@
 @import 'tailwindcss/utilities';
 
 @import 'components.css';
+@import 'carousels.css';
+@import 'animations.css';

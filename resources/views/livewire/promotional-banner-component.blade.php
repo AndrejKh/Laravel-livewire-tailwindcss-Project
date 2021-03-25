@@ -14,6 +14,7 @@
                 <select class="form-control" id="page_banner" wire:model="page_banner">
                     <option value="">Selecciona una pagina</option>
                     <option value="home">Home</option>
+                    <option value="promotions">Promociones</option>
                 </select>
                 @error('page_banner')
                     <small class="text-red-400 italic">{{$message}}</small>

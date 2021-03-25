@@ -1,12 +1,12 @@
 <div x-data="{ open: false }" class="container max-w-4xl mx-auto">
     <div class="flex flex-wrap items-center">
-        <h1 class="flex-auto my-5">Estados del sitio</h1>
-        <button @click="open=!open" class="flex-1 btn-primary h-10">Nuevo estado</button>
+        <h1 class="flex-auto my-5">Usuarios del sitio</h1>
+        {{-- <button @click="open=!open" class="flex-1 btn-primary h-10">Nuevo estado</button> --}}
     </div>
 
 
     {{-- Formulario --}}
-    <div x-show="open" class="bg-white rounded-lg shadow overflow-hidden max-w-4xl mx-auto p-4 mb-6">
+{{--     <div x-show="open" class="bg-white rounded-lg shadow overflow-hidden max-w-4xl mx-auto p-4 mb-6">
 
         <div class="flex">
             <div class="flex-auto mb-3">
@@ -31,9 +31,9 @@
                 <button wire:click="update" class="btn-primary">Actualizar</button>
                 <button wire:click="cancel" class="btn-delete">Cancelar</button>
             @endif
-    </div>
+    </div> --}}
 
-    {{-- Listado de estados --}}
+    {{-- Listado de categorias --}}
     <div class="flex bg-white max-w-4xl mb-3 py-3 px-3">
         <input
             wire:model="search"
@@ -60,40 +60,60 @@
             </select>
         </div>
     </div>
-    @if ($estados->count())
+    @if ($usuarios->count())
         <div class="bg-white rounded-lg shadow overflow-hidden max-w-4xl mx-auto mb-8">
             <table >
                 <thead class="bg-gray-50 border-b border-gray-200">
                     <tr class="text-xs font-medium text-gray-500 uppercase text-left tracking-wider">
-                        <th class="px-6 py-3">Id</th>
-                        <th class="px-6 py-3">Estado</th>
-                        <th class="px-6 py-3">Codigo</th>
-                        <th class="px-6 py-3">Status</th>
-                        <th class="px-6 py-3"></th>
+                        <th class="p-3">Id</th>
+                        <th class="p-3"></th>
+                        <th class="p-3">Nombre</th>
+                        <th class="p-3">Email</th>
+                        <th class="p-3">Identidad</th>
+                        <th class="p-3">Telefono</th>
+                        <th class="p-3">Estado</th>
+                        <th class="p-3">Ciudad</th>
+                        <th class="p-3">Dirección</th>
+                        <th class="p-3">Status</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    @foreach ($estados as $estado)
+                    @foreach ($usuarios as $usuario)
                         <tr class="text-sm text-gray-500">
-                            <td class="px-6 py-4 text-center"> {{$estado->id}} </td>
-                            <td class="px-6 py-4"> {{$estado->state}} </td>
-                            <td class="px-6 py-4"> {{$estado->code}} </td>
-                            <td class="px-6 py-4"> <span class="rounded-full bg-green-300 text-green-700 px-2 py-1">{{$estado->status}}</span> </td>
-                            <td class="px-6 py-4 text-center">
-                                <button @click="open= true" wire:click="edit({{$estado}})" class="rounded-3xl bg-blue-500 p-2">
+                            <td class="p-2 text-center"> {{$usuario->id}} </td>
+                            <td class="p-2">
+                                @if ($usuario->profile_photo_path)
+                                    <img class="h-8 w-8 rounded-full object-cover" src="/storage/{{$usuario->profile_photo_path}}" alt="" />
+                                @else
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" fill="#777">
+                                    <path d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                                </svg>
+                                @endif
+                            </td>
+                            <td class="p-2"> {{$usuario->name}} </td>
+                            <td class="p-2"> {{$usuario->email}} </td>
+                            <td class="p-2"> {{$usuario->type_identity}} - {{$usuario->doc_identity}} </td>
+                            <td class="p-2"> {{$usuario->phone}} </td>
+                            <td class="p-2"> @if ($usuario->state) {{$usuario->state->state}} @endif </td>
+                            <td class="p-2"> @if ($usuario->city) {{$usuario->city->city}} @endif </td>
+                            <td class="p-2"> {{$usuario->adrress}} </td>
+                            <td class="p-2"> <span class="rounded-full bg-green-300 text-green-700 px-2">{{$usuario->status}}</span> </td>
+                            {{-- <td class="px-6 py-4 text-center">
+                                <button @click="open= true" wire:click="edit({{$usuario}})" class="rounded-3xl bg-blue-500 p-2">
                                     <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24" ><path d="M0 0h24v24H0z" fill="none"/><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
                                 </button>
-                                <button wire:click="destroy({{$estado}})" class="rounded-3xl bg-red-500 p-2">
+                                <button wire:click="destroy({{$usuario}})" class="rounded-3xl bg-red-500 p-2">
                                     <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
                                 </button>
-                            </td>
+                            </td> --}}
                         </tr>
                     @endforeach
                 </tbody>
             </table>
             <div class="bg-gray-100 px-6 py-4 border-t border-gray-200">
                 {{-- Paginacion --}}
-                {{ $estados->links() }}
+                {{ $usuarios->links() }}
             </div>
         </div>
     @else
@@ -113,7 +133,7 @@
             </span>
             <p class="ml-3 font-medium text-white">
                 <span>
-                    El estado fue {{$message_alert}} exitosamente!
+                    El usuario fue {{$message_alert}} exitosamente!
                 </span>
             </p>
             </div>
@@ -130,3 +150,4 @@
         </div>
     </div>
 </div>
+
