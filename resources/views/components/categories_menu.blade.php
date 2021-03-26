@@ -1,5 +1,5 @@
 @if ( $carousel_banners && count($carousel_banners) > 0)
-<div class="owl-carousel w-full h-14 bg-gray-200 px-3 py-2 flex flex-wrap content-center" id="carousel_categories_home">
+<div class="owl-carousel w-full h-13 bg-white px-3 flex flex-wrap content-center" id="carousel_categories_home">
 
         @foreach ($categories as $category)
         <div class="item py-2">

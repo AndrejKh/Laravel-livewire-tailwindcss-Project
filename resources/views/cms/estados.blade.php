@@ -9,7 +9,7 @@
             <!-- Contenido -->
             <div class="w-full p-6">
 
-                @livewire('items-component',['user_id' => auth()->user()->id])
+                @livewire('state-component')
             </div>
         </div>
     </div>

@@ -31,12 +31,12 @@ Route::get('/register_seller', function () {
 
 
 /* Componente de Livewire para 'Administradores' */
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.usuarios'])->get('/usuarios',UserComponent::class)->name('cms.usuarios');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.categorias'])->get('/categorias',CategoryComponent::class)->name('cms.categorias');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.estados'])->get('/estados',StateComponent::class)->name('cms.estados');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ciudades'])->get('/ciudades',CityComponent::class)->name('cms.ciudades');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.home'])->get('/banners_home',PromotionalBannerComponent::class)->name('cms.home');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.productos'])->get('/productos',ProductComponent::class)->name('cms.productos');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.usuarios'])->get('/usuarios',[HomeController::class, 'usuarios'])->name('cms.usuarios');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.categorias'])->get('/categorias',[HomeController::class, 'categories'])->name('cms.categorias');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.estados'])->get('/estados',[HomeController::class, 'estados'])->name('cms.estados');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ciudades'])->get('/ciudades',[HomeController::class, 'ciudades'])->name('cms.ciudades');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.home'])->get('/banners_home',[HomeController::class, 'banners'])->name('cms.home');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.productos'])->get('/productos',[HomeController::class, 'productos'])->name('cms.productos');
 
 
 /* Componente de Livewire para 'Sellers' */

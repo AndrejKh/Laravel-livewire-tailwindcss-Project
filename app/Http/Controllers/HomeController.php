@@ -20,4 +20,26 @@ class HomeController extends Controller
 
         return view('home.home', compact('carousel_banners','categories','products','brands', 'banners_promotionals'));
     }
+
+    /*
+    VISTAS DEL CMS
+    */
+    public function usuarios() {
+        return view('cms.usuarios');
+    }
+    public function categories() {
+        return view('cms.categories');
+    }
+    public function banners() {
+        return view('cms.banners');
+    }
+    public function estados() {
+        return view('cms.estados');
+    }
+    public function ciudades() {
+        return view('cms.ciudades');
+    }
+    public function productos() {
+        return view('cms.productos');
+    }
 }

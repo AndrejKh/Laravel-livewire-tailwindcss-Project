@@ -1,17 +1,16 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+    <div class="grid grid-cols-1 md:grid-cols-6">
+        <div class="hidden md:block bg-gray-100 px-0 md:px-1 lg:px-4 py-6 rounded-sm shadow-sm col-span-1">
+          <!-- Aside Navbar -->
+          @include('components.aside_navbar_perfil')
+        </div>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
-                {{ auth()->user()
-                 }}
+        <div class="bg-white p-6 rounded-sm shadow-sm col-span-5">
+            <!-- Contenido -->
+            <div class="w-full p-6">
+
             </div>
         </div>
     </div>
+        {{-- <div class="max-w-screen-2xl mx-auto sm:px-6 lg:px-8 flex"></div> --}}
 </x-app-layout>

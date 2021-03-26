@@ -27,6 +27,8 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'perfil.home'])->assignRole($roleAdmin);
         Permission::create(['name' => 'perfil.categorias'])->assignRole($roleAdmin);
         Permission::create(['name' => 'perfil.productos'])->assignRole($roleAdmin);
+        Permission::create(['name' => 'perfil.estados'])->assignRole($roleAdmin);
+        Permission::create(['name' => 'perfil.ciudades'])->assignRole($roleAdmin);
 
 
         //permisos de seller

@@ -4,13 +4,13 @@
 
     @include('home.carousel_banners')
 
+    @include('home.banners_promotionals')
+
     @include('components.carousel_categories_banners')
 
 
-{{-- @include('home.banners_promotionals')
+{{-- @include('home.products_list') --}}
 
-@include('home.products_list')
-
-@include('components.carousel_categories_card') --}}
+{{-- @include('components.carousel_categories_card')  --}}
 
 </x-app-layout>

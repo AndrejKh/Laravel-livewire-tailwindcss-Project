@@ -1,11 +1,8 @@
-<style>
-
-</style>
 @if ( $carousel_banners && count($carousel_banners) > 0)
 <div class="owl-carousel owl-theme w-full" id="carousel_banners_home">
 
     @foreach ($carousel_banners as $banner)
-    <div class="item h-56 md:h-64 lg:h-80 xl:h-96 ">
+    <div class="item h-56 md:h-60 lg:h-72 xl:h-80 ">
 
         <img src="/storage/{{$banner->banner}}">
     </div>

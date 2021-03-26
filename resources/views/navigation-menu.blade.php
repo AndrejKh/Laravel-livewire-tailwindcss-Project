@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-green-400 border-b border-gray-100 shadow">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex w-10/12 sm:w-9/12">
                 <div class="flex w-full">
@@ -63,67 +63,13 @@
                             <x-slot name="content">
                                 <!-- Account Management -->
                                 <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Manage Account') }}
+                                    {{ __('Administrar cuenta') }}
                                 </div>
 
 
                                 <x-jet-dropdown-link href="{{ route('dashboard') }}">
                                     Perfil
                                 </x-jet-dropdown-link>
-
-
-                                <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                    Mis datos
-                                </x-jet-dropdown-link>
-
-                                @can('perfil.categorias')
-                                    <x-jet-dropdown-link href="{{ route('cms.categorias') }}">
-                                        Categorias
-                                    </x-jet-dropdown-link>
-                                @endcan
-
-                                @can('perfil.usuarios')
-                                    <x-jet-dropdown-link href="{{ route('cms.usuarios') }}">
-                                        Usuarios
-                                    </x-jet-dropdown-link>
-                                @endcan
-
-                                @can('perfil.home')
-                                    <x-jet-dropdown-link href="{{ route('cms.home') }}">
-                                        Página de Inicio
-                                    </x-jet-dropdown-link>
-                                @endcan
-
-                                @can('perfil.productos')
-                                    <x-jet-dropdown-link href="{{ route('cms.productos') }}">
-                                        Productos
-                                    </x-jet-dropdown-link>
-                                @endcan
-
-                                @can('perfil.ventas')
-                                    <x-jet-dropdown-link href="{{ route('cms.ventas') }}">
-                                        Ventas
-                                    </x-jet-dropdown-link>
-                                @endcan
-
-                                @can('perfil.items')
-                                    <x-jet-dropdown-link href="{{ route('cms.items') }}">
-                                        Items
-                                    </x-jet-dropdown-link>
-                                @endcan
-
-                                @can('perfil.blog')
-                                    <x-jet-dropdown-link href="{{ route('cms.blog') }}">
-                                        Blog
-                                    </x-jet-dropdown-link>
-                                @endcan
-
-                                @can('perfil.compras')
-                                    <x-jet-dropdown-link href="{{ route('cms.compras') }}">
-                                        Compras
-                                    </x-jet-dropdown-link>
-                                @endcan
-
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                     <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">

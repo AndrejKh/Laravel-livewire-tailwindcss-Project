@@ -1,5 +1,4 @@
 <div>
-    {{$products_search_input}}
     <div x-data="{open:false, selected:false, category_name:'', img_cat:''}" class="mt-1 relative">
         <div class="relative w-full py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
             <span x-show="!selected" class="flex items-center">

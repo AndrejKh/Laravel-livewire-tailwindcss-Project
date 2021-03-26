@@ -1,10 +1,10 @@
-<div x-data="{ open: false }" class="container max-w-4xl mx-auto">
+<div x-data="{ open: false }" class="container w-full mx-auto">
     <div class="flex flex-wrap items-center">
         <h1 class="flex-auto my-5">Todos tus productos</h1>
         <button @click="open=!open" class="flex-1 btn-primary h-10">Nuevo producto</button>
     </div>
     {{-- Formulario --}}
-    <div x-show="open" class="bg-white rounded-lg shadow max-w-4xl mx-auto p-4 mb-6">
+    <div x-show="open" class="bg-white rounded-lg shadow w-full mx-auto p-4 mb-6">
         <div class="flex-auto mb-3">
             <label class="form-label mb-2">Selecciona el producto que deseas vender </label>
 
@@ -38,7 +38,7 @@
     </div>
 
     {{-- Listado de items --}}
-    <div class="flex bg-white max-w-4xl mb-3 py-3 px-3">
+    <div class="flex bg-white w-full mb-3 py-3 px-3">
         <input
             wire:model="search"
             class="form-control flex-auto shadow block text-sm"
@@ -65,7 +65,7 @@
         </div>
     </div>
     @if ($items->count())
-        <div class="bg-white rounded-lg shadow overflow-hidden max-w-4xl mx-auto mb-8">
+        <div class="bg-white rounded-lg shadow overflow-hidden w-full mx-auto mb-8">
             <table >
                 <thead class="bg-gray-50 border-b border-gray-200">
                     <tr class="text-xs font-medium text-gray-500 uppercase text-left tracking-wider">
