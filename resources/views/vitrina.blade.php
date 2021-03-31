@@ -10,6 +10,7 @@
         <div class="max-w-7xl w-full px-2">
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                 @foreach ($products as $product)
+
                     @include('components.card_product')
 
                 @endforeach

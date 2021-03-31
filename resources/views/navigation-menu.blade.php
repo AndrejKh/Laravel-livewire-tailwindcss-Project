@@ -184,7 +184,7 @@
                 <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('')">
                     Inicio
                 </x-jet-responsive-nav-link>
-                <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('')">
+                <x-jet-responsive-nav-link href="{{ route('tiendas.show') }}" :active="request()->routeIs('')">
                     Supermercados
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('')">

@@ -54,7 +54,7 @@
             <hr>
             <div class="flex mt-3">
                 <div class="flex">
-                    <img class="w-16 h-16 rounded-full shadow-md" src="/storage/{{$brand_user->profile_photo_path_brand}}" alt="">
+                    <div class="bg-no-repeat bg-cover bg-center w-16 h-16 overflow-hidden rounded-full mx-auto" style="background-image: url('/storage/{{ $brand_user->profile_photo_path_brand }}');"></div>
                 </div>
                 <div class="flex self-center ml-4">
                     {{$brand_user->brand}}

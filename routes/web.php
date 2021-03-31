@@ -22,7 +22,7 @@ Route::get('/producto/{id}', [HomeController::class, 'ProductShow'])->name('prod
 
 // Vistas de Tiendas, detalles de tiendas
 Route::get('/supermercados', [HomeController::class, 'tiendas'])->name('tiendas.show');
-Route::get('/supermercado/{slug}', [HomeController::class, 'tiendaDetail'])->name('tiendas.details.show');
+Route::get('/supermercado/{slug}/{id}', [HomeController::class, 'tiendaDetail'])->name('tiendas.details.show');
 
 // Rutas adicionales para el cms
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -44,7 +44,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.product
 
 
 /* Componente de Livewire para 'Sellers' */
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ventas'])->get('/tiendas',[HomeController::class, 'tiendas'])->name('cms.tiendas');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ventas'])->get('/tiendas',[HomeController::class, 'tiendasCMS'])->name('cms.tiendas');
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ventas'])->get('/ventas',StateComponent::class)->name('cms.ventas');
 
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.items'])->get('/items',function () {

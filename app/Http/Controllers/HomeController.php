@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\BannerPromocional;
 use App\Models\Brand;
 use App\Models\Category;
@@ -78,6 +79,41 @@ class HomeController extends Controller
 
     }
 
+    // Vitirna de supermemrcados
+    public function tiendas(Request $request) {
+        if(isset($request->q))
+        {
+            $query = $request->q;
+            $tiendas = Brand::latest('id')->where('status', 'active')->where('brand', 'LIKE', '%'.$query.'%')->paginate(16);
+            $total_tiendas_search = count(Brand::where('status', 'active')->where('brand', 'LIKE', '%'.$query.'%')->get());
+        }else {
+            $tiendas = Brand::latest('id')->where('status', 'active')->paginate(16);
+            $total_tiendas_search = count(Brand::where('status', 'active')->get());
+        }
+        $carousel_banners = BannerPromocional::latest('id')->where('page', 'tiendas')->where('status', 'active')->get();
+        $categories = Category::latest('id')->where('status', 'active')->get();
+
+        return view('tiendas', compact('categories','tiendas', 'total_tiendas_search', 'carousel_banners'));
+    }
+
+    //Metodo que devulve la vista del detalle del producto
+    public function tiendaDetail(Request $request){
+
+
+        if(isset($request->id))
+        {
+            $tienda = Brand::where('status', 'active')->where('user_id', $request->id)->first();
+            $items = Item::where('status','active')->where('user_id',$request->id)->paginate(16);
+            $banners_promotionals = Banner::where('status','active')->where('brand_id',$tienda->id)->get();
+            $categories = Category::latest('id')->where('status', 'active')->get();
+        }else{
+
+        }
+
+        return view('tienda', compact('categories','tienda','items','banners_promotionals'));
+
+    }
+
     /*
     VISTAS DEL CMS
     */
@@ -99,7 +135,7 @@ class HomeController extends Controller
     public function productos() {
         return view('cms.productos');
     }
-    public function tiendas() {
+    public function tiendasCMS() {
         return view('cms.tiendas');
     }
 }

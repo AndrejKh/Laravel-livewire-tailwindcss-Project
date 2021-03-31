@@ -1,4 +1,4 @@
-@if ( $carousel_banners && count($carousel_banners) > 0)
+@if ( $categories && count($categories) > 0)
 <div class="owl-carousel w-full h-13 bg-white px-3 flex flex-wrap content-center" id="carousel_categories_home">
 
         @foreach ($categories as $category)

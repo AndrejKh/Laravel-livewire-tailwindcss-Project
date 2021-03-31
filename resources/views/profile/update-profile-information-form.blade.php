@@ -91,7 +91,7 @@
                 <!-- Estado -->
                 <div class="col-span-1 sm:col-span-3 lg:col-span-2 mt-4 pl-0 md:pl-3">
                     <x-jet-label for="state" value="Estado" />
-                    <x-jet-input id="state" type="text" class="mt-1 block w-full bg-gray-100" wire:model.defer="state.state" disabled/>
+                    <x-jet-input id="state" type="text" class="mt-1 block w-full bg-gray-100" wire:model.defer="state.state_id" disabled/>
                     <x-jet-input-error for="state" class="mt-2" />
                 </div>
             @endif

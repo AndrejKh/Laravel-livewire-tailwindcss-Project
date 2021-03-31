@@ -31,7 +31,7 @@
                                 {{-- <option value="passport">Pasaporte</option> --}}
                             </select>
                         </div>
-                        <x-jet-input id="doc_identity" class="block mt-1 w-full pl-28" type="text" name="doc_identity" :value="old('doc_identity')" required />
+                        <x-jet-input id="doc_identity" class="block mt-1 w-full pl-16 md:pl-28" type="text" name="doc_identity" :value="old('doc_identity')" required />
 
                     </div>
                 </div>
@@ -43,11 +43,9 @@
             </div>
 
             <div class="mt-4">
-
-
                 <x-jet-label for="state" value="Estado" />
                 {{-- <label for="country" class="block text-sm font-medium text-gray-700">Country / Region</label> --}}
-                <select id="state" name="state_id" autocomplete="state" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <select id="state" name="state_id" autocomplete="state" onchange="select()" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     @foreach ($estados as $estado)
                         <option value="{{$estado->id}}"> {{$estado->state}} </option>
                     @endforeach
