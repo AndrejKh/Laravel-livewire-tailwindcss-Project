@@ -49,13 +49,13 @@
             <button wire:click="clean" class="rounded-md shadow mx-2 px-4 bg-red-100 text-gray-600">X</button>
         @endif
         <div class="flex flex-shrink-0 md:pl-4">
-            <select class="form-control flex-shrink-0 text-sm pr-14" id="" wire:model="status">
+            <select class="form-control flex-shrink-0 text-sm pr-14" wire:model="status">
                 <option value="active">active</option>
                 <option value="paused">paused</option>
             </select>
         </div>
         <div class="flex flex-shrink-0 md:pl-4">
-            <select class="form-control text-sm pr-14" id="" wire:model="perPage">
+            <select class="form-control text-sm pr-14" wire:model="perPage">
                 <option value="5">5 por pág</option>
                 <option value="10">10 por pág</option>
                 <option value="25">25 por pág</option>

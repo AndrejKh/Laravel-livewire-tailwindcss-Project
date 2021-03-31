@@ -108,7 +108,31 @@
                 </a>
             </li>
         @endcan
+        @can('perfil.ventas')
+            <li class="mb-8">
+                <a class="flex" href="{{ route('cms.tiendas') }}">
+                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                        <img src="{{ asset('icons/items.svg') }}" alt="">
+                    </div>
+                    <span class="self-center">
+                        Mi Tienda
+                    </span>
+                </a>
+            </li>
+        @endcan
 
+        @can('perfil.items')
+            <li class="mb-8">
+                <a class="flex" href="{{ route('cms.items') }}">
+                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                        <img src="{{ asset('icons/productos.svg') }}" alt="">
+                    </div>
+                    <span class="self-center">
+                        Mis Productos
+                    </span>
+                </a>
+            </li>
+        @endcan
         @can('perfil.ventas')
             <li class="mb-8">
                 <a class="flex" href="{{ route('cms.ventas') }}">
@@ -116,19 +140,7 @@
                         <img src="{{ asset('icons/ventas.svg') }}" alt="">
                     </div>
                     <span class="self-center">
-                        Ventas
-                    </span>
-                </a>
-            </li>
-        @endcan
-        @can('perfil.items')
-            <li class="mb-8">
-                <a class="flex" href="{{ route('cms.items') }}">
-                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
-                        <img src="{{ asset('icons/items.svg') }}" alt="">
-                    </div>
-                    <span class="self-center">
-                        Items
+                        Mis Ventas
                     </span>
                 </a>
             </li>

@@ -15,7 +15,7 @@ class Banner extends Model
      * @var array
      */
     protected $fillable = [
-        'photo','status'
+        'brand_id','photo','status'
     ];
 
     //Relacion uno a muchos Inversa

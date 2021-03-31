@@ -13,17 +13,21 @@ use App\Http\Livewire\ItemsComponent;
 use App\Models\State;
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Vistas de vitrina de productos, detalles de productos, incluyendo filtro
+Route::get('/vitrina', [HomeController::class, 'vitrina'])->name('products.show');
+Route::get('/categoria-productos/{slug}', [HomeController::class, 'vitrinaPorCategoria'])->name('products.category.show');
+Route::get('/producto/{id}', [HomeController::class, 'ProductShow'])->name('products.details.show');
+
+// Vistas de Tiendas, detalles de tiendas
+Route::get('/supermercados', [HomeController::class, 'tiendas'])->name('tiendas.show');
+Route::get('/supermercado/{slug}', [HomeController::class, 'tiendaDetail'])->name('tiendas.details.show');
+
+// Rutas adicionales para el cms
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-
 Route::get('/register_seller', function () {
     $estados = State::where('status', 'active')->get();
     return view('auth.register_seller', compact('estados'));
@@ -40,6 +44,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.product
 
 
 /* Componente de Livewire para 'Sellers' */
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ventas'])->get('/tiendas',[HomeController::class, 'tiendas'])->name('cms.tiendas');
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ventas'])->get('/ventas',StateComponent::class)->name('cms.ventas');
 
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.items'])->get('/items',function () {
@@ -50,3 +55,6 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.blog'])
 
 /* Componente de Livewire para 'Buyers' */
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.compras'])->get('/compras',StateComponent::class)->name('cms.compras');
+
+
+Route::get('/supermercados', [HomeController::class, 'tiendas'])->name('tiendas.show');

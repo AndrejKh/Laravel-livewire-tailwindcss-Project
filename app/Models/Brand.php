@@ -9,6 +9,15 @@ class Brand extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'brand','user_id','description','profile_photo_path_brand','slug','status'
+    ];
+
     //Relacion uno a muchos
     public function banners(){
         return $this->hasMany('App\Models\Banner');

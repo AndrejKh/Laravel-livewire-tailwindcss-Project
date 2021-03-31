@@ -6,16 +6,22 @@
 
     @include('home.banners_promotionals')
 
+    @include('home.products_carousel')
+
     @include('components.carousel_categories_banners')
 
-
-    @include('components.products_carousel')
-
     @include('home.carousel_items_first')
-    {{-- @include('home.carousel_items_second')
+
+    @include('home.carousel_items_second')
+
     @include('home.carousel_items_third')
+
+    @include('home.carousel_categories_card_details')
+
     @include('home.carousel_items_fourth')
-    @include('home.carousel_items_five') --}}
+
+    @include('home.carousel_items_five')
+
 
 {{-- @include('components.carousel_categories_card')  --}}
 

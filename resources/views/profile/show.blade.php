@@ -5,9 +5,11 @@
           @include('components.aside_navbar_perfil')
         </div>
 
-        <div class="bg-white p-6 rounded-sm shadow-sm col-span-5">
+        <div class="bg-white pb-6 rounded-sm shadow-sm col-span-5">
             <!-- Contenido -->
-            <div class="w-full  mx-auto py-10 sm:px-6 lg:px-8">
+            <div class="w-full mx-auto pb-6 sm:px-6 lg:px-8">
+
+                <h2 class="text-lg font-bold grid grid-cols-6">Tus datos personales</h2>
 
                     @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                         @livewire('profile.update-profile-information-form')

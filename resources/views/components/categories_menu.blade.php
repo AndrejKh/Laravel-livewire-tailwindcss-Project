@@ -2,9 +2,9 @@
 <div class="owl-carousel w-full h-13 bg-white px-3 flex flex-wrap content-center" id="carousel_categories_home">
 
         @foreach ($categories as $category)
-        <div class="item py-2">
-            @include('components.category_menu_link')
-        </div>
+            <div class="item py-2">
+                @include('components.category_menu_link')
+            </div>
         @endforeach
 
 

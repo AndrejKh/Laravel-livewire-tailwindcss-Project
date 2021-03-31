@@ -1,5 +1,9 @@
 @if ( $products && count($products) > 0)
-
+<div class="flex justify-center mt-3">
+    <div class="max-w-7xl w-full">
+        <h2 class="font-bold text-xl text-gray-900">Productos más comprados</h2>
+    </div>
+</div>
 <div class="flex justify-center">
     <div class="owl-carousel owl-theme max-w-7xl my-4 text-center relative" id="carousel_products_categories">
 

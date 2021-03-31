@@ -37,13 +37,14 @@ class ItemsComponent extends Component
 
     public function render()
     {
+        $user_id = $this->user_id;
         $items = Item::latest('id')->where('user_id', $this->user_id)
             ->where('status', $this->status)
             ->whereHas('product', function (Builder $query) {
                 $query->where('title', 'like', "%{$this->search}%");
             })->paginate($this->perPage);
 
-        return view('livewire.items-component', compact('items'));
+        return view('livewire.items-component', compact('items','user_id'));
     }
 
     public function agregar()
