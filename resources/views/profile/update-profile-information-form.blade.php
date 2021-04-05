@@ -64,7 +64,7 @@
             </div>
 
             <!-- Documento de identidad -->
-            <div class="col-span-1 sm:col-span-3 lg:col-span-2 mt-4">
+            <div class="col-span-1 sm:col-span-3 mt-4">
                 <x-jet-label for="doc" value="Documento de Identidad" />
                 <div>
                     <div class="mt-1 relative rounded-md shadow-sm">
@@ -82,19 +82,11 @@
             </div>
 
             <!-- Phone -->
-            <div class="col-span-1 sm:col-span-3 lg:col-span-2 mt-4 pl-0 md:pl-3">
+            <div class="col-span-1 sm:col-span-3 mt-4 pl-0 md:pl-3">
                 <x-jet-label for="phone" value="Teléfono" />
                 <x-jet-input id="phone" type="text" class="mt-1 block w-full" wire:model.defer="state.phone" />
                 <x-jet-input-error for="phone" class="mt-2" />
             </div>
-            @if (auth()->user()->roles[0]->name == 'seller')
-                <!-- Estado -->
-                <div class="col-span-1 sm:col-span-3 lg:col-span-2 mt-4 pl-0 md:pl-3">
-                    <x-jet-label for="state" value="Estado" />
-                    <x-jet-input id="state" type="text" class="mt-1 block w-full bg-gray-100" wire:model.defer="state.state_id" disabled/>
-                    <x-jet-input-error for="state" class="mt-2" />
-                </div>
-            @endif
         </div>
     </x-slot>
 

@@ -139,7 +139,11 @@
 
 
     {{-- Alert --}}
-    <div x-data="{ open: {{$show_alert}} }" x-show="open" class="fixed right-8 top-8 bg-{{$color_alert}}-500 max-w-3xl mx-auto rounded-xl shadow-lg">
+    <div x-data="{ shown: {{$show_alert}} }"
+    x-show.transition.opacity.out.duration.1500ms="shown"
+
+    class="fixed right-8 top-8 bg-{{$color_alert}}-500 max-w-3xl mx-auto rounded-xl shadow-lg alert_message"
+    >
         <div class="max-w-7xl mx-auto py-2 px-3 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between flex-wrap">
             <div class="max-w-xl flex-1 flex items-center">

@@ -28,4 +28,9 @@ class State extends Model
     public function users(){
         return $this->hasMany('App\Models\User');
     }
+
+    //Relacion uno a muchos
+    public function deliveries(){
+        return $this->hasMany('App\Models\Delivery');
+    }
 }

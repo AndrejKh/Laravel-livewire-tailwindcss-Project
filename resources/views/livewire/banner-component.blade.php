@@ -1,15 +1,11 @@
 <div>
-
-    {{-- Agregar Marca --}}
-    @livewire('brand-component',['user_id' => auth()->user()->id])
-
-    <div>
-        <div class="flex max-w-7xl mt-5">
-            <div class="flex-1">
-                <h2 class="text-lg">Agrega los banners promocionales de tu tienda</h2>
-                <small class="text-sm text-gray-500">Son banners de publicidad que se verán en tu perfil de tienda.</small>
-            </div>
-            <x-jet-button wire:loading.attr="disabled" wire:click="$set( 'openModal' , true )">
+    <div class="grid grid-cols-1 md:grid-cols-5 max-w-7xl">
+        <div class="col-span-1 md:col-span-3 flex-1">
+            <h2 class="text-xl">Agrega los banners promocionales de tu tienda</h2>
+            <small class="text-sm text-gray-500">Son banners de publicidad que se verán en tu perfil de tienda.</small>
+        </div>
+        <div class="col-span-1 md:col-span-2 md:text-right">
+            <x-jet-button class="mt-4 md:mt-0" wire:loading.attr="disabled" wire:click="$set( 'openModal' , true )">
                 Agregar Banner
             </x-jet-button>
         </div>
@@ -44,22 +40,22 @@
 
     </x-jet-dialog-modal>
 
-        @if ( $banners_tienda && count($banners_tienda) > 0)
-            <div class="grid grid-cols-1 gap-6 p-6 shadow-lg rounded-lg mt-4">
-                <div class="col-span-1 text-lg "> Los banners promocionales de tu tienda </div>
-                    <div class="col-span-1 justify-center p-3">
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            @foreach ($banners_tienda as $banner)
-                                <div class="col-span-1 cursor-pointer relative">
-                                    <img class="w-full rounded-md shadow-md z-10" src="/storage/{{$banner->photo}}" alt="imagen de banner">
-                                    <span class="w-6 h-6 absolute -top-2 -right-2 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer bg-opacity-80 hover:bg-opacity-100" wire:click="destroy({{$banner}})">x</span>
-                                </div>
-                            @endforeach
+    @if ( $banners_tienda && count($banners_tienda) > 0)
+        <div class="grid grid-cols-1 gap-2 p-2 md:p-6 shadow-lg rounded-lg mt-4">
+            <div class="col-span-1 text-lg font-bold"> Los banners promocionales de tu tienda </div>
+            <div class="col-span-1 justify-center p-3">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    @foreach ($banners_tienda as $banner)
+                        <div class="relative">
+                            <div class="col-span-1 cursor-pointer h-16 lg:h-32 overflow-hidden rounded-md shadow-md z-10">
+                                <img class="w-full self-center" src="/storage/{{$banner->photo}}" alt="imagen de banner">
+                            </div>
+                            <span class="w-6 h-6 absolute -top-2 -right-2 rounded-full bg-gray-900 text-white flex items-center justify-center cursor-pointer" wire:click="destroy({{$banner}})">x</span>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        @endif
-
+        </div>
+    @endif
 
 </div>

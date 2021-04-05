@@ -26,16 +26,7 @@
                 </span>
             </a>
         </li>
-        <li class=" mb-8">
-            <a class="flex" href="{{ route('profile.show') }}">
-                <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
-                    <img src="{{ asset('icons/datos.svg') }}" alt="">
-                </div>
-                <span class="self-center">
-                    Mis Datos
-                </span>
-            </a>
-        </li>
+
         @can('perfil.usuarios')
             <li class=" mb-8">
                 <a class="flex" href="{{ route('cms.usuarios') }}">
@@ -169,5 +160,16 @@
                 </a>
             </li>
         @endcan
+
+        <li class=" mb-8">
+            <a class="flex" href="{{ route('profile.show') }}">
+                <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                    <img src="{{ asset('icons/settings.svg') }}" alt="">
+                </div>
+                <span class="self-center">
+                    Configuración
+                </span>
+            </a>
+        </li>
     </ul>
 </div>

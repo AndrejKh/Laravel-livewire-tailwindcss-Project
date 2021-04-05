@@ -16,14 +16,15 @@ class CreateDeliveriesTable extends Migration
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('brand_id')->constrained()->onDelete('cascade');
+            $table->foreignId('state_id')->constrained()->onDelete('cascade');
             $table->foreignId('city_id')->constrained()->onDelete('cascade');
 
             $table->text('delivery_zone');
-            /* Dias de entrega */
+            /* Dias de entrega, hacemos entregas los lunes, martes miercoles.... */
             $table->string('days');
             /* Tiempo de entrega */
-            $table->integer('delivery_time');
-            $table->boolean('delivery_free')->default(false);
+            $table->string('delivery_time');
+            $table->integer('delivery_free')->default(0);
             $table->integer('min_amount_purchase');
             $table->string('status')->default('active');
             $table->timestamps();

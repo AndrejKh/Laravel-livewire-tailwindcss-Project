@@ -15,7 +15,7 @@ class Delivery extends Model
      * @var array
      */
     protected $fillable = [
-        'delivery_zone','days','delivery_time','delivery_free','min_amount_purchase'
+        'brand_id', 'state_id', 'city_id', 'delivery_zone','days', 'delivery_time', 'delivery_free', 'min_amount_purchase', 'status'
     ];
 
     //Relacion uno a muchos Inversa
@@ -27,4 +27,10 @@ class Delivery extends Model
     public function city(){
         return $this->belongsTo('App\Models\City');
     }
+
+    //Relacion uno a muchos Inversa
+    public function state(){
+        return $this->belongsTo('App\Models\State');
+    }
+
 }
