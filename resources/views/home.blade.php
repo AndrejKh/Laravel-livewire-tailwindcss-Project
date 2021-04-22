@@ -8,6 +8,8 @@
 
     @include('home.products_carousel')
 
+    @include('home.cta_login')
+
     @include('components.carousel_categories_banners')
 
     @include('home.carousel_items_first')
@@ -21,7 +23,6 @@
     @include('home.carousel_items_fourth')
 
     @include('home.carousel_items_five')
-
 
 {{-- @include('components.carousel_categories_card')  --}}
 

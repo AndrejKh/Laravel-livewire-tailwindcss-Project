@@ -62,7 +62,7 @@ class StateComponent extends Component
         $this->reset(['state_id', 'state', 'code', 'action', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'green';
-        $this->message_alert = 'creado';
+        $this->message_alert = 'Creado exitosamente!';
     }
 
     public function edit(State $state)
@@ -90,7 +90,7 @@ class StateComponent extends Component
         $this->reset(['state_id', 'state', 'code', 'action', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'blue';
-        $this->message_alert = 'actualizado';
+        $this->message_alert = 'Actualizado exitosamente!';
     }
 
     public function cancel()
@@ -105,7 +105,7 @@ class StateComponent extends Component
         $this->reset(['state_id', 'state', 'code', 'action', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'red';
-        $this->message_alert = 'eliminado';
+        $this->message_alert = 'Eliminado exitosamente!';
     }
 
     public function close_alert()

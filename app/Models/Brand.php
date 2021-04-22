@@ -42,4 +42,27 @@ class Brand extends Model
     public function orders(){
         return $this->hasMany('App\Models\Order');
     }
+
+    //Relacion uno a muchos
+    public function items(){
+        return $this->hasMany('App\Models\Item');
+    }
+
+    // Funcion para ver si la marca ofrece delivery gratis
+    /* public function deliveryFree( $brand_id ){
+         $brand = Brand::where('id', $brand_id)->first();
+
+        if (isset( $brand->deliveries )){
+            foreach ($brand->deliveries as $delivery){
+
+            }
+                                
+            
+            if ( $brand->deliveries->delivery_free == 1 ){
+                $delivery_free = 1; 
+                break;
+            }
+        }
+        
+    } */
 }

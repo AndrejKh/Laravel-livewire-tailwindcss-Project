@@ -2,9 +2,9 @@
 
 <div class="flex justify-center">
 
-    <div class="owl-carousel owl-theme max-w-7xl my-2 text-center relative" id="carousel_banners_tienda">
+    <div class="owl-carousel owl-theme max-w-7xl my-2 text-center relative px-2 md:px-0" id="carousel_banners_tienda">
         @foreach ($banners_promotionals as $banner)
-            <div class="bg-no-repeat bg-cover bg-center w-full h-20 md:h-32 lg:h-36 overflow-hidden rounded-lg" style="background-image: url('/storage/{{$banner->photo}}');"></div>
+            <div class="bg-no-repeat bg-cover bg-center w-full h-28 md:h-32 lg:h-36 overflow-hidden rounded-lg" style="background-image: url('/storage/{{$banner->photo}}');"></div>
         @endforeach
     </div>
 
@@ -17,10 +17,10 @@
         dots:false,
         responsive:{
             0:{
-                items:2
+                items:1
             },
-            1280:{
-                items:3
+            1024:{
+                items:2
             }
         }
     })

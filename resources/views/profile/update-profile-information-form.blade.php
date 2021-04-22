@@ -4,8 +4,9 @@
     <x-slot name="description"></x-slot>
 
     <x-slot name="form">
-        <div class="grid grid-cols-1 md:grid-cols-6">
+        <div class="grid grid-cols-1 md:grid-cols-6 w-full gap-2">
             <!-- Profile Photo -->
+            @role('buyer')
             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                 <div x-data="{photoName: null, photoPreview: null}" class="col-span-3 row-span-1 sm:col-span-3 sm:row-span-2">
                     <!-- Profile Photo File Input -->
@@ -22,6 +23,7 @@
                                 " />
 
                     <x-jet-label for="photo" value="{{ __('Foto de Perfil') }}" />
+
 
                     <!-- Current Profile Photo -->
                     <div class="mt-2" x-show="! photoPreview">
@@ -48,23 +50,24 @@
                     <x-jet-input-error for="photo" class="mt-2" />
                 </div>
             @endif
+            @endrole
 
             <!-- Name -->
-            <div class="col-span-3 row-span-1 sm:col-span-3 sm:row-span-1 pl-0 md:pl-3">
+            <div class="col-span-3 row-span-1 sm:col-span-3 sm:row-span-1 ">
                 <x-jet-label for="name" value="{{ __('Name') }}" />
                 <x-jet-input id="name" type="text" class="mt-1 block w-full bg-gray-100" wire:model.defer="state.name" autocomplete="name" disabled />
                 <x-jet-input-error for="name" class="mt-2" />
             </div>
 
             <!-- Email -->
-            <div class="col-span-3 row-span-1 sm:col-span-3 sm:row-span-1 pl-0 md:pl-3">
+            <div class="col-span-3 row-span-1 sm:col-span-3 sm:row-span-1">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" type="email" class="mt-1 block w-full bg-gray-100" wire:model.defer="state.email" disabled />
                 <x-jet-input-error for="email" class="mt-2" />
             </div>
 
             <!-- Documento de identidad -->
-            <div class="col-span-1 sm:col-span-3 mt-4">
+            <div class="col-span-3 mt-4">
                 <x-jet-label for="doc" value="Documento de Identidad" />
                 <div>
                     <div class="mt-1 relative rounded-md shadow-sm">
@@ -82,7 +85,7 @@
             </div>
 
             <!-- Phone -->
-            <div class="col-span-1 sm:col-span-3 mt-4 pl-0 md:pl-3">
+            <div class="col-span-3 mt-4">
                 <x-jet-label for="phone" value="Teléfono" />
                 <x-jet-input id="phone" type="text" class="mt-1 block w-full" wire:model.defer="state.phone" />
                 <x-jet-input-error for="phone" class="mt-2" />

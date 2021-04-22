@@ -26,6 +26,10 @@ class CreateUsersTable extends Migration
 
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
+
+            $table->double('rating_average')->nullable();
+            $table->string('delivery_free')->nullable();
+
             $table->string('status')->default('active');
 
             $table->timestamp('email_verified_at')->nullable();

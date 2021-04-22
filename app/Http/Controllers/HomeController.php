@@ -6,8 +6,10 @@ use App\Models\Banner;
 use App\Models\BannerPromocional;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Delivery;
 use App\Models\Item;
 use App\Models\Product;
+use App\Models\State;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -93,7 +95,7 @@ class HomeController extends Controller
         $carousel_banners = BannerPromocional::latest('id')->where('page', 'tiendas')->where('status', 'active')->get();
         $categories = Category::latest('id')->where('status', 'active')->get();
 
-        return view('tiendas', compact('categories','tiendas', 'total_tiendas_search', 'carousel_banners'));
+        return view('supermercados.tiendas', compact('categories','tiendas', 'total_tiendas_search', 'carousel_banners'));
     }
 
     //Metodo que devulve la vista del detalle del producto
@@ -103,14 +105,15 @@ class HomeController extends Controller
         if(isset($request->id))
         {
             $tienda = Brand::where('status', 'active')->where('user_id', $request->id)->first();
-            $items = Item::where('status','active')->where('user_id',$request->id)->paginate(16);
+            $items = Item::where('status','active')->where('brand_id',$tienda->id)->paginate(16);
             $banners_promotionals = Banner::where('status','active')->where('brand_id',$tienda->id)->get();
             $categories = Category::latest('id')->where('status', 'active')->get();
+            $deliveries = Delivery::where('status','active')->where('brand_id',$tienda->id)->get();
         }else{
 
         }
 
-        return view('tienda', compact('categories','tienda','items','banners_promotionals'));
+        return view('tienda.tienda', compact('categories','tienda','items','banners_promotionals','deliveries'));
 
     }
 
@@ -135,7 +138,22 @@ class HomeController extends Controller
     public function productos() {
         return view('cms.productos');
     }
+
+    // Rutas CMS
+    public function dashboard(){
+        return view('dashboard');
+    }
+
+    function register_seller() {
+        $estados = State::where('status', 'active')->get();
+        return view('auth.register_seller', compact('estados'));
+    }
+
     public function tiendasCMS() {
         return view('cms.tiendas');
+    }
+
+    public function itemsCMS() {
+        return view('cms.items');
     }
 }

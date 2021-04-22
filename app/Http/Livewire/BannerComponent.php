@@ -12,10 +12,10 @@ class BannerComponent extends Component
 {
     use WithFileUploads;
 
-    public $message_alert, $color_alert, $brand, $brand_id, $user_id, $photo;
+    public $message_alert, $color_alert, $brand, $brand_id, $user_id, $photo, $bannerUpdate ;
 
     public $openModal = false;
-    public $openModalActualizar = false;
+    public $openModalUpdate = false;
 
     public $status = 'active';
     public $perPage = 10;
@@ -43,16 +43,18 @@ class BannerComponent extends Component
     {
         $brand = Brand::where('user_id', $this->user_id)->first();
         if ($brand) {
-            $brand_id = $brand->id;
-            $banners_tienda = Banner::where('status', $this->status)->where('brand_id', $brand_id )->get();
+            $this->brand = $brand;
+            $banners_tienda = Banner::where('status', $this->status)->where('brand_id', $brand->id )->get();
         }else{
             $banners_tienda = [];
         }
-        return view('livewire.banner-component', compact('banners_tienda'));
+        return view('livewire.banner-component', compact('banners_tienda','brand'));
     }
 
     public function agregar()
     {
+        //reinicio las propiedades
+        $this->reset(['photo', 'action','show_alert','message_alert','color_alert', 'openModal']);
         //en este caso se ignorara las reglas de validacion de $rules, y considerara las que se le asignan
         $this->validate([
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
@@ -76,11 +78,36 @@ class BannerComponent extends Component
             'brand_id' => $brand_id,
             'photo' => $path_imagen
         ]);
-        //reinicio las propiedades
-        $this->reset(['photo', 'action','show_alert','message_alert','color_alert', 'openModal']);
         $this->show_alert = 'true';
         $this->color_alert = 'green';
-        $this->message_alert = 'guardada';
+        $this->message_alert = 'Guardado exitosamente!';
+    }
+
+    public function bannerUpdate(Banner $banner){
+        $this->reset(['show_alert']);
+        $this->openModalUpdate = 'true';
+        $this->bannerUpdate = $banner;
+    }
+
+    public function update(){
+
+        //en este caso se ignorara las reglas de validacion de $rules, y considerara las que se le asignan
+        $this->validate([
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
+        ]);
+
+        //Guardo la imagen en la carpeta storage, enlace public
+        $path_imagen=$this->photo->store('public');
+
+        $this->bannerUpdate->update([
+            'photo' => $path_imagen
+        ]);
+
+         //reinicio las propiedades
+         $this->reset(['photo', 'action','show_alert','message_alert','color_alert', 'openModalUpdate']);
+         $this->show_alert = 'true';
+         $this->color_alert = 'green';
+         $this->message_alert = 'Actualizado exitosamente!';
     }
 
     public function destroy(Banner $banner)
@@ -90,6 +117,6 @@ class BannerComponent extends Component
         $this->reset(['photo', 'action','show_alert','message_alert','color_alert', 'openModal']);
         $this->show_alert = 'true';
         $this->color_alert = 'red';
-        $this->message_alert = 'eliminado';
+        $this->message_alert = 'Eliminado exitosamente!';
     }
 }

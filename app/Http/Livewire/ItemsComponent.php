@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Brand;
 use App\Models\Item;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
@@ -15,16 +16,18 @@ class ItemsComponent extends Component
     //ahora uso la clase dentro del componente y listo!
     use WithPagination;
 
-    protected $queryString = ['status' => ['except' => 'active'], 'search' => ['except' => ''], 'perPage'  => ['except' => '10']];
+    protected $queryString = ['status' => ['except' => 'active'], 'search' => ['except' => '']];
 
-    public $item_id, $user_id, $item, $quantity, $price, $message_alert, $color_alert, $itemcito;
+    public $brand_id, $item_id, $user_id, $item, $quantity, $price, $message_alert, $color_alert, $itemToDelete, $itemToChangeStatus;
 
     public $product_id=0;
     public $products_seach = '';
     public $search = '';
-    public $status = 'active';
-    public $perPage = 10;
+    public $status = '';
+    public $perPage = 15;
     public $show_alert = 'false';
+    public $show_modal_delete = 'false';
+    public $show_modal_status = 'false';
 
     //reglas de validacion, protected indica que solo se usara en este modelo
     protected $rules = [
@@ -38,53 +41,36 @@ class ItemsComponent extends Component
     public function render()
     {
         $user_id = $this->user_id;
-        $items = Item::latest('id')->where('user_id', $this->user_id)
-            ->where('status', $this->status)
-            ->whereHas('product', function (Builder $query) {
-                $query->where('title', 'like', "%{$this->search}%");
-            })->paginate($this->perPage);
+        $brand = Brand::where('user_id', $this->user_id)->first();
+
+        // El usuario tiene una marca?
+        if($brand){
+            $this->brand_id = $brand->id;
+            // SE esta buscando por estatus
+            if ($this->status !== '') {
+                $items = Item::latest('id')->where('brand_id', $this->brand_id)
+                    ->where('status', $this->status)
+                    ->whereHas('product', function (Builder $query) {
+                        $query->where('title', 'like', "%{$this->search}%");
+                    })->paginate($this->perPage);
+            // Se esta buscando todos los items, sin filtro por estatus
+            }else{
+                $items = Item::latest('id')->where('brand_id', $this->brand_id)
+                ->whereHas('product', function (Builder $query) {
+                    $query->where('title', 'like', "%{$this->search}%");
+                })->paginate($this->perPage);
+            }
+        // el usuario no tiene marca
+        }else{
+            $items = [];
+        }
 
         return view('livewire.items-component', compact('items','user_id'));
     }
 
-    public function agregar()
-    {
-        //en este caso se ignorara las reglas de validacion de $rules, y considerara las que se le asignan
-        $this->validate([
-            'quantity' => 'required',
-            'price' => 'required'
-        ]);
-        if ($this->product_id === 0) {
-            $this->show_alert = 'true';
-            $this->color_alert = 'red';
-            $this->message_alert = 'Debes seleccionar un producto!';
-            return;
-        }
-
-        $this->itemcito = Item::where('user_id', $this->user_id)->where('product_id', $this->product_id)->get();
-        if (count($this->itemcito) > 0) {
-            $this->show_alert = 'true';
-            $this->color_alert = 'yellow';
-            $this->message_alert = 'Ya tienes este producto en tu inventario!';
-            $this->reset(['item_id', 'item', 'quantity', 'price']);
-            return;
-        }
-
-        Item::create([
-            'product_id' => $this->product_id,
-            'user_id' => $this->user_id,
-            'quantity' => $this->quantity,
-            'price' => $this->price
-        ]);
-        //reinicio las propiedades
-        $this->reset(['product_id', 'quantity', 'price']);
-        $this->show_alert = 'true';
-        $this->color_alert = 'green';
-        $this->message_alert = 'El producto fue creado exitosamente!';
-    }
-
     public function edit(Item $item)
     {
+        $this->reset(['show_alert']);
         $this->product_id = $item->id;
         $this->quantity = $item->quantity;
         $this->price = $item->price;
@@ -105,40 +91,62 @@ class ItemsComponent extends Component
         ]);
 
         //reinicio las propiedades
-        $this->reset(['product_id', 'quantity', 'price']);
+        $this->reset(['product_id', 'quantity', 'price','show_alert','color_alert','message_alert']);
         $this->show_alert = 'true';
-        $this->color_alert = 'blue';
-        $this->message_alert = 'El producto fue actualizado exitosamente!';
+        $this->color_alert = 'green';
+        $this->message_alert = 'Actualizado exitosamente!';
     }
 
     public function cancel()
     {
-        $this->reset(['item_id', 'item', 'product_id', 'quantity', 'price']);
+        $this->reset(['item_id', 'item', 'product_id', 'quantity', 'price', 'itemToDelete', 'itemToChangeStatus', 'show_alert', 'show_modal_delete', 'show_modal_status']);
+    }
+
+    public function setItemStatus(Item $item){
+        $this->reset(['show_alert']);
+        $this->show_modal_status = 'true';
+        $this->itemToChangeStatus = $item;
+    }
+
+    // Activar item , cambio de estatus
+    public function activarItem(Item $item){
+        $item->update([
+            'status' => 'active'
+        ]);
+
+        //reinicio las propiedades
+        $this->reset(['show_modal_delete', 'itemToChangeStatus','show_alert','color_alert','message_alert']);
+        $this->show_alert = 'true';
+        $this->color_alert = 'green';
+        $this->message_alert = 'Activado exitosamente!';
+    }
+
+    // Activar item , cambio de estatus
+    public function pausarItem(Item $item){
+        $item->update([
+            'status' => 'paused'
+        ]);
+
+        //reinicio las propiedades
+        $this->reset(['show_modal_delete', 'itemToChangeStatus','show_alert','color_alert','message_alert']);
+        $this->show_alert = 'true';
+        $this->color_alert = 'green';
+        $this->message_alert = 'Pausado exitosamente!';
+    }
+
+    public function setItemDelete(Item $item){
+        $this->reset(['show_alert']);
+        $this->show_modal_delete = 'true';
+        $this->itemToDelete = $item;
     }
 
     public function destroy(Item $item)
     {
         $item->delete();
         //reinicio las propiedades
-        $this->reset(['product_id', 'quantity', 'price']);
+        $this->reset(['product_id', 'quantity', 'price', 'itemToDelete']);
         $this->show_alert = 'true';
         $this->color_alert = 'red';
-        $this->message_alert = 'El producto fue eliminado exitosamente!';
-    }
-
-    public function clean()
-    {
-        $this->status = 'active';
-        $this->search = '';
-        $this->page = 1;
-        $this->perPage = '10';
-    }
-
-    // EVENTOS
-    protected $listeners = ['setIdCategoryFromChildComponent'];
-
-    public function setIdCategoryFromChildComponent($category_id)
-    {
-        $this->product_id = $category_id;
+        $this->message_alert = 'Eliminado exitosamente!';
     }
 }

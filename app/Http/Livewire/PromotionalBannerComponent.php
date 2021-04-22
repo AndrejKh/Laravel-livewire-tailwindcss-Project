@@ -70,7 +70,7 @@ class PromotionalBannerComponent extends Component
         $this->reset(['banner', 'page_banner', 'banner_id', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'green';
-        $this->message_alert = 'creado';
+        $this->message_alert = 'Creado exitosamente!';
     }
 
     public function edit(BannerPromocional $banner)
@@ -113,7 +113,7 @@ class PromotionalBannerComponent extends Component
         $this->reset(['banner', 'page_banner', 'banner_id', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'blue';
-        $this->message_alert = 'actualizado';
+        $this->message_alert = 'Actualizado exitosamente!';
     }
 
     public function cancel()
@@ -128,7 +128,7 @@ class PromotionalBannerComponent extends Component
         $this->reset(['banner', 'page_banner', 'banner_id', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'red';
-        $this->message_alert = 'eliminado';
+        $this->message_alert = 'Eliminado exitosamente!';
     }
 
     public function close_alert()

@@ -79,7 +79,7 @@ class ProductComponent extends Component
         $this->reset(['title', 'description', 'action', 'slug', 'photo_main_product', 'category_id', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'green';
-        $this->message_alert = 'creado';
+        $this->message_alert = 'Creado exitosamente!';
     }
 
     public function edit(Product $product)
@@ -133,7 +133,7 @@ class ProductComponent extends Component
         $this->reset(['title', 'description', 'action', 'slug', 'photo_main_product', 'category_id', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'blue';
-        $this->message_alert = 'actualizado';
+        $this->message_alert = 'Actualizado exitosamente!';
     }
 
     public function cancel()
@@ -148,7 +148,7 @@ class ProductComponent extends Component
         $this->reset(['title', 'description', 'action', 'slug', 'photo_main_product', 'category_id', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'red';
-        $this->message_alert = 'eliminada';
+        $this->message_alert = 'Eliminado exitosamente!';
     }
 
     public function close_alert()

@@ -15,7 +15,7 @@ class DeliveryComponent extends Component
 {
     use WithFileUploads;
 
-    public $message_alert, $color_alert, $delivery, $user_id, $state_id, $city_id, $delivery_zone, $delivery_time, $delivery_free, $min_amount_purchase, $days_aux, $days_week;
+    public $message_alert, $color_alert, $delivery, $user_id, $brand, $state_id, $city_id, $delivery_zone, $delivery_time, $delivery_free, $min_amount_purchase, $days_aux, $days_week;
     public $days = [];
     public $cities = [];
     public $openModal = false;
@@ -29,6 +29,7 @@ class DeliveryComponent extends Component
         {
             $brand = Brand::where('user_id', $this->user_id)->first();
             if( $brand ){
+                $this->brand = $brand;
                 $deliveries = Delivery::where('brand_id', $brand->id)->get();
             }else{
                 $deliveries = '';
@@ -48,6 +49,7 @@ class DeliveryComponent extends Component
 
         public function agregar()
         {
+            $this->reset(['show_alert']);
             //en este caso se ignorara las reglas de validacion de $rules, y considerara las que se le asignan
             $this->validate([
                 'state_id' => 'required',
@@ -78,10 +80,11 @@ class DeliveryComponent extends Component
             $this->reset(['city_id','delivery_zone','days','delivery_time','delivery_free','min_amount_purchase','show_alert','color_alert','message_alert','openModal']);
             $this->show_alert = 'true';
             $this->color_alert = 'green';
-            $this->message_alert = 'Nueva zona de delivery creada!';
+            $this->message_alert = 'Creada exitosamente!';
         }
 
         public function update(){
+            $this->reset(['show_alert']);
             //en este caso se ignorara las reglas de validacion de $rules, y considerara las que se le asignan
             $this->validate([
                 'state_id' => 'required',
@@ -112,11 +115,12 @@ class DeliveryComponent extends Component
             $this->reset(['city_id','delivery_zone','days', 'days_aux','delivery_time','delivery_free','min_amount_purchase','show_alert','color_alert','message_alert','openModal','openModalActualizar']);
             $this->show_alert = 'true';
             $this->color_alert = 'green';
-            $this->message_alert = 'Nueva zona de delivery creada!';
+            $this->message_alert = 'Actualizada exitosamente!';
         }
 
         // Funcion que se activa al momento de dar click en el boton 'editar' de algun delivery
-        public function buttonActualizarBrand($id_delivery){
+        public function buttonActualizarDelivery($id_delivery){
+            $this->reset(['show_alert']);
             $this->openModalActualizar = true;
             $this->text = $id_delivery;
             $this->delivery = Delivery::where('id', $id_delivery)->first();
@@ -142,7 +146,7 @@ class DeliveryComponent extends Component
             $this->reset(['city_id','delivery_zone','days','delivery_time','delivery_free','min_amount_purchase','show_alert','color_alert','message_alert','openModalActualizar']);
             $this->show_alert = 'true';
             $this->color_alert = 'red';
-            $this->message_alert = 'Se ha eliminado exitosamente!';
+            $this->message_alert = 'Eliminada exitosamente!';
         }
 
 

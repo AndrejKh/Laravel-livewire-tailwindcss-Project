@@ -69,7 +69,7 @@ class BrandComponent extends Component
             $this->reset(['brand', 'profile_photo_path_brand', 'action','show_alert','message_alert','color_alert','openModal']);
             $this->show_alert = 'true';
             $this->color_alert = 'green';
-            $this->message_alert = 'guardada';
+            $this->message_alert = 'Guardado exitosamente!';
         }
 
         public function update(){
@@ -111,8 +111,8 @@ class BrandComponent extends Component
             //reinicio las propiedades
             $this->reset(['brand', 'profile_photo_path_brand', 'action','show_alert','message_alert','color_alert', 'openModalActualizar']);
             $this->show_alert = 'true';
-            $this->color_alert = 'blue';
-            $this->message_alert = 'actualizada';
+            $this->color_alert = 'green';
+            $this->message_alert = 'Actualizado exitosamente!';
         }
 
         /*Eliminar simbolos: Realiza una limpieza de los simbolos de la palabra*/

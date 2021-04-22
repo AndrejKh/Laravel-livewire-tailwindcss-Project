@@ -99,11 +99,12 @@
                 </a>
             </li>
         @endcan
+
         @can('perfil.ventas')
             <li class="mb-8">
                 <a class="flex" href="{{ route('cms.tiendas') }}">
                     <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
-                        <img src="{{ asset('icons/items.svg') }}" alt="">
+                        <img src="{{ asset('icons/tiendas.svg') }}" alt="">
                     </div>
                     <span class="self-center">
                         Mi Tienda
@@ -116,7 +117,7 @@
             <li class="mb-8">
                 <a class="flex" href="{{ route('cms.items') }}">
                     <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
-                        <img src="{{ asset('icons/productos.svg') }}" alt="">
+                        <img src="{{ asset('icons/items.svg') }}" alt="">
                     </div>
                     <span class="self-center">
                         Mis Productos

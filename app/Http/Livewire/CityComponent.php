@@ -66,7 +66,7 @@ class CityComponent extends Component
         $this->reset(['city', 'state_id', 'action', 'city_id', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'green';
-        $this->message_alert = 'creada';
+        $this->message_alert = 'Creada exitosamente!';
     }
 
     public function edit(City $city)
@@ -94,7 +94,7 @@ class CityComponent extends Component
         $this->reset(['city', 'state_id', 'action', 'city_id', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'blue';
-        $this->message_alert = 'actualizada';
+        $this->message_alert = 'Actualizada exitosamente!';
     }
 
     public function cancel()
@@ -109,7 +109,7 @@ class CityComponent extends Component
         $this->reset(['city', 'state_id', 'action', 'city_id', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'red';
-        $this->message_alert = 'eliminada';
+        $this->message_alert = 'Eliminada exitosamente!';
     }
 
     public function close_alert()

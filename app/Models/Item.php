@@ -15,12 +15,12 @@ class Item extends Model
      * @var array
      */
     protected $fillable = [
-        'product_id','user_id','quantity','price','status'
+        'product_id','brand_id','quantity','price','status'
     ];
 
     //Relacion uno a muchos Inversa
-    public function user(){
-        return $this->belongsTo('App\Models\User');
+    public function brand(){
+        return $this->belongsTo('App\Models\Brand');
     }
 
     //Relacion uno a muchos Inversa

@@ -12,5 +12,7 @@
             </div>
         </div>
     </div>
+    @include('common.navbar_movil_perfil')
+
         {{-- <div class="max-w-screen-2xl mx-auto sm:px-6 lg:px-8 flex"></div> --}}
 </x-app-layout>

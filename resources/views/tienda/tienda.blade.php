@@ -1,7 +1,11 @@
 <x-app-layout>
-    @include('components.card_tienda')
+    @include('tienda.card_tienda')
 
-    @include('components.carousel_banners_tienda')
+    @include('tienda.carousel_banners_tienda')
+
+    @include('tienda.carousel_cards_deliveries')
+
+
 
     @if ( count($items) > 0 )
 

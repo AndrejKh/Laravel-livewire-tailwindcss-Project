@@ -9,7 +9,7 @@
             <!-- Contenido -->
             <div class="w-full mx-auto pb-6 sm:px-6 lg:px-8">
 
-                <h2 class="text-lg font-bold grid grid-cols-6">Tus datos personales</h2>
+                <h2 class="text-lg font-bold px-2">Tus datos personales</h2>
 
                     @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                         @livewire('profile.update-profile-information-form')
@@ -37,6 +37,8 @@
                         @livewire('profile.logout-other-browser-sessions-form')
                     </div>
 
+
+
                     {{-- @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
                         <x-jet-section-border />
 
@@ -47,5 +49,6 @@
             </div>
         </div>
     </div>
+    @include('common.navbar_movil_perfil')
 
 </x-app-layout>

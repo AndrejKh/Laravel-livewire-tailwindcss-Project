@@ -137,37 +137,7 @@
         <div class="text-gray-400 bg-white py-3 px-4 border-t border-gray-200 mb-10">No se encontraron resultados para la busqueda "{{ $search }}" en la pagina {{ $page }} al mostrar {{ $perPage }}  por pagina</div>
     @endif
 
+    @include('common.alert')
 
-    {{-- Alert --}}
-    <div x-data="{ shown: {{$show_alert}} }"
-    x-show.transition.opacity.out.duration.1500ms="shown"
 
-    class="fixed right-8 top-8 bg-{{$color_alert}}-500 max-w-3xl mx-auto rounded-xl shadow-lg alert_message"
-    >
-        <div class="max-w-7xl mx-auto py-2 px-3 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between flex-wrap">
-            <div class="max-w-xl flex-1 flex items-center">
-            <span class="flex p-2 rounded-lg">
-                <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='#fff'>
-                    <path d='M0 0h24v24H0z' fill='none'/><path d='M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z'/>
-                </svg>
-            </span>
-            <p class="ml-3 font-medium text-white">
-                <span>
-                    La categoria fue {{$message_alert}} exitosamente!
-                </span>
-            </p>
-            </div>
-            <div class="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
-                <button wire:click="$set('show_alert', 'false')" type="button" class="-mr-1 flex p-2 rounded-md hover:bg-{{$color_alert}}-700 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2">
-                <span class="sr-only">Dismiss</span>
-                <!-- Heroicon name: outline/x -->
-                <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-            </div>
-        </div>
-        </div>
-    </div>
 </div>

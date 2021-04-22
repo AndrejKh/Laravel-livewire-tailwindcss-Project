@@ -2,3 +2,64 @@
     display: none;
 }
 
+/* Animacion para alerts de respuesta a acciones */
+@keyframes alertAnimation{
+    0%{
+        transform: translateX(50px);
+        opacity: 0.5;
+        }
+    95%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+/* Clase del alert */
+.alertActive{
+    animation: alertAnimation 1.5s 1 0s linear;
+}
+
+/* Girar svg select */
+.rotate_select_icon{
+    transform: rotate(180deg);
+    transition: transform 1s;
+}
+.return_rotate_select_icon{
+    transform: rotate(0deg);
+    transition: transform 1s;
+}
+
+/* Mostrar boton flotante de comparar */
+@keyframes animationTranslateYShown{
+    0%{
+        transform: translateY(50px);
+        opacity: 0;
+        }
+    99%{
+        transform: translateY(0);
+        opacity: 1;
+        }
+}
+@keyframes animationTranslateYHidde{
+    0%{
+        transform: translateY(-55px);
+        opacity: 1;
+        }
+    99%{
+        transform: translateY(0);
+        opacity: 0;
+        }
+}
+
+.shownButton{
+    animation: animationTranslateYShown 0.5s 1 0s linear;
+    display: block;
+    opacity: 1;
+    bottom: 5rem;
+}
+.hiddeButton{
+    animation: animationTranslateYHidde 0.5s 1 0s linear;
+    /* bottom: 0rem; */
+    bottom: 1.5rem;
+    opacity: 0;
+    display: block;
+}

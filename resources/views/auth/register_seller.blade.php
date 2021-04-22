@@ -31,7 +31,7 @@
                                 {{-- <option value="passport">Pasaporte</option> --}}
                             </select>
                         </div>
-                        <x-jet-input id="doc_identity" class="block mt-1 w-full pl-16 md:pl-28" type="text" name="doc_identity" :value="old('doc_identity')" required />
+                        <x-jet-input id="doc_identity" class="block mt-1 w-full pl-16 md:pl-20" type="text" name="doc_identity" :value="old('doc_identity')" required />
 
                     </div>
                 </div>

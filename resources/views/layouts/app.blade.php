@@ -28,13 +28,24 @@
     <body class="font-sans antialiased">
         <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100 relative">
             @livewire('navigation-menu')
+            @livewire('shopping-car-component')
 
             <!-- Page Content -->
             <main class="">
                 {{ $slot }}
             </main>
+
+            {{-- Verifico si estoy en el administrador, no deberia verse el carrito aqui --}}
+            @php
+                $ruta = Route::currentRouteName();
+                $rutaArray = explode(".", $ruta);
+            @endphp
+            @if ( !in_array('profile', $rutaArray) && !in_array('cms', $rutaArray) && !in_array('dashboard', $rutaArray) && !in_array('comparar', $rutaArray) )
+                {{-- Boton flotante de carrito de compras --}}
+                @include('common.buttom_float_shopping_car')
+            @endif
         </div>
 
         @stack('modals')

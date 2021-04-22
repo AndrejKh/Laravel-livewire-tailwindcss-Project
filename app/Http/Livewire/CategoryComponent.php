@@ -80,7 +80,7 @@ class CategoryComponent extends Component
         $this->reset(['category', 'description', 'action', 'slug', 'photo', 'category_id', 'padre_id','show_alert','message_alert','color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'green';
-        $this->message_alert = 'creada';
+        $this->message_alert = 'Creado exitosamente!';
     }
 
     public function edit(Category $category)
@@ -134,7 +134,7 @@ class CategoryComponent extends Component
         $this->reset(['category', 'description', 'action', 'slug', 'photo', 'category_id', 'padre_id','show_alert','message_alert','color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'blue';
-        $this->message_alert = 'actualizada';
+        $this->message_alert = 'Actualizado exitosamente!';
     }
 
     public function cancel()
@@ -149,7 +149,7 @@ class CategoryComponent extends Component
         $this->reset(['category', 'description', 'action', 'slug', 'photo', 'category_id', 'padre_id','show_alert','message_alert','color_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'red';
-        $this->message_alert = 'eliminada';
+        $this->message_alert = 'Eliminado exitosamente!';
     }
 
     public function category_father($category_id)

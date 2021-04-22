@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Delivery;
+use App\Models\Item;
+use App\Models\Product;
+use App\Models\State;
+use Illuminate\Http\Request;
+
+class CompareController extends Controller
+{
+    public function index()
+    {
+        $states = State::where('status','active')->get();
+        return view('comparar.compare', compact('states'));
+    }
+
+    public function getBrandsByState(){
+
+    }
+
+    public function getBrandsByCity(){
+
+    }
+
+    public function getItemsByBrand(){
+
+    }
+}

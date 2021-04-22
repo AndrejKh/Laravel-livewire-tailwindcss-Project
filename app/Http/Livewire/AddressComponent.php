@@ -46,7 +46,7 @@ class AddressComponent extends Component
         $this->reset(['state_id', 'city_id', 'address', 'cities', 'show_alert', 'message_alert', 'color_alert', 'openModal', 'openModalActualizar']);
         $this->show_alert = 'true';
         $this->color_alert = 'green';
-        $this->message_alert = 'Configurado exitosamente!';
+        $this->message_alert = 'Actualizado exitosamente!';
     }
 
     // Funcion que se activa al momento de dar click en el boton 'editar' de algun delivery
