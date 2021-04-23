@@ -3,6 +3,15 @@
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>
+        @if( app('request')->input('r') )
+        {{--
+             fue redireccionado desde la vista de comparar,
+             El usuario comparo los precios y al momento de comprar, no estaba logeado
+             --}}
+        <div class="text-green-600 font-semibold text-md my-3 text-center">
+            Inicia sesión para completar tu compra.
+        </div>
+        @endif
 
         <x-jet-validation-errors class="mb-4" />
 

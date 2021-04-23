@@ -156,4 +156,8 @@ class HomeController extends Controller
     public function itemsCMS() {
         return view('cms.items');
     }
+
+    public function comprasCMS(){
+        return view('compras.compras');
+    }
 }

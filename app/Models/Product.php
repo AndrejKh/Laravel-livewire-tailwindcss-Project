@@ -36,6 +36,6 @@ class Product extends Model
 
      //Relacion uno a muchos
      public function articles(){
-        return $this->hasMany('App\Models\Article');
+        return $this->hasMany('App\Models\OrderProducts');
     }
 }

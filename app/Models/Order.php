@@ -15,7 +15,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'amount','status'
+        'brand_id','user_id','amount','status'
     ];
 
     //Relacion uno a muchos Inversa
@@ -31,7 +31,7 @@ class Order extends Model
 
     //Relacion uno a muchos
     public function articles(){
-        return $this->hasMany('App\Models\Article');
+        return $this->hasMany('App\Models\OrderProducts');
     }
 
 

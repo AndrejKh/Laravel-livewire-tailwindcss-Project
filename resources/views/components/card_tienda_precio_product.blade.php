@@ -17,7 +17,10 @@
 <article class="max-w-7xl w-full bg-white p-2 md:p-4 shadow-md rounded-lg mb-3">
     <div class="grid grid-cols-6 gap-3">
         <div class="col-span-1 self-center text-center">
-            <span class="text-2xl lg:text-4xl font-semibold text-gray-900">{{ $item->price }}</span> $USD
+            <span class="text-2xl lg:text-4xl font-semibold text-gray-900">
+                @php $price = number_format($item->price, 2, '.', ','); @endphp
+                {{ $price }}
+            </span> $USD
         </div>
         <div class="col-span-4 self-center">
             <div class="grid grid-cols-6 gap-3">

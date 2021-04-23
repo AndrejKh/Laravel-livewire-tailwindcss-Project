@@ -24,7 +24,7 @@ class BrandController extends Controller
         ->join('deliveries', 'cities.id', '=', 'deliveries.city_id')
         ->join('brands', 'deliveries.brand_id', '=', 'brands.id')
         ->where('cities.id', $city_id)
-        ->select('brands.*', 'cities.*')
+        ->select('brands.*', 'cities.city')
         ->get();
 
         return $this->noDuplicatedArray($brands);
@@ -74,7 +74,6 @@ class BrandController extends Controller
 
         return $this->noDuplicatedArray($brands);
     }
-
 
     // FUncion para eliminar duplicados
     protected function noDuplicatedArray($array){

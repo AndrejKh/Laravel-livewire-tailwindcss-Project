@@ -5,6 +5,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\CompareController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StateController;
 use Illuminate\Support\Facades\Route;
@@ -44,8 +45,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.items']
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.blog'])->get('/blog',CategoryComponent::class)->name('cms.blog');
 
 /* Componente de Livewire para 'Buyers' */
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.compras'])->get('/compras',StateComponent::class)->name('cms.compras');
-
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.compras'])->get('/compras', [HomeController::class, 'comprasCMS'])->name('cms.compras');
 
 // Apis para llamadas axios
 Route::get('/get/states/', [StateController::class, 'getStates']);
@@ -68,8 +68,6 @@ Route::get('/get/brand-category/{id}', [BrandController::class, 'getBrandsByCate
 Route::get('/get/items-price/{id}/{items}', [ItemController::class, 'getPriceAndProductIdToShoppingCarByBrandId']);
 Route::get('/get/items-brand/{id}/{items}', [ItemController::class, 'getItemsByBrandId']);
 
-
-
-
-
-
+// Ruta para crear orden(compra)
+Route::post('/post/create-order/', [OrderController::class, 'createOrder']);
+// Route::middleware(['auth:sanctum', 'verified'])->post('/post/create-order/', [OrderController::class, 'createOrder']);
