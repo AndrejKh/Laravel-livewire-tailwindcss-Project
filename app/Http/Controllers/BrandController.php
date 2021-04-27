@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Order;
 use Illuminate\Support\Facades\DB;
 
 class BrandController extends Controller
@@ -84,5 +86,13 @@ class BrandController extends Controller
             }
         }
         return $arraySinDuplicados;
+    }
+
+    public function getBrandByOrderId($brand_id){
+
+        $brand = Brand::findOrFail($brand_id);
+
+        return $brand;
+
     }
 }

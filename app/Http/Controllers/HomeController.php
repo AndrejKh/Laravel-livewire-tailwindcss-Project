@@ -8,10 +8,12 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Delivery;
 use App\Models\Item;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\State;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -158,6 +160,9 @@ class HomeController extends Controller
     }
 
     public function comprasCMS(){
-        return view('compras.compras');
+        return view('cms.compras');
+    }
+    public function ventasCMS(){
+        return view('cms.ventas');
     }
 }

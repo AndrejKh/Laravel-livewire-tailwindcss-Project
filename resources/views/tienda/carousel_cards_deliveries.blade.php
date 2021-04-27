@@ -10,7 +10,7 @@
 
     <div class="owl-carousel owl-theme max-w-7xl my-2 text-center relative px-2" id="carousel_deliveries_tienda">
         @foreach ($deliveries as $delivery)
-        <div class="bg-white rounded-md shadow-md grid grid-cols-6 gap-3 py-3 px-2">
+        <div class="bg-white rounded-md shadow-md grid grid-cols-6 gap-1 py-3 px-2">
             <div class="col-span-4 text-left">
                 <span class="text-lg md:text-xl font-bold text-gray-900">
                     {{ $delivery->delivery_zone }}

@@ -24,7 +24,7 @@
 
         <div class="flex px-3 py-1">
             <h6 class="text-lg font-semibold text-gray-700 hidden" id="conProdcutos">Tus productos</h6>
-            <h6 class="text-lg font-semibold text-gray-700 hidden" id="sinProdcutos">No tienes productos en el carrito!</h6>
+            <h6 class="text-lg font-semibold text-gray-700" id="sinProdcutos">No tienes productos en el carrito!</h6>
         </div>
 
         <form>

@@ -40,7 +40,7 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.product
 
 /* Componente de Livewire para 'Sellers' */
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ventas'])->get('/tiendas',[HomeController::class, 'tiendasCMS'])->name('cms.tiendas');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ventas'])->get('/ventas',StateComponent::class)->name('cms.ventas');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ventas'])->get('/ventas',[HomeController::class, 'ventasCMS'])->name('cms.ventas');
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.items'])->get('/items', [HomeController::class, 'itemsCMS'])->name('cms.items');
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.blog'])->get('/blog',CategoryComponent::class)->name('cms.blog');
 
@@ -53,6 +53,7 @@ Route::get('/get/cities/', [CityController::class, 'getCities']);
 Route::get('/get/cities-state/{id}', [CityController::class, 'getCitiesByStateId']);
 
 Route::get('/get/products/', [ProductController::class, 'getProducts']);
+Route::get('/get/product/{id}', [ProductController::class, 'getProductById']);
 Route::get('/get/product-item/{id}', [ProductController::class, 'getProductsByItemId']);
 
 Route::get('/get/items/', [ItemController::class, 'getItems']);
@@ -64,6 +65,7 @@ Route::get('/get/brand-delivey/', [BrandController::class, 'getBrandsByDelivery'
 Route::get('/get/brand-delivey-free/', [BrandController::class, 'getBrandsByDeliveryFree']);
 Route::get('/get/brand-product/{id}', [BrandController::class, 'getBrandsByProductId']);
 Route::get('/get/brand-category/{id}', [BrandController::class, 'getBrandsByCategoryId']);
+Route::get('/get/brand-order/{id}', [BrandController::class, 'getBrandByOrderId']);
 
 Route::get('/get/items-price/{id}/{items}', [ItemController::class, 'getPriceAndProductIdToShoppingCarByBrandId']);
 Route::get('/get/items-brand/{id}/{items}', [ItemController::class, 'getItemsByBrandId']);
@@ -71,3 +73,7 @@ Route::get('/get/items-brand/{id}/{items}', [ItemController::class, 'getItemsByB
 // Ruta para crear orden(compra)
 Route::post('/post/create-order/', [OrderController::class, 'createOrder']);
 // Route::middleware(['auth:sanctum', 'verified'])->post('/post/create-order/', [OrderController::class, 'createOrder']);
+Route::get('/get/order/{id}', [OrderController::class, 'getOrderById']);
+Route::get('/get/order-products/{id}', [OrderController::class, 'getProductsByOrderId']);
+
+Route::post('/post/cancel-order/', [OrderController::class, 'cancelOrder']);

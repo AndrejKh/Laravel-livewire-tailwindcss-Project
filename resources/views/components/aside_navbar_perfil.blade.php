@@ -168,7 +168,7 @@
                     <img src="{{ asset('icons/settings.svg') }}" alt="">
                 </div>
                 <span class="self-center">
-                    Configuración
+                    Ajustes
                 </span>
             </a>
         </li>

@@ -9,6 +9,21 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    // cancelar orden
+    public function getOrderById($order_id){
+        $order = Order::findOrFail($order_id);
+
+        return $order;
+    }
+
+    // cancelar orden
+    public function getProductsByOrderId($order_id){
+        $products = OrderProducts::where('order_id',$order_id)->get();
+
+        return $products;
+    }
+
+    // Crear orden
     public function createOrder(Request $request){
         if ( isset(Auth::user()->id) ) {
             $user_id = Auth::user()->id;
@@ -59,4 +74,16 @@ class OrderController extends Controller
         return true;
 
     }
+
+    // cancelar orden
+    public function cancelOrder(Request $request){
+        $order = Order::findOrFail($request->idOrder);
+        $order->update([
+            'status' => 'cancelled'
+            ]);
+
+        return redirect('/compras');
+
+    }
+
 }

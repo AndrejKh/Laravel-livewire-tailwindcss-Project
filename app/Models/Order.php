@@ -19,7 +19,7 @@ class Order extends Model
     ];
 
     //Relacion uno a muchos Inversa
-    public function buyer()
+    public function user()
     {
         return $this->belongsTo('App\Models\User');
     }
@@ -30,7 +30,7 @@ class Order extends Model
     }
 
     //Relacion uno a muchos
-    public function articles(){
+    public function products_purchase(){
         return $this->hasMany('App\Models\OrderProducts');
     }
 
