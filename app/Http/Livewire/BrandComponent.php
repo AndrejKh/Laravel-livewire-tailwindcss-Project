@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Brand;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Livewire\Component;
 
 use Livewire\WithFileUploads;
@@ -55,14 +56,10 @@ class BrandComponent extends Component
             //Guardo la imagen en la carpeta storage, enlace public
             $path_imagen=$this->profile_photo_path_brand->store('public');
 
-            $slug = trim($this->eliminar_simbolos($this->brand));
-            $slug = str_replace(' ','-', $slug);
-            $slug = strtolower($slug);
-
             Brand::create([
                 'brand' => $this->brand,
                 'user_id' => $this->user_id,
-                'slug' => $slug,
+                'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
                 'profile_photo_path_brand' => $path_imagen
             ]);
             //reinicio las propiedades
@@ -70,6 +67,9 @@ class BrandComponent extends Component
             $this->show_alert = 'true';
             $this->color_alert = 'green';
             $this->message_alert = 'Guardado exitosamente!';
+
+            // cambiando variable para renderizar los items
+            $this->emit('newBrand', 'true');
         }
 
         public function update(){
@@ -81,13 +81,9 @@ class BrandComponent extends Component
 
                 if ($this->brand != '') {
 
-                    $slug = trim($this->eliminar_simbolos($this->brand));
-                    $slug = str_replace(' ','-', $slug);
-                    $slug = strtolower($slug);
-
                     $brand->update([
                         'brand' => $this->brand,
-                        'slug' => $slug,
+                        'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
                         'profile_photo_path_brand' => $path_imagen
                     ]);
                 }else{
@@ -98,13 +94,9 @@ class BrandComponent extends Component
 
             } else {
 
-                $slug = trim($this->eliminar_simbolos($this->brand));
-                $slug = str_replace(' ','-', $slug);
-                $slug = strtolower($slug);
-
                 $brand->update([
                     'brand' => $this->brand,
-                    'slug' => $slug,
+                    'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
                 ]);
             }
 
@@ -113,54 +105,6 @@ class BrandComponent extends Component
             $this->show_alert = 'true';
             $this->color_alert = 'green';
             $this->message_alert = 'Actualizado exitosamente!';
-        }
-
-        /*Eliminar simbolos: Realiza una limpieza de los simbolos de la palabra*/
-        public function eliminar_simbolos($string){
-
-            $string = str_replace(
-                array('á', 'à', 'ä', 'â', 'ª', 'Á', 'À', 'Â', 'Ä'),
-                array('a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
-                $string
-                );
-                $string = str_replace(
-                array('é', 'è', 'ë', 'ê', 'É', 'È', 'Ê', 'Ë'),
-                array('e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'),
-                $string
-                );
-                $string = str_replace(
-                array('í', 'ì', 'ï', 'î', 'Í', 'Ì', 'Ï', 'Î'),
-                array('i', 'i', 'i', 'i', 'i', 'i', 'i', 'i'),
-                $string
-                );
-                $string = str_replace(
-                array('ó', 'ò', 'ö', 'ô', 'Ó', 'Ò', 'Ö', 'Ô'),
-                array('o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'),
-                $string
-                );
-                $string = str_replace(
-                array('ú', 'ù', 'ü', 'û', 'Ú', 'Ù', 'Û', 'Ü'),
-                array('u', 'u', 'u', 'u', 'u', 'u', 'u', 'u'),
-                $string
-                );
-                $string = str_replace(
-                array('ñ', 'Ñ', 'ç', 'Ç'),
-                array('n', 'n', 'c', 'c',),
-                $string
-                );
-                $string = str_replace(
-                array("\\","¨","º","-","~",
-                "#","@","|","!","\"",
-                "·","$","%","&","/",
-                "(",")","?","'","¡",
-                "¿","[","^","<code>","]",
-                "+","}","{","¨","´",
-                ">","<",";",",",":",
-                "."),
-                '',
-                $string
-            );
-            return $string;
         }
 
         public function buttonActualizarBrand(){

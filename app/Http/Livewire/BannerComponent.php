@@ -12,7 +12,7 @@ class BannerComponent extends Component
 {
     use WithFileUploads;
 
-    public $message_alert, $color_alert, $brand, $brand_id, $user_id, $photo, $bannerUpdate ;
+    public $message_alert, $color_alert, $brand, $brand_id, $user_id, $photo, $bannerUpdate, $newBrand;
 
     public $openModal = false;
     public $openModalUpdate = false;
@@ -53,11 +53,9 @@ class BannerComponent extends Component
 
     public function agregar()
     {
-        //reinicio las propiedades
-        $this->reset(['photo', 'action','show_alert','message_alert','color_alert', 'openModal']);
         //en este caso se ignorara las reglas de validacion de $rules, y considerara las que se le asignan
         $this->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
+            'photo' => 'required|image|mimes:jpeg,png,jpg,svg,webp|max:2048'
         ]);
 
         //Guardo la imagen en la carpeta storage, enlace public
@@ -81,6 +79,8 @@ class BannerComponent extends Component
         $this->show_alert = 'true';
         $this->color_alert = 'green';
         $this->message_alert = 'Guardado exitosamente!';
+        //reinicio las propiedades
+        $this->reset(['photo', 'action','show_alert','message_alert','color_alert', 'openModal']);
     }
 
     public function bannerUpdate(Banner $banner){
@@ -118,5 +118,13 @@ class BannerComponent extends Component
         $this->show_alert = 'true';
         $this->color_alert = 'red';
         $this->message_alert = 'Eliminado exitosamente!';
+    }
+
+    // Evento que escucha se ejecuta cuando se crea la marca, desde el controlador 'BrandComponent'
+    protected $listeners = ['newBrand'];
+
+    public function newBrand($new)
+    {
+        $this->newBrand = $new;
     }
 }

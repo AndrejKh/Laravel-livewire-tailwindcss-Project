@@ -7,8 +7,11 @@
             </a>
         </div>
     </div>
-    <div class="text-3xl font-light ">
+    <div class="text-md font-semibold px-2 md:px-4">
         {{$item->price}} USD$
+        <span class="text-gray-600 font-light">
+            IVA Incluido
+        </span>
     </div>
     <div class="px-2 md:px-4 py-0 md:py-2 grid grid-cols-2 gap-4">
         <div class="font-bold text-sm mb-2 px-0 text-left">
@@ -25,7 +28,7 @@
         </div>
     </div>
     <div class="px-2 md:px-4 pb-2 md:pb-4 flex justify-center">
-        <a class="bg-green-400 rounded-md px-5 py-2 md:py-3 text-lg font-semibold shadow-sm w-full text-center hover:bg-green-800 hover:text-white" href="{{route('products.details.show', $item->product->id)}}">
+        <a class="bg-green-600 rounded-md px-5 py-2 md:py-3 text-lg text-white font-semibold shadow-sm w-full text-center hover:bg-green-800 " href="{{route('products.details.show', $item->product->id)}}">
           Ver precios
         </a>
     </div>

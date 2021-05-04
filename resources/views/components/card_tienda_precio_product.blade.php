@@ -29,24 +29,24 @@
                 </div>
                 <div class="col-span-6 sm:col-span-4 md:col-span-3 self-center">
 
-                    <div class="flex self-center">
+                    <div class="flex items-center">
                         <svg class="inline fill-current text-yellow-500" width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.3 0.126277L1.3 2.37628C0.52 2.67628 0 3.41628 0 4.25628V8.96628C0 14.0163 3.41 18.7263 8 19.8763C12.59 18.7263 16 14.0163 16 8.96628V4.25628C16 3.42628 15.48 2.67628 14.7 2.38628L8.7 0.136277C8.25 -0.0437232 7.75 -0.0437232 7.3 0.126277ZM6.23 12.6963L4.11 10.5763C3.72 10.1863 3.72 9.55628 4.11 9.16628C4.5 8.77628 5.13 8.77628 5.52 9.16628L6.93 10.5763L10.47 7.03628C10.86 6.64628 11.49 6.64628 11.88 7.03628C12.27 7.42628 12.27 8.05628 11.88 8.44628L7.64 12.6863C7.26 13.0863 6.62 13.0863 6.23 12.6963Z"/>
                         </svg>
-                        <h6 class="text-lg md:text-xl inline ml-3">
+                        <h6 class="text-lg md:text-xl inline ml-1 lg:ml-2">
                             {{ $item->brand->brand }}
                         </h6>
                     </div>
                     <div class="flex self-center">
                         <svg class="inline fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                        <span class="text-gray-400 font-semibold self-center text-sm md:text-md block ml-3">
+                        <span class="text-gray-400 font-semibold self-center text-sm md:text-md block ml-1 lg:ml-2">
                             {{ $item->brand->user->state->state }}
                             @isset( $item->brand->user->city )
                                 , {{ $item->brand->user->city->city }}
                             @endisset
                         </span>
                     </div>
-                    <div class="flex self-center sm:hidden">
+                    <div class="flex items-center sm:hidden">
                         <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
                         <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
                         <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>

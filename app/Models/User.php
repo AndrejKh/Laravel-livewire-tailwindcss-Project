@@ -76,14 +76,19 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Brand');
     }
 
-     //Relacion uno a muchos
-     public function ratings(){
-        return $this->hasMany('App\Models\Rating');
-    }
-
     //Relacion uno a muchos
     public function orders(){
         return $this->hasMany('App\Models\Order');
+    }
+
+    //Relacion uno a muchos
+    public function ratingsSeller(){
+        return $this->hasMany('App\Models\RatingsSeller');
+    }
+
+    //Relacion uno a muchos
+    public function ratingsBuyer(){
+        return $this->hasMany('App\Models\RatingsBuyer');
     }
 
     //Relacion uno a muchos, direcciones de envio de los compradores, lugares donde se recibiran los pedidos.

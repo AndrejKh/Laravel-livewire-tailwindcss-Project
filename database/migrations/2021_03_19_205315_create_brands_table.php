@@ -17,10 +17,19 @@ class CreateBrandsTable extends Migration
             $table->id();
             $table->string('brand');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+
+            $table->foreignId('state_id')->nullable()->constrained()->onDelete('set Null');
+            $table->foreignId('city_id')->nullable()->constrained()->onDelete('set Null');
+            $table->string('address')->nullable();
+
             $table->text('description')->nullable();
             $table->string('code')->nullable();
+
             $table->string('slug');
             $table->text('profile_photo_path_brand')->nullable();
+
+            $table->double('rating_average')->nullable();
+
             $table->string('status')->default('active');
             $table->timestamps();
         });

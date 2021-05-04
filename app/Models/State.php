@@ -30,6 +30,11 @@ class State extends Model
     }
 
     //Relacion uno a muchos
+    public function brands(){
+        return $this->hasMany('App\Models\Brand');
+    }
+
+    //Relacion uno a muchos
     public function deliveries(){
         return $this->hasMany('App\Models\Delivery');
     }

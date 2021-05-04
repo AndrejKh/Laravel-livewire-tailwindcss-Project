@@ -40,7 +40,7 @@ class ModalProductsItemsComponent extends Component
             'price' => 'required'
         ]);
         // No se selecciono ninguan categoria
-        if ($this->product_id === 0) {
+        if ($this->product_id === 0 || $this->product_id === null) {
             $this->show_alert = 'true';
             $this->color_alert = 'red';
             $this->message_alert = 'Debes seleccionar un producto!';
@@ -51,7 +51,7 @@ class ModalProductsItemsComponent extends Component
         $this->itemInStock = Item::where('brand_id', $brand->id)->where('product_id', $this->product_id)->get();
         if (count($this->itemInStock) > 0) {
             $this->show_alert = 'true';
-            $this->color_alert = 'yellow';
+            $this->color_alert = 'blue';
             $this->message_alert = 'Ya tienes este producto en tu inventario!';
             $this->reset(['itemInStock', 'product_id', 'product_selected' , 'quantity', 'price']);
             return;
@@ -70,6 +70,10 @@ class ModalProductsItemsComponent extends Component
         $this->show_alert = 'true';
         $this->color_alert = 'green';
         $this->message_alert = 'Creado exitosamente!';
+
+
+        // cambiando variable para renderizar los items
+        $this->emit('newItem', 'true');
     }
 
 }

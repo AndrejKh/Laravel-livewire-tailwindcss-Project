@@ -73,7 +73,12 @@
                     <div class="col-span-1">
                         <div class="flex-auto mb-3">
                             <label class="text-md font-semibold mb-2" for="quantity">Cantidad</label>
-                            <input wire:model.lazy="quantity" class="form-control" type="text" placeholder="Cantidad de productos" step="1" required onkeypress="return filterInteger(event);">
+                            <div class="mt-1 flex rounded-md shadow-sm">
+                                <input wire:model.lazy="quantity" autocomplete="min_amount_purchase" type="number" class="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" required onkeypress="return filterInteger(event);">
+                                <span class="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-800 text-sm font-bold" title="Unidad">
+                                    ud.
+                                </span>
+                            </div>
                             @error('quantity')
                                 <small class="text-red-400 italic">{{$message}}</small>
                             @enderror
@@ -82,7 +87,12 @@
                     <div class="col-span-1">
                         <div class="flex-auto mb-3">
                             <label class="text-md font-semibold mb-2" for="price">Precio</label>
-                            <input wire:model.lazy="price" class="form-control" type="text" placeholder="Precio del producto" step="0.01" required onkeypress="return filterFloat(event,this);">
+                            <div class="mt-1 flex rounded-md shadow-sm">
+                                <input wire:model.lazy="price" autocomplete="min_amount_purchase" type="number" class="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" required onkeypress="return filterFloat(event,this);">
+                                <span class="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-green-600 text-sm font-bold" title="Dólares">
+                                    $USD
+                                </span>
+                            </div>
                             @error('price')
                                 <small class="text-red-400 italic">{{$message}}</small>
                             @enderror
@@ -100,7 +110,10 @@
     </x-jet-dialog-modal>
 
     <div class="flex justify-center mt-10">
-        <button wire:click="SetModalShow()" class="hidden md:inline text-lg text-white py-3 px-16 bg-blue-600 rounded-md shadow-md">Nuevo producto</button>
+        <button wire:click="SetModalShow()" class="hidden md:flex text-lg text-white py-3 px-16 bg-blue-600 rounded-md shadow-md">
+            <svg class="h-6 fill-current text-white mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 13h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H6c-.55 0-1-.45-1-1s.45-1 1-1h5V6c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1z"/></svg>
+            Nuevo producto
+        </button>
     </div>
     {{-- Agragr profucto Boton flotante --}}
     <div wire:click="SetModalShow()" class="flex md:hidden fixed bottom-14 right-4 h-14 w-14 justify-center bg-green-500 rounded-full z-30 shadow-md items-center cursor-pointer">
@@ -163,3 +176,4 @@
 
     @include('common.alert')
 </div>
+

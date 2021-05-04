@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Product extends Model
 {
     use HasFactory;
+    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +19,14 @@ class Product extends Model
     protected $fillable = [
         'title','description','slug','photo_main_product','category_id','status'
     ];
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     //Relacion uno a muchos
     public function images()

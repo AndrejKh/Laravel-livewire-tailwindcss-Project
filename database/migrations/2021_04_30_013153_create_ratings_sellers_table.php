@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdersTable extends Migration
+class CreateRatingsSellersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('ratings_sellers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('brand_id')->constrained()->onDelete('cascade');
-            /* Comprador id */
+            /* id del comprador que recibio el comentario */
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->float('amount');
-            $table->string('seller_status')->default('active');
-            $table->string('buyer_status')->default('active');
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->string('comment', 255);
+            $table->integer('rating');
             $table->string('status')->default('active');
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('ratings_sellers');
     }
 }

@@ -15,7 +15,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'brand_id','user_id','amount','status'
+        'brand_id','user_id','amount','status','seller_status','buyer_status'
     ];
 
     //Relacion uno a muchos Inversa
@@ -32,6 +32,18 @@ class Order extends Model
     //Relacion uno a muchos
     public function products_purchase(){
         return $this->hasMany('App\Models\OrderProducts');
+    }
+
+    //obtengo la calificacion del vendedor a la orden
+    // Relacion uno a uno
+    public function ratingSeller(){
+        return $this->hasOne('App\Models\RatingsSeller');
+    }
+
+    //obtengo la calificacion del comprador a la orden
+    // Relacion uno a uno
+    public function ratingBuyer(){
+        return $this->hasOne('App\Models\RatingsBuyer');
     }
 
 

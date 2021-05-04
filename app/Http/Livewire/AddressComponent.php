@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class AddressComponent extends Component
 {
-    public $message_alert, $color_alert, $user_id, $state_id, $city_id, $cities, $address;
+    public $user_id, $state_id, $city_id, $cities, $address, $message_alert, $color_alert;
 
     public $openModal = false;
     public $openModalActualizar = false;
@@ -24,38 +24,36 @@ class AddressComponent extends Component
 
     public function render()
     {
-        $user = User::where('id', $this->user_id)->first();
-        $direction = $user->state_id;
+        $brand = Brand::where('user_id', $this->user_id)->first();
         $cities = [];
         $estados = State::all();
-        return view('livewire.address-component', compact('estados', 'direction', 'user', 'cities'));
+        return view('livewire.address-component', compact('estados', 'brand', 'cities'));
     }
 
+    // Funcion que se activa al momento de dar click en el boton 'editar' de algun delivery
+    public function buttonActualizar(){
+        $this->openModalActualizar = true;
+        $brand = Brand::where('user_id', $this->user_id)->first();
+
+        $this->state_id = $brand->state_id;
+        $this->city_id = $brand->city_id;
+        $this->address = $brand->address;
+    }
 
     public function update()
     {
+        $brand = Brand::where('user_id', $this->user_id)->first();
 
-        $user = User::where('id', $this->user_id)->first();
-
-        $user->update([
+        $brand->update([
             'state_id' => $this->state_id,
             'city_id' => $this->city_id,
-            'address' => $this->address
+            'address' => $this->address,
         ]);
         //reinicio las propiedades
         $this->reset(['state_id', 'city_id', 'address', 'cities', 'show_alert', 'message_alert', 'color_alert', 'openModal', 'openModalActualizar']);
         $this->show_alert = 'true';
         $this->color_alert = 'green';
         $this->message_alert = 'Actualizado exitosamente!';
-    }
-
-    // Funcion que se activa al momento de dar click en el boton 'editar' de algun delivery
-    public function buttonActualizar(){
-        $this->openModalActualizar = true;
-        $user = User::where('id', $this->user_id)->first();
-
-        $this->state_id = $user->state_id;
-        $this->city_id = $user->city_id;
     }
 
     public function cancelar()

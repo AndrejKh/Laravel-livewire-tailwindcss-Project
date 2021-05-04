@@ -15,7 +15,7 @@ class SalesComponent extends Component
 
     protected $queryString = ['status' => ['except' => 'active'], 'search' => ['except' => ''], 'perPage'  => ['except' => '10']];
 
-    public $sale, $products, $user_id, $message_alert, $color_alert;
+    public $sale, $confirmSale, $saleToRating, $products, $user_id, $message_alert, $color_alert;
 
 
     public $brand_id = '';
@@ -26,7 +26,10 @@ class SalesComponent extends Component
     public $show_alert = 'false';
 
     public $modalDetailSales = false;
+    public $modalConfirmSale = false;
+    public $modalRating = false;
     public $modalCancelSales = false;
+    public $modalCalificaciones = false;
 
     public function render()
     {
@@ -45,14 +48,14 @@ class SalesComponent extends Component
 
     public function showModalDetailsSale(Order $order)
     {
-        $this->reset(['sale', 'products', 'modalDetailSales', 'modalCancelSales', 'show_alert', 'message_alert', 'color_alert']);
+        $this->cancel();
         $this->modalDetailSales = true;
         $this->sale = $order;
         $this->products = $order->products_purchase;
     }
 
     public function showModalCancel(Order $order){
-        $this->reset(['sale', 'products', 'modalDetailSales', 'modalCancelSales', 'show_alert', 'message_alert', 'color_alert']);
+        $this->cancel();
         $this->modalCancelSales = true;
         $this->sale = $order;
     }
@@ -61,19 +64,55 @@ class SalesComponent extends Component
         $order = $this->sale;
 
         $order->update([
-            'status' => 'cancelled'
+            'status' => 'cancelled',
+            'seller_status' => 'cancelled'
         ]);
 
         //reinicio las propiedades
-        $this->reset(['sale', 'products', 'modalDetailSales', 'modalCancelSales', 'show_alert', 'message_alert', 'color_alert']);
+        $this->cancel();
         $this->show_alert = 'true';
         $this->color_alert = 'green';
         $this->message_alert = 'Cancelado exitosamente!';
     }
 
-    public function cancel(){
-        $this->reset(['sale', 'products', 'modalDetailSales', 'modalCancelSales', 'show_alert', 'message_alert', 'color_alert']);
+    public function setConfirmSale(Order $order){
+        $this->modalConfirmSale = true;
+        $this->confirmSale = $order;
     }
 
+    public function confirmSale(){
+        $order = $this->confirmSale;
+
+        if( $order->buyer_status == 'active' ){
+            $order->update([
+                'status' => 'delivered',
+                'seller_status' => 'delivered'
+            ]);
+        }else{
+            $order->update([
+                'status' => 'completed',
+                'seller_status' => 'delivered'
+            ]);
+        }
+
+        $this->saleToRating = $order;
+
+        //reinicio las propiedades
+        $this->cancel();
+        $this->show_alert = 'true';
+        $this->color_alert = 'green';
+        $this->message_alert = 'Venta entregada exitosamente!';
+        $this->modalRating = true;
+
+    }
+
+    public function setRatingSale(Order $order){
+        $this->modalRating = true;
+        $this->saleToRating = $order;
+    }
+
+    public function cancel(){
+        $this->reset(['sale', 'products', 'modalDetailSales', 'modalConfirmSale', 'modalCancelSales', 'modalRating', 'show_alert', 'message_alert', 'color_alert']);
+    }
 
 }

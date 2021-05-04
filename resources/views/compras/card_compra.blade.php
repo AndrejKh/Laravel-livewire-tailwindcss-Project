@@ -19,7 +19,16 @@
         @switch($order->status)
 
             @case('active')
-                <span class="text-xs font-light text-white bg-green-450 px-4 py-1 rounded-full shadow-sm"> Activa </span>
+                <span class="text-xs font-light text-white bg-blue-450 px-4 py-1 rounded-full shadow-sm"> Activa </span>
+                @break
+            @case('delivered')
+                <span class="text-xs font-light text-white bg-blue-450 px-4 py-1 rounded-full shadow-sm"> Activa </span>
+                @break
+            @case('received')
+                <span class="text-xs font-light text-white bg-yellow-500 px-4 py-1 rounded-full shadow-sm"> Recibida </span>
+                @break
+            @case('completed')
+                <span class="text-xs font-light text-white bg-green-450 px-4 py-1 rounded-full shadow-sm"> Completada </span>
                 @break
             @case('cancelled')
                 <span class="text-xs font-light text-white bg-red-450 px-4 py-1 rounded-full shadow-sm"> Cancelada </span>

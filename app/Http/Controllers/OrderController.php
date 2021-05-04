@@ -36,13 +36,13 @@ class OrderController extends Controller
         $brand_id = $brandSelected['id'];
 
         // Direccion de la busqueda
-        $ubicationSelected = $request->ubication;
-        $state = $ubicationSelected['state'];
-        $state_id = $ubicationSelected['state_id'];
-        $city = $ubicationSelected['city'];
-        $city_id = $ubicationSelected['city_id'];
+        // $ubicationSelected = $request->ubication;
+        // $state = $ubicationSelected['state'];
+        // $state_id = $ubicationSelected['state_id'];
+        // $city = $ubicationSelected['city'];
+        // $city_id = $ubicationSelected['city_id'];
 
-        $products = $request->products;
+        // $products = $request->products;
 
         $amountSelected = $request->amount;
         $amount = $amountSelected['amount'];

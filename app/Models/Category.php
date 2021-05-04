@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
     use HasFactory;
+    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +19,14 @@ class Category extends Model
     protected $fillable = [
         'category','description','padre_id','photo','slug','status'
     ];
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'category'
+            ]
+        ];
+    }
 
     //Relacion uno a uno, en misma tabla
     public function categoy_father($padre_id){

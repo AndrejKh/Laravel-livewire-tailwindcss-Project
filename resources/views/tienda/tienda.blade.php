@@ -22,7 +22,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                     @foreach ($items as $item)
 
-                        @include('components.card_item_seller_product_detail')
+                        @include('tienda.card_item_seller_product_detail')
 
                     @endforeach
                 </div>

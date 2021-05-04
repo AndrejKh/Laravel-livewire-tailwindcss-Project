@@ -37,8 +37,8 @@
                             <div class="col-span-1">
                                 <img class="w-full self-center imgCardProductShoppingCar" src="" alt="imagen de banner">
                             </div>
-                            <div class="col-span-2 flex flex-col justify-between py-3 sm:py-1 md:py-2 lg:py-3 xl:py-1">
-                                <h6 class="titleCardProductShoppingCar text-lg md:text-lg "></h6>
+                            <div class="col-span-2 flex flex-col justify-between py-3 sm:py-1 md:py-2 lg:py-4 xl:py-1">
+                                <h6 class="titleCardProductShoppingCar text-lg md:text-lg sm:mt-3 md:mt-2 xl:mt-4"></h6>
                                 <div class="flex justify-between mb-2">
                                     <div class="flex bg-gray-50 rounded-full">
                                         <span class="flex-shrink-0 self-center bg-green-400 rounded-full p-1 cursor-pointer substractProductModalShoppingCard">

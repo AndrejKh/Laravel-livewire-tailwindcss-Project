@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rating extends Model
+class RatingsBuyer extends Model
 {
     use HasFactory;
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'comment','rating','status'
+        'comment','rating','status', 'order_id', 'brand_id', 'user_id'
     ];
 
     //Relacion para calcualr el rating total de una marca
@@ -31,8 +30,8 @@ class Rating extends Model
         return $rating_total;
     }
 
-    //Relacion uno a muchos Inversa
-    public function brand(){
+     //Relacion uno a muchos Inversa
+     public function brand(){
         return $this->belongsTo('App\Models\Brand');
     }
 
@@ -41,4 +40,8 @@ class Rating extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    //Relacion uno a uno
+    public function order(){
+        return $this->hasOne('App\Models\Order');
+    }
 }

@@ -8,7 +8,7 @@
                 </svg>
                 Zonas de delivery
             </h2>
-            @if ( $brand  )
+            @if ( $brand )
                 <x-jet-button wire:loading.attr="disabled" wire:click="$set( 'openModal' , true )">
                     Agregar
                 </x-jet-button>

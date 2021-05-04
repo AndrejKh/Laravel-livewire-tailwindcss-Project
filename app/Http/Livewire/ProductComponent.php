@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 //clase para crear paginacion dinamica, sin que se recargue la pagina
 use Livewire\WithPagination;
@@ -71,7 +72,7 @@ class ProductComponent extends Component
         Product::create([
             'title' => $this->title,
             'description' => $this->description,
-            'slug' => $this->title,
+            'slug' => SlugService::createSlug(Product::class, 'slug', $this->title),
             'photo_main_product' => $path_imagen,
             'category_id' => $this->category_id
         ]);
@@ -108,7 +109,7 @@ class ProductComponent extends Component
             $product->update([
                 'title' => $this->title,
                 'description' => $this->description,
-                'slug' => $this->title,
+                'slug' => SlugService::createSlug(Product::class, 'slug', $this->title),
                 'photo_main_product' => $path_imagen,
                 'category_id' => $this->category_id
             ]);
@@ -124,7 +125,7 @@ class ProductComponent extends Component
             $product->update([
                 'title' => $this->title,
                 'description' => $this->description,
-                'slug' => $this->title,
+                'slug' => SlugService::createSlug(Product::class, 'slug', $this->title),
                 'category_id' => $this->category_id
             ]);
         }

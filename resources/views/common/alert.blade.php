@@ -4,7 +4,7 @@
         setTimeout(() => { shown = false }, 3500);
     }"
     x-show="shown"
-    class="fixed right-8 top-8 bg-{{$color_alert}}-450 rounded-md shadow-lg px-2 py-1 alertActive"
+    class="fixed right-8 top-8 bg-{{$color_alert}}-450 rounded-md shadow-lg px-2 py-1 alertActive z-50"
 >
     <div class="flex items-center justify-between flex-wrap px-2">
         <div class="max-w-xl flex-1 flex items-center">

@@ -15,7 +15,7 @@ class DeliveryComponent extends Component
 {
     use WithFileUploads;
 
-    public $message_alert, $color_alert, $delivery, $user_id, $brand, $state_id, $city_id, $delivery_zone, $delivery_time, $delivery_free, $min_amount_purchase, $days_aux, $days_week;
+    public $message_alert, $color_alert, $delivery, $user_id, $brand, $state_id, $city_id, $delivery_zone, $delivery_time, $delivery_free, $min_amount_purchase, $days_aux, $days_week, $newBrand;
     public $days = [];
     public $cities = [];
     public $openModal = false;
@@ -149,6 +149,13 @@ class DeliveryComponent extends Component
             $this->message_alert = 'Eliminada exitosamente!';
         }
 
+        // Evento que escucha se ejecuta cuando se crea la marca, desde el controlador 'BrandComponent'
+        protected $listeners = ['newBrand'];
+
+        public function newBrand($new)
+        {
+            $this->newBrand = $new;
+        }
 
 }
 

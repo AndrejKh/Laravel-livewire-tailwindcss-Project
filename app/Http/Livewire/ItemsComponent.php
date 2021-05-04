@@ -18,7 +18,7 @@ class ItemsComponent extends Component
 
     protected $queryString = ['status' => ['except' => 'active'], 'search' => ['except' => '']];
 
-    public $brand_id, $item_id, $user_id, $item, $quantity, $price, $message_alert, $color_alert, $itemToDelete, $itemToChangeStatus;
+    public $brand_id, $item_id, $user_id, $item, $quantity, $price, $message_alert, $color_alert, $itemToDelete, $itemToUpdate, $newItem;
 
     public $product_id=0;
     public $products_seach = '';
@@ -27,7 +27,7 @@ class ItemsComponent extends Component
     public $perPage = 15;
     public $show_alert = 'false';
     public $show_modal_delete = 'false';
-    public $show_modal_status = 'false';
+    public $show_modal_update = 'false';
 
     //reglas de validacion, protected indica que solo se usara en este modelo
     protected $rules = [
@@ -68,30 +68,26 @@ class ItemsComponent extends Component
         return view('livewire.items-component', compact('items','user_id'));
     }
 
-    public function edit(Item $item)
-    {
+    public function setItemUpdate(Item $item){
         $this->reset(['show_alert']);
-        $this->product_id = $item->id;
-        $this->quantity = $item->quantity;
+        $this->show_modal_update = 'true';
         $this->price = $item->price;
+        $this->quantity = $item->quantity;
+        $this->itemToUpdate = $item;
     }
 
     public function update()
     {
-        //validacion de valores
-        $this->validate();
 
-        $product = Item::find($this->product_id);
+        $item = $this->itemToUpdate;
 
-        $product->update([
-            'product_id' => $this->product_id,
-            'user_id' => $this->user_id,
+        $item->update([
             'quantity' => $this->quantity,
             'price' => $this->price
         ]);
 
         //reinicio las propiedades
-        $this->reset(['product_id', 'quantity', 'price','show_alert','color_alert','message_alert']);
+        $this->reset(['itemToUpdate', 'quantity', 'price','show_alert','color_alert','message_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'green';
         $this->message_alert = 'Actualizado exitosamente!';
@@ -99,39 +95,7 @@ class ItemsComponent extends Component
 
     public function cancel()
     {
-        $this->reset(['item_id', 'item', 'product_id', 'quantity', 'price', 'itemToDelete', 'itemToChangeStatus', 'show_alert', 'show_modal_delete', 'show_modal_status']);
-    }
-
-    public function setItemStatus(Item $item){
-        $this->reset(['show_alert']);
-        $this->show_modal_status = 'true';
-        $this->itemToChangeStatus = $item;
-    }
-
-    // Activar item , cambio de estatus
-    public function activarItem(Item $item){
-        $item->update([
-            'status' => 'active'
-        ]);
-
-        //reinicio las propiedades
-        $this->reset(['show_modal_delete', 'itemToChangeStatus','show_alert','color_alert','message_alert']);
-        $this->show_alert = 'true';
-        $this->color_alert = 'green';
-        $this->message_alert = 'Activado exitosamente!';
-    }
-
-    // Activar item , cambio de estatus
-    public function pausarItem(Item $item){
-        $item->update([
-            'status' => 'paused'
-        ]);
-
-        //reinicio las propiedades
-        $this->reset(['show_modal_delete', 'itemToChangeStatus','show_alert','color_alert','message_alert']);
-        $this->show_alert = 'true';
-        $this->color_alert = 'green';
-        $this->message_alert = 'Pausado exitosamente!';
+        $this->reset(['item_id', 'item', 'product_id', 'quantity', 'price', 'itemToUpdate', 'itemToDelete', 'show_alert', 'show_modal_delete', 'show_modal_update']);
     }
 
     public function setItemDelete(Item $item){
@@ -148,5 +112,13 @@ class ItemsComponent extends Component
         $this->show_alert = 'true';
         $this->color_alert = 'red';
         $this->message_alert = 'Eliminado exitosamente!';
+    }
+
+    // Evento que escucha se ejecuta cuando se agrega un nuevo item, desde el controlador 'ModalProductItemsComponent'
+    protected $listeners = ['newItem'];
+
+    public function newItem($new)
+    {
+        $this->newItem = $new;
     }
 }

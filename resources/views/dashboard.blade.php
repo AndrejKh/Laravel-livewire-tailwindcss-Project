@@ -86,37 +86,39 @@
                 const products = JSON.parse(ProductsLocalStorage);
                 // Obtengo el supermercado selecionado, local storage
                 const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
-                if (brandSelectedToBuy !== null) {
-                    /********************
-                    Muestro la cantidad de productos que se tienen en el carrito
-                    **********************/
-                    const quantityProducts = document.getElementById('quantityProducts');
+                if (products.lenght > 0) {
+                    if (brandSelectedToBuy !== null) {
+                        /********************
+                        Muestro la cantidad de productos que se tienen en el carrito
+                        **********************/
+                        const quantityProducts = document.getElementById('quantityProducts');
 
-                    let quantity = 0;
-                    // Recorro el carrito para obtener la cantidad total de productos en el
-                    products.forEach(product => {
-                        quantity += product.quantity;
-                    });
+                        let quantity = 0;
+                        // Recorro el carrito para obtener la cantidad total de productos en el
+                        products.forEach(product => {
+                            quantity += product.quantity;
+                        });
 
-                    // Asigno la cantidad total de productos en el carrito
-                    quantityProducts.textContent = quantity;
-
-
-                    const brand = JSON.parse(brandSelectedToBuy);
-
-                    let brandSelected = document.getElementById('brandSelected');
-                    brandSelected.textContent = brand.brand;
-
-                    const totalAmount = localStorage.getItem('amount');
-                    const amount = JSON.parse(totalAmount);
-
-                    // muestro el div de los datos
-                    orderPendingContainer.style.display = 'block';
+                        // Asigno la cantidad total de productos en el carrito
+                        quantityProducts.textContent = quantity;
 
 
-                }else{
-                    const shoppingCarPending = document.getElementById('shoppingCarPending');
-                    shoppingCarPending.style.display = 'block';
+                        const brand = JSON.parse(brandSelectedToBuy);
+
+                        let brandSelected = document.getElementById('brandSelected');
+                        brandSelected.textContent = brand.brand;
+
+                        const totalAmount = localStorage.getItem('amount');
+                        const amount = JSON.parse(totalAmount);
+
+                        // muestro el div de los datos
+                        orderPendingContainer.style.display = 'block';
+
+
+                    }else{
+                        const shoppingCarPending = document.getElementById('shoppingCarPending');
+                        shoppingCarPending.style.display = 'block';
+                    }
                 }
 
             }

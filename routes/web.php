@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RatingsBuyerController;
+use App\Http\Controllers\RatingsSellerController;
 use App\Http\Controllers\StateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CategoryComponent;
@@ -17,7 +19,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Vistas de vitrina de productos, detalles de productos, incluyendo filtro
 Route::get('/categoria-productos/{slug}', [HomeController::class, 'vitrinaPorCategoria'])->name('products.category.show');
 Route::get('/vitrina', [HomeController::class, 'vitrina'])->name('products.show');
-Route::get('/producto/{id}', [HomeController::class, 'ProductShow'])->name('products.details.show');
+Route::get('/producto/{slug}', [HomeController::class, 'ProductShow'])->name('products.details.show');
 
 // Vistas de Tiendas, detalles de tiendas
 Route::get('/supermercados', [HomeController::class, 'tiendas'])->name('tiendas.show');
@@ -77,3 +79,7 @@ Route::get('/get/order/{id}', [OrderController::class, 'getOrderById']);
 Route::get('/get/order-products/{id}', [OrderController::class, 'getProductsByOrderId']);
 
 Route::post('/post/cancel-order/', [OrderController::class, 'cancelOrder']);
+
+// Ruta para calificaciones
+Route::post('/post/rating-seller/', [RatingsSellerController::class, 'createRating']);
+Route::post('/post/rating-buyer/', [RatingsBuyerController::class, 'createRating']);

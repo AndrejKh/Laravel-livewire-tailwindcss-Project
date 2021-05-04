@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Models;
-
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
     use HasFactory;
+    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +18,14 @@ class City extends Model
     protected $fillable = [
         'city','slug','status','state_id'
     ];
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'city'
+            ]
+        ];
+    }
 
     //Relacion uno a muchos Inversa
     public function state(){
@@ -26,6 +35,11 @@ class City extends Model
     //Relacion uno a muchos
     public function users(){
         return $this->hasMany('App\Models\User');
+    }
+
+    //Relacion uno a muchos
+    public function brands(){
+        return $this->hasMany('App\Models\Brand');
     }
 
     //Relacion uno a muchos

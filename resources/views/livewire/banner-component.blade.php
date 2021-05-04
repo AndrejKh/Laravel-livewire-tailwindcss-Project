@@ -25,8 +25,6 @@
         </div>
     </div>
 
-
-
     {{-- Modal para agregar banner --}}
     <x-jet-dialog-modal wire:model="openModal">
         <x-slot name="title">
