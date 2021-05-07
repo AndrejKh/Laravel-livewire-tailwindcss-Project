@@ -25,7 +25,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('tiendas.show') }}" :active="request()->routeIs('tiendas.show')">
+                    <x-jet-nav-link href="{{ route('brands.show') }}" :active="request()->routeIs('brands.show')">
                         Supermercados
                     </x-jet-nav-link>
                 </div>
@@ -190,13 +190,13 @@
             <hr />
 
             <div class="pt-2 pb-3 space-y-1 text-center">
-                <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('')">
+                <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                     Inicio
                 </x-jet-responsive-nav-link>
-                <x-jet-responsive-nav-link href="{{ route('tiendas.show') }}" :active="request()->routeIs('')">
+                <x-jet-responsive-nav-link href="{{ route('brands.show') }}" :active="request()->routeIs('brands.show')">
                     Supermercados
                 </x-jet-responsive-nav-link>
-                <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('')">
+                <x-jet-responsive-nav-link href="{{ route('categorias') }}" :active="request()->routeIs('categorias')">
                     Categorías
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('')">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CompareController;
 use App\Http\Controllers\HomeController;
@@ -15,15 +16,18 @@ use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\StateComponent;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-// Vistas de vitrina de productos, detalles de productos, incluyendo filtro
-Route::get('/categoria-productos/{slug}', [HomeController::class, 'vitrinaPorCategoria'])->name('products.category.show');
-Route::get('/vitrina', [HomeController::class, 'vitrina'])->name('products.show');
-Route::get('/producto/{slug}', [HomeController::class, 'ProductShow'])->name('products.details.show');
+// Categorias
+Route::get('/categorias', [HomeController::class, 'categorias'])->name('categorias');
 
 // Vistas de Tiendas, detalles de tiendas
-Route::get('/supermercados', [HomeController::class, 'tiendas'])->name('tiendas.show');
-Route::get('/supermercado/{slug}/{id}', [HomeController::class, 'tiendaDetail'])->name('tiendas.details.show');
+Route::get('/supermercados', [HomeController::class, 'brands'])->name('brands.show');
+Route::get('/supermercado/{slug}', [HomeController::class, 'brandsDetail'])->name('brands.details.show');
+
+// Vistas de vitrina de productos, detalles de productos, incluyendo filtro
+Route::get('/products/', [HomeController::class, 'vitrina'])->name('products.show');
+Route::get('/categorias/{slug}', [HomeController::class, 'vitrinaPorCategoria'])->name('products.category.show');
+Route::get('/product-detail/{slug}', [HomeController::class, 'productShow'])->name('products.details.show');
+
 
 // Vista de comparar
 Route::get('/comparar', [CompareController::class, 'index'])->name('comparar');
@@ -34,7 +38,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [HomeControll
 
 /* Componente de Livewire para 'Administradores' */
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.usuarios'])->get('/usuarios',[HomeController::class, 'usuarios'])->name('cms.usuarios');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.categorias'])->get('/categorias',[HomeController::class, 'categories'])->name('cms.categorias');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.categorias'])->get('/categorias-cms',[HomeController::class, 'categories'])->name('cms.categorias');
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.estados'])->get('/estados',[HomeController::class, 'estados'])->name('cms.estados');
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ciudades'])->get('/ciudades',[HomeController::class, 'ciudades'])->name('cms.ciudades');
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.home'])->get('/banners_home',[HomeController::class, 'banners'])->name('cms.home');
@@ -49,14 +53,24 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.blog'])
 /* Componente de Livewire para 'Buyers' */
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.compras'])->get('/compras', [HomeController::class, 'comprasCMS'])->name('cms.compras');
 
-// Apis para llamadas axios
+/**************** APis para llamdas internas via AXIOS ****************/
+
 Route::get('/get/states/', [StateController::class, 'getStates']);
+Route::get('/get/state-state/', [StateController::class, 'getStateByStateTitle']);
 Route::get('/get/cities/', [CityController::class, 'getCities']);
 Route::get('/get/cities-state/{id}', [CityController::class, 'getCitiesByStateId']);
 
+Route::get('/get/categories/', [CategoryController::class, 'getCategoriesPrincipals']);
+Route::get('/get/categories-child/{id}', [CategoryController::class, 'getCategoriesChildrenByCategoryId']);
+Route::get('/get/categories-child-products/{id}', [CategoryController::class, 'getQuantityOfProductsByCategoryId']);
+
 Route::get('/get/products/', [ProductController::class, 'getProducts']);
 Route::get('/get/product/{id}', [ProductController::class, 'getProductById']);
+Route::get('/get/product-category/{id}', [ProductController::class, 'getProductsByCategoryId']);
+Route::get('/get/total-product-category/{id}', [ProductController::class, 'getTotalProductsByCategoryId']);
 Route::get('/get/product-item/{id}', [ProductController::class, 'getProductsByItemId']);
+Route::get('/get/product-state/{id}', [ProductController::class, 'getProductsByStateId']);
+Route::get('/get/product-city/{id}', [ProductController::class, 'getProductsByCityId']);
 
 Route::get('/get/items/', [ItemController::class, 'getItems']);
 Route::get('/get/item-brand/{id}', [ItemController::class, 'getItemsByBrandId']);
@@ -83,3 +97,5 @@ Route::post('/post/cancel-order/', [OrderController::class, 'cancelOrder']);
 // Ruta para calificaciones
 Route::post('/post/rating-seller/', [RatingsSellerController::class, 'createRating']);
 Route::post('/post/rating-buyer/', [RatingsBuyerController::class, 'createRating']);
+
+/**************** FIN APis para llamdas internas via AXIOS ****************/

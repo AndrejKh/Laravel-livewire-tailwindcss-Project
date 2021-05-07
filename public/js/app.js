@@ -4192,7 +4192,7 @@ function localStorageProducts(arrayProductsLocalStorage) {
     document.getElementById('conProdcutos').style.display = 'none';
     document.getElementById('compararButton').style.display = 'none';
   }
-} // Funcion para actualizar
+} // Funcion para actualizar productos el el boton flotante
 
 
 function updateTotalProductsShoppingCar(arrayProductsLocalStorage) {

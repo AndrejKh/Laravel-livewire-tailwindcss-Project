@@ -18,15 +18,4 @@ class CompareController extends Controller
         return view('comparar.compare', compact('states'));
     }
 
-    public function getBrandsByState(){
-
-    }
-
-    public function getBrandsByCity(){
-
-    }
-
-    public function getItemsByBrand(){
-
-    }
 }

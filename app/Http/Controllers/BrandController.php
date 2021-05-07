@@ -78,7 +78,7 @@ class BrandController extends Controller
     }
 
     // FUncion para eliminar duplicados
-    protected function noDuplicatedArray($array){
+    private function noDuplicatedArray($array){
         $arraySinDuplicados = [];
         foreach($array as $element) {
             if (!in_array($element, $arraySinDuplicados)) {

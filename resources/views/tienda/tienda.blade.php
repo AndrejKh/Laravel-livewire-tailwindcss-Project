@@ -33,8 +33,4 @@
         </div>
     @endif
 
-
-    @include('home.carousel_categories_card_details')
-
-
 </x-app-layout>

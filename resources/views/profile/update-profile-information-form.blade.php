@@ -79,7 +79,7 @@
                                 <option value="passport">Pasaporte</option>
                             </select>
                         </div>
-                        <x-jet-input id="doc_identity" class="block mt-1 w-full pl-28" type="text" name="doc_identity" required  wire:model.defer="state.doc_identity" />
+                        <x-jet-input id="doc_identity" class="block mt-1 w-full pl-28" type="text" name="doc_identity"  wire:model.defer="state.doc_identity" />
                     </div>
                 </div>
             </div>

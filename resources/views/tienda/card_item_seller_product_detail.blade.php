@@ -2,7 +2,7 @@
     <img class="w-full" src="/storage/{{ $item->product->photo_main_product }}" alt="Sunset in the mountains">
     <div class="px-2 md:px-4 pt-2 ">
         <div class="font-bold text-xl mb-2 text-gray-900 hover:text-gray-700 text-left">
-            <a href="{{route('products.details.show', $item->product->id)}}">
+            <a href="{{route('products.details.show', $item->product->slug)}}">
                 {{ $item->product->title }}
             </a>
         </div>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="px-2 md:px-4 pb-2 md:pb-4 flex justify-center">
-        <a class="bg-green-600 rounded-md px-5 py-2 md:py-3 text-lg text-white font-semibold shadow-sm w-full text-center hover:bg-green-800 " href="{{route('products.details.show', $item->product->id)}}">
+        <a class="bg-green-600 rounded-md px-5 py-2 md:py-3 text-lg text-white font-semibold shadow-sm w-full text-center hover:bg-green-800 " href="{{route('products.details.show', $item->product->slug)}}">
           Ver precios
         </a>
     </div>

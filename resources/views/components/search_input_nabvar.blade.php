@@ -1,5 +1,5 @@
 <div class="self-center flex-grow w-full ml-4">
-    <form action="/vitrina">
+    <form action="{{ route('products.show') }}">
       <div class="relative">
         <span class="absolute inset-y-0 right-0 flex items-center pl-2">
           <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">

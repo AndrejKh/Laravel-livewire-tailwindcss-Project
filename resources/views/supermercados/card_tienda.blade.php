@@ -4,7 +4,7 @@
     </div>
     <div class="col-span-4 md:col-span-3 lg:col-span-4">
         <div class="">
-            <a class="font-bold text-lg" href="{{route('tiendas.details.show', [$tienda->slug, $tienda->user_id])}}">
+            <a class="font-bold text-lg" href="{{route('brands.details.show', [$tienda->slug])}}">
                 {{ $tienda->brand }}
             </a>
             <span class="hidden md:inline text-sm text-gray-500"> - {{ count($tienda->items) }} Productos <span class="hidden md:inline">disponibles</span> </span>

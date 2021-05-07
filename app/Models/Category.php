@@ -30,8 +30,13 @@ class Category extends Model
 
     //Relacion uno a uno, en misma tabla
     public function categoy_father($padre_id){
-        $category_father=Category::where('padre_id',$padre_id)->get();
+        $category_father=Category::where('padre_id',$padre_id)->first();
         return $category_father;
+    }
+
+    public function categories_children($category_id){
+        $categories=Category::where('padre_id',$category_id)->get();
+        return $categories;
     }
 
     //Relacion uno a muchos
@@ -39,6 +44,7 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\Product');
     }
+
 
 
 }
