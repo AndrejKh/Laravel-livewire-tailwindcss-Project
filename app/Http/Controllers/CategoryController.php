@@ -22,7 +22,7 @@ class CategoryController extends Controller
 
     // Obtengo la cantidad de productos que hay en una categoria
     public function getQuantityOfProductsByCategoryId($category_id){
-        $category= Category::where('id',$category_id)->first();
+        $category= Category::where('status','active')->where('id',$category_id)->first();
         return count($category->products);
     }
 }

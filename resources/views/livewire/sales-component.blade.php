@@ -24,6 +24,17 @@
 
     </div>
 
+    @empty($brands)
+
+        <div class="flex justify-center mt-10">
+            <span class="text-lg bg-green-300 px-3 md:px-8 py-4 rounded-md shadow">
+                <strong>Aún no has creado tu marca.</strong> ¡Recuerda que para poder vender tus productos, primero debes
+                <a class="text-blue-700" href="{{ route('cms.tiendas') }}">crear una marca</a>!
+            </span>
+        </div>
+
+    @endempty
+
     {{-- Modal detalles de venta --}}
     @if ($modalDetailSales)
         <x-jet-dialog-modal wire:model="modalDetailSales">

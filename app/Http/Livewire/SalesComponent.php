@@ -34,14 +34,23 @@ class SalesComponent extends Component
     public function render()
     {
         $brand = Brand::where('user_id', $this->user_id)->first();
-        $this->brand_id = $brand->id;
+        if($brand){
 
-        if ($this->status != '') {
-            $orders = Order::latest('id')->where('brand_id', $this->brand_id)->where('status', $this->status)->paginate($this->perPage);
-        } else {
-            $orders = Order::latest('id')->where('brand_id', $this->brand_id)->paginate($this->perPage);
+            $this->brand_id = $brand->id;
+
+            if ($this->status != '') {
+                $orders = Order::latest('id')->where('brand_id', $this->brand_id)->where('status', $this->status)->paginate($this->perPage);
+            } else {
+                $orders = Order::latest('id')->where('brand_id', $this->brand_id)->paginate($this->perPage);
+            }
+
+            $brands = Brand::where('user_id', $this->user_id)->get();
+
+        }else{
+            $orders = [];
+            $brands = [];
         }
-        $brands = Brand::where('user_id', $this->user_id)->get();
+
 
         return view('livewire.sales-component', compact('orders','brands'));
     }

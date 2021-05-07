@@ -12,6 +12,7 @@ class ItemController extends Controller
         $array_products_id_shopping_car = explode(",", $products_shopping_car);
 
         $items = DB::table('items')
+        ->where('status', 'active')
         ->where('brand_id', $brand_id)
         ->whereIn('product_id', $array_products_id_shopping_car)
         ->select('items.price', 'items.product_id')
@@ -25,6 +26,7 @@ class ItemController extends Controller
         $array_products_id_shopping_car = explode(",", $products_shopping_car);
 
         $items = DB::table('items')
+        ->where('status', 'active')
         ->where('brand_id', $brand_id)
         ->whereIn('product_id', $array_products_id_shopping_car)
         ->select('items.*')

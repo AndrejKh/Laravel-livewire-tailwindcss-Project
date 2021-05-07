@@ -5,7 +5,7 @@
 
             @isset($brand->state_id)
             <x-jet-button wire:loading.attr="disabled" wire:click="buttonActualizar">
-                Actualizar
+                Editar
             </x-jet-button>
             @else
             <x-jet-button wire:loading.attr="disabled" wire:click="$set( 'openModal' , true )">
@@ -40,7 +40,7 @@
     {{-- Modal para actualizar direccion --}}
     <x-jet-dialog-modal wire:model="openModalActualizar">
         <x-slot name="title">
-            Actualiza tu dirección
+            Editar la dirección de tu marca
         </x-slot>
         <x-slot name="content">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -87,7 +87,7 @@
                 Cancelar
             </x-jet-button>
             <x-jet-button wire:loading.attr="disabled" wire:click="update">
-                Actualizar
+                Confirmar
             </x-jet-button>
         </x-slot>
 

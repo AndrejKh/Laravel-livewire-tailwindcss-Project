@@ -31,6 +31,7 @@ class ProductController extends Controller
         $products = DB::table('products')
         ->join('items', 'products.id', '=', 'items.product_id')
         ->join('brands', 'items.brand_id', '=', 'brands.id')
+        ->where('products.status', 'active')
         ->where('brands.state_id', $state_id)
         ->select('products.*')
         ->get();
@@ -44,6 +45,7 @@ class ProductController extends Controller
         $products = DB::table('products')
         ->join('items', 'products.id', '=', 'items.product_id')
         ->join('brands', 'items.brand_id', '=', 'brands.id')
+        ->where('products.status', 'active')
         ->where('brands.city_id', $city_id)
         ->select('products.*')
         ->get();

@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class ModalProductsItemsComponent extends Component
 {
-    public $user_id, $quantity, $product_id, $product_selected, $price, $message_alert, $color_alert, $itemInStock;
+    public $user_id, $brand, $quantity, $product_id, $product_selected, $price, $message_alert, $color_alert, $itemInStock;
 
     public $show_modal = false;
     public $show_alert = 'false';
@@ -17,6 +17,7 @@ class ModalProductsItemsComponent extends Component
 
     public function render()
     {
+        $this->brand = Brand::where('user_id', $this->user_id)->first();
         $products = Product::where('status', 'active')->where('title', 'like', "%{$this->products_search_input}%")->get();
         return view('livewire.modal-products-items-component', compact('products'));
     }

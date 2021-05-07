@@ -12,7 +12,7 @@
                 </div>
                 @else
                 <x-jet-button class="" wire:loading.attr="disabled" wire:click="buttonActualizarBrand">
-                    Actualizar
+                    Editar
                 </x-jet-button>
                 @endif
             </div>
@@ -70,7 +70,7 @@
         {{--  Modal para actualizar marca --}}
         <x-jet-dialog-modal wire:model="openModalActualizar">
             <x-slot name="title">
-                Actualiza tu marca
+                Editar tu marca
             </x-slot>
             <x-slot name="content">
                 <div class="w-full">
@@ -97,7 +97,7 @@
                     Cancelar
                 </x-jet-button>
                 <x-jet-button wire:loading.attr="disabled" wire:click="update">
-                    Actualizar
+                    Confirmar
                 </x-jet-button>
             </x-slot>
 

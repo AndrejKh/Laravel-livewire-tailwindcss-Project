@@ -465,21 +465,6 @@ $(window).on('load', function () {
         });
     });
 
-
-    // Obtengo loa ubicacion del local storage
-    ubicationLocalStorage = localStorage.getItem('ubication');
-    if (ubicationLocalStorage == null) {
-
-        objectUbicationLocalStorage = {
-            state_id: 7,
-            state: 'Carabobo',
-            city_id: 7,
-            city: 'Valencia'
-         };
-
-        // Almaceno el producot en el localStorage
-        localStorage.setItem('ubication',JSON.stringify(objectUbicationLocalStorage));
-    }
 });
 
 

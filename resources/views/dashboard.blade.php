@@ -10,8 +10,21 @@
             <div class="w-full pb-10">
                 <div>
                     <h3 class="text-lg text-green-600 mt-3">Bienvenido a Kabasto!</h3>
+                    @role('buyer')
                     <span class="text-sm text-gray-600">Aquí encontrarás la mejor opción para la compra de tu comida </span>
+                    @endrole
+                    @role('seller')
+                    <span class="text-sm text-gray-600">La mejor plataforma para mostrar y vender tus productos </span>
+                    @endrole
                 </div>
+                @role('seller')
+                    <div class="flex justify-center mt-10">
+                        <span class="text-md bg-white px-3 md:px-8 py-4 rounded-md shadow">
+                            Para poder empezar a vender tus productos con nosotros, debes primero
+                            <a class="text-blue-700" href="{{ route('cms.tiendas') }}">crear una marca</a>
+                        </span>
+                    </div>
+                @endrole
                 {{-- Productos en el carrito --}}
                 <div class="mt-3 hidden" id="shoppingCarPending">
                     <div class="grid grid-cols-2 gap-2 ">

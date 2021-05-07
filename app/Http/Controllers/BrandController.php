@@ -13,6 +13,7 @@ class BrandController extends Controller
         $brands = DB::table('states')
         ->join('deliveries', 'states.id', '=', 'deliveries.state_id')
         ->join('brands', 'deliveries.brand_id', '=', 'brands.id')
+        ->where('brands.status', 'active')
         ->where('states.id', $state_id)
         ->select('brands.*', 'states.state')
         ->get();
@@ -25,6 +26,7 @@ class BrandController extends Controller
         $brands = DB::table('cities')
         ->join('deliveries', 'cities.id', '=', 'deliveries.city_id')
         ->join('brands', 'deliveries.brand_id', '=', 'brands.id')
+        ->where('brands.status', 'active')
         ->where('cities.id', $city_id)
         ->select('brands.*', 'cities.city')
         ->get();
@@ -36,6 +38,7 @@ class BrandController extends Controller
     public function getBrandsByDelivery(){
         $brands = DB::table('deliveries')
         ->join('brands', 'deliveries.brand_id', '=', 'brands.id')
+        ->where('brands.status', 'active')
         ->select('brands.*', 'deliveries.*')
         ->get();
 
@@ -46,6 +49,7 @@ class BrandController extends Controller
     public function getBrandsByDeliveryFree(){
         $brands = DB::table('deliveries')
         ->join('brands', 'deliveries.brand_id', '=', 'brands.id')
+        ->where('brands.status', 'active')
         ->where('deliveries.delivery_free', 1)
         ->select('brands.*', 'deliveries.*')
         ->get();
@@ -58,6 +62,7 @@ class BrandController extends Controller
         $brands = DB::table('products')
         ->join('items', 'products.id', '=', 'items.product_id')
         ->join('brands', 'items.brand_id', '=', 'brands.id')
+        ->where('brands.status', 'active')
         ->where('products.id', $product_id)
         ->select('brands.*', 'products.*')
         ->get();
@@ -70,6 +75,7 @@ class BrandController extends Controller
         $brands = DB::table('products')
         ->join('items', 'products.id', '=', 'items.product_id')
         ->join('brands', 'items.brand_id', '=', 'brands.id')
+        ->where('brands.status', 'active')
         ->where('products.category_id', $category_id)
         ->select('brands.*', 'products.*')
         ->get();

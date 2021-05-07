@@ -110,11 +110,22 @@
     </x-jet-dialog-modal>
 
     <div class="flex justify-center mt-10">
+    @empty($brand)
+
+        <span class="text-lg bg-green-300 px-3 md:px-8 py-4 rounded-md shadow">
+            <strong>Aún no has creado tu marca.</strong> ¡Recuerda que para poder vender tus productos, primero debes
+            <a class="text-blue-700" href="{{ route('cms.tiendas') }}">crear una marca</a>!
+        </span>
+
+    @else
+
         <button wire:click="SetModalShow()" class="hidden md:flex text-lg text-white py-3 px-16 bg-blue-600 rounded-md shadow-md">
             <svg class="h-6 fill-current text-white mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 13h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H6c-.55 0-1-.45-1-1s.45-1 1-1h5V6c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1z"/></svg>
             Nuevo producto
         </button>
+    @endempty
     </div>
+
     {{-- Agragr profucto Boton flotante --}}
     <div wire:click="SetModalShow()" class="flex md:hidden fixed bottom-14 right-4 h-14 w-14 justify-center bg-green-500 rounded-full z-30 shadow-md items-center cursor-pointer">
         <svg class="h-10 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 13h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H6c-.55 0-1-.45-1-1s.45-1 1-1h5V6c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1z"/></svg>

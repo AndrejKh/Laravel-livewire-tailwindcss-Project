@@ -18,7 +18,7 @@
     <ul class="mt-6">
         <li class=" mb-8">
             <a class="flex" href="{{ route('dashboard') }}">
-                <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                <div class="bg-{{ request()->routeIs('dashboard') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                     <img class="" src="{{ asset('icons/perfil.svg') }}" alt="">
                 </div>
                 <span class="self-center">
@@ -30,7 +30,7 @@
         @can('perfil.usuarios')
             <li class=" mb-8">
                 <a class="flex" href="{{ route('cms.usuarios') }}">
-                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                    <div class="bg-{{ request()->routeIs('cms.usuarios') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                         <img src="{{ asset('icons/users.svg') }}" alt="">
                     </div>
                     <span class="self-center">
@@ -42,7 +42,7 @@
         @can('perfil.home')
             <li class=" mb-8">
                 <a class="flex" href="{{ route('cms.home') }}">
-                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                    <div class="bg-{{ request()->routeIs('cms.home') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                         <img src="{{ asset('icons/home_page.svg') }}" alt="">
                     </div>
                     <span class="self-center">
@@ -54,7 +54,7 @@
         @can('perfil.categorias')
             <li class="mb-8">
                 <a class="flex" href="{{ route('cms.categorias') }}">
-                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                    <div class="bg-{{ request()->routeIs('cms.categorias') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                         <img src="{{ asset('icons/categories.svg') }}" alt="">
                     </div>
                     <span class="self-center">
@@ -66,7 +66,7 @@
         @can('perfil.productos')
             <li class="mb-8">
                 <a class="flex" href="{{ route('cms.productos') }}">
-                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                    <div class="bg-{{ request()->routeIs('cms.productos') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                         <img src="{{ asset('icons/productos.svg') }}" alt="">
                     </div>
                     <span class="self-center">
@@ -78,7 +78,7 @@
         @can('perfil.estados')
             <li class=" mb-8">
                 <a class="flex" href="{{ route('cms.estados') }}">
-                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                    <div class="bg-{{ request()->routeIs('cms.estados') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                         <img src="{{ asset('icons/estados.svg') }}" alt="">
                     </div>
                     <span class="self-center">
@@ -90,7 +90,7 @@
         @can('perfil.ciudades')
             <li class=" mb-8">
                 <a class="flex" href="{{ route('cms.ciudades') }}">
-                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                    <div class="bg-{{ request()->routeIs('cms.ciudades') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                         <img src="{{ asset('icons/ciudades.svg') }}" alt="">
                     </div>
                     <span class="self-center">
@@ -103,7 +103,7 @@
         @can('perfil.ventas')
             <li class="mb-8">
                 <a class="flex" href="{{ route('cms.tiendas') }}">
-                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                    <div class="bg-{{ request()->routeIs('cms.tiendas') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                         <img src="{{ asset('icons/tiendas.svg') }}" alt="">
                     </div>
                     <span class="self-center">
@@ -116,7 +116,7 @@
         @can('perfil.items')
             <li class="mb-8">
                 <a class="flex" href="{{ route('cms.items') }}">
-                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                    <div class="bg-{{ request()->routeIs('cms.items') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                         <img src="{{ asset('icons/items.svg') }}" alt="">
                     </div>
                     <span class="self-center">
@@ -128,7 +128,7 @@
         @can('perfil.ventas')
             <li class="mb-8">
                 <a class="flex" href="{{ route('cms.ventas') }}">
-                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                    <div class="bg-{{ request()->routeIs('cms.ventas') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                         <img src="{{ asset('icons/ventas.svg') }}" alt="">
                     </div>
                     <span class="self-center">
@@ -137,10 +137,10 @@
                 </a>
             </li>
         @endcan
-        @can('perfil.blog')
+        {{-- @can('perfil.blog')
             <li class="mb-8">
                 <a class="flex" href="{{ route('cms.blog') }}">
-                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                    <div class="bg-{{ request()->routeIs('cms.blog') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                         <img src="{{ asset('icons/blog.svg') }}" alt="">
                     </div>
                     <span class="self-center">
@@ -148,11 +148,11 @@
                     </span>
                 </a>
             </li>
-        @endcan
+        @endcan --}}
         @can('perfil.compras')
             <li class="mb-8">
                 <a class="flex" href="{{ route('cms.compras') }}">
-                    <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                    <div class="bg-{{ request()->routeIs('cms.compras') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                         <img src="{{ asset('icons/compras.svg') }}" alt="">
                     </div>
                     <span class="self-center">
@@ -164,7 +164,7 @@
 
         <li class=" mb-8">
             <a class="flex" href="{{ route('profile.show') }}">
-                <div class="bg-white shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
+                <div class="bg-{{ request()->routeIs('profile.show') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
                     <img src="{{ asset('icons/settings.svg') }}" alt="">
                 </div>
                 <span class="self-center">

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public $perPage = 15;
+    public $perPage = 20;
     public function index()
     {
         $carousel_banners = BannerPromocional::latest('id')->where('page', 'home')->where('status', 'active')->get();
@@ -47,62 +47,76 @@ class HomeController extends Controller
             // Obtengo los productos filtrados por la busqueda 'search' y el estado
             if( isset($request->state) ){
 
-                $estado = $request->state;
-                $state = State::where('status','active')->where('state',$estado)->first();
-                $state_id = $state->id;
+                if( isset($request->city) ){
+                    // Obtengo los productos filtrados por la busqueda 'search' y la ciudad
+                    $ciudad = $request->city;
+                    $city = City::where('status','active')->where('city',$ciudad)->first();
+                    $city_id = $city->id;
+                    $city_selected = $city->city;
+                    $state_selected = $city->state->state;
 
-                $productsDB = Product::where('title', 'LIKE', '%'.$query.'%')
-                    ->join('items', 'products.id', '=', 'items.product_id')
-                    ->join('brands', 'items.brand_id', '=', 'brands.id')
-                    ->where('brands.state_id', $state_id)
-                    ->where('products.status', 'active')
-                    ->select('products.*')
-                    ->paginate($this->perPage);
+                    $productsDB = Product::where('title', 'LIKE', '%'.$query.'%')
+                        ->join('items', 'products.id', '=', 'items.product_id')
+                        ->join('brands', 'items.brand_id', '=', 'brands.id')
+                        ->where('brands.city_id', $city_id)
+                        ->where('products.status', 'active')
+                        ->select('products.*')
+                        ->get();
+                        // ->paginate($this->perPage);
 
-                $products = $this->noDuplicatedArray($productsDB);
-                // return $products;
-                $total_products_search = count($products);
+                    $products = $this->noDuplicatedArray($productsDB);
+                    $total_products_search = count($products);
 
-            }else if( isset($request->city) ){
-                // Obtengo los productos filtrados por la busqueda 'search' y la ciudad
-                $ciudad = $request->city;
-                $city = City::where('status','active')->where('city',$ciudad)->first();
-                $city_id = $city->id;
+                }else{
 
+                    $estado = $request->state;
+                    $state = State::where('status','active')->where('state',$estado)->first();
+                    $state_id = $state->id;
+                    $state_selected = $state->state;
+                    $city_selected = null;
 
-                $productsDB = Product::where('title', 'LIKE', '%'.$query.'%')
-                    ->join('items', 'products.id', '=', 'items.product_id')
-                    ->join('brands', 'items.brand_id', '=', 'brands.id')
-                    ->where('brands.city_id', $city_id)
-                    ->where('products.status', 'active')
-                    ->select('products.*')
-                    ->paginate($this->perPage);
+                    $productsDB = Product::where('title', 'LIKE', '%'.$query.'%')
+                        ->join('items', 'products.id', '=', 'items.product_id')
+                        ->join('brands', 'items.brand_id', '=', 'brands.id')
+                        ->where('brands.state_id', $state_id)
+                        ->where('products.status', 'active')
+                        ->select('products.*')
+                        ->get();
+                        // ->paginate($this->perPage);
 
-                $products = $this->noDuplicatedArray($productsDB);
-                $total_products_search = count($products);
+                    $products = $this->noDuplicatedArray($productsDB);
+                    // return $products;
+                    $total_products_search = count($products);
 
-            }else{
+                }
 
-                // Obtengo los productos filtrados por la busqueda 'search'
-                $products = Product::latest('id')->where('status', 'active')->where('title', 'LIKE', '%'.$query.'%')->paginate($this->perPage);
-                $total_products_search = count(Product::where('status', 'active')->where('title', 'LIKE', '%'.$query.'%')->get());
+            }else {
+
+                // Obtengo los productos filtrados por la busqueda 'search', sin filtr de estado ni ciudad
+                $products = Product::latest('id')->where('status', 'active')->where('title', 'LIKE', '%'.$query.'%')->get();
+                $total_products_search = $products->count();
+
+                $city_selected = null;
+                $state_selected = null;
 
             }
         }else {
 
             // Obtengo todos los productos, sin filtro
-            $products = Product::latest('id')->where('status', 'active')->paginate($this->perPage);
-            $total_products_search = count(Product::where('status', 'active')->get());
+            $products = Product::latest('id')->where('status', 'active')->get();
+            $total_products_search = $products->count();
 
             // Variables que se retornan a la vista, estas variables se usan para el form de filtro
             $query = null;
+            $city_selected = null;
+            $state_selected = null;
 
         }
 
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(9)->get();
-        $category_slug = null;
+        $category_selected = null;
 
-        return view('vitrina', compact('principal_categories', 'products', 'total_products_search', 'query', 'category_slug'));
+        return view('vitrina', compact('principal_categories', 'products', 'total_products_search', 'query', 'category_selected', 'state_selected', 'city_selected'));
     }
 
     // Metodo para obtener los productos por la categoria elegida
@@ -111,66 +125,81 @@ class HomeController extends Controller
 
         if( isset($request->slug) ){
             $category_slug = $request->slug;
-            $category = Category::where('slug', $category_slug)->first();
+            $category_selected = Category::where('slug', $category_slug)->first();
 
             // Obtengo los productos filtrados por la busqueda 'search' y el estado
             if( isset($request->state) ){
 
-                $estado = $request->state;
-                $state = State::where('status','active')->where('state',$estado)->first();
-                $state_id = $state->id;
+                if( isset($request->city) ){
+                    // Obtengo los productos filtrados por la busqueda 'search' y la ciudad
+                    $ciudad = $request->city;
+                    $city = City::where('status','active')->where('city',$ciudad)->first();
+                    $city_id = $city->id;
+                    $city_selected = $city->city;
+                    $state_selected = $city->state->state;
 
-                $productsDB = Product::where('category_id', $category->id)
-                    ->join('items', 'products.id', '=', 'items.product_id')
-                    ->join('brands', 'items.brand_id', '=', 'brands.id')
-                    ->where('brands.city_id', $state_id)
-                    ->where('products.status', 'active')
-                    ->select('products.*')
-                    ->paginate($this->perPage);
+                    $productsDB = Product::where('category_id', $category_selected->id)
+                        ->join('items', 'products.id', '=', 'items.product_id')
+                        ->join('brands', 'items.brand_id', '=', 'brands.id')
+                        ->where('brands.city_id', $city_id)
+                        ->where('products.status', 'active')
+                        ->select('products.*')
+                        ->get();
+                        // ->paginate($this->perPage);
 
-                $products = $this->noDuplicatedArray($productsDB);
-                // return $products;
-                $total_products_search = count($products);
+                    $products = $this->noDuplicatedArray($productsDB);
+                    $total_products_search = count($products);
 
-            }else if( isset($request->city) ){
-                // Obtengo los productos filtrados por la busqueda 'search' y la ciudad
-                $ciudad = $request->city;
-                $city = City::where('status','active')->where('city',$ciudad)->first();
-                $city_id = $city->id;
+                }else{
 
-                $productsDB = Product::where('category_id', $category->id)
-                    ->join('items', 'products.id', '=', 'items.product_id')
-                    ->join('brands', 'items.brand_id', '=', 'brands.id')
-                    ->where('brands.city_id', $city_id)
-                    ->where('products.status', 'active')
-                    ->select('products.*')
-                    ->paginate($this->perPage);
+                    $estado = $request->state;
+                    $state = State::where('status','active')->where('state',$estado)->first();
+                    $state_id = $state->id;
+                    $state_selected = $state->state;
+                    $city_selected = null;
 
-                $products = $this->noDuplicatedArray($productsDB);
-                $total_products_search = count($products);
+                    $productsDB = Product::where('category_id', $category_selected->id)
+                        ->join('items', 'products.id', '=', 'items.product_id')
+                        ->join('brands', 'items.brand_id', '=', 'brands.id')
+                        ->where('brands.city_id', $state_id)
+                        ->where('products.status', 'active')
+                        ->select('products.*')
+                        ->get();
+                        // ->paginate($this->perPage);
 
-            }else{
+                    $products = $this->noDuplicatedArray($productsDB);
+                    // return $products;
+                    $total_products_search = count($products);
+
+                }
+
+            }else {
 
                 // Todos los productos de una categoria sin filtro
-                $products = Product::latest('id')->where('status', 'active')->where('category_id', $category->id)->paginate($this->perPage);
-                $total_products_search = count(Product::where('status', 'active')->where('category_id', $category->id)->get());
+                $products = Product::latest('id')->where('status', 'active')->where('category_id', $category_selected->id)->get();
+                $total_products_search = $products->count();
+
+                $city_selected = null;
+                $state_selected = null;
 
             }
 
         }else {
 
             // Todos los productos sin filtro
-            $products = Product::latest('id')->where('status', 'active')->paginate($this->perPage);
-            $total_products_search = count(Product::where('status', 'active')->get());
+            $products = Product::latest('id')->where('status', 'active')->get();
+            $total_products_search = $products->count();
 
-            $category_slug = null;
+            $category_selected = null;
+            $city_selected = null;
+            $state_selected = null;
 
         }
 
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(7)->get();
         $query = null;
 
-        return view('vitrina', compact('principal_categories', 'products', 'total_products_search', 'query', 'category_slug'));
+        return view('vitrina', compact('principal_categories', 'products', 'total_products_search', 'query', 'category_selected', 'state_selected', 'city_selected'));
     }
 
     //Metodo que devulve la vista del detalle del producto
