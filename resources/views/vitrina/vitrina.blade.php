@@ -10,7 +10,7 @@
                     </svg>
                 </span>
             @else
-                <span class="flex flex-shrink text-sm rounded-full bg-gray-100 border border-gray-600 px-3 py-1 ml-2 text-center hover:bg-white cursor-pointer mb-2 modalCategories">
+                <span class="flex flex-shrink text-sm rounded-full bg-gray-100 border border-gray-600 px-3 py-1 text-center hover:bg-white cursor-pointer mb-2 modalCategories">
                     Categorias
                 </span>
             @endisset
@@ -34,9 +34,11 @@
                     </svg>
                 </span>
             @else
+                @isset($state_selected)
                 <span class="flex flex-shrink text-sm rounded-full bg-gray-100 border border-gray-600 px-3 py-1 ml-2 text-center hover:bg-white cursor-pointer mb-2 modalCities">
                     Ciudades
                 </span>
+                @endisset
             @endisset
         </div>
     </div>
@@ -67,11 +69,13 @@
             </div>
         </div>
     </div>
+
+
     <div class="grid grid-cols-1 md:grid-cols-9 mb-14 bg-gray-100 max-w-7xl">
 
         <div class="md:col-span-2 hidden md:block bg-gray-100 px-0 md:px-2 lg:px-3">
           <!-- Aside Navbar -->
-          @include('components.aside_filter')
+          @include('vitrina.aside_filter')
 
         </div>
 

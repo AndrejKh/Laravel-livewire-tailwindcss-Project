@@ -20,7 +20,7 @@
                         </a>
                     </div>
 
-                    @include('components.search_input_nabvar')
+                    @include('common.search_input_nabvar')
                 </div>
 
                 <!-- Navigation Links -->

@@ -34,7 +34,7 @@ class HomeController extends Controller
         $carousel_items_five = Product::latest('id')->where('status', 'active')->where('category_id', '5')->get();
         $brands = Brand::latest('id')->where('status', 'active')->get();
 
-        return view('home', compact('carousel_banners','principal_categories','products','brands', 'banners_promotionals', 'carousel_items_first', 'carousel_items_second', 'carousel_items_third', 'carousel_items_fourth', 'carousel_items_five'));
+        return view('home.home', compact('carousel_banners','principal_categories','products','brands', 'banners_promotionals', 'carousel_items_first', 'carousel_items_second', 'carousel_items_third', 'carousel_items_fourth', 'carousel_items_five'));
     }
 
     // Vitirna de productos, controlador del input search del navbar
@@ -116,7 +116,7 @@ class HomeController extends Controller
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(9)->get();
         $category_selected = null;
 
-        return view('vitrina', compact('principal_categories', 'products', 'total_products_search', 'query', 'category_selected', 'state_selected', 'city_selected'));
+        return view('vitrina.vitrina', compact('principal_categories', 'products', 'total_products_search', 'query', 'category_selected', 'state_selected', 'city_selected'));
     }
 
     // Metodo para obtener los productos por la categoria elegida
@@ -199,7 +199,7 @@ class HomeController extends Controller
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(7)->get();
         $query = null;
 
-        return view('vitrina', compact('principal_categories', 'products', 'total_products_search', 'query', 'category_selected', 'state_selected', 'city_selected'));
+        return view('vitrina.vitrina', compact('principal_categories', 'products', 'total_products_search', 'query', 'category_selected', 'state_selected', 'city_selected'));
     }
 
     //Metodo que devulve la vista del detalle del producto
@@ -208,7 +208,13 @@ class HomeController extends Controller
         $items = Item::where('status','active')->where('product_id',$request->id)->get();
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(9)->get();
 
-        return view('product_detail', compact('principal_categories','product','items'));
+        return view('vitrina.product_detail', compact('principal_categories','product','items'));
+    }
+
+    function categorias() {
+        $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->get();
+        $categories_children = Category::where('status', 'active')->where('padre_id', '<>' , 0)->get();
+        return view('vitrina.categories', compact('principal_categories','categories_children'));
     }
 
     // Vitirna de supermemrcados
@@ -243,11 +249,7 @@ class HomeController extends Controller
 
     }
 
-    function categorias() {
-        $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->get();
-        $categories_children = Category::where('status', 'active')->where('padre_id', '<>' , 0)->get();
-        return view('categories', compact('principal_categories','categories_children'));
-    }
+
 
     /*
     VISTAS DEL CMS

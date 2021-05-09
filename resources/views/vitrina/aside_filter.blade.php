@@ -50,7 +50,7 @@
         <li class=" mb-8">
             <h3 class="font-bold text-gray-900 text-lg mb-1"> Estados </h3>
 
-            <div class="w-full" id="badgeStateSelected">
+            <div class="w-full" id="badgeStateSelected" style="display:none;">
                 <span class="flex bg-green-500 text-white rounded-full shadow w-full px-3 py-1">
                     <span class="inline self-center text-sm" id="stateSelected"></span>
                     <svg class="fill-current text-white stroke-current stroke-2 cursor-pointer h-3 inline self-center ml-auto removeStateSelected" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,10 +71,10 @@
         <hr>
 
         {{-- Ciudades --}}
-        <li class=" mb-8" id="listCitiesFilter">
+        <li class=" mb-8" id="listCitiesFilter" style="display:none;">
             <h3 class="font-bold text-gray-900 text-lg mb-1"> Ciudades </h3>
 
-            <div class="w-full" id="badgeCitySelected">
+            <div class="w-full" id="badgeCitySelected" style="display:none;">
                 <span class="flex bg-green-500 text-white rounded-full shadow w-full px-3 py-1">
                     <span class="inline self-center text-sm" id="citySelected"></span>
                     <svg class="fill-current text-white stroke-current stroke-2 cursor-pointer h-3 inline self-center ml-auto removeCitySelected" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -72,7 +72,7 @@
             <div class="rounded-md shadow-sm bg-white grid grid-cols-5 gap-1 py-2 px-2">
                 <span class="col-span-1 text-center self-center">
                    <span class="totalPriceBrand font-bold text-xl text-gray-900"></span>
-                   <strong class="text-xs block font-light">$ USD</strong>
+                   <strong class="text-xs block font-bold">$ USD</strong>
                 </span>
                 <span class="col-span-3 text-gray-900 font-semibold text-sm self-center">
                     <span class="titleBrand"></span>

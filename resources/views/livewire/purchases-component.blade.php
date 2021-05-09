@@ -71,7 +71,7 @@
                         <div class="bg-no-repeat bg-cover bg-center w-12 h-12 md:w-16 md:h-16 overflow-hidden rounded-full mx-auto" style="background-image: url('/storage/{{ $brand->profile_photo_path_brand }}');"></div>
                     </div>
                     <div class="col-span-4 flex flex-col">
-                        <a class="text-md text-gray-900 font-semibold" href="{{route('tiendas.details.show', [$brand->slug, $brand->user_id])}}"> {{ $brand->brand }}</a>
+                        <a class="text-md text-gray-900 font-semibold" href="{{route('brands.details.show', [$brand->slug])}}"> {{ $brand->brand }}</a>
                         <div class="text-xs text-gray-700 font-light">{{ $brand->brand }}</div>
                         <div class="flex">
                             <svg class="inline h-4 w-4" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>

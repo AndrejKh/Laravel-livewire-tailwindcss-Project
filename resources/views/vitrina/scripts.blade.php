@@ -101,7 +101,11 @@
 
        /**** Obtengo la direccion del localstorage ****/
        const ubicationStorage = localStorage.getItem('ubication');
+       const listCitiesFilter = document.getElementById('listCitiesFilter');
+
        if(ubicationStorage !== null ){
+            listCitiesFilter.style.display = 'block';
+
            const ubication = JSON.parse(ubicationStorage);
            const stateLocalStorage = ubication.state;
            const cityLocalStorage = ubication.city;
@@ -163,7 +167,6 @@
 
        }else{
            // Oculto la lista de ciudades
-           const listCitiesFilter = document.getElementById('listCitiesFilter');
            listCitiesFilter.style.display = 'none';
            // No existe ubicacion en el localstorage, oculto los badges
            badgeStateSelected.style.display = 'none';
