@@ -1,69 +1,5 @@
-<div class="container w-full mx-auto">
-    <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-2 md:gap-3 mb-4 lg:mb-6" >
-        <div class="col-span-2 md:col-span-4 lg:col-span-5 self-center">
-            <div class="grid grid-cols-5 lg:grid-cols-4 gap-2">
-                <h1 class="col-span-5 md:col-span-2 lg:col-span-1 self-center">
-                    @if ($items)
-                    <strong>
-                        ({{$items->count()}})
-                    </strong>
-                    @endif
-                    Todos tus productos
-                </h1>
-                <div class="col-span-3 self-center w-full justify-self-end hidden md:inline">
-                      <div class="relative">
-                        <span class="absolute inset-y-0 right-0 flex items-center pl-2">
-                          <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                          </button>
-                        </span>
-                        <input type="text" class="w-full border-0 py-2 text-sm text-gray-900 rounded-md pr-10 focus:outline-none focus:text-gray-900 shadow-md" placeholder="Buscar productos..."  wire:model="search">
-                      </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-span-1 justify-self-end	self-center w-full">
-            <select class="text-xs md:text-sm bg-white rounded-md shadow-md border-0 py-auto w-full" wire:model="status">
-                <option value="">Todos</option>
-                <option value="active">Activos</option>
-                <option value="paused">Pausados</option>
-                {{-- <option value="no_inventary">Sin Inventario</option> --}}
-            </select>
-        </div>
-        <div class="col-span-3 self-center md:hidden">
-            <div class="relative">
-                <span class="absolute inset-y-0 right-0 flex items-center pl-2">
-                    <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    </button>
-                </span>
-                <input type="text" wire:model="search" class="w-full border-0 py-2 text-sm text-gray-900 rounded-md pr-10 focus:outline-none focus:text-gray-900 shadow-md" placeholder="Buscar productos...">
-            </div>
-        </div>
-    </div>
-
-    @if ($items)
-
-        @if ($items->count())
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3">
-
-            @foreach ($items as $item)
-
-                @include('cms.items.card_item')
-
-            @endforeach
-        </div>
-
-        {{ $items->links() }}
-        @else
-            <div class="text-gray-400 bg-white py-3 px-4 border-t border-gray-200 mb-10">No se encontraron resultados </div>
-        @endif
-    @else
-        <div class="text-gray-900 bg-white py-3 px-4 border-t border-gray-200 mb-10">No tienes aun productos. Recuerda que debes primero crear tu marca para poder agregar productos!</div>
-    @endif
-
-    {{-- Modal eliminar item --}}
-    @if ($itemToDelete)
+{{-- Modal eliminar item --}}
+@if ($itemToDelete)
     <x-jet-dialog-modal wire:model="show_modal_delete">
         <x-slot name="title">
             <div class="grid grid-cols-5 py-2">
@@ -82,7 +18,7 @@
                 <div class="col-span-1 self-center">
                     <img class="w-full" src="/storage/{{$itemToDelete->product->photo_main_product}}" alt="imagen de banner">
                 </div>
-                <div class="col-span-4 self-center">
+                <div class="col-span-4 self-center ml-3">
                     <h6 class="font-bold text-lg md:text-xl ">{{$itemToDelete->product->title}}</h6>
                     <span class="text-md text-gray-500">{{$item->product->category->category}}</span>
                     <strong class="text-xl block">{{$item->price}} $USD</strong>
@@ -101,10 +37,10 @@
             </div>
         </x-slot>
     </x-jet-dialog-modal>
-    @endif
+@endif
 
-    {{-- Modal actualizar item --}}
-    @if ($itemToUpdate)
+{{-- Modal actualizar item --}}
+@if ($itemToUpdate)
     <x-jet-dialog-modal wire:model="show_modal_delete">
         <x-slot name="title">
             <div class="grid grid-cols-5 py-2">
@@ -172,8 +108,4 @@
             </div>
         </x-slot>
     </x-jet-dialog-modal>
-    @endif
-
-    @include('common.alert')
-
-</div>
+@endif

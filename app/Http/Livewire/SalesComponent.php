@@ -52,7 +52,7 @@ class SalesComponent extends Component
         }
 
 
-        return view('livewire.sales-component', compact('orders','brands'));
+        return view('cms.sales.sales-component', compact('orders','brands'));
     }
 
     public function showModalDetailsSale(Order $order)

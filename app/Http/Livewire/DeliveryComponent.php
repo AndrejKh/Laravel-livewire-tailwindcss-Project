@@ -39,7 +39,7 @@ class DeliveryComponent extends Component
             $cities = City::where('state_id', '1')->get();
             $this->days_week = DaysWeek::all();
             $days_week = $this->days_week;
-            return view('livewire.delivery-component', compact('deliveries', 'estados', 'brand', 'cities', 'days_week'));
+            return view('cms.tiendas.components.delivery-component', compact('deliveries', 'estados', 'brand', 'cities', 'days_week'));
         }
 
         // Funcion para buscar las ciudades, dependiendo del estado seleccionado

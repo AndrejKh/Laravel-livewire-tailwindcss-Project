@@ -56,7 +56,7 @@ class UserComponent extends Component
                             orWhere('doc_identity', 'LIKE', "%{$this->search}%")->
                             orWhere('address', 'LIKE', "%{$this->search}%")->
                             paginate($this->perPage);
-        return view('livewire.user-component', compact('usuarios'));
+        return view('cms.users.user-component', compact('usuarios'));
     }
 
 /*     public function agregar()

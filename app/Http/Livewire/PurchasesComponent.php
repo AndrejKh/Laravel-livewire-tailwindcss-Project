@@ -36,7 +36,7 @@ class PurchasesComponent extends Component
             $orders = Order::latest('id')->where('user_id', $this->user_id)->paginate($this->perPage);
         }
 
-        return view('livewire.purchases-component', compact('orders'));
+        return view('cms.purchases.purchases-component', compact('orders'));
     }
 
 

@@ -47,7 +47,7 @@ class CityComponent extends Component
         //Obtengo los posts ordenados por id, desde el ultimo, con paginacion
         $cities = City::latest('id')->where('status', $this->status)->where('city', 'LIKE', "%{$this->search}%")->paginate($this->perPage);
         $estados = State::all();
-        return view('livewire.city-component', compact('cities','estados'));
+        return view('cms.cities.city-component', compact('cities','estados'));
     }
 
     public function agregar()

@@ -42,7 +42,7 @@ class BrandComponent extends Component
         public function render()
         {
             $brand_user = Brand::where('user_id', $this->user_id)->first();
-            return view('livewire.brand-component', compact('brand_user'));
+            return view('cms.tiendas.components.brand-component', compact('brand_user'));
         }
 
         public function crear()

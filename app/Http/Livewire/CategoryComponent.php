@@ -54,7 +54,7 @@ class CategoryComponent extends Component
                                 where('category', 'LIKE' , "%{$this->search}%" )->
                                 orWhere('description', 'LIKE' , "%{$this->search}%" )->
                                 paginate($this->perPage);
-        return view('livewire.category-component', compact('categories'));
+        return view('cms.categories.category-component', compact('categories'));
     }
 
     public function agregar()

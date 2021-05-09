@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public $perPage = 20;
+
     public function index()
     {
         $carousel_banners = BannerPromocional::latest('id')->where('page', 'home')->where('status', 'active')->get();
@@ -211,6 +212,7 @@ class HomeController extends Controller
         return view('vitrina.product_detail', compact('principal_categories','product','items'));
     }
 
+    // listado de categorias
     function categorias() {
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->get();
         $categories_children = Category::where('status', 'active')->where('padre_id', '<>' , 0)->get();
@@ -249,45 +251,51 @@ class HomeController extends Controller
 
     }
 
-
-
     /*
     VISTAS DEL CMS
     */
     public function dashboard(){
         return view('dashboard');
     }
+
     public function usuarios() {
-        return view('cms.usuarios');
+        return view('cms.users.users');
     }
+
     public function categories() {
-        return view('cms.categories');
+        return view('cms.categories.categories');
     }
+
     public function banners() {
-        return view('cms.banners');
+        return view('cms.banners.banners');
     }
+
     public function estados() {
-        return view('cms.estados');
+        return view('cms.states.states');
     }
+
     public function ciudades() {
-        return view('cms.ciudades');
+        return view('cms.cities.cities');
     }
+
     public function productos() {
-        return view('cms.productos');
+        return view('cms.products.products');
     }
+
     public function tiendasCMS() {
-        return view('cms.tiendas');
+        return view('cms.tiendas.tiendas');
     }
 
     public function itemsCMS() {
-        return view('cms.items');
+        return view('cms.items.items');
     }
 
     public function comprasCMS(){
-        return view('cms.compras');
+        return view('cms.purchases.purchases');
     }
+
     public function ventasCMS(){
-        return view('cms.ventas');
+        return view('cms.sales.sales');
     }
 
     /******* Funciones internas  *********/

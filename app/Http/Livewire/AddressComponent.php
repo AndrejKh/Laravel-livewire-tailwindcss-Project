@@ -27,7 +27,7 @@ class AddressComponent extends Component
         $brand = Brand::where('user_id', $this->user_id)->first();
         $cities = [];
         $estados = State::all();
-        return view('livewire.address-component', compact('estados', 'brand', 'cities'));
+        return view('cms.tiendas.components.address-component', compact('estados', 'brand', 'cities'));
     }
 
     // Funcion que se activa al momento de dar click en el boton 'editar' de algun delivery

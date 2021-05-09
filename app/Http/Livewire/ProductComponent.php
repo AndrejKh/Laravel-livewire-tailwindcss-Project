@@ -53,7 +53,7 @@ class ProductComponent extends Component
         //Obtengo los posts ordenados por id, desde el ultimo, con paginacion
         $products = Product::latest('id')->where('status', $this->status)->where('title', 'LIKE', "%{$this->search}%")->orWhere('description', 'LIKE', "%{$this->search}%")->paginate($this->perPage);
         $categories = Category::all();
-        return view('livewire.product-component', compact('products', 'categories'));
+        return view('cms.products.product-component', compact('products', 'categories'));
     }
 
     public function agregar()

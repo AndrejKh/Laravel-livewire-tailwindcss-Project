@@ -67,7 +67,7 @@
             <li class="mb-8">
                 <a class="flex" href="{{ route('cms.productos') }}">
                     <div class="bg-{{ request()->routeIs('cms.productos') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
-                        <img src="{{ asset('icons/productos.svg') }}" alt="">
+                        <img src="{{ asset('icons/items.svg') }}" alt="">
                     </div>
                     <span class="self-center">
                         Productos

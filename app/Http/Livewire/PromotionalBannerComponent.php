@@ -48,7 +48,7 @@ class PromotionalBannerComponent extends Component
     {
         //Obtengo los posts ordenados por id, desde el ultimo, con paginacion
         $banners = BannerPromocional::latest('id')->where('status', $this->status)->where('page', 'LIKE', "%{$this->search}%")->paginate($this->perPage);
-        return view('livewire.promotional-banner-component', compact('banners'));
+        return view('cms.banners.promotional-banner-component', compact('banners'));
     }
 
     public function agregar()

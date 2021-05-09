@@ -19,7 +19,7 @@ class ModalProductsItemsComponent extends Component
     {
         $this->brand = Brand::where('user_id', $this->user_id)->first();
         $products = Product::where('status', 'active')->where('title', 'like', "%{$this->products_search_input}%")->get();
-        return view('livewire.modal-products-items-component', compact('products'));
+        return view('cms.items.modal-products-items-component', compact('products'));
     }
 
     public function SearchProduct( $product_id ){

@@ -44,7 +44,7 @@ class StateComponent extends Component
     {
         //Obtengo los posts ordenados por id, desde el ultimo, con paginacion
         $estados = State::latest('id')->where('status', $this->status)->where('state', 'LIKE', "%{$this->search}%")->paginate($this->perPage);
-        return view('livewire.state-component', compact('estados'));
+        return view('cms.states.state-component', compact('estados'));
     }
 
     public function agregar()

@@ -14,7 +14,7 @@ class SearchProductsComponent extends Component
         //
         $products = Product::where('status', 'active')->where('title', 'like', "%{$this->products_search_input}%" )->get();
 
-        return view('livewire.search-products-component', compact('products'));
+        return view('cms.items.search-products-component', compact('products'));
     }
 
     // Funcion de comunicacion con el componente padre, asignacion de Category_Id

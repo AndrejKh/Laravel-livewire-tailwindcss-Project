@@ -30,7 +30,9 @@
 
         <div class="min-h-screen bg-gray-100 relative">
             @livewire('navigation-menu')
-            @livewire('shopping-car-component')
+            {{-- Modal de carrito de compras --}}
+            @include('common.shopping_modal_car')
+            {{-- @livewire('shopping-car-component') --}}
 
             <!-- Page Content -->
             <main class="">

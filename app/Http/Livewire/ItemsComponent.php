@@ -65,7 +65,7 @@ class ItemsComponent extends Component
             $items = [];
         }
 
-        return view('livewire.items-component', compact('items','user_id'));
+        return view('cms.items.items-component', compact('items','user_id'));
     }
 
     public function setItemUpdate(Item $item){

@@ -48,7 +48,7 @@ class BannerComponent extends Component
         }else{
             $banners_tienda = [];
         }
-        return view('livewire.banner-component', compact('banners_tienda','brand'));
+        return view('cms.tiendas.components.banner-component', compact('banners_tienda','brand'));
     }
 
     public function agregar()
