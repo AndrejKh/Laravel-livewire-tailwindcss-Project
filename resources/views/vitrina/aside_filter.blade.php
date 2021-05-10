@@ -1,5 +1,5 @@
 {{-- Filtro lateral - PC --}}
-<div class="mt-6 mb-10 w-48 h-screen">
+<div class="mt-6 mb-10 w-48 ">
     <hr>
     <ul class="mt-6">
         {{-- categorias --}}
