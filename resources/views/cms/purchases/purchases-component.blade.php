@@ -1,7 +1,7 @@
 <div>
     <div class="grid grid-cols-3 gap-1 mt-3 mb-4">
         <span class="col-span-2 self-center">Todas tus compras</span>
-        <select class="col-span-1 text-xs md:text-sm bg-white rounded-md shadow-md border-0 py-auto w-full" wire:model="status">
+        <select class="col-span-1 select_filter_cms" wire:model="status">
             <option value="">Todas</option>
             <option value="active">Activas</option>
             <option value="completed">Completadas</option>

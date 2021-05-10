@@ -98,9 +98,15 @@ class CategoryComponent extends Component
     public function update()
     {
 
+        // Pregunto si hay foto
         if ($this->photo) {
             //validacion de valores
-            $this->validate();
+            $this->validate([
+                'category' => 'required|max:60',
+                'description' => 'required',
+                'padre_id' => 'required',
+                'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            ]);
 
             //Guardo la imagen en la carpeta storage, enlace public
             $path_imagen=$this->photo->store('public');

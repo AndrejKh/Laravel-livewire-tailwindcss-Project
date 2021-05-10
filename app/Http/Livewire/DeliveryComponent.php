@@ -16,6 +16,7 @@ class DeliveryComponent extends Component
     use WithFileUploads;
 
     public $message_alert, $color_alert, $delivery, $user_id, $brand, $state_id, $city_id, $delivery_zone, $delivery_time, $delivery_free, $min_amount_purchase, $days_aux, $days_week, $newBrand;
+    public $label_amount_delivery = '¿Cúal es el precio del delivery?';
     public $days = [];
     public $cities = [];
     public $openModal = false;
@@ -132,6 +133,11 @@ class DeliveryComponent extends Component
             $this->days = explode(',',$days);
             $this->delivery_time = $this->delivery->delivery_time;
             $this->delivery_free = $this->delivery->delivery_free;
+            if ( $this->delivery_free == 0 ) {
+                $this->label_amount_delivery = '¿Cúal es el precio del delivery?';
+            }else{
+                $this->label_amount_delivery = '¿Cúal es el monto minimo para hacer delivery?';
+            }
             $this->min_amount_purchase = $this->delivery->min_amount_purchase;
         }
 
@@ -147,6 +153,15 @@ class DeliveryComponent extends Component
             $this->show_alert = 'true';
             $this->color_alert = 'red';
             $this->message_alert = 'Eliminada exitosamente!';
+        }
+
+        // Funcion para cambiar el texto del label de monto de delivaery, en los modales
+        public function setLabelAmountDelivery(){
+            if ( $this->delivery_free == 0 ) {
+                $this->label_amount_delivery = '¿Cúal es el precio del delivery?';
+            }else{
+                $this->label_amount_delivery = '¿Cúal es el monto minimo para hacer delivery?';
+            }
         }
 
         // Evento que escucha se ejecuta cuando se crea la marca, desde el controlador 'BrandComponent'

@@ -101,7 +101,7 @@
                         <th class="px-6 py-3">Id</th>
                         <th class="px-6 py-3">Imagen</th>
                         <th class="px-6 py-3">Categoria</th>
-                        {{-- <th class="px-6 py-3">Categoria Padre</th> --}}
+                        <th class="px-6 py-3">Categoria Padre</th>
                         <th class="px-6 py-3">Descripción</th>
                         <th class="px-6 py-3">Status</th>
                         <th class="px-6 py-3"></th>
@@ -113,11 +113,17 @@
                             <td class="px-6 py-4 text-center"> {{$categoria->id}} </td>
                             <td class="px-6 py-4"> <img class="w-8 h-8 rounded-xl mx-auto" src="/storage/{{$categoria->photo}}" alt=""> </td>
                             <td class="px-6 py-4"> {{$categoria->category}} </td>
-                            {{-- <td class="px-6 py-4" wire:init="category_father({{$categoria->id}})">  </td> --}}
+                            <td class="px-6 py-4 font-semibold">
+                                @if ( $categoria->padre_id == 0 )
+                                    <span class="text-green-500">Categoria Principal</span>
+                                @else
+                                    {{ $categoria->categoy_father()->category }}
+                                @endif
+                            </td>
                             <td class="px-6 py-4"> {{$categoria->description}} </td>
                             <td class="px-6 py-4"> <span class="rounded-full bg-green-300 text-green-700 px-2 py-1">{{$categoria->status}}</span> </td>
                             <td class="px-6 py-4 text-center">
-                                <button @click="open= true" wire:click="edit({{$categoria}})" class="rounded-3xl bg-blue-500 p-2">
+                                <button @click="open= true" wire:click="edit( {{ $categoria }} )" class="rounded-3xl bg-blue-500 p-2">
                                     <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24" ><path d="M0 0h24v24H0z" fill="none"/><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
                                 </button>
                                 <button wire:click="destroy({{$categoria}})" class="rounded-3xl bg-red-500 p-2">

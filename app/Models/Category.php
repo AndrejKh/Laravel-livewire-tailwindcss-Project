@@ -38,8 +38,8 @@ class Category extends Model
     }
 
     //Relacion uno a uno, en misma tabla
-    public function categoy_father($padre_id){
-        $category_father=Category::where('padre_id',$padre_id)->first();
+    public function categoy_father(){
+        $category_father = Category::where('id',$this->padre_id)->first();
         return $category_father;
     }
 
