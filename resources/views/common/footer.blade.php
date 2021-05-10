@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="col-span-4 sm:col-span-2 mb-5 sm:mb-0">
-            <div class="text-green-500 text-center md:text-left text-lg mb-5">
+            <div class="text-green-500 text-center md:text-left text-lg mb-4">
                 Sitemap
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
