@@ -39,6 +39,8 @@
                 {{ $slot }}
             </main>
 
+
+
             {{-- Verifico si estoy en el administrador, no deberia verse el carrito aqui --}}
             @php
                 $ruta = Route::currentRouteName();
@@ -53,5 +55,6 @@
         @stack('modals')
 
         @livewireScripts
+        @include('common.footer')
     </body>
 </html>

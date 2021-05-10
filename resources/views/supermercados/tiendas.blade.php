@@ -1,8 +1,8 @@
 <x-app-layout>
 
-    @include('components.categories_menu')
+    {{-- @include('components.categories_menu') --}}
 
-    @include('home.carousel_banners')
+    @include('home.sections.carousel_banners')
 
     <div class="flex justify-center mt-3">
         <div class="max-w-7xl w-full">
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    @include('home.carousel_categories_card_details')
+    @include('home.sections.carousel_categories_card_details')
 
 
 </x-app-layout>
