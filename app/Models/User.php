@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Jenssegers\Date\Date;
 
 class User extends Authenticatable
 {
@@ -60,6 +61,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getCreatedAtAttribute($date){
+        return new Date($date);
+    }
+
+    public function getUpdatedAtAttribute($date){
+        return new Date($date);
+    }
 
     //Relacion uno a muchos inversa
     public function state(){

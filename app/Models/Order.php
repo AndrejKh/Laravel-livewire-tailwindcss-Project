@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 
 class Order extends Model
 {
     use HasFactory;
+    // use DatesTranslator;
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +19,14 @@ class Order extends Model
     protected $fillable = [
         'brand_id','user_id','amount','status','seller_status','buyer_status'
     ];
+
+    public function getCreatedAtAttribute($date){
+        return new Date($date);
+    }
+
+    public function getUpdatedAtAttribute($date){
+        return new Date($date);
+    }
 
     //Relacion uno a muchos Inversa
     public function user()

@@ -1,6 +1,16 @@
-<div class="col-span-1 grid grid-cols-6 bg-white rounded-md shadow-sm p-2">
+<div class="col-span-1 grid grid-cols-6 bg-white rounded-md shadow-sm p-2 md:px-3">
     <div class="col-span-4">
-        <h4 class="text-md font-semibold text-gray-900 titleBrand">{{ $order->user->name }}</h4>
+        <div>
+            <h4 class="text-md md:text-lg lg:text-xl font-semibold text-gray-900 md:inline titleBrand">
+                {{ ucwords($order->user->name) }}
+            </h4>
+            <span class="hidden md:inline text-gray-600 text-sm">
+                - {{ ucwords($order->created_at->format('l')) }}
+                {{ $order->created_at->format("j \d\\e") }}
+                {{ ucwords($order->created_at->format('F,')) }}
+                {{ $order->created_at->format("Y. g:i a") }}
+            </span>
+        </div>
         <span class="text-sm font-light text-gray-900">
             @php $quantityTotal = 0; @endphp
             @foreach ($order->products_purchase as $products)
@@ -14,7 +24,7 @@
 
     </div>
     <div class="col-span-2 text-right">
-        <h2 class="text-xl font-bold text-gray-900"> {{ number_format($order->amount, 2, '.', ',') }} $ </h2>
+        <h2 class="text-xl font-bold text-gray-900"> {{ number_format($order->amount, 2, '.', ',') }} $<span class="hidden md:inline">USD</span> </h2>
         <span class="spanStatusCompra">
         @switch($order->status)
 

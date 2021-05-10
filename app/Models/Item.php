@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 
 class Item extends Model
 {
@@ -17,6 +18,14 @@ class Item extends Model
     protected $fillable = [
         'product_id','brand_id','quantity','price','status'
     ];
+
+    public function getCreatedAtAttribute($date){
+        return new Date($date);
+    }
+
+    public function getUpdatedAtAttribute($date){
+        return new Date($date);
+    }
 
     //Relacion uno a muchos Inversa
     public function brand(){

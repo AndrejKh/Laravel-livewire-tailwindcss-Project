@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+
 use App\Models\Brand;
 use App\Models\Order;
 use Livewire\Component;
@@ -12,6 +13,7 @@ class SalesComponent extends Component
 
     //ahora uso la clase dentro del componente y listo!
     use WithPagination;
+
 
     protected $queryString = ['status' => ['except' => 'active'], 'search' => ['except' => ''], 'perPage'  => ['except' => '10']];
 

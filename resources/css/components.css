@@ -7,9 +7,7 @@
 .form-control:focus{
     @apply bg-white outline-none border-gray-300;
 }
-.btn-primary{
-    @apply block bg-green-400 text-white py-1 text-center text-lg rounded-lg shadow-md mt-3 cursor-pointer;
-}
+
 .btn-delete{
     @apply bg-red-500 text-white font-bold px-4 py-2 rounded w-full hover:bg-red-700 shadow;
 }
@@ -19,4 +17,12 @@
 }
 .span_link_aside_navbar{
     @apply pb-1 md:pb-0 text-xs md:text-base text-gray-900 block md:inline-block;
+}
+
+/* Usados */
+.btn-primary{
+    @apply bg-green-500 rounded-md px-5 py-2 md:py-3 text-lg font-semibold shadow-sm w-full text-center hover:bg-green-800 text-white;
+}
+.select_filter_cms{
+    @apply text-xs md:text-sm bg-white rounded-md shadow-md border-0 w-full cursor-pointer;
 }

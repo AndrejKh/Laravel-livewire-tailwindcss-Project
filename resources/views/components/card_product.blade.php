@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="px-2 pb-2 md:pb-4 flex justify-center">
-        <a class="bg-green-600 rounded-md px-5 py-2 md:py-3 text-lg font-semibold shadow-sm w-full text-center hover:bg-green-800 text-white" href="{{route('products.details.show', $product->slug)}}">
+        <a class="btn-primary" href="{{route('products.details.show', $product->slug)}}">
           Ver precios
         </a>
     </div>

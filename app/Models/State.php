@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 
 class State extends Model
 {
@@ -17,6 +18,14 @@ class State extends Model
     protected $fillable = [
         'state','code','status'
     ];
+
+    public function getCreatedAtAttribute($date){
+        return new Date($date);
+    }
+
+    public function getUpdatedAtAttribute($date){
+        return new Date($date);
+    }
 
 
     //Relacion uno a muchos

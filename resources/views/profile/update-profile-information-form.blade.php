@@ -54,7 +54,12 @@
 
             <!-- Name -->
             <div class="col-span-3 row-span-1 sm:col-span-3 sm:row-span-1 ">
+                @role('buyer')
                 <x-jet-label for="name" value="{{ __('Name') }}" />
+                @endrole
+                @role('seller')
+                <x-jet-label for="name" value="{{ __('Razón Social') }}" />
+                @endrole
                 <x-jet-input id="name" type="text" class="mt-1 block w-full bg-gray-100" wire:model.defer="state.name" autocomplete="name" disabled />
                 <x-jet-input-error for="name" class="mt-2" />
             </div>
@@ -74,9 +79,11 @@
                         <div class="absolute inset-y-0 left-0 flex items-center">
                             <label for="type_identity" class="sr-only">Tipo de documento</label>
                             <select id="type_identity" name="type_identity" class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md" wire:model.defer="state.type_identity">
+                                @role('buyer')
                                 <option value="ci.">C.I.</option>
-                                <option value="rif">RIF</option>
                                 <option value="passport">Pasaporte</option>
+                                @endrole
+                                <option value="rif">RIF</option>
                             </select>
                         </div>
                         <x-jet-input id="doc_identity" class="block mt-1 w-full pl-28" type="text" name="doc_identity"  wire:model.defer="state.doc_identity" />

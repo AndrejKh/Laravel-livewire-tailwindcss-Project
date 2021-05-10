@@ -5,6 +5,7 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 
 class Category extends Model
 {
@@ -26,6 +27,14 @@ class Category extends Model
                 'source' => 'category'
             ]
         ];
+    }
+
+    public function getCreatedAtAttribute($date){
+        return new Date($date);
+    }
+
+    public function getUpdatedAtAttribute($date){
+        return new Date($date);
     }
 
     //Relacion uno a uno, en misma tabla

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 
 class Image extends Model
 {
@@ -17,6 +18,14 @@ class Image extends Model
     protected $fillable = [
         'image','status'
     ];
+
+    public function getCreatedAtAttribute($date){
+        return new Date($date);
+    }
+
+    public function getUpdatedAtAttribute($date){
+        return new Date($date);
+    }
 
     //Relacion uno a muchos Inversa
     public function product(){

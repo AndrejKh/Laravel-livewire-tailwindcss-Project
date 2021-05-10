@@ -4,6 +4,7 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 
 class Brand extends Model
 {
@@ -25,6 +26,14 @@ class Brand extends Model
                 'source' => 'brand'
             ]
         ];
+    }
+
+    public function getCreatedAtAttribute($date){
+        return new Date($date);
+    }
+
+    public function getUpdatedAtAttribute($date){
+        return new Date($date);
     }
 
     //Relacion uno a muchos

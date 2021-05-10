@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="col-span-1 justify-self-end	self-center w-full">
-        <select class="text-xs md:text-sm bg-white rounded-md shadow-md border-0 py-auto w-full" wire:model="status">
+        <select class="select_filter_cms" wire:model="status">
             <option value="">Todos</option>
             <option value="active">Activos</option>
             <option value="paused">Pausados</option>

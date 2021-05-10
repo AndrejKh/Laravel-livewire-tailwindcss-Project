@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 
 class RatingsSeller extends Model
 {
@@ -16,6 +17,14 @@ class RatingsSeller extends Model
     protected $fillable = [
         'comment','rating','status', 'order_id', 'brand_id', 'user_id'
     ];
+
+    public function getCreatedAtAttribute($date){
+        return new Date($date);
+    }
+
+    public function getUpdatedAtAttribute($date){
+        return new Date($date);
+    }
 
     //Relacion para calcualr el rating total de un comprador
     public function rating_total($id_user){
