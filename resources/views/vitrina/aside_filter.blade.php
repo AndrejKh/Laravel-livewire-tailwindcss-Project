@@ -3,6 +3,7 @@
     <hr>
     <ul class="mt-6">
         {{-- categorias --}}
+        @if ( count($principal_categories) > 0 )
         <li class="mb-8">
             <h3 class="font-bold text-gray-900 text-lg mb-1"> Categorias </h3>
 
@@ -27,6 +28,7 @@
                     </div>
                 </div>
             @endforeach
+
             {{-- Modelo de categorias hijos --}}
             <div hidden id="modelCategoryChild">
                 <div class="col-span-1 my-1 text-sm pl-1">
@@ -45,6 +47,7 @@
             </div>
         </li>
         <hr>
+        @endif
 
         {{-- estaods --}}
         <li class=" mb-8">
