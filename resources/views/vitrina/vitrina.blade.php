@@ -95,7 +95,7 @@
                 {{-- {!! $products->links() !!} --}}
             </div>
 
-            @include('home.carousel_categories_card_details')
+            {{-- @include('home.carousel_categories_card_details') --}}
 
         </div>
     </div>

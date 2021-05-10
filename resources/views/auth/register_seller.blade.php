@@ -45,7 +45,7 @@
             <div class="mt-4">
                 <x-jet-label for="state" value="Estado" />
                 {{-- <label for="country" class="block text-sm font-medium text-gray-700">Country / Region</label> --}}
-                <select id="state" name="state_id" autocomplete="state" onchange="select()" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <select id="state" name="state_id" autocomplete="state" onchange="select()" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200 focus:ring-opacity-50 focus:border-gray-300 sm:text-sm">
                     @foreach ($estados as $estado)
                         <option value="{{$estado->id}}"> {{$estado->state}} </option>
                     @endforeach

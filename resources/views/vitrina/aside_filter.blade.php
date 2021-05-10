@@ -1,5 +1,5 @@
 {{-- Filtro lateral - PC --}}
-<div class="py-6 w-48 h-screen">
+<div class="mt-6 mb-10 w-48 h-screen">
     <hr>
     <ul class="mt-6">
         {{-- categorias --}}
@@ -71,7 +71,7 @@
         <hr>
 
         {{-- Ciudades --}}
-        <li class=" mb-8" id="listCitiesFilter" style="display:none;">
+        <li class="" id="listCitiesFilter" style="display:none;">
             <h3 class="font-bold text-gray-900 text-lg mb-1"> Ciudades </h3>
 
             <div class="w-full" id="badgeCitySelected" style="display:none;">
@@ -92,7 +92,6 @@
             </div>
 
         </li>
-        <hr>
 
         <div id="modelStateAndCity">
             <div class="text-gray-700 font-semibold my-1 text-md">
