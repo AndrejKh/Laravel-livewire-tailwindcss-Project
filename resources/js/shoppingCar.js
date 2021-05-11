@@ -437,7 +437,6 @@ function updateTotalProductsShoppingCar(arrayProductsLocalStorage){
 
 
 // Al cargar el sitio web
-
 $(window).on('load', function () {
     // Obtengo los productos del local storage
     ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
@@ -484,4 +483,24 @@ function shownHideCompareFloatButton(arrayProductsLocalStorage){
     }
 }
 
+
+// Oculto el modal al dar click afuera de el
+$(document).on("click",function(e) {
+    const contentModalShopinngCar = document.getElementById('contentModalShopinngCar');
+    const modalShoppingCar = document.getElementById('modalShoppingCar');
+
+    // Verifico si el elemento al q se le dio click esta fuera del modal
+    // Debe ser distinto ademas del boton q hace mostrar el modal
+    let band = 0;
+    // verifico se se dio click para abrir el modal
+    document.querySelectorAll('.shoppingCarButtonOpenModal').forEach(item => {
+        if(item.contains(e.target)){
+            band = 1;
+        }
+    });
+    // verifico si se dio click fuera del modal
+    if( !contentModalShopinngCar.contains(e.target) && !band){
+            modalShoppingCar.style.display = 'none';
+    }
+})
 

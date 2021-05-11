@@ -22,7 +22,7 @@
                 5kg.
         </div>
     </div>
-    <div class="px-2 pb-2 md:pb-4 flex justify-center">
+    <div class="px-2 pb-2 flex justify-center">
         <a class="btn-primary" href="{{route('products.details.show', $product->slug)}}">
           Ver precios
         </a>

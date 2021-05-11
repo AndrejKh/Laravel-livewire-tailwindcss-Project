@@ -11,7 +11,7 @@
                 <div>
                     <h3 class="text-lg text-green-600 mt-3">Bienvenido a Kabasto!</h3>
                     @role('buyer')
-                    <span class="text-sm text-gray-600">Aquí encontrarás la mejor opción para la compra de tu comida </span>
+                    <span class="text-sm text-gray-600">Aquí encontrarás las mejores opciones para la compra de tu mercado </span>
                     @endrole
                     @role('seller')
                     <span class="text-sm text-gray-600">La mejor plataforma para mostrar y vender tus productos </span>

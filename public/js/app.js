@@ -4248,7 +4248,26 @@ function shownHideCompareFloatButton(arrayProductsLocalStorage) {
     compareFloatButton.classList.remove("hiddeButton");
     compareFloatButton.classList.add("shownButton"); // compareFloatButton.classList.replace("hiddeButton", "shownButton");
   }
-}
+} // Oculto el modal al dar click afuera de el
+
+
+$(document).on("click", function (e) {
+  var contentModalShopinngCar = document.getElementById('contentModalShopinngCar');
+  var modalShoppingCar = document.getElementById('modalShoppingCar'); // Verifico si el elemento al q se le dio click esta fuera del modal
+  // Debe ser distinto ademas del boton q hace mostrar el modal
+
+  var band = 0; // verifico se se dio click para abrir el modal
+
+  document.querySelectorAll('.shoppingCarButtonOpenModal').forEach(function (item) {
+    if (item.contains(e.target)) {
+      band = 1;
+    }
+  }); // verifico si se dio click fuera del modal
+
+  if (!contentModalShopinngCar.contains(e.target) && !band) {
+    modalShoppingCar.style.display = 'none';
+  }
+});
 
 /***/ }),
 

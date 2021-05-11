@@ -326,22 +326,6 @@
             </x-slot>
         </x-jet-dialog-modal>
 
-        {{-- Script para cambiar mensaje de 'Delivery gratis' o 'Precio del delivery' en Modal --}}
-        <script>
-            // const delivery_free = document.getElementById('delivery_free');
-            // const label_amount = document.getElementById('label_amount');
-
-            // label_amount.textContent = '¿Cúal es el monto minimo para hacer delivery?';
-
-            // delivery_free.addEventListener('change', event => {
-            //     if (event.target.value == 0) {
-            //         label_amount.textContent = '¿Cúal es el precio del delivery?';
-            //     }else{
-            //         label_amount.textContent = '¿Cúal es el monto minimo para hacer delivery?';
-            //     }
-            // })
-
-        </script>
     @endif
 
     @include('common.alert')

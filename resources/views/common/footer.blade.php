@@ -25,10 +25,10 @@
                 <a href="{{ route('brands.show') }}">Supermercados y abastos</a>
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('products.show') }}">Productos</a>
+                <a href="{{ route('categorias') }}">Categorias</a>
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('categorias') }}">Categorias</a>
+                <a href="{{ route('products.show') }}">Productos</a>
             </div>
         </div>
         <div class="col-span-4 sm:col-span-2">

@@ -1,4 +1,4 @@
-<div class="fixed z-40 inset-0 overflow-y-auto ease-out duration-400" style="display:none;" id="modalShoppingCar">
+<div class="fixed z-40 inset-0 overflow-y-auto ease-out duration-400 " style="display:none;" id="modalShoppingCar">
 
     <div class="flex md:items-end justify-center min-h-screen md:pt-4 md:px-4 pb-20 text-center sm:block sm:p-0">
 
@@ -11,7 +11,7 @@
 
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
 
-      <div class="max-w-7xl w-full lg:max-w-4xl inline-block align-bottom md:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle bg-gray-100" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+      <div class="max-w-7xl w-full lg:max-w-4xl inline-block align-bottom md:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle bg-gray-100" role="dialog" aria-modal="true" aria-labelledby="modal-headline" id="contentModalShopinngCar">
 
         <div class="grid grid-cols-5 px-3 py-5">
             <h5 class="col-span-4 text-xl font-bold text-gray-900">Carrito de compras</h5>

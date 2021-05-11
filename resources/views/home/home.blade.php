@@ -2,28 +2,25 @@
 
     {{-- @include('components.categories_menu') --}}
 
+    {{-- Carousel principal --}}
     @include('home.sections.carousel_banners')
 
+    {{-- Banners promocionales --}}
     @include('home.sections.banners_promotionals')
 
+    {{-- Carousel productos 'mas comprados' --}}
     @include('home.sections.products_carousel')
 
+    {{-- Call To Action a registrarse --}}
     @include('home.sections.cta_login')
 
+    {{-- Categorias cards sencillas --}}
     @include('components.carousel_categories_banners')
 
-    @include('home.sections.carousel_items_first')
+    {{-- Carousel de productos de las categorias --}}
+    @include('home.sections.carousel_products')
 
-    @include('home.sections.carousel_items_second')
-
-    @include('home.sections.carousel_items_third')
-
+    {{-- Categorias cads con detalle --}}
     @include('home.sections.carousel_categories_card_details')
-
-    @include('home.sections.carousel_items_fourth')
-
-    @include('home.sections.carousel_items_five')
-
-{{-- @include('components.carousel_categories_card')  --}}
 
 </x-app-layout>

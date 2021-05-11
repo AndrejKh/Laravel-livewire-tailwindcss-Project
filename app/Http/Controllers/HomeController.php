@@ -35,7 +35,9 @@ class HomeController extends Controller
         $carousel_items_five = Product::latest('id')->where('status', 'active')->where('category_id', '5')->get();
         $brands = Brand::latest('id')->where('status', 'active')->get();
 
-        return view('home.home', compact('carousel_banners','principal_categories','products','brands', 'banners_promotionals', 'carousel_items_first', 'carousel_items_second', 'carousel_items_third', 'carousel_items_fourth', 'carousel_items_five'));
+        $categories = Category::inRandomOrder()->where('status', 'active')->where('padre_id', 0)->take(5)->get();
+
+        return view('home.home', compact('carousel_banners', 'categories', 'principal_categories','products','brands', 'banners_promotionals', 'carousel_items_first', 'carousel_items_second', 'carousel_items_third', 'carousel_items_fourth', 'carousel_items_five'));
     }
 
     // Vitirna de productos, controlador del input search del navbar

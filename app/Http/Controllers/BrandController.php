@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
-use App\Models\Order;
 use Illuminate\Support\Facades\DB;
 
 class BrandController extends Controller
 {
     // Obtengo las marcas dependiendo del estado
+    // Estas marcas son las q tienen delivery a ese estado, y las marcas que su direccion es ese estado
     public function getBrandsByStateId($state_id){
-        $brands = DB::table('states')
+        $brandsWithDeliveryInState = DB::table('states')
         ->join('deliveries', 'states.id', '=', 'deliveries.state_id')
         ->join('brands', 'deliveries.brand_id', '=', 'brands.id')
         ->where('brands.status', 'active')
@@ -18,18 +18,27 @@ class BrandController extends Controller
         ->select('brands.*', 'states.state')
         ->get();
 
+        $brandsInState = Brand::where('status', 'active')->where('state_id', $state_id)->get();
+
+        $brands = $brandsWithDeliveryInState->merge($brandsInState);
+
         return $this->noDuplicatedArray($brands);
     }
 
     // Obtengo las marcas dependiendo de la ciudad
+    // Estas marcas son las q tienen delivery a esa ciudad, y las marcas que su direccion es esa ciudad
     public function getBrandsByCityId($city_id){
-        $brands = DB::table('cities')
+        $brandsWithDeliveryInCity = DB::table('cities')
         ->join('deliveries', 'cities.id', '=', 'deliveries.city_id')
         ->join('brands', 'deliveries.brand_id', '=', 'brands.id')
         ->where('brands.status', 'active')
         ->where('cities.id', $city_id)
         ->select('brands.*', 'cities.city')
         ->get();
+
+        $brandsInCity = Brand::where('status', 'active')->where('city_id', $city_id)->get();
+
+        $brands = $brandsWithDeliveryInCity->merge($brandsInCity);
 
         return $this->noDuplicatedArray($brands);
     }

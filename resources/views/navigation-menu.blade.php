@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-green-400 border-b border-gray-100 shadow">
+<nav x-data="{ open: false }" class="bg-green-400 shadow">
     <!-- Primary Navigation Menu -->
     <div class="max-w-screen-2xl mx-auto px-4 md:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -194,7 +194,7 @@
                     Inicio
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('brands.show') }}" :active="request()->routeIs('brands.show')">
-                    Supermercados
+                    Supermercados y abastos
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('categorias') }}" :active="request()->routeIs('categorias')">
                     Categorías
