@@ -125,8 +125,14 @@
         </div>
 
         {{-- botones --}}
-        <div class="grid grid-cols-1 lg:grid-cols-5 gap-2 mt-3">
-            @role('buyer')
+        @role('seller')
+            <div class="flex mt-3">
+                <div class="text-xl text-red-700 font-semibold">
+                    No puedes comprar, debes tener una cuenta normal.
+                </div>
+            </div>
+        @else
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-2 mt-3">
                 <div class="hidden lg:block lg:col-span-2 w-full">
                     <a class="rounded-md shadow-sm py-2 w-full block text-center bg-white text-red-600 border-red-600" href="{{ route('home') }}">
                         Cancelar
@@ -143,17 +149,10 @@
                         Cancelar
                     </a>
                 </div>
-            @endrole
-            @role('seller')
-                <div class="col-span-5 text-xl text-red-700 font-semibold">
-                    No puedes comprar, debes tener una cuenta normal.
-                </div>
-            @endrole
-        </div>
-        @role('buyer')
-        <span class="text-sm text-gray-600">*Debes seleccionar un supermercado para poder continuar con tu compra</span>
+            </div>
+            <span class="text-sm text-gray-600 mt-2">*Debes seleccionar un supermercado para poder continuar con tu compra</span>
         @endrole
-    </div>
+        </div>
     </div>
 
     {{-- Script al momento de cargar la pagina --}}
@@ -574,7 +573,7 @@
                                             // Agrego el boton para seleccionar el supermercado
                                             let buttonSelectBrand = document.createElement("div");
                                             buttonSelectBrand.textContent = 'Seleccionar supermercado';
-                                            buttonSelectBrand.classList.add("btn-primary", "h-10", "col-span-1", "md:col-span-2");
+                                            buttonSelectBrand.classList.add("btn-primary-sm", "col-span-1", "md:col-span-2");
                                             // Agrego el card del item
                                             containerItemsBrand.appendChild(buttonSelectBrand);
 
@@ -803,7 +802,7 @@
                                             // Agrego el boton para seleccionar el supermercado
                                             let buttonSelectBrand = document.createElement("div");
                                             buttonSelectBrand.textContent = 'Seleccionar supermercado';
-                                            buttonSelectBrand.classList.add("btn-primary", "h-10", "col-span-1", "md:col-span-2");
+                                            buttonSelectBrand.classList.add("btn-primary-sm", "col-span-1", "md:col-span-2");
                                             // Agrego el card del item
                                             containerItemsBrand.appendChild(buttonSelectBrand);
 

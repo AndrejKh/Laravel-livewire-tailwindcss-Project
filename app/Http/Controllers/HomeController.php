@@ -208,7 +208,7 @@ class HomeController extends Controller
     //Metodo que devulve la vista del detalle del producto
     public function productShow(Request $request){
         $product = Product::where('status', 'active')->where('slug', $request->slug)->first();
-        $items = Item::where('status','active')->where('product_id',$request->id)->get();
+        $items = Item::where('status','active')->where('product_id',$product->id)->get();
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(9)->get();
 
         return view('vitrina.product_detail', compact('principal_categories','product','items'));

@@ -4200,16 +4200,25 @@ function updateTotalProductsShoppingCar(arrayProductsLocalStorage) {
   var badgeIconShoppingCarNavbar = document.getElementById('badgeIconShoppingCarNavbar');
   var quantityTotal = 0;
 
-  if (arrayProductsLocalStorage.length == 0) {
-    spanQuantityFloatButtonShoppingCard.style.display = 'none';
-    badgeIconShoppingCarNavbar.style.display = 'none';
-  } else {
-    arrayProductsLocalStorage.forEach(function (product) {
-      quantityTotal += product.quantity;
-    });
-    spanQuantityFloatButtonShoppingCard.style.display = 'flex';
-    spanQuantityFloatButtonShoppingCard.lastElementChild.textContent = quantityTotal;
-    badgeIconShoppingCarNavbar.style.display = 'block';
+  if (arrayProductsLocalStorage !== null) {
+    if (arrayProductsLocalStorage.length == 0) {
+      if (spanQuantityFloatButtonShoppingCard !== null) {
+        spanQuantityFloatButtonShoppingCard.style.display = 'none';
+      }
+
+      badgeIconShoppingCarNavbar.style.display = 'none';
+    } else {
+      arrayProductsLocalStorage.forEach(function (product) {
+        quantityTotal += product.quantity;
+      });
+
+      if (spanQuantityFloatButtonShoppingCard !== null) {
+        spanQuantityFloatButtonShoppingCard.style.display = 'flex';
+      }
+
+      spanQuantityFloatButtonShoppingCard.lastElementChild.textContent = quantityTotal;
+      badgeIconShoppingCarNavbar.style.display = 'block';
+    }
   }
 } // Al cargar el sitio web
 
@@ -4219,10 +4228,13 @@ $(window).on('load', function () {
   ProductsLocalStorage = localStorage.getItem('productsShoppingCar'); // Transformo el string a array
 
   arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
-  var compareFloatButton = document.getElementById('compareFloatButton'); // Hay elementos en el carrito de compras?
+  var compareFloatButton = document.getElementById('compareFloatButton');
 
-  if (arrayProductsLocalStorage.length > 0) {
-    compareFloatButton.classList.add("shownButton");
+  if (ProductsLocalStorage !== null) {
+    // Hay elementos en el carrito de compras?
+    if (arrayProductsLocalStorage.length > 0) {
+      compareFloatButton.classList.add("shownButton");
+    }
   } // Muestro el span de carrito de compras
 
 

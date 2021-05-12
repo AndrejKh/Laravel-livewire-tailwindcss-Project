@@ -21,7 +21,10 @@
 
 /* Usados */
 .btn-primary{
-    @apply bg-green-500 rounded-md px-5 py-2 md:py-3 text-lg font-semibold shadow-sm w-full text-center hover:bg-green-800 text-white;
+    @apply bg-green-500 rounded-md px-5 py-2 md:py-3 text-lg font-semibold shadow-sm w-full text-center hover:bg-green-800 text-white cursor-pointer;
+}
+.btn-primary-sm{
+    @apply bg-green-500 rounded-md px-5 py-2 font-semibold shadow-sm w-full text-center hover:bg-green-800 text-white cursor-pointer;
 }
 .select_filter_cms{
     @apply text-xs md:text-sm bg-white rounded-md shadow-md border-0 w-full cursor-pointer;

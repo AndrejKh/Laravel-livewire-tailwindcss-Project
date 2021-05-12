@@ -19,7 +19,6 @@ class SalesComponent extends Component
 
     public $sale, $confirmSale, $saleToRating, $products, $user_id, $message_alert, $color_alert;
 
-
     public $brand_id = '';
     public $search = '';
     public $status = '';
@@ -106,8 +105,6 @@ class SalesComponent extends Component
             ]);
         }
 
-        $this->saleToRating = $order;
-
         //reinicio las propiedades
         $this->cancel();
         $this->show_alert = 'true';
@@ -115,6 +112,7 @@ class SalesComponent extends Component
         $this->message_alert = 'Venta entregada exitosamente!';
         $this->modalRating = true;
 
+        $this->saleToRating = $order;
     }
 
     public function setRatingSale(Order $order){
@@ -123,7 +121,7 @@ class SalesComponent extends Component
     }
 
     public function cancel(){
-        $this->reset(['sale', 'products', 'modalDetailSales', 'modalConfirmSale', 'modalCancelSales', 'modalRating', 'show_alert', 'message_alert', 'color_alert']);
+        $this->reset(['sale', 'products', 'modalDetailSales', 'modalConfirmSale', 'modalCancelSales', 'modalRating', 'saleToRating', 'show_alert', 'message_alert', 'color_alert']);
     }
 
 }

@@ -419,18 +419,27 @@ function updateTotalProductsShoppingCar(arrayProductsLocalStorage){
     const badgeIconShoppingCarNavbar = document.getElementById('badgeIconShoppingCarNavbar');
     let quantityTotal = 0;
 
-    if(arrayProductsLocalStorage.length == 0 ){
-        spanQuantityFloatButtonShoppingCard.style.display = 'none';
-        badgeIconShoppingCarNavbar.style.display = 'none';
+    if( arrayProductsLocalStorage !== null ){
 
-    }else{
-        arrayProductsLocalStorage.forEach(product => {
-            quantityTotal += product.quantity;
-        });
+        if(arrayProductsLocalStorage.length == 0 ){
+            if(spanQuantityFloatButtonShoppingCard !== null){
+                spanQuantityFloatButtonShoppingCard.style.display = 'none';
+            }
+            badgeIconShoppingCarNavbar.style.display = 'none';
 
-        spanQuantityFloatButtonShoppingCard.style.display = 'flex';
-        spanQuantityFloatButtonShoppingCard.lastElementChild.textContent = quantityTotal;
-        badgeIconShoppingCarNavbar.style.display = 'block';
+        }else{
+            arrayProductsLocalStorage.forEach(product => {
+                quantityTotal += product.quantity;
+            });
+
+            if(spanQuantityFloatButtonShoppingCard !== null){
+
+                spanQuantityFloatButtonShoppingCard.style.display = 'flex';
+            }
+            spanQuantityFloatButtonShoppingCard.lastElementChild.textContent = quantityTotal;
+            badgeIconShoppingCarNavbar.style.display = 'block';
+        }
+
     }
 
 }
@@ -445,9 +454,11 @@ $(window).on('load', function () {
 
     let compareFloatButton = document.getElementById('compareFloatButton');
 
-    // Hay elementos en el carrito de compras?
-    if(arrayProductsLocalStorage.length > 0) {
-        compareFloatButton.classList.add("shownButton");
+    if( ProductsLocalStorage !== null){
+        // Hay elementos en el carrito de compras?
+        if(arrayProductsLocalStorage.length > 0) {
+            compareFloatButton.classList.add("shownButton");
+        }
     }
 
     // Muestro el span de carrito de compras

@@ -216,6 +216,24 @@
             </div>
             </div>
         </div>
+
+        {{-- script para ocultar o mostrar el boton de confirmar entrega de productos --}}
+        <script>
+            const confirmSale = document.getElementById('confirmSale');
+            const disabledButtonConfirmSale = document.getElementById('disabledButtonConfirmSale');
+            const ableButtonConfirmSale = document.getElementById('ableButtonConfirmSale');
+
+
+            confirmSale.addEventListener('change', event => {
+                if(event.target.checked){
+                    disabledButtonConfirmSale.classList.replace("block","hidden");
+                    ableButtonConfirmSale.classList.replace("hidden","block");
+                } else{
+                    disabledButtonConfirmSale.classList.replace("hidden","block");
+                    ableButtonConfirmSale.classList.replace("block","hidden");
+                }
+            })
+        </script>
     @endif
 
     {{-- Modal para calificar la venta --}}
@@ -235,7 +253,7 @@
                 <div class="grid grid-cols-5 px-3 py-5">
                     <h5 class="col-span-4 text-xl font-bold text-gray-900">Calificar al cliente</h5>
                     <span class="justify-self-end">
-                        <svg class="cursor-pointer" width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg" wire:click="$set('modalRating', false)" id="closeButtonModalRating">
+                        <svg class="cursor-pointer" width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg" wire:click="cancel()" id="closeButtonModalRating">
                             <path d="M12.639 11.0735L23.3484 0.993304C23.5898 0.766088 23.5898 0.3977 23.3484 0.170484C23.1069 -0.0567312 22.7156 -0.0567312 22.4741 0.170484L11.7648 10.2506L1.05536 0.170412C0.813966 -0.0568039 0.422582 -0.0568039 0.181184 0.170412C-0.0602917 0.397627 -0.0602917 0.766016 0.181184 0.993231L10.8905 11.0735L0.181107 21.1537C-0.0603689 21.3809 -0.0603689 21.7493 0.181107 21.9766C0.301806 22.0902 0.459982 22.147 0.618236 22.147C0.776489 22.147 0.934665 22.0902 1.05536 21.9766L11.7648 11.8964L22.4741 21.9766C22.5949 22.0902 22.753 22.147 22.9113 22.147C23.0695 22.147 23.2277 22.0902 23.3484 21.9766C23.5898 21.7493 23.5898 21.3809 23.3484 21.1537L12.639 11.0735Z" fill="black"/>
                         </svg>
                     </span>
@@ -291,13 +309,178 @@
                 </div>
 
                 <div class="mt-4 px-4 mb-6">
-                    <button class="w-full rounded-md shadow py-2 mb-3 text-md bg-green-500 text-white" wire:click="" id="confirmarRating">Confirmar</button>
-                    <button class="w-full rounded-md shadow py-2 text-md bg-white text-red-600" wire:click="$set('modalRating', false)">Calificar más tarde</button>
+                    <button class="w-full rounded-md shadow py-2 mb-3 text-md bg-green-500 text-white" id="confirmarRating">Confirmar</button>
+                    <button class="w-full rounded-md shadow py-2 text-md bg-white text-red-600" wire:click="cancel()">Calificar más tarde</button>
                 </div>
 
             </div>
             </div>
+        {{-- Script para seleccionar las estrella de la calificacion --}}
+        <script>
+            const stars = document.querySelectorAll('.star');
+
+            // Se rellena de Verde la estrella al hacer hover sobre ella
+            stars.forEach(star => {
+                star.addEventListener('mouseover', event => {
+                    const item = event.target;
+                    if ( event.target.nodeName == 'path' ){
+                        var svgStar = item.parentNode;
+                    }else{
+                        var svgStar = item;
+                    }
+
+                    // debo rellenar de verde todas las estrellas anteriores a la actual
+                    const rootContainer = svgStar.parentNode;
+
+                    const svgChildren = rootContainer.querySelectorAll('svg');
+
+                    for (let index = 0; index < svgChildren.length; index++) {
+                        if (svgChildren.item(index) == svgStar) {
+                            svgChildren.item(index).children.item(0).setAttribute("fill", "#2BCB00");
+                            svgChildren.item(index).children.item(1).setAttribute("fill", "#2BCB00");
+                            break;
+                        }else{
+                            svgChildren.item(index).children.item(0).setAttribute("fill", "#2BCB00");
+                            svgChildren.item(index).children.item(1).setAttribute("fill", "#2BCB00");
+                        }
+
+                    }
+
+                })
+            })
+
+            // Se quita el relleno de Verde de la estrella al dejar de hacer hover sobre ella
+            stars.forEach(star => {
+                star.addEventListener('mouseout', event => {
+                    const item = event.target;
+                    if ( event.target.nodeName == 'path' ){
+                        var svgStar = item.parentNode;
+                    }else{
+                        var svgStar = item;
+                    }
+
+                    //obtengo la estrella seleccionada
+                    let starSelected = localStorage.getItem('starSelected');
+                    // Veo si ya se selecciono una estrella via local storage
+                    // en caso de no ser asi, regreso todas las estrellas a sus colores normales
+                    if (starSelected !== null) {
+                        // Paso a formato JSON el string que obtuve del local Storage
+                        const jsonStarSelected = JSON.parse(starSelected);
+
+                        // Ahora Dejo visibles solo las estrellas que se selccionaron
+
+                        const containerStars = document.getElementById('rootContainerStars');
+                        const svgChildren = containerStars.querySelectorAll('svg');
+
+                        let band = 0;
+
+                        for (let index = 0; index < svgChildren.length; index++) {
+
+                            if( band == 1 ){
+
+                                svgChildren.item(index).children.item(0).setAttribute("fill", "#fff");
+                                svgChildren.item(index).children.item(1).setAttribute("fill", "#6B7280");
+
+                            }
+
+                            if (svgChildren.item(index).id == jsonStarSelected.star) {
+                                band = 1;
+                            }
+
+                        }
+
+                    }else{
+
+                        // Oculto todas las estrellas
+                        // debo rellenar de verde todas las estrellas anteriores a la actual
+                        const rootContainer = svgStar.parentNode;
+
+                        const svgChildren = rootContainer.querySelectorAll('svg');
+
+                        for (let index = 0; index < svgChildren.length; index++) {
+                                svgChildren.item(index).children.item(0).setAttribute("fill", "#fff");
+                                svgChildren.item(index).children.item(1).setAttribute("fill", "#6B7280");
+
+                        }
+
+                    }
+
+                })
+            })
+
+            // Guardo en Local Storage la estrella seleccionada
+            stars.forEach(star => {
+                star.addEventListener('click', event => {
+                    const item = event.target;
+                    if ( event.target.nodeName == 'path' ){
+                        var svgStar = item.parentNode;
+                    }else{
+                        var svgStar = item;
+                    }
+
+                    let starSelected = {
+                        star: svgStar.id
+                    };
+                    // Almaceno el producto en el localStorage
+                    localStorage.setItem('starSelected',JSON.stringify(starSelected));
+
+                })
+            })
+
+        </script>
+
+        {{-- Script para enviar la calificacion --}}
+        <script>
+            const confirmarRating = document.getElementById('confirmarRating');
+            confirmarRating.addEventListener('click', event => {
+                const csrf_token = document.getElementById('csrf_token').textContent;
+                // //obtengo la estrella seleccionada
+                const starSelected = localStorage.getItem('starSelected');
+                // Paso a formato JSON el string que obtuve del local Storage
+                const jsonStarSelected = JSON.parse(starSelected);
+
+                const star = jsonStarSelected.star;
+
+                const rating = star.charAt(star.length - 1);
+
+                const comment = document.getElementById('comment').value;
+
+                const brand_id = document.getElementById('brand_id').textContent;
+                const user_id = document.getElementById('user_id').textContent;
+                const order_id = document.getElementById('order_id').textContent;
+
+                const data = {
+                        rating: rating,
+                        comment: comment,
+                        brand_id: brand_id,
+                        user_id: user_id,
+                        order_id: order_id
+                    };
+
+                axios({
+                        method  : 'post',
+                        url : '/post/rating-seller/',
+                        data : data,
+                        headers: {
+                            'content-type': 'text/json',
+                            'X-CSRF-Token': csrf_token
+                            }
+                    })
+                    .then((res)=>{
+                        if(res.data === 'success'){
+                            localStorage.removeItem('starSelected');
+                            const closeButtonModalRating = document.getElementById('closeButtonModalRating');
+                            let click_event = new CustomEvent('click');
+                            closeButtonModalRating.dispatchEvent(click_event);
+                        }
+                    })
+                    .catch((err) => {console.log(err)});
+
+            })
+
+        </script>
         </div>
+
     @endif
 
     {{-- Modal para ver las calificaciones de la venta --}}
@@ -595,196 +778,6 @@
             </x-slot>
         </x-jet-dialog-modal>
     @endif
-
-
-
-    {{-- SCRIPTS --}}
-    @if ($modalRating)
-        {{-- Script para seleccionar las estrella de la calificacion --}}
-        <script>
-            const stars = document.querySelectorAll('.star');
-
-            // Se rellena de Verde la estrella al hacer hover sobre ella
-            stars.forEach(star => {
-                star.addEventListener('mouseover', event => {
-                    const item = event.target;
-                    if ( event.target.nodeName == 'path' ){
-                        var svgStar = item.parentNode;
-                    }else{
-                        var svgStar = item;
-                    }
-
-                    // debo rellenar de verde todas las estrellas anteriores a la actual
-                    const rootContainer = svgStar.parentNode;
-
-                    const svgChildren = rootContainer.querySelectorAll('svg');
-
-                    for (let index = 0; index < svgChildren.length; index++) {
-                        if (svgChildren.item(index) == svgStar) {
-                            svgChildren.item(index).children.item(0).setAttribute("fill", "#2BCB00");
-                            svgChildren.item(index).children.item(1).setAttribute("fill", "#2BCB00");
-                            break;
-                        }else{
-                            svgChildren.item(index).children.item(0).setAttribute("fill", "#2BCB00");
-                            svgChildren.item(index).children.item(1).setAttribute("fill", "#2BCB00");
-                        }
-
-                    }
-
-                })
-            })
-
-            // Se quita el relleno de Verde de la estrella al dejar de hacer hover sobre ella
-            stars.forEach(star => {
-                star.addEventListener('mouseout', event => {
-                    const item = event.target;
-                    if ( event.target.nodeName == 'path' ){
-                        var svgStar = item.parentNode;
-                    }else{
-                        var svgStar = item;
-                    }
-
-                    //obtengo la estrella seleccionada
-                    let starSelected = localStorage.getItem('starSelected');
-                    // Veo si ya se selecciono una estrella via local storage
-                    // en caso de no ser asi, regreso todas las estrellas a sus colores normales
-                    if (starSelected !== null) {
-                        // Paso a formato JSON el string que obtuve del local Storage
-                        const jsonStarSelected = JSON.parse(starSelected);
-
-                        // Ahora Dejo visibles solo las estrellas que se selccionaron
-
-                        const containerStars = document.getElementById('rootContainerStars');
-                        const svgChildren = containerStars.querySelectorAll('svg');
-
-                        let band = 0;
-
-                        for (let index = 0; index < svgChildren.length; index++) {
-
-                            if( band == 1 ){
-
-                                svgChildren.item(index).children.item(0).setAttribute("fill", "#fff");
-                                svgChildren.item(index).children.item(1).setAttribute("fill", "#6B7280");
-
-                            }
-
-                            if (svgChildren.item(index).id == jsonStarSelected.star) {
-                                band = 1;
-                            }
-
-                        }
-
-                    }else{
-
-                        // Oculto todas las estrellas
-                        // debo rellenar de verde todas las estrellas anteriores a la actual
-                        const rootContainer = svgStar.parentNode;
-
-                        const svgChildren = rootContainer.querySelectorAll('svg');
-
-                        for (let index = 0; index < svgChildren.length; index++) {
-                                svgChildren.item(index).children.item(0).setAttribute("fill", "#fff");
-                                svgChildren.item(index).children.item(1).setAttribute("fill", "#6B7280");
-
-                        }
-
-                    }
-
-                })
-            })
-
-            // Guardo en Local Storage la estrella seleccionada
-            stars.forEach(star => {
-                star.addEventListener('click', event => {
-                    const item = event.target;
-                    if ( event.target.nodeName == 'path' ){
-                        var svgStar = item.parentNode;
-                    }else{
-                        var svgStar = item;
-                    }
-
-                    let starSelected = {
-                        star: svgStar.id
-                    };
-                    // Almaceno el producto en el localStorage
-                    localStorage.setItem('starSelected',JSON.stringify(starSelected));
-
-                })
-            })
-
-        </script>
-
-        {{-- Script para enviar la calificacion --}}
-        <script>
-            const confirmarRating = document.getElementById('confirmarRating');
-            confirmarRating.addEventListener('click', event => {
-                const csrf_token = document.getElementById('csrf_token').textContent;
-                // //obtengo la estrella seleccionada
-                const starSelected = localStorage.getItem('starSelected');
-                // Paso a formato JSON el string que obtuve del local Storage
-                const jsonStarSelected = JSON.parse(starSelected);
-
-                const star = jsonStarSelected.star;
-
-                const rating = star.charAt(star.length - 1);
-                console.log(rating)
-
-                const comment = document.getElementById('comment').value;
-
-                const brand_id = document.getElementById('brand_id').textContent;
-                const user_id = document.getElementById('user_id').textContent;
-                const order_id = document.getElementById('order_id').textContent;
-
-                const data = {
-                        rating: rating,
-                        comment: comment,
-                        brand_id: brand_id,
-                        user_id: user_id,
-                        order_id: order_id
-                    };
-
-                axios({
-                        method  : 'post',
-                        url : '/post/rating-seller/',
-                        data : data,
-                        headers: {
-                            'content-type': 'text/json',
-                            'X-CSRF-Token': csrf_token
-                            }
-                    })
-                    .then((res)=>{
-                        console.log(res)
-                        if(res.data === 'success'){
-                            localStorage.removeItem('starSelected');
-                            const closeButtonModalRating = document.getElementById('closeButtonModalRating');
-                            let click_event = new CustomEvent('click');
-                            closeButtonModalRating.dispatchEvent(click_event);
-                        }
-                    })
-                    .catch((err) => {console.log(err)});
-
-            })
-
-        </script>
-    @endif
-
-    {{-- script para ocultar o mostrar el boton de confirmar entrega de productos --}}
-    <script>
-        const confirmSale = document.getElementById('confirmSale');
-        const disabledButtonConfirmSale = document.getElementById('disabledButtonConfirmSale');
-        const ableButtonConfirmSale = document.getElementById('ableButtonConfirmSale');
-
-
-        confirmSale.addEventListener('change', event => {
-            if(event.target.checked){
-                disabledButtonConfirmSale.classList.replace("block","hidden");
-                ableButtonConfirmSale.classList.replace("hidden","block");
-            } else{
-                disabledButtonConfirmSale.classList.replace("hidden","block");
-                ableButtonConfirmSale.classList.replace("block","hidden");
-            }
-        })
-    </script>
 
 
     <script>

@@ -80,7 +80,8 @@
         <p class="text-gray-500 mt-4 md:mt-6 lg:mt-10 text-base md:text-lg">{{ $product->description }}</p>
     </div>
 
-    {{-- @include('home.carousel_categories_card_details') --}}
+    {{-- Categorias cads con detalle --}}
+    @include('home.sections.carousel_categories_card_details')
 
     {{-- Modal para compartir --}}
     <div class="fixed z-40 inset-0 overflow-y-auto ease-out duration-400" style="display:none;" id="shareModal" >

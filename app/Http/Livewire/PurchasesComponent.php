@@ -90,8 +90,6 @@ class PurchasesComponent extends Component
             ]);
         }
 
-        $this->purchaseToRating = $order;
-
         //reinicio las propiedades
         $this->cancel();
         $this->show_alert = 'true';
@@ -99,6 +97,7 @@ class PurchasesComponent extends Component
         $this->message_alert = 'Compra recibida exitosamente!';
         $this->modalRating = true;
 
+        $this->purchaseToRating = $order;
     }
 
     public function setRatingPurchase(Order $order){
