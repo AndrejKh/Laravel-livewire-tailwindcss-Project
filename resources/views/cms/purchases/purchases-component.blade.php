@@ -13,7 +13,7 @@
 
         @foreach ($orders as $order)
 
-            @include('compras.card_compra')
+            @include('cms.purchases.card_compra')
 
         @endforeach
 
@@ -46,19 +46,19 @@
                     @switch($purchase->status)
 
                         @case('active')
-                            <span class="text-xs font-light text-white bg-blue-450 px-4 py-1 rounded-full shadow-sm"> Activa </span>
+                            <span class="text-xs font-light md:tracking-widest text-white bg-blue-450 px-4 py-1 rounded-full shadow-sm"> Activa </span>
                             @break
                         @case('delivered')
-                            <span class="text-xs font-light text-white bg-blue-450 px-4 py-1 rounded-full shadow-sm"> Activa </span>
+                            <span class="text-xs font-light md:tracking-widest text-white bg-blue-450 px-4 py-1 rounded-full shadow-sm"> Activa </span>
                             @break
                         @case('received')
-                            <span class="text-xs font-light text-white bg-yellow-500 px-4 py-1 rounded-full shadow-sm"> Recibida </span>
+                            <span class="text-xs font-light md:tracking-widest text-white bg-yellow-500 px-4 py-1 rounded-full shadow-sm"> Recibida </span>
                             @break
                         @case('completed')
-                            <span class="text-xs font-light text-white bg-green-450 px-4 py-1 rounded-full shadow-sm"> Completada </span>
+                            <span class="text-xs font-light md:tracking-widest text-white bg-green-450 px-4 py-1 rounded-full shadow-sm"> Completada </span>
                             @break
                         @case('cancelled')
-                            <span class="text-xs font-light text-white bg-red-450 px-4 py-1 rounded-full shadow-sm"> Cancelada </span>
+                            <span class="text-xs font-light md:tracking-widest text-white bg-red-450 px-4 py-1 rounded-full shadow-sm"> Cancelada </span>
                             @break
                         @default
 
@@ -92,8 +92,8 @@
                             <div class="col-span-1 self-center">
                                 <img src="/storage/{{ $product->product->photo_main_product }}" alt="">
                             </div>
-                            <div class="col-span-4 flex flex-col">
-                                <div class="text-lg text-gray-900 font-semibold"> {{ $product->product->title }} </div>
+                            <div class="col-span-4 flex flex-col self-center ml-2">
+                                <div class="text-lg text-gray-900 font-semibold md:mb-3"> {{ $product->product->title }} </div>
                                 <div class="text-xs text-gray-600"> IVA Incluido </div>
 
                                 <div class="flex justify-between items-center">
@@ -490,6 +490,13 @@
                                     const closeButtonModalRating = document.getElementById('closeButtonModalRating');
                                     let click_event = new CustomEvent('click');
                                     closeButtonModalRating.dispatchEvent(click_event);
+
+                                    // Alert de notificacion
+                                    const notificationAlert = document.getElementById('notificationAlert');
+                                    notificationAlert.style.display = 'block';
+                                    setTimeout(function(){
+                                        notificationAlert.style.display = 'none';
+                                    }, 5000);
                                 }
                             })
                             .catch((err) => {console.log(err)});
@@ -498,8 +505,6 @@
 
                 </script>
         </div>
-
-
     @endif
 
     @if ($modalCalificaciones)
@@ -644,6 +649,10 @@
                         {{ $purchase->ratingBuyer->comment }}
                     </div>
 
+                    <div class="text-gray-600 text-xs text-right mt-3">
+                        {{ $purchase->ratingBuyer->created_at->diffForHumans() }}
+                    </div>
+
                 </div>
 
                 @if ($purchase->ratingSeller)
@@ -773,6 +782,9 @@
                         </div>
                         <div class="text-gray-700 text-md text-center">
                             {{ $purchase->ratingSeller->comment }}
+                        </div>
+                        <div class="text-gray-600 text-xs text-right mt-3">
+                            {{ $purchase->created_at->diffForHumans() }}
                         </div>
 
                     </div>

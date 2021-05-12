@@ -14,5 +14,29 @@
             </div>
         </div>
     </div>
+    {{-- Modal de notificacion --}}
+    <div class="fixed right-8 top-8 bg-green-450 rounded-md shadow-lg px-2 py-1 alertActive z-50" style="display:none;" id="notificationAlert">
+        <div class="flex items-center justify-between flex-wrap px-2">
+            <div class="max-w-xl flex-1 flex items-center">
+                <p class="font-medium text-white">
+                    Compra calificada exitosamente!
+                </p>
+            </div>
+            <div class="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
+                <button type="button" class="-mr-1 flex p-1 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2" onclick="hideNotificationAlert()">
+                    <span class="sr-only">Dismiss</span>
+                    <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function hideNotificationAlert(){
+            document.getElementById('notificationAlert').style.display = 'none';
+        }
+    </script>
     @include('common.navbar_movil_perfil')
 </x-app-layout>

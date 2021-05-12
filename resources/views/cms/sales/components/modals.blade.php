@@ -472,6 +472,12 @@
                             const closeButtonModalRating = document.getElementById('closeButtonModalRating');
                             let click_event = new CustomEvent('click');
                             closeButtonModalRating.dispatchEvent(click_event);
+                            // Alert de notificacion
+                            const notificationAlert = document.getElementById('notificationAlert');
+                            notificationAlert.style.display = 'block';
+                            setTimeout(function(){
+                                notificationAlert.style.display = 'none';
+                            }, 5000);
                         }
                     })
                     .catch((err) => {console.log(err)});
@@ -785,3 +791,5 @@
             localStorage.removeItem('starSelected');
         }
     </script>
+
+

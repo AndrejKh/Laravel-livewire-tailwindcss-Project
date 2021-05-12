@@ -1,6 +1,14 @@
 <div class="col-span-1 grid grid-cols-6 bg-white rounded-md shadow-sm p-2">
     <div class="col-span-4">
-        <h4 class="text-md font-semibold text-gray-900 titleBrand">{{ $order->brand->brand }}</h4>
+        <div>
+            <h4 class="text-md md:text-lg lg:text-xl font-semibold text-gray-900 inline titleBrand">{{ $order->brand->brand }}</h4>
+            <span class="hidden md:inline text-gray-600 text-sm">
+                - {{ ucwords($order->created_at->format('l')) }}
+                {{ $order->created_at->format("j \d\\e") }}
+                {{ ucwords($order->created_at->format('F,')) }}
+                {{ $order->created_at->format("Y. g:i a") }}
+            </span>
+        </div>
         <span class="text-sm font-light text-gray-900">
             @php $quantityTotal = 0; @endphp
             @foreach ($order->products_purchase as $products)
@@ -19,19 +27,19 @@
         @switch($order->status)
 
             @case('active')
-                <span class="text-xs font-light text-white bg-blue-450 px-4 py-1 rounded-full shadow-sm"> Activa </span>
+                <span class="text-xs font-light md:tracking-wider text-white bg-blue-450 px-4 py-1 rounded-full shadow-sm"> Activa </span>
                 @break
             @case('delivered')
-                <span class="text-xs font-light text-white bg-blue-450 px-4 py-1 rounded-full shadow-sm"> Activa </span>
+                <span class="text-xs font-light md:tracking-wider text-white bg-blue-450 px-4 py-1 rounded-full shadow-sm"> Activa </span>
                 @break
             @case('received')
-                <span class="text-xs font-light text-white bg-yellow-500 px-4 py-1 rounded-full shadow-sm"> Recibida </span>
+                <span class="text-xs font-light md:tracking-wider text-white bg-yellow-500 px-4 py-1 rounded-full shadow-sm"> Recibida </span>
                 @break
             @case('completed')
-                <span class="text-xs font-light text-white bg-green-450 px-4 py-1 rounded-full shadow-sm"> Completada </span>
+                <span class="text-xs font-light md:tracking-wider text-white bg-green-450 px-4 py-1 rounded-full shadow-sm"> Completada </span>
                 @break
             @case('cancelled')
-                <span class="text-xs font-light text-white bg-red-450 px-4 py-1 rounded-full shadow-sm"> Cancelada </span>
+                <span class="text-xs font-light md:tracking-wider text-white bg-red-450 px-4 py-1 rounded-full shadow-sm"> Cancelada </span>
                 @break
             @default
 
