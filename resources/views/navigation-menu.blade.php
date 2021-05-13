@@ -25,6 +25,9 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('products.show') }}" :active="request()->routeIs('products.show')">
+                        Productos
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('brands.show') }}" :active="request()->routeIs('brands.show')">
                         Supermercados
                     </x-jet-nav-link>
