@@ -93,6 +93,7 @@
             </div>
             <div class="w-full block text-center mt-4" id="pagination_nav">
                 {{-- {!! $products->links() !!} --}}
+                {{$products->appends(request()->input())->links()}}
             </div>
 
             {{-- @include('home.carousel_categories_card_details') --}}
