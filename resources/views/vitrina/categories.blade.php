@@ -11,7 +11,7 @@
     <div class="flex justify-center mt-4">
         <div class="grid grid-cols-1 md:grid-cols-2 max-w-7xl w-full shadow rounded-md p-6 md:px-10 bg-white">
             @foreach ($principal_categories as $category)
-                <div class="text-gray-900 font-bold text-lg my-4">
+                <div class="text-gray-900 font-bold text-lg my-4 px-1">
                     <a class="hover:text-blue-600 mb-3" href="{{route('products.category.show', $category->slug)}}">
                         {{ $category->category }}
                         <span class="text-gray-600">({{ $category->products->count() }})</span>
@@ -28,7 +28,7 @@
                         @endforeach
 
                     </div>
-                    <hr class="px-2">
+                    <hr>
                 </div>
             @endforeach
         </div>
