@@ -19,7 +19,7 @@
         <li class=" mb-8">
             <a class="flex" href="{{ route('dashboard') }}">
                 <div class="bg-{{ request()->routeIs('dashboard') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
-                    <img class="" src="{{ asset('public/icons/perfil.svg') }}" alt="">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
                 </div>
                 <span class="self-center">
                     Perfil
