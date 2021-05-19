@@ -20,7 +20,7 @@
 <script>
     $('#carousel_products_categories').owlCarousel({
         loop:true,
-        margin:10,
+        margin:5,
         nav:false,
         dots:false,
         responsive:{
