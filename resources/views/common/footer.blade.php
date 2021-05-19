@@ -1,7 +1,7 @@
 <footer class="bg-gray-900 max-w-screen-2xl mx-auto px-4 md:px-6 lg:px-8 pt-10 pb-3">
     <div class="px-2 grid grid-cols-4 md:grid-cols-6 gap-1">
         <div class="col-span-4 md:col-span-2 items-center md:text-left mb-8 md:mb-0">
-            <img class="mx-auto md:mx-0" src="{{URL::asset('/icons/logo.svg')}}" alt="">
+            <img class="mx-auto md:mx-0" src="{{ asset('icons/logo.svg') }}" alt="">
             <p class="mt-2 md:pr-10 text-white text-center md:text-left">
                 La plataforma enfocada en cambiar la manera de hacer mercado en Venezuela.
             </p>
