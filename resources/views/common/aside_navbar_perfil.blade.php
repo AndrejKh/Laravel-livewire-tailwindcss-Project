@@ -19,7 +19,7 @@
         <li class=" mb-8">
             <a class="flex" href="{{ route('dashboard') }}">
                 <div class="bg-{{ request()->routeIs('dashboard') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
-                    <img class="" src="{{ asset('icons/perfil.svg') }}" alt="">
+                    <img class="" src="{{ asset('public/icons/perfil.svg') }}" alt="">
                 </div>
                 <span class="self-center">
                     Perfil
@@ -31,7 +31,7 @@
             <li class=" mb-8">
                 <a class="flex" href="{{ route('cms.usuarios') }}">
                     <div class="bg-{{ request()->routeIs('cms.usuarios') ? 'green-300' : 'white' }} shadow-md p-2 rounded-lg mr-3 hover:bg-green-200">
-                        <img src="{{ asset('icons/users.svg') }}" alt="">
+                        <img src="{{ asset('public/icons/users.svg') }}" alt="">
                     </div>
                     <span class="self-center">
                         Usuarios
