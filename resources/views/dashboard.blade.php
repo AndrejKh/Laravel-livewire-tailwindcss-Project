@@ -18,12 +18,17 @@
                     @endrole
                 </div>
                 @role('seller')
-                    <div class="flex justify-center mt-10">
-                        <span class="text-md bg-white px-3 md:px-8 py-4 rounded-md shadow">
-                            Para poder empezar a vender tus productos con nosotros, debes primero
-                            <a class="text-blue-700" href="{{ route('cms.tiendas') }}">crear una marca</a>
-                        </span>
-                    </div>
+
+                    @if( count(auth()->user()->brands) == 0 )
+
+                        <div class="flex justify-center mt-10">
+                            <span class="text-md bg-white px-3 md:px-8 py-4 rounded-md shadow">
+                                Para poder empezar a vender tus productos con nosotros, debes primero
+                                <a class="text-blue-700" href="{{ route('cms.tiendas') }}">crear una marca</a>
+                            </span>
+                        </div>
+
+                    @endif
                 @endrole
                 {{-- Productos en el carrito --}}
                 <div class="mt-3 hidden" id="shoppingCarPending">
@@ -138,112 +143,112 @@
         }
     </script>
 
-<script>
-    // Obtengo los productos del carrito y los muestro en pantalla
-    const getItemsShoppingCar = document.getElementById('getItemsShoppingCar');
-    getItemsShoppingCar.addEventListener('click', event => {
-        // Obtengo los productos del local storage
-        ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-        // En que elemento se dio click? en el span, en el svg o en el path? obtengo el nodo principal
-        if ( event.target.nodeName == 'DIV' ){
-            var svgIconSelect = event.target.firstElementChild;
-        }else if( event.target.nodeName == 'svg' ){
-            var svgIconSelect = event.target;
-        }else {
-            var svgIconSelect = event.target.parentNode;
-        }
-
-        const containerItemsShoppingCar = document.getElementById('containerItemsShoppingCar');
-        if( containerItemsShoppingCar.childElementCount > 0 ){
-            containerItemsShoppingCar.innerHTML = '';
-            // Girar icono de select
-            svgIconSelect.classList.replace("rotate_select_icon", "return_rotate_select_icon");
-        }else{
-            // Girar icono de select
-            svgIconSelect.classList.replace("return_rotate_select_icon", "rotate_select_icon");
-            // Obtengo el componente card de ejemplo
-            const modelItem = document.getElementById('cardModelItem');
-
-            arrayProductsLocalStorage.forEach(product => {
-                // creo un clon del card de ejemplo
-                newCardProductShoppingCar = modelItem.firstElementChild.cloneNode(true);
-                // Obtengo los campos del card  clonado
-                let newTitle = newCardProductShoppingCar.querySelector('.titleCard');
-                let newQuantity = newCardProductShoppingCar.querySelector('.quantityCard');
-                let newImage = newCardProductShoppingCar.querySelector('.imgCard');
-                // Asigno los valores del local storage a los campos html
-                newTitle.textContent = product.title;
-                newQuantity.textContent = product.quantity;
-                newImage.src = product.image;
-                // Inserto el card en el modal
-                containerItemsShoppingCar.appendChild(newCardProductShoppingCar);
-            });
-
-        }
-
-    });
-</script>
-
-<script>
-    // Finalizar compra, al dar click en el boton  'Finalizar comprar'
-    const comprar = document.getElementById('comprar');
-    console.log(comprar)
-    comprar.addEventListener('click', event => {
-        // Obtengo los productos del local storage
-        const ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-        const products = JSON.parse(ProductsLocalStorage);
-
-        // // Obtengo loa ubicacion del local storage
-        const ubicationLocalStorage = localStorage.getItem('ubication');
-        const ubication = JSON.parse(ubicationLocalStorage);
-
-        const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
-        const brand = JSON.parse(brandSelectedToBuy);
-
-        const amountSelected = localStorage.getItem('amount');
-        const amount = JSON.parse(amountSelected);
-
-        const itemsSelected = localStorage.getItem('itemsSelected');
-        const items = JSON.parse(itemsSelected);
-
-        const csrf_token = document.getElementById('csrf_token').textContent;
-
-        const data = {
-            products: products,
-            ubication: ubication,
-            brand: brand,
-            amount: amount,
-            items: items
-        }
-
-        axios({
-            method  : 'post',
-            url : '/post/create-order/',
-            data : data,
-            headers: {
-                'content-type': 'text/json',
-                'X-CSRF-Token': csrf_token
-                }
-        })
-        .then((res)=>{
-            if(res.data === 0){
-                // El usuario no esta logeado, lo redirijo a la vista de login
-                window.location.href = "/login?r=1";
-            }else{
-                // elimino los datos del local storage
-                localStorage.removeItem('itemsSelected');
-                localStorage.removeItem('amount');
-                localStorage.removeItem('brandSelectedToBuy');
-                localStorage.removeItem('ubication');
-                localStorage.removeItem('productsShoppingCar');
-                // redirecciono a la vista compras
-                window.location.href = "/compras";
+    <script>
+        // Obtengo los productos del carrito y los muestro en pantalla
+        const getItemsShoppingCar = document.getElementById('getItemsShoppingCar');
+        getItemsShoppingCar.addEventListener('click', event => {
+            // Obtengo los productos del local storage
+            ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+            // En que elemento se dio click? en el span, en el svg o en el path? obtengo el nodo principal
+            if ( event.target.nodeName == 'DIV' ){
+                var svgIconSelect = event.target.firstElementChild;
+            }else if( event.target.nodeName == 'svg' ){
+                var svgIconSelect = event.target;
+            }else {
+                var svgIconSelect = event.target.parentNode;
             }
-        })
-        .catch((err) => {console.log(err)});
 
-    })
-</script>
+            const containerItemsShoppingCar = document.getElementById('containerItemsShoppingCar');
+            if( containerItemsShoppingCar.childElementCount > 0 ){
+                containerItemsShoppingCar.innerHTML = '';
+                // Girar icono de select
+                svgIconSelect.classList.replace("rotate_select_icon", "return_rotate_select_icon");
+            }else{
+                // Girar icono de select
+                svgIconSelect.classList.replace("return_rotate_select_icon", "rotate_select_icon");
+                // Obtengo el componente card de ejemplo
+                const modelItem = document.getElementById('cardModelItem');
+
+                arrayProductsLocalStorage.forEach(product => {
+                    // creo un clon del card de ejemplo
+                    newCardProductShoppingCar = modelItem.firstElementChild.cloneNode(true);
+                    // Obtengo los campos del card  clonado
+                    let newTitle = newCardProductShoppingCar.querySelector('.titleCard');
+                    let newQuantity = newCardProductShoppingCar.querySelector('.quantityCard');
+                    let newImage = newCardProductShoppingCar.querySelector('.imgCard');
+                    // Asigno los valores del local storage a los campos html
+                    newTitle.textContent = product.title;
+                    newQuantity.textContent = product.quantity;
+                    newImage.src = product.image;
+                    // Inserto el card en el modal
+                    containerItemsShoppingCar.appendChild(newCardProductShoppingCar);
+                });
+
+            }
+
+        });
+    </script>
+
+    <script>
+        // Finalizar compra, al dar click en el boton  'Finalizar comprar'
+        const comprar = document.getElementById('comprar');
+        console.log(comprar)
+        comprar.addEventListener('click', event => {
+            // Obtengo los productos del local storage
+            const ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+            const products = JSON.parse(ProductsLocalStorage);
+
+            // // Obtengo loa ubicacion del local storage
+            const ubicationLocalStorage = localStorage.getItem('ubication');
+            const ubication = JSON.parse(ubicationLocalStorage);
+
+            const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
+            const brand = JSON.parse(brandSelectedToBuy);
+
+            const amountSelected = localStorage.getItem('amount');
+            const amount = JSON.parse(amountSelected);
+
+            const itemsSelected = localStorage.getItem('itemsSelected');
+            const items = JSON.parse(itemsSelected);
+
+            const csrf_token = document.getElementById('csrf_token').textContent;
+
+            const data = {
+                products: products,
+                ubication: ubication,
+                brand: brand,
+                amount: amount,
+                items: items
+            }
+
+            axios({
+                method  : 'post',
+                url : '/post/create-order/',
+                data : data,
+                headers: {
+                    'content-type': 'text/json',
+                    'X-CSRF-Token': csrf_token
+                    }
+            })
+            .then((res)=>{
+                if(res.data === 0){
+                    // El usuario no esta logeado, lo redirijo a la vista de login
+                    window.location.href = "/login?r=1";
+                }else{
+                    // elimino los datos del local storage
+                    localStorage.removeItem('itemsSelected');
+                    localStorage.removeItem('amount');
+                    localStorage.removeItem('brandSelectedToBuy');
+                    localStorage.removeItem('ubication');
+                    localStorage.removeItem('productsShoppingCar');
+                    // redirecciono a la vista compras
+                    window.location.href = "/compras";
+                }
+            })
+            .catch((err) => {console.log(err)});
+
+        })
+    </script>
 
 </x-app-layout>
 

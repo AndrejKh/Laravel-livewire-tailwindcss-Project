@@ -37,63 +37,66 @@
 
     </div>
     @isset($brand->state_id)
-    {{-- Modal para actualizar direccion --}}
-    <x-jet-dialog-modal wire:model="openModalActualizar">
-        <x-slot name="title">
-            Editar la dirección de tu marca
-        </x-slot>
-        <x-slot name="content">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                <div class="col-span-1">
-                    <x-jet-label class="font-bold" for="state" value="Estado" />
-                    <select wire:model="state_id" wire:click="changeState" id="state" autocomplete="state" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
-                        @foreach ($estados as $estado)
-                            <option value="{{$estado->id}}" > {{$estado->state}} </option>
-                        @endforeach
-                    </select>
-                    @error('state_id')
-                        <small class="text-red-400 italic">{{$message}}</small>
-                    @enderror
-                </div>
+        {{-- Modal para actualizar direccion --}}
+        <x-jet-dialog-modal wire:model="openModalActualizar">
+            <x-slot name="title">
+                Editar la dirección de tu marca
+            </x-slot>
+            <x-slot name="content">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                <div class="col-span-1">
-                    <x-jet-label class="font-bold" for="city" value="Municipio" />
-                    <select wire:model="city_id" id="city" autocomplete="city" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
-                        <option selected>Selecciona el municipio</option>
-                        @if ($cities)
-                            @foreach ($cities as $city)
-                                <option value="{{$city->id}}"> {{$city->city}} </option>
+                    <div class="col-span-1">
+                        <x-jet-label class="font-bold" for="state" value="Estado" />
+                        <select wire:model="state_id" wire:click="changeState" id="state" autocomplete="state" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                            @foreach ($estados as $estado)
+                                <option value="{{$estado->id}}" > {{$estado->state}} </option>
                             @endforeach
-                        @endif
-                    </select>
-                    @error('city_id')
-                        <small class="text-red-400 italic">{{$message}}</small>
-                    @enderror
+                        </select>
+                        @error('state_id')
+                            <small class="text-red-400 italic">{{$message}}</small>
+                        @enderror
+                    </div>
+
+                    <div class="col-span-1">
+                        <x-jet-label class="font-bold" for="city" value="Municipio" />
+                        <select wire:model="city_id" id="city" autocomplete="city" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                            <option selected>Selecciona el municipio</option>
+                            @if ($cities)
+                                @foreach ($cities as $city)
+                                    <option value="{{$city->id}}"> {{$city->city}} </option>
+                                @endforeach
+                            @endif
+                        </select>
+                        @error('city_id')
+                            <small class="text-red-400 italic">{{$message}}</small>
+                        @enderror
+                    </div>
+
+                    <div class="col-span-2">
+                        <x-jet-label class="font-bold" for="address" value="Dirección" />
+                        <input wire:model.defer="address" autocomplete="address" class="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" type="text" id="address" required >
+                        @error('address')
+                            <small class="text-red-400 italic">{{$message}}</small>
+                        @enderror
+                    </div>
+
                 </div>
+            </x-slot>
+            <x-slot name="footer">
+                <x-jet-secondary-button wire:loading.attr="disabled" wire:click="cancelar">
+                    Cancelar
+                </x-jet-button>
+                <x-jet-button wire:loading.attr="disabled" wire:click="update">
+                    Confirmar
+                </x-jet-button>
+            </x-slot>
 
-                <div class="col-span-2">
-                    <x-jet-label class="font-bold" for="address" value="Dirección" />
-                    <input wire:model.defer="address" autocomplete="address" class="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" type="text" id="address" required >
-                    @error('address')
-                        <small class="text-red-400 italic">{{$message}}</small>
-                    @enderror
-                </div>
+        </x-jet-dialog-modal>
 
-            </div>
-        </x-slot>
-        <x-slot name="footer">
-            <x-jet-secondary-button wire:loading.attr="disabled" wire:click="cancelar">
-                Cancelar
-            </x-jet-button>
-            <x-jet-button wire:loading.attr="disabled" wire:click="update">
-                Confirmar
-            </x-jet-button>
-        </x-slot>
-
-    </x-jet-dialog-modal>
     @else
-    {{-- Modal para crear direccion --}}
+
+        {{-- Modal para crear direccion --}}
         <x-jet-dialog-modal wire:model="openModal">
             <x-slot name="title">
                 La dirección principal de tu marca
