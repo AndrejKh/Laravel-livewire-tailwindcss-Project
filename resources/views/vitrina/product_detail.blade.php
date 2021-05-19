@@ -77,7 +77,7 @@
         <h3 class="text-xl text-gray-900 font-semibold">
             Descripción
         </h3>
-        <p class="text-gray-500 mt-4 md:mt-6 lg:mt-10 text-base md:text-lg">{{ $product->description }}</p>
+        <p class="text-gray-500 mt-4 md:mt-6 lg:mt-10 text-base md:text-lg">{!! $product->description !!}</p>
     </div>
 
     {{-- Categorias cads con detalle --}}
