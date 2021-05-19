@@ -95,7 +95,6 @@
                         <th class="px-6 py-3">Imagen</th>
                         <th class="px-6 py-3">Titulo</th>
                         <th class="px-6 py-3">Categoria</th>
-                        <th class="px-6 py-3">Descripción</th>
                         <th class="px-6 py-3">Status</th>
                         <th class="px-6 py-3"></th>
                     </tr>
@@ -107,7 +106,6 @@
                             <td class="px-6 py-4"> <img class="w-8 h-8 rounded-xl mx-auto" src="/storage/{{$producto->photo_main_product}}" alt=""> </td>
                             <td class="px-6 py-4"> {{$producto->title}} </td>
                             <td class="px-6 py-4"> {{ $producto->category->category }}</td>
-                            <td class="px-6 py-4"> {{$producto->description}} </td>
                             <td class="px-6 py-4"> <span class="rounded-full bg-green-300 text-green-700 px-2 py-1">{{$producto->status}}</span> </td>
                             <td class="px-6 py-4 text-center">
                                 <button @click="open= true" wire:click="edit({{$producto}})" class="rounded-3xl bg-blue-500 p-2">
