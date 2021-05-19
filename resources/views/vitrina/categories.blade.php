@@ -28,7 +28,7 @@
                         @endforeach
 
                     </div>
-                    <hr>
+                    <hr class="px-2">
                 </div>
             @endforeach
         </div>
