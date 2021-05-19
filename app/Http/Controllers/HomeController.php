@@ -17,8 +17,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
+
 class HomeController extends Controller
 {
+    use Paginator;
+
     public $perPage = 20;
 
     public function index()
