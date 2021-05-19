@@ -49,6 +49,9 @@
                     <span>Selecciona la imagen de la marca </span>
                     <label class="text-green-600 cursor-pointer mb-2" for="profile_photo_path_brand"> aqui</label>
                     <input type="file" class="hidden" id="profile_photo_path_brand" wire:model="profile_photo_path_brand">
+                    <span class="text-green-500" wire:loading wire:target="profile_photo_path_brand">
+                        Cargando...
+                    </span>
                     @if ($profile_photo_path_brand)
                         <div class="bg-no-repeat bg-cover bg-center w-20 h-20 overflow-hidden rounded-full mx-auto" style="background-image: url('{{ $profile_photo_path_brand->temporaryUrl() }}');"></div>
                     @endif
@@ -84,6 +87,9 @@
                     <span>Selecciona la <b>nueva imagen</b>  de la Marca </span>
                     <label class="text-green-600 cursor-pointer mb-2" for="profile_photo_path_brand"> aqui</label>
                     <input type="file" class="hidden" id="profile_photo_path_brand" wire:model="profile_photo_path_brand">
+                    <span class="text-green-500" wire:loading wire:target="profile_photo_path_brand">
+                        Cargando...
+                    </span>
                     @if ($profile_photo_path_brand)
                         <div class="bg-no-repeat bg-cover bg-center w-20 h-20 overflow-hidden rounded-full mx-auto" style="background-image: url('{{ $profile_photo_path_brand->temporaryUrl() }}');"></div>
                     @endif

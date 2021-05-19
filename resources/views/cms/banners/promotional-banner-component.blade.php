@@ -27,6 +27,9 @@
             <div class="mb-3">
                 <span>Selecciona la imagen del banner</span> <label class="text-green-600 cursor-pointer mb-2" for="banner">aqui</label>
                 <input type="file" class="hidden" id="banner" wire:model="banner">
+                <span class="text-green-500" wire:loading wire:target="banner">
+                    Cargando...
+                </span>
                 @if ($banner)
                 <div class="rounded-md max-w-md overflow-hidden shadow mx-auto h-48">
                     <img class="w-full" src="{{ $banner->temporaryUrl() }}">

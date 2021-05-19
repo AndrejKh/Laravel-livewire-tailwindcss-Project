@@ -35,6 +35,9 @@
                 <span>Selecciona la imagen del nuevo banner a agregar </span>
                 <label class="text-green-600 cursor-pointer mb-2" for="photo"> aqui</label>
                 <input type="file" class="hidden" id="photo" wire:model="photo">
+                <span class="text-green-500" wire:loading wire:target="photo">
+                    Cargando...
+                </span>
                 @if ($photo)
                     <div class="w-2/3 h-32 rounded-lg shadow-lg overflow-hidden my-4 mx-auto">
                         <img class="w-full" src="{{ $photo->temporaryUrl() }}">
@@ -71,6 +74,9 @@
                         <span class="text-xl">Selecciona la imagen del nuevo banner a agregar </span>
                         <label class="text-green-600 cursor-pointer mb-2" for="photo"> aqui</label>
                         <input type="file" class="hidden" id="photo" wire:model="photo">
+                        <span class="text-green-500" wire:loading wire:target="photo">
+                            Cargando...
+                        </span>
                         @if ($photo)
                             <div class="w-2/3 h-32 rounded-lg shadow-lg overflow-hidden my-4 mx-auto">
                                 <img class="w-full" src="{{ $photo->temporaryUrl() }}">

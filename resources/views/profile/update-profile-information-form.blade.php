@@ -21,6 +21,9 @@
                                         };
                                         reader.readAsDataURL($refs.photo.files[0]);
                                 " />
+                    <span class="text-green-500" wire:loading wire:target="photo">
+                        Cargando...
+                    </span>
 
                     <x-jet-label for="photo" value="{{ __('Foto de Perfil') }}" />
 

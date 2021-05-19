@@ -39,6 +39,9 @@
             <div class="mb-3">
                 <span>Selecciona la imagen de la categoria</span> <label class="text-green-600 cursor-pointer mb-2" for="photo">aqui</label>
                 <input type="file" class="hidden" id="photo" wire:model="photo">
+                <span class="text-green-500" wire:loading wire:target="photo">
+                    Cargando...
+                </span>
                 @if ($photo)
                     <img class="inline-block w-8 h-8 rounded-xl" src="{{ $photo->temporaryUrl() }}">
                 @endif

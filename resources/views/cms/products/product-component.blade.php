@@ -38,6 +38,9 @@
                 @if ($photo_main_product)
                     <img class="inline-block w-8 h-8 rounded-xl" src="{{ $photo_main_product->temporaryUrl() }}">
                 @endif
+                <div class="text-green-500" wire:loading wire:target="photo_main_product">
+                    Cargando...
+                </div>
                 @error('photo_main_product')
                     <small class="text-red-400 italic">{{$message}}</small>
                 @enderror
