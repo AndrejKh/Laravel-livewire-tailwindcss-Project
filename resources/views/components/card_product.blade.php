@@ -19,7 +19,7 @@
             </a>
         </div>
         <div class="font-bold text-sm md:mb-2 text-blue-500 text-right">
-                5kg.
+                {{-- 5kg. --}}
         </div>
     </div>
     <div class="px-2 pb-2 flex justify-center">
