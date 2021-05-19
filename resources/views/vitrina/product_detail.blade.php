@@ -49,7 +49,9 @@
                     </div>
                     <div class="hidden md:block">
                         <h4 class="text-xl font-semibold md:mt-10">Descripción</h4>
-                        <p class="hidden md:block text-gray-500 mt-4 md:mt-4 text-base md:text-lg">{{ $product->description }}</p>
+                        <p class="hidden md:block text-gray-500 mt-4 md:mt-4 text-base md:text-lg">
+                            @php echo nl2br($product->description); @endphp
+                        </p>
                     </div>
                 </div>
             </div>
@@ -77,7 +79,9 @@
         <h3 class="text-xl text-gray-900 font-semibold">
             Descripción
         </h3>
-        <p class="text-gray-500 mt-4 md:mt-6 lg:mt-10 text-base md:text-lg">{!! $product->description !!}</p>
+        <p class="text-gray-500 mt-4 md:mt-6 lg:mt-10 text-base md:text-lg">
+            @php echo nl2br($product->description); @endphp
+        </p>
     </div>
 
     {{-- Categorias cads con detalle --}}
