@@ -37,6 +37,7 @@
                     <span class="col-span-2 text-gray-700">Esta dirección se mostrará como la principal de tu marca.</span>
                 @endif
         </div>
+        {{$brand_test2}}
 
     </div>
     @isset($brand->state_id)
