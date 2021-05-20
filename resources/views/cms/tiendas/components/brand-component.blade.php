@@ -59,8 +59,8 @@
                             <small class="text-red-400 italic">{{$message}}</small>
                         @enderror
                     </div>
-                    <div class="text-center text-green-500" wire:loading wire:target="profile_photo_path_brand">
-                        Cargando...
+                    <div class="w-full text-center" wire:loading wire:target="profile_photo_path_brand">
+                        <span class="text-green-500">Cargando...</span>
                     </div>
                 </x-slot>
                 <x-slot name="footer">
