@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Brand;
 use App\Models\City;
 use App\Models\State;
-use App\Models\User;
 use Livewire\Component;
 
 class AddressComponent extends Component
@@ -45,14 +44,12 @@ class AddressComponent extends Component
         $brand = Brand::where('user_id', $this->user_id)->first();
 
         $brand_name = $brand->brand;
-        $description = 'description test';
 
         $brand->update([
-            'description' => $description
+            'brand' => 'alibaba'
         ]);
 
         $brand->update([
-            'brand' => $brand_name,
             'state_id' => $this->state_id,
             'city_id' => $this->city_id,
             'address' => $this->address
