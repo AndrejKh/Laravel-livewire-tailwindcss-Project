@@ -58,6 +58,8 @@
                             <small class="text-red-400 italic">{{$message}}</small>
                         @enderror
                     </div>
+                    {{$state_id}} ///
+                    {{$city_id}}
 
                     <div class="col-span-1">
                         <x-jet-label class="font-bold" for="city" value="Municipio" />
