@@ -19,8 +19,8 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-4">
                         @foreach ($categories_children as $category_child)
                             @if ($category->id == $category_child->padre_id)
-                                <div class="col-span-1">
-                                    <a class="text-gray-900 hover:text-blue-800" href="{{route('products.category.show', $category_child->slug)}}">
+                                <div class="col-span-1 pl-2">
+                                    <a class="text-sm text-gray-500 hover:text-blue-800" href="{{route('products.category.show', $category_child->slug)}}">
                                         {{ $category_child->category }} ({{ $category_child->products->count() }})
                                     </a>
                                 </div>
