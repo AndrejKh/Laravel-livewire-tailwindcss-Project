@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class AddressComponent extends Component
 {
-    public $user_id, $state_id, $city_id, $cities, $address, $message_alert, $color_alert;
+    public $user_id, $state_id, $city_id, $cities, $address, $message_alert, $color_alert, $brand_test;
 
     public $openModal = false;
     public $openModalActualizar = false;
@@ -42,9 +42,9 @@ class AddressComponent extends Component
 
     public function update()
     {
-        $brand = Brand::where('user_id', $this->user_id)->first();
+        $this->brand_test = Brand::where('user_id', $this->user_id)->first();
 
-        $brand->update([
+        $this->brand->update([
             'state_id' => $this->state_id,
             'city_id' => $this->city_id,
             'address' => $this->address

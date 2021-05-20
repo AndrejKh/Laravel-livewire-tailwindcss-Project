@@ -4,20 +4,22 @@
             <h2 class="font-bold text-lg">Tú dirección </h2>
 
             {{$brand}}
-            @isset($brand->state_id)
-            <x-jet-button wire:loading.attr="disabled" wire:click="buttonActualizar">
-                Editar
-            </x-jet-button>
+            @if($brand->state_id !== null)
+                <x-jet-button wire:loading.attr="disabled" wire:click="buttonActualizar">
+                    Editar
+                </x-jet-button>
             @else
-            <x-jet-button wire:loading.attr="disabled" wire:click="$set( 'openModal' , true )">
-                Configurar
-            </x-jet-button>
-            @endisset
+                <x-jet-button wire:loading.attr="disabled" wire:click="$set( 'openModal' , true )">
+                    Configurar
+                </x-jet-button>
+            @endif
+
         </div>
+        {{$brand_test}}
         <hr>
 
         <div class="grid grid-cols-2 mt-3">
-                @isset($brand->state_id)
+                @if($brand->state_id !== null)
 
                     <div class="col-span-1 pr-3">
                         <strong class="mr-2 text-gray-500">Estado:</strong> <span> {{ $brand->state->state }} </span>
@@ -32,8 +34,8 @@
                         <strong class="mr-2 text-gray-500">Dirección:</strong> <span> {{ $brand->address ? $brand->address : 'Sin información' }} </span>
                     </div>
                 @else
-                <span class="col-span-2 text-gray-700">Esta dirección se mostrará como la principal de tu marca.</span>
-                @endisset
+                    <span class="col-span-2 text-gray-700">Esta dirección se mostrará como la principal de tu marca.</span>
+                @endif
         </div>
 
     </div>
@@ -122,6 +124,7 @@
 
                     {{$state_id}} ///
                     {{$city_id}}
+                    {{$brand_test}}
 
                     <div class="col-span-1">
                         <x-jet-label class="font-bold" for="city" value="Municipio" />
