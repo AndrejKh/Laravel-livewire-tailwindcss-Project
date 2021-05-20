@@ -83,10 +83,10 @@
                                 </div>
                                 <div>
                                     <button class="inline" wire:loading.attr="disabled" wire:click="buttonActualizarDelivery({{$delivery->id}})">
-                                        <img src="{{ asset('/icons/edit.svg') }}" alt="">
+                                        <img src="{{ asset('edit.svg') }}" alt="">
                                     </button>
                                     <button class="inline" wire:loading.attr="disabled" wire:click="destroy({{$delivery}})">
-                                        <img src="{{ asset('/icons/delete.svg') }}" alt="">
+                                        <img src="{{ asset('delete.svg') }}" alt="">
                                     </button>
                                 </div>
                             </div>
