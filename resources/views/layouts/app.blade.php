@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Kabasto') }}</title>
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/favicon.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon.png') }}">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
