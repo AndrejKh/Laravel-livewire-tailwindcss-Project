@@ -6,12 +6,12 @@
                 La plataforma enfocada en cambiar la manera de hacer mercado en Venezuela.
             </p>
             <div class="mt-3 text-center md:text-left">
-                <span>
+                <a href="">
                     <img class="inline" src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto">
-                </span>
-                <span>
+                </a>
+                <a href="">
                     <img class="inline" src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto">
-                </span>
+                </a>
             </div>
         </div>
         <div class="col-span-4 sm:col-span-2 mb-5 sm:mb-0">

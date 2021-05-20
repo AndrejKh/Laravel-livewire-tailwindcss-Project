@@ -3,6 +3,7 @@
         <div class="flex mb-2 align-self justify-between">
             <h2 class="font-bold text-lg">Tú dirección </h2>
 
+            {{$brand}}
             @isset($brand->state_id)
             <x-jet-button wire:loading.attr="disabled" wire:click="buttonActualizar">
                 Editar
