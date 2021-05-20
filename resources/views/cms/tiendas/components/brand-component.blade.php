@@ -59,7 +59,7 @@
                             <small class="text-red-400 italic">{{$message}}</small>
                         @enderror
                     </div>
-                    <div class="w-full text-center" wire:loading wire:target="profile_photo_path_brand">
+                    <div class="w-full text-center py-2" wire:loading wire:target="profile_photo_path_brand">
                         <span class="text-green-500">Cargando...</span>
                     </div>
                 </x-slot>
