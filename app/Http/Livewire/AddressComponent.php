@@ -44,7 +44,10 @@ class AddressComponent extends Component
     {
         $this->brand_test = Brand::where('user_id', $this->user_id)->first();
 
+        $brand_name = $this->brand_test->brand;
+
         $this->brand_test->update([
+            'brand' => $brand_name,
             'state_id' => $this->state_id,
             'city_id' => $this->city_id,
             'address' => $this->address
