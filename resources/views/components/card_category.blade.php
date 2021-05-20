@@ -5,13 +5,13 @@
     <div class="owl-carousel owl-theme max-w-7xl my-4 text-center relative" id="carousel_cards_categories">
         @foreach ($categories as $category)
 
-        <a class="w-full" href="{{route('products.category.show', $category->slug)}}">
+        <a class="w-full overflow-hidden" href="{{route('products.category.show', $category->slug)}}">
             <span class="absolute inset-x-0 w-full h-full object-cover bg-gray-800 rounded-md opacity-70 hover:opacity-90 flex justify-center">
                 <span class="self-center text-white text-2xl opacity-100 text-center">
                     {{$category->category}}
                 </span>
             </span>
-            <img class="w-full rounded-md shadow-md z-10" src="/storage/{{$category->photo}}" alt="{{$category->category}}">
+            <div class="bg-no-repeat bg-cover bg-center w-full h-24 md:h-32 xl:h-36 overflow-hidden z-10 rounded-md shadow-md" style="background-image: url('/storage/{{ $category->photo }}');"></div>
         </a>
 
         @endforeach

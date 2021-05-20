@@ -11,7 +11,8 @@
                     {{$category->category}}
                 </span>
             </span>
-            <img class="w-full rounded-md shadow-md z-10" src="/storage/{{$category->photo}}" alt="{{$category->category}}">
+            <div class="bg-no-repeat bg-cover bg-center w-full h-24 md:h-36 xl:h-36 overflow-hidden z-10 rounded-md shadow-md" style="background-image: url('/storage/{{ $category->photo }}');"></div>
+            {{-- <img class="w-full rounded-md shadow-md z-10" src="/storage/{{$category->photo}}" alt="{{$category->category}}"> --}}
         </a>
 
         @endforeach

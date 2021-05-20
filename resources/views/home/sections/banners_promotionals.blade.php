@@ -5,7 +5,7 @@
 <div class="owl-carousel owl-theme max-w-7xl my-4 text-center" id="carousel_banners_promotionals">
     @foreach ($banners_promotionals as $banner)
     <a href="">
-        <img class="w-full rounded-md shadow-md" src="/storage/{{$banner->banner}}" alt="Banner de kabasto, supermercados, compra y venta de productos">
+        <div class="bg-no-repeat bg-cover bg-center w-full h-32 md:h-40 xl:h-44 overflow-hidden z-10 rounded-md shadow-md" style="background-image: url('/storage/{{ $banner->banner }}');"></div>
     </a>
     @endforeach
 
@@ -15,7 +15,8 @@
     $('#carousel_banners_promotionals').owlCarousel({
         loop:true,
         margin:10,
-        nav:true,
+        nav:false,
+        dots:false,
         navText: ['<img src="{{asset('icons/arrow_left.svg')}}"/>', '<img src="{{asset('icons/arrow_right.svg')}}"/>'],
         responsive:{
             0:{
