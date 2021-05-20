@@ -42,11 +42,16 @@ class AddressComponent extends Component
 
     public function update()
     {
-        $this->brand_test = Brand::where('user_id', $this->user_id)->first();
+        $brand = Brand::where('user_id', $this->user_id)->first();
 
-        $brand_name = $this->brand_test->brand;
+        $brand_name = $brand->brand;
+        $description = 'description test';
 
-        $this->brand_test->update([
+        $brand->update([
+            'description' => $description
+        ]);
+
+        $brand->update([
             'brand' => $brand_name,
             'state_id' => $this->state_id,
             'city_id' => $this->city_id,
