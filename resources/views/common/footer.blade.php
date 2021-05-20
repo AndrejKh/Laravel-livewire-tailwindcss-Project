@@ -7,10 +7,10 @@
             </p>
             <div class="mt-3 text-center md:text-left">
                 <span>
-                    <img class="mx-auto md:mx-0" src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto">
+                    <img src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto">
                 </span>
                 <span>
-                    <img class="mx-auto md:mx-0" src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto">
+                    <img src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto">
                 </span>
             </div>
         </div>
