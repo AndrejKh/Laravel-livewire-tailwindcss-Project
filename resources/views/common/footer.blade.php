@@ -7,10 +7,10 @@
             </p>
             <div class="mt-3 text-center md:text-left">
                 <span>
-                    <img class="mx-auto md:mx-0" src="{{ asset('appstore.svg') }}" alt="imagen app store proximamente kabasto">
+                    <img class="mx-auto md:mx-0" src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto">
                 </span>
                 <span>
-                    <img class="mx-auto md:mx-0" src="{{ asset('googleplay.svg') }}" alt="imagen google play proximamente kabasto">
+                    <img class="mx-auto md:mx-0" src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto">
                 </span>
             </div>
         </div>
@@ -37,10 +37,11 @@
                 Pronto también en celulares
             </div>
             <div class="">
-                <img class="mx-auto md:mx-0" src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto">
+                <img class="mx-auto md:mx-0" src="{{ asset('appstore.svg') }}" alt="imagen app store proximamente kabasto">
+
             </div>
             <div class="pt-3">
-                <img class="mx-auto md:mx-0" src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto">
+                <img class="mx-auto md:mx-0" src="{{ asset('googleplay.svg') }}" alt="imagen google play proximamente kabasto">
             </div>
         </div>
 
