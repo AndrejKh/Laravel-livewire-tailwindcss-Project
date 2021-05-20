@@ -30,13 +30,14 @@
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100 relative">
+
             @livewire('navigation-menu')
+
             {{-- Modal de carrito de compras --}}
             @include('common.shopping_modal_car')
-            {{-- @livewire('shopping-car-component') --}}
 
             <!-- Page Content -->
-            <main class="">
+            <main>
                 {{ $slot }}
             </main>
 
@@ -46,8 +47,10 @@
                 $rutaArray = explode(".", $ruta);
             @endphp
             @if ( !in_array('profile', $rutaArray) && !in_array('cms', $rutaArray) && !in_array('dashboard', $rutaArray) && !in_array('comparar', $rutaArray) )
+
                 {{-- Boton flotante de carrito de compras --}}
                 @include('common.buttom_float_shopping_car')
+
             @endif
         </div>
 
