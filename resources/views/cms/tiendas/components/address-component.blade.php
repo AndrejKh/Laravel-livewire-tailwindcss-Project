@@ -120,6 +120,9 @@
                         @enderror
                     </div>
 
+                    {{$state_id}} ///
+                    {{$city_id}}
+
                     <div class="col-span-1">
                         <x-jet-label class="font-bold" for="city" value="Municipio" />
                         <select wire:model="city_id" id="city" autocomplete="city" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
