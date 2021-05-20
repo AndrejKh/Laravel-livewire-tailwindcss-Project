@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Brand;
+use App\Models\City;
+use App\Models\State;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Livewire\Component;
 
@@ -12,10 +14,14 @@ class BrandComponent extends Component
 {
     use WithFileUploads;
 
-    public $message_alert, $color_alert, $brand, $brand_id, $user_id, $profile_photo_path_brand;
+    public $user_id, $brand, $brand_id, $profile_photo_path_brand, $state_id, $city_id, $cities, $address, $message_alert, $color_alert;
 
     public $openModal = false;
     public $openModalActualizar = false;
+
+    public $openModalAddress = false;
+    public $openModalActualizarAddress = false;
+
 
     public $status = 'active';
     public $perPage = 10;
@@ -42,7 +48,11 @@ class BrandComponent extends Component
         public function render()
         {
             $brand_user = Brand::where('user_id', $this->user_id)->first();
-            return view('cms.tiendas.components.brand-component', compact('brand_user'));
+
+            $cities = [];
+            $estados = State::all();
+
+            return view('cms.tiendas.components.brand-component', compact('brand_user', 'estados', 'cities'));
         }
 
         public function crear()
@@ -63,7 +73,7 @@ class BrandComponent extends Component
                 'profile_photo_path_brand' => $path_imagen
             ]);
             //reinicio las propiedades
-            $this->reset(['brand', 'profile_photo_path_brand', 'action','show_alert','message_alert','color_alert','openModal']);
+            $this->cancelar();
             $this->show_alert = 'true';
             $this->color_alert = 'green';
             $this->message_alert = 'Guardado exitosamente!';
@@ -101,7 +111,7 @@ class BrandComponent extends Component
             }
 
             //reinicio las propiedades
-            $this->reset(['brand', 'profile_photo_path_brand', 'action','show_alert','message_alert','color_alert', 'openModalActualizar']);
+            $this->cancelar();
             $this->show_alert = 'true';
             $this->color_alert = 'green';
             $this->message_alert = 'Actualizado exitosamente!';
@@ -115,8 +125,50 @@ class BrandComponent extends Component
             // $this->profile_photo_path_brand = $brand_user->profile_photo_path_brand;
         }
 
+
+
+
+        //* Address */
+
+        // Funcion que se activa al momento de dar click en el boton 'editar' de algun delivery
+        public function buttonActualizarAddress(){
+            $this->openModalActualizarAddress = true;
+            $brand = Brand::where('user_id', $this->user_id)->first();
+
+            $this->state_id = $brand->state_id;
+            $this->city_id = $brand->city_id;
+            $this->address = $brand->address;
+        }
+
+        public function updateAddress()
+        {
+            $brand = Brand::where('user_id', $this->user_id)->first();
+
+            $brand->update([
+                'brand' => 'alibaba'
+            ]);
+
+            $brand->update([
+                'state_id' => $this->state_id,
+                'city_id' => $this->city_id,
+                'address' => $this->address
+            ]);
+
+            //reinicio las propiedades
+            $this->cancelar();
+            $this->show_alert = 'true';
+            $this->color_alert = 'green';
+            $this->message_alert = 'Actualizado exitosamente!';
+        }
+
+
+        // Funcion para buscar las ciudades, dependiendo del estado seleccionado
+        public function changeState(){
+            $this->cities = City::where('state_id', $this->state_id)->get();
+        }
+
         public function cancelar(){
-            $this->reset(['brand', 'profile_photo_path_brand','show_alert','message_alert','color_alert', 'openModalActualizar']);
+            $this->reset(['brand', 'state_id', 'city_id', 'cities', 'address', 'profile_photo_path_brand','show_alert','message_alert','color_alert', 'openModalActualizar', 'openModalAddress', 'openModalActualizarAddress']);
         }
 }
 

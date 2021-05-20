@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class AddressComponent extends Component
 {
-    public $user_id, $state_id, $city_id, $cities, $address, $message_alert, $color_alert, $brand_test, $brand_test2;
+    public $user_id, $state_id, $city_id, $cities, $address, $message_alert, $color_alert;
 
     public $openModal = false;
     public $openModalActualizar = false;
@@ -43,8 +43,6 @@ class AddressComponent extends Component
     {
         $brand = Brand::where('user_id', $this->user_id)->first();
 
-        $brand_name = $brand->brand;
-
         $brand->update([
             'brand' => 'alibaba'
         ]);
@@ -55,7 +53,6 @@ class AddressComponent extends Component
             'address' => $this->address
         ]);
 
-        $this->brand_test2 = Brand::where('user_id', $this->user_id)->first();
         //reinicio las propiedades
         $this->reset(['state_id', 'city_id', 'address', 'cities', 'show_alert', 'message_alert', 'color_alert', 'openModal', 'openModalActualizar']);
         $this->show_alert = 'true';

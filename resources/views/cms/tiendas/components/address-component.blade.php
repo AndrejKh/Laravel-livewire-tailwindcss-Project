@@ -3,7 +3,6 @@
         <div class="flex mb-2 align-self justify-between">
             <h2 class="font-bold text-lg">Tú dirección </h2>
 
-            {{$brand}}
             @if($brand->state_id !== null)
                 <x-jet-button wire:loading.attr="disabled" wire:click="buttonActualizar">
                     Editar
@@ -15,7 +14,6 @@
             @endif
 
         </div>
-        {{$brand_test}}
         <hr>
 
         <div class="grid grid-cols-2 mt-3">
@@ -37,7 +35,6 @@
                     <span class="col-span-2 text-gray-700">Esta dirección se mostrará como la principal de tu marca.</span>
                 @endif
         </div>
-        {{$brand_test2}}
 
     </div>
     @isset($brand->state_id)
@@ -122,10 +119,6 @@
                             <small class="text-red-400 italic">{{$message}}</small>
                         @enderror
                     </div>
-
-                    {{$state_id}} ///
-                    {{$city_id}}
-                    {{$brand_test}}
 
                     <div class="col-span-1">
                         <x-jet-label class="font-bold" for="city" value="Municipio" />
