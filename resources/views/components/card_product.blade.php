@@ -12,15 +12,15 @@
           </a>
         </div>
     </div>
-    <div class="px-2 py-1 grid grid-cols-2 gap-4">
+    <div class="px-2 py-1 grid grid-cols-1 gap-4">
         <div class="font-semibold text-sm md:mb-2 px-0 text-left">
             <a class="text-gray-500 hover:text-gray-900" href="{{ route('products.category.show', $product->category->slug ) }}">
                 {{ $product->category->category }}
             </a>
         </div>
-        <div class="font-bold text-sm md:mb-2 text-blue-500 text-right">
-                {{-- 5kg. --}}
-        </div>
+        {{-- <div class="font-bold text-sm md:mb-2 text-blue-500 text-right">
+                5kg.
+        </div> --}}
     </div>
     <div class="px-2 pb-2 flex justify-center">
         <a class="btn-primary" href="{{route('products.details.show', $product->slug)}}">

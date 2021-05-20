@@ -7,6 +7,8 @@
        const stateSelectedForm = document.getElementById('stateSelectedForm');
        const citySelectedForm = document.getElementById('citySelectedForm');
 
+       const siteUrl = document.getElementById('siteUrl').textContent.trim();
+
        //------------------ Cargar y mostrar todos las categorias hijos de la categoria principal -------------//
        const categoryPrincipal = document.querySelectorAll('.categoryPrincipal');
        const displayCategoriesChildren = document.querySelectorAll('.displayCategoriesChildren');
@@ -49,7 +51,7 @@
                            let quantityProductsCategoryChild = newCategoryChildElement.querySelector('.quantityProductsCategoryChild');
 
                            titleCategoryChild.textContent = category.category;
-                           slugCategoryChild.href = category.slug;
+                           slugCategoryChild.href = `${siteUrl}/categorias/${category.slug}`;
                            // Busco la cantidad de productos de esta categoria
                            axios.get('/get/categories-child-products/'+child_category_id).then( function(response){
                                if (response.data == 0) {
