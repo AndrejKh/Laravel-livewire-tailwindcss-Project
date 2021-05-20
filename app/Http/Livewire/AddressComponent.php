@@ -47,7 +47,7 @@ class AddressComponent extends Component
         $brand->update([
             'state_id' => $this->state_id,
             'city_id' => $this->city_id,
-            'address' => $this->address,
+            'address' => $this->address
         ]);
         //reinicio las propiedades
         $this->reset(['state_id', 'city_id', 'address', 'cities', 'show_alert', 'message_alert', 'color_alert', 'openModal', 'openModalActualizar']);
