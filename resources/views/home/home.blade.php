@@ -14,7 +14,6 @@
     {{-- Carousel productos 'mas comprados' --}}
     @include('home.sections.products_carousel')
 
-
     {{-- Categorias cards sencillas --}}
     @include('components.carousel_categories_banners')
 
