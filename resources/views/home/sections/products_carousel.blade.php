@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="flex justify-center px-2">
-    <div class="owl-carousel owl-theme max-w-7xl my-4 text-center relative" id="carousel_products_categories">
+    <div class="owl-carousel owl-theme max-w-7xl my-1 text-center relative" id="carousel_products_categories">
 
         @foreach ($products as $product)
 
