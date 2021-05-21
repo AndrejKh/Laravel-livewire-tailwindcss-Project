@@ -56,12 +56,12 @@
                 </strong>
             @endisset
             @isset($category_selected)
-                <span>
+                <span class="hidden md:inline">
                     Categoria seleccionada:
+                    <strong class="font-semibold">
+                        {{ $category_selected->category }}
+                    </strong>
                 </span>
-                <strong class="font-semibold">
-                    {{ $category_selected->category }}
-                </strong>
             @endisset
         </div>
     </div>
