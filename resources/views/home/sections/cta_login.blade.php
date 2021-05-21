@@ -1,7 +1,7 @@
 @auth
 @else
 
-    <div class="max-w-7xl bg-white py-7 px-2 lg:hidden">
+    <div class="max-w-7xl bg-white py-2 px-2 lg:hidden">
 
         <span class="text-xl font-semibold text-gray-900 mb-4 text-left">Inicia sesión para comprar en el supermercado que desees.</span>
 
