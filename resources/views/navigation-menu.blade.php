@@ -73,11 +73,11 @@
 
 
                                 <x-jet-dropdown-link href="{{ route('dashboard') }}">
-                                    Perfil
+                                    Resumen
                                 </x-jet-dropdown-link>
 
                                 <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                    Ajustes
+                                    Perfil
                                 </x-jet-dropdown-link>
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -154,10 +154,10 @@
 
                         <!-- Account Management -->
                         <x-jet-responsive-nav-link class="text-center" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                            {{ __('Perfil') }}
+                            Resumen
                         </x-jet-responsive-nav-link>
                         <x-jet-responsive-nav-link class="text-center" href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                            Ajustes
+                            Perfil
                         </x-jet-responsive-nav-link>
 
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -199,15 +199,18 @@
                 <x-jet-responsive-nav-link href="{{ route('brands.show') }}" :active="request()->routeIs('brands.show')">
                     Supermercados y abastos
                 </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ route('products.show') }}" :active="request()->routeIs('products.show')">
+                    Productos
+                </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('categorias') }}" :active="request()->routeIs('categorias')">
                     Categorías
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('')">
-                    Nosotros
+                    Soporte
                 </x-jet-responsive-nav-link>
-                <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('')">
+                {{-- <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('')">
                     Ayuda
-                </x-jet-responsive-nav-link>
+                </x-jet-responsive-nav-link> --}}
             </div>
         </div>
     </div>
