@@ -1,5 +1,5 @@
 @if ( $banners_promotionals && count($banners_promotionals) > 0)
-<div class="flex justify-center">
+<div class="flex justify-center px-1">
 
 
 <div class="owl-carousel owl-theme max-w-7xl my-4 text-center" id="carousel_banners_promotionals">
