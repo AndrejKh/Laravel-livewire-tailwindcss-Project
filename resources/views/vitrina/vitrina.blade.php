@@ -1,6 +1,6 @@
 <x-app-layout>
     {{-- Filtro para Celulares --}}
-    <div class="w-full h-13 px-3 flex md:hidden flex-wrap content-center pt-3">
+    <div class="w-full h-13 px-2 md:px-3 flex md:hidden flex-wrap content-center pt-3">
         <div class="flex flex-wrap w-full">
             @isset($category_selected)
                 <span class="flex flex-shrink bg-green-500 text-white rounded-full shadow px-3 py-1 mb-2 ml-2 cursor-pointer">
@@ -44,29 +44,25 @@
     </div>
 
 
-    <div class="flex">
-        <div class="flex justify-center mt-0 md:mt-3">
-            <div class="max-w-7xl w-full px-2 md:px-4">
-                <h2 class="font-bold text-lg md:text-2xl text-gray-900 mb-2"> ({{ $total_products_search }}) Productos encontrados</h2>
-                <div class="text-md md:text-lg text-gray-900">
-                    @isset($query)
-                        <span>
-                            Búsqueda realizada:
-                        </span>
-                        <strong class="font-semibold">
-                            {{ $query }}
-                        </strong>
-                    @endisset
-                    @isset($category_selected)
-                        <span>
-                            Categoria seleccionada:
-                        </span>
-                        <strong class="font-semibold">
-                            {{ $category_selected->category }}
-                        </strong>
-                    @endisset
-                </div>
-            </div>
+    <div class="flex max-w-7xl w-full mt-0 md:mt-3 px-2 md:px-4">
+        <h2 class="font-bold text-lg md:text-2xl text-gray-900 mb-2"> ({{ $total_products_search }}) Productos encontrados</h2>
+        <div class="text-md md:text-lg text-gray-900">
+            @isset($query)
+                <span>
+                    Búsqueda realizada:
+                </span>
+                <strong class="font-semibold">
+                    {{ $query }}
+                </strong>
+            @endisset
+            @isset($category_selected)
+                <span>
+                    Categoria seleccionada:
+                </span>
+                <strong class="font-semibold">
+                    {{ $category_selected->category }}
+                </strong>
+            @endisset
         </div>
     </div>
 
@@ -74,13 +70,14 @@
     <div class="grid grid-cols-1 md:grid-cols-9 mb-14 bg-gray-100 max-w-7xl">
 
         <div class="md:col-span-2 hidden md:block bg-gray-100 px-0 md:px-2 lg:px-3">
+
           <!-- Aside Navbar -->
           @include('vitrina.aside_filter')
 
         </div>
 
         <!-- Contenido -->
-        <div class="md:col-span-7 max-w-7xl w-full px-4 mt-3">
+        <div class="md:col-span-7 max-w-7xl w-full px-2 md:px-3 mt-3">
 
             <div class="flex justify-center">
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -95,8 +92,6 @@
                 {{-- {!! $products->links() !!} --}}
                 {{-- {{$products->appends(request()->input())->links()}} --}}
             </div>
-
-            {{-- @include('home.carousel_categories_card_details') --}}
 
         </div>
     </div>
