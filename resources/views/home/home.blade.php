@@ -8,11 +8,12 @@
     {{-- Banners promocionales --}}
     @include('home.sections.banners_promotionals')
 
+    {{-- Call To Action a registrarse --}}
+    @include('home.sections.cta_login')
+
     {{-- Carousel productos 'mas comprados' --}}
     @include('home.sections.products_carousel')
 
-    {{-- Call To Action a registrarse --}}
-    @include('home.sections.cta_login')
 
     {{-- Categorias cards sencillas --}}
     @include('components.carousel_categories_banners')
