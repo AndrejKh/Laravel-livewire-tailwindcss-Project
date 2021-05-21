@@ -9,10 +9,10 @@
                     <h6 class="font-bold text-lg md:text-xl">{{$item->product->title}}</h6>
                     <span class="flex">
                         <button class="inline" wire:loading.attr="disabled" wire:click="setItemUpdate( {{ $item->id }} )">
-                            <img src="{{ asset('/icons/edit.svg') }}" alt="">
+                            <img src="{{ asset('edit.svg') }}" alt="">
                         </button>
                         <button class="inline ml-2" wire:loading.attr="disabled" wire:click="setItemDelete( {{ $item }} )">
-                            <img src="{{ asset('/icons/delete.svg') }}" alt="">
+                            <img src="{{ asset('delete.svg') }}" alt="">
                         </button>
                     </span>
                 </div>
