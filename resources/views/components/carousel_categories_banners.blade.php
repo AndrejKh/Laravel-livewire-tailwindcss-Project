@@ -1,6 +1,6 @@
 @if ( $principal_categories && count($principal_categories) > 0)
 
-<div class="flex justify-center px-1">
+<div class="flex justify-center px-2">
 
     <div class="owl-carousel owl-theme max-w-7xl my-4 text-center relative" id="carousel_banners_categories">
         @foreach ($principal_categories as $category)
