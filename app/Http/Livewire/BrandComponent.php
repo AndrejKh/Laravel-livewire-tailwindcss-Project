@@ -14,7 +14,7 @@ class BrandComponent extends Component
 {
     use WithFileUploads;
 
-    public $user_id, $brand, $brand_id, $profile_photo_path_brand, $state_id, $city_id, $cities, $address, $message_alert, $color_alert;
+    public $brand_test, $user_id, $brand, $brand_id, $profile_photo_path_brand, $state_id, $city_id, $cities, $address, $message_alert, $color_alert;
 
     public $openModal = false;
     public $openModalActualizar = false;
@@ -140,11 +140,13 @@ class BrandComponent extends Component
         public function updateAddress()
         {
             $brand = Brand::where('user_id', $this->user_id)->first();
+            $this->brand_test = $brand;
 
             $brand->update([
                 // 'state_id' => $this->state_id,
                 // 'city_id' => $this->city_id,
-                'address' => $this->address
+                'address' => 'direccion temporal',
+                'description' => 'description temporal',
             ]);
 
             //reinicio las propiedades
