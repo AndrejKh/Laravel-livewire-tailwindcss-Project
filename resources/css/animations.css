@@ -1,0 +1,8 @@
+
+.intermitente {
+    -webkit-animation: 2.5s linear 0s infinite alternate opacity;
+            animation: 2.5s linear 0s infinite alternate opacity;
+  }
+  
+  @-webkit-keyframes opacity { from { opacity: 0.5; } to { opacity: 1; }  }
+          @keyframes opacity { from { opacity: 0.5; } to { opacity: 1; }  }

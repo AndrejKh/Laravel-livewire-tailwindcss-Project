@@ -125,9 +125,6 @@ class BrandComponent extends Component
             // $this->profile_photo_path_brand = $brand_user->profile_photo_path_brand;
         }
 
-
-
-
         //* Address */
 
         // Funcion que se activa al momento de dar click en el boton 'editar' de algun delivery
@@ -143,10 +140,6 @@ class BrandComponent extends Component
         public function updateAddress()
         {
             $brand = Brand::where('user_id', $this->user_id)->first();
-
-            $brand->update([
-                'brand' => 'alibaba'
-            ]);
 
             $brand->update([
                 'state_id' => $this->state_id,
