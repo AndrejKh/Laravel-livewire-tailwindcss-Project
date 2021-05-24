@@ -85,30 +85,45 @@ class BrandComponent extends Component
         public function update(){
 
             $brand = Brand::where('user_id', $this->user_id)->first();
-            if ($this->profile_photo_path_brand) {
-                //Guardo la imagen en la carpeta storage, enlace public
-                $path_imagen=$this->profile_photo_path_brand->store('public');
 
-                if ($this->brand != '') {
+            // SI se esta actualizando la direccion
+            if( $this->state_id ){
+
+                $brand->update([
+                    'state_id' => $this->state_id,
+                    'city_id' => $this->city_id,
+                    'address' => $this->address,
+                ]);
+
+                // Actualizo solo la marca (nombre e imagen)
+            }else{
+
+                if ($this->profile_photo_path_brand) {
+                    //Guardo la imagen en la carpeta storage, enlace public
+                    $path_imagen=$this->profile_photo_path_brand->store('public');
+
+                    if ($this->brand != '') {
+
+                        $brand->update([
+                            'brand' => $this->brand,
+                            'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
+                            'profile_photo_path_brand' => $path_imagen
+                        ]);
+                    }else{
+                        $brand->update([
+                            'profile_photo_path_brand' => $path_imagen
+                        ]);
+                    }
+
+                } else {
 
                     $brand->update([
                         'brand' => $this->brand,
                         'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
-                        'profile_photo_path_brand' => $path_imagen
-                    ]);
-                }else{
-                    $brand->update([
-                        'profile_photo_path_brand' => $path_imagen
+                        'address' => 'direccion temporal',
                     ]);
                 }
 
-            } else {
-
-                $brand->update([
-                    'brand' => $this->brand,
-                    'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
-                    'address' => 'direccion temporal',
-                ]);
             }
 
             //reinicio las propiedades
@@ -138,26 +153,19 @@ class BrandComponent extends Component
             $this->address = $brand->address;
         }
 
-        public function updateAddress()
-        {
-            $brand = Brand::where('user_id', $this->user_id)->first();
-            $this->brand_test = $brand;
+        // public function updateAddress()
+        // {
+        //     $brand = Brand::where('user_id', $this->user_id)->first();
+        //     $this->brand_test = $brand;
 
-            $brand->update([
-                'brand' => $brand->brand,
-                'slug' => SlugService::createSlug(Brand::class, 'slug', $brand->brand),
-                'address' => 'direccion temporal',
-                'description' => 'description temporal',
-                'state_id' => 7,
-                'city_id' => 7,
-            ]);
 
-            //reinicio las propiedades
-            $this->cancelar();
-            $this->show_alert = 'true';
-            $this->color_alert = 'green';
-            $this->message_alert = 'Actualizado exitosamente!';
-        }
+
+        //     //reinicio las propiedades
+        //     $this->cancelar();
+        //     $this->show_alert = 'true';
+        //     $this->color_alert = 'green';
+        //     $this->message_alert = 'Actualizado exitosamente!';
+        // }
 
 
         // Funcion para buscar las ciudades, dependiendo del estado seleccionado

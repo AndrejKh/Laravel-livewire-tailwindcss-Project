@@ -34,8 +34,6 @@
             </div>
         </div>
 
-        {{$brand_user}}
-
         @if (!$brand_user)
             {{--  Modal para crear marca --}}
             <x-jet-dialog-modal wire:model="openModal">
@@ -116,7 +114,6 @@
         @endif
 
     </div>
-    {{ $brand_test }}
 
     {{-- Address --}}
     @if($brand_user !== null )
@@ -211,7 +208,7 @@
                         <x-jet-secondary-button wire:loading.attr="disabled" wire:click="cancelar">
                             Cancelar
                         </x-jet-button>
-                        <x-jet-button wire:loading.attr="disabled" wire:click="updateAddress()">
+                        <x-jet-button wire:loading.attr="disabled" wire:click="update">
                             Confirmar
                         </x-jet-button>
                     </x-slot>
@@ -278,7 +275,7 @@
                         <x-jet-secondary-button wire:loading.attr="disabled" wire:click="cancelar">
                             Cancelar
                         </x-jet-button>
-                        <x-jet-button wire:loading.attr="disabled" wire:click="updateAddress()">
+                        <x-jet-button wire:loading.attr="disabled" wire:click="update">
                             Confirmar
                         </x-jet-button>
                     </x-slot>
