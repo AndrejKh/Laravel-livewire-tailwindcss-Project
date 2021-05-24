@@ -108,8 +108,6 @@ class BrandComponent extends Component
                     'brand' => $this->brand,
                     'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
                     'address' => 'direccion temporal',
-                    'description' => 'description temporal',
-                    'state_id' => 7,
                 ]);
             }
 
@@ -146,10 +144,12 @@ class BrandComponent extends Component
             $this->brand_test = $brand;
 
             $brand->update([
-                // 'state_id' => $this->state_id,
-                // 'city_id' => $this->city_id,
+                'brand' => $brand->brand,
+                'slug' => SlugService::createSlug(Brand::class, 'slug', $brand->brand),
                 'address' => 'direccion temporal',
                 'description' => 'description temporal',
+                'state_id' => 7,
+                'city_id' => 7,
             ]);
 
             //reinicio las propiedades
