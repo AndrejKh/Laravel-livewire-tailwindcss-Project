@@ -90,9 +90,9 @@ class BrandComponent extends Component
             if( $this->state_id ){
 
                 $brand->update([
-                    'state_id' => $this->state_id,
-                    'city_id' => $this->city_id,
-                    'address' => $this->address,
+                    // 'state_id' => $this->state_id,
+                    // 'city_id' => $this->city_id,
+                    'address' => 'direccion aqui',
                 ]);
 
                 // Actualizo solo la marca (nombre e imagen)
@@ -152,21 +152,6 @@ class BrandComponent extends Component
             $this->city_id = $brand->city_id;
             $this->address = $brand->address;
         }
-
-        // public function updateAddress()
-        // {
-        //     $brand = Brand::where('user_id', $this->user_id)->first();
-        //     $this->brand_test = $brand;
-
-
-
-        //     //reinicio las propiedades
-        //     $this->cancelar();
-        //     $this->show_alert = 'true';
-        //     $this->color_alert = 'green';
-        //     $this->message_alert = 'Actualizado exitosamente!';
-        // }
-
 
         // Funcion para buscar las ciudades, dependiendo del estado seleccionado
         public function changeState(){
