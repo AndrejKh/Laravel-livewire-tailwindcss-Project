@@ -88,7 +88,7 @@
                         <div class="flex-auto mb-3">
                             <label class="text-md font-semibold mb-2" for="price">Precio</label>
                             <div class="mt-1 flex rounded-md shadow-sm">
-                                <input wire:model.lazy="price" autocomplete="min_amount_purchase" type="number" class="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" required onkeypress="return filterFloat(event,this);">
+                                <input wire:model.lazy="price" autocomplete="min_amount_purchase" type="number" class="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" required onkeypress="return filterFloat(event,this);" min="0.01" step="0.01">
                                 <span class="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-green-600 text-sm font-bold" title="Dólares">
                                     $USD
                                 </span>
