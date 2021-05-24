@@ -267,6 +267,7 @@
                             </div>
 
                         </div>
+                        {{ $brand_test }} ------****--
 
                         {{ $city_id }} //
                         {{ $state_id }} //
