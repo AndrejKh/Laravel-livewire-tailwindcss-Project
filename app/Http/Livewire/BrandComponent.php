@@ -142,9 +142,9 @@ class BrandComponent extends Component
             $brand = Brand::where('user_id', $this->user_id)->first();
 
             $brand->update([
-                'state_id' => $this->state_id,
-                'city_id' => $this->city_id,
-                // 'address' => $this->address
+                // 'state_id' => $this->state_id,
+                // 'city_id' => $this->city_id,
+                'address' => $this->address
             ]);
 
             //reinicio las propiedades

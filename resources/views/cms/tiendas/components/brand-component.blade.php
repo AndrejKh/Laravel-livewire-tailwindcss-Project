@@ -34,6 +34,8 @@
             </div>
         </div>
 
+        {{$brand_user}}
+
         @if (!$brand_user)
             {{--  Modal para crear marca --}}
             <x-jet-dialog-modal wire:model="openModal">
@@ -265,6 +267,7 @@
                             </div>
 
                         </div>
+                        {{  $brand }} ----**---
 
                         {{ $city_id }} //
                         {{ $state_id }} //
