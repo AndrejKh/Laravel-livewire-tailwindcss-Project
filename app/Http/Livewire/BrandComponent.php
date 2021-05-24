@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\AddressBrands;
 use App\Models\Brand;
 use App\Models\City;
 use App\Models\State;
@@ -86,47 +87,34 @@ class BrandComponent extends Component
 
             $brand = Brand::where('user_id', $this->user_id)->first();
 
-            // SI se esta actualizando la direccion
-            // if( $this->state_id ){
+            if ($this->profile_photo_path_brand) {
+                //Guardo la imagen en la carpeta storage, enlace public
+                $path_imagen=$this->profile_photo_path_brand->store('public');
 
-                // $brand->update([
-                //     // 'state_id' => $this->state_id,
-                //     // 'city_id' => $this->city_id,
-                //     'address' => 'direccion aqui',
-                // ]);
-
-                // Actualizo solo la marca (nombre e imagen)
-            // }else{
-
-                if ($this->profile_photo_path_brand) {
-                    //Guardo la imagen en la carpeta storage, enlace public
-                    $path_imagen=$this->profile_photo_path_brand->store('public');
-
-                    if ($this->brand != '') {
-
-                        $brand->update([
-                            'brand' => $this->brand,
-                            'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
-                            'profile_photo_path_brand' => $path_imagen
-                        ]);
-                    }else{
-                        $brand->update([
-                            'profile_photo_path_brand' => $path_imagen
-                        ]);
-                    }
-
-                } else {
+                if ($this->brand != '') {
 
                     $brand->update([
                         'brand' => $this->brand,
                         'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
-                        'address' => Null,
-                        'state_id' => Null,
-                        'city_id' => Null,
+                        'profile_photo_path_brand' => $path_imagen
+                    ]);
+                }else{
+                    $brand->update([
+                        'profile_photo_path_brand' => $path_imagen
                     ]);
                 }
 
-            // }
+            } else {
+
+                $brand->update([
+                    'brand' => $this->brand,
+                    'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
+                    'address' => Null,
+                    'state_id' => Null,
+                    'city_id' => Null,
+                ]);
+            }
+
 
             //reinicio las propiedades
             $this->cancelar();
@@ -143,22 +131,6 @@ class BrandComponent extends Component
             // $this->profile_photo_path_brand = $brand_user->profile_photo_path_brand;
         }
 
-        //* Address */
-
-        // Funcion que se activa al momento de dar click en el boton 'editar' de algun delivery
-        public function buttonActualizarAddress(){
-            $this->openModalActualizarAddress = true;
-            $brand = Brand::where('user_id', $this->user_id)->first();
-
-            $this->state_id = $brand->state_id;
-            $this->city_id = $brand->city_id;
-            $this->address = $brand->address;
-        }
-
-        // Funcion para buscar las ciudades, dependiendo del estado seleccionado
-        public function changeState(){
-            $this->cities = City::where('state_id', $this->state_id)->get();
-        }
 
         public function cancelar(){
             $this->reset(['brand', 'state_id', 'city_id', 'cities', 'address', 'profile_photo_path_brand','show_alert','message_alert','color_alert', 'openModalActualizar', 'openModalAddress', 'openModalActualizarAddress']);

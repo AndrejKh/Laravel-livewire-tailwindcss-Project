@@ -46,15 +46,11 @@ class Brand extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    //Relacion uno a muchos inversa
-    public function state(){
-        return $this->belongsTo('App\Models\State');
+    //Relacion uno a muchos Inversa
+    public function address(){
+        return $this->hasOne('App\Models\AddressBrands');
     }
 
-    //Relacion uno a muchos inversa
-    public function city(){
-        return $this->belongsTo('App\Models\City');
-    }
 
     //Relacion uno a muchos
     public function deliveries(){

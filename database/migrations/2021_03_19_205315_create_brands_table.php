@@ -18,10 +18,6 @@ class CreateBrandsTable extends Migration
             $table->string('brand');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
-            $table->foreignId('state_id')->nullable()->constrained()->onDelete('set Null');
-            $table->foreignId('city_id')->nullable()->constrained()->onDelete('set Null');
-            $table->string('address')->nullable();
-
             $table->text('description')->nullable();
             $table->string('code')->nullable();
 
