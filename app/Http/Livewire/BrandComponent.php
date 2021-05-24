@@ -87,16 +87,16 @@ class BrandComponent extends Component
             $brand = Brand::where('user_id', $this->user_id)->first();
 
             // SI se esta actualizando la direccion
-            if( $this->state_id ){
+            // if( $this->state_id ){
 
-                $brand->update([
-                    // 'state_id' => $this->state_id,
-                    // 'city_id' => $this->city_id,
-                    'address' => 'direccion aqui',
-                ]);
+                // $brand->update([
+                //     // 'state_id' => $this->state_id,
+                //     // 'city_id' => $this->city_id,
+                //     'address' => 'direccion aqui',
+                // ]);
 
                 // Actualizo solo la marca (nombre e imagen)
-            }else{
+            // }else{
 
                 if ($this->profile_photo_path_brand) {
                     //Guardo la imagen en la carpeta storage, enlace public
@@ -120,11 +120,13 @@ class BrandComponent extends Component
                     $brand->update([
                         'brand' => $this->brand,
                         'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
-                        'address' => 'direccion temporal',
+                        'address' => Null,
+                        'state_id' => Null,
+                        'city_id' => Null,
                     ]);
                 }
 
-            }
+            // }
 
             //reinicio las propiedades
             $this->cancelar();
