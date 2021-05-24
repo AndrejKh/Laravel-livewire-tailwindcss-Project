@@ -169,10 +169,10 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                             <div class="col-span-1">
-                                <x-jet-label class="font-bold" for="state" value="Estado" />
-                                <select wire:model="state_id" wire:click="changeState" id="state" autocomplete="state" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                                <x-jet-label class="font-bold" value="Estado" />
+                                <select wire:model="state_id" wire:click="changeState" autocomplete="state_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
                                     @foreach ($estados as $estado)
-                                        <option value="{{$estado->id}}" > {{$estado->state}} </option>
+                                        <option value="{{$estado->id}}"> {{$estado->state}} </option>
                                     @endforeach
                                 </select>
                                 @error('state_id')
@@ -181,17 +181,17 @@
                             </div>
 
                             <div class="col-span-1">
-                                <x-jet-label class="font-bold" for="city" value="Municipio" />
-                                <select wire:model="city_id" id="city" autocomplete="city" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                                <x-jet-label class="font-bold" value="Municipio" />
+                                <select wire:model="city_id" autocomplete="city_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
                                     <option selected>Selecciona el municipio</option>
                                     @if ($cities)
                                         @foreach ($cities as $city)
-                                            <option value="{{$city->id}}"> {{$city->city}} </option>
+                                            <option value="{{$city->id}}"> {{ $city->city }} </option>
                                         @endforeach
                                     @endif
                                 </select>
                                 @error('city_id')
-                                    <small class="text-red-400 italic">{{$message}}</small>
+                                    <small class="text-red-400 italic"> {{ $message }} </small>
                                 @enderror
                             </div>
 
@@ -209,7 +209,7 @@
                         <x-jet-secondary-button wire:loading.attr="disabled" wire:click="cancelar">
                             Cancelar
                         </x-jet-button>
-                        <x-jet-button wire:loading.attr="disabled" wire:click="updateAddress">
+                        <x-jet-button wire:loading.attr="disabled" wire:click="updateAddress()">
                             Confirmar
                         </x-jet-button>
                     </x-slot>
@@ -228,8 +228,8 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                             <div class="col-span-1">
-                                <x-jet-label class="font-bold" for="state" value="Estado" />
-                                <select wire:model="state_id" wire:click="changeState" id="state" autocomplete="state" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                                <x-jet-label class="font-bold" value="Estado" />
+                                <select wire:model="state_id" wire:click="changeState" autocomplete="state_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
                                     @foreach ($estados as $estado)
                                         <option value="{{$estado->id}}" > {{$estado->state}} </option>
                                     @endforeach
@@ -240,8 +240,8 @@
                             </div>
 
                             <div class="col-span-1">
-                                <x-jet-label class="font-bold" for="city" value="Municipio" />
-                                <select wire:model="city_id" id="city" autocomplete="city" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                                <x-jet-label class="font-bold" value="Municipio" />
+                                <select wire:model="city_id" autocomplete="city_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
                                     <option selected>Selecciona el municipio</option>
                                     @if ($cities)
 
@@ -271,7 +271,7 @@
                         <x-jet-secondary-button wire:loading.attr="disabled" wire:click="cancelar">
                             Cancelar
                         </x-jet-button>
-                        <x-jet-button wire:loading.attr="disabled" wire:click="updateAddress">
+                        <x-jet-button wire:loading.attr="disabled" wire:click="updateAddress()">
                             Confirmar
                         </x-jet-button>
                     </x-slot>
