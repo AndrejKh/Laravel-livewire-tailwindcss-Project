@@ -144,7 +144,7 @@ class BrandComponent extends Component
             $brand->update([
                 'state_id' => $this->state_id,
                 'city_id' => $this->city_id,
-                'address' => $this->address
+                // 'address' => $this->address
             ]);
 
             //reinicio las propiedades
