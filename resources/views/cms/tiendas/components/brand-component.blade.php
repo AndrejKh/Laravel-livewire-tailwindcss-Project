@@ -116,7 +116,7 @@
         @endif
 
     </div>
-
+    {{ $brand_test }}
 
     {{-- Address --}}
     @if($brand_user !== null )
@@ -267,7 +267,7 @@
                             </div>
 
                         </div>
-                        {{ $brand_test }} ------****--
+                         ------****--
 
                         {{ $city_id }} //
                         {{ $state_id }} //
