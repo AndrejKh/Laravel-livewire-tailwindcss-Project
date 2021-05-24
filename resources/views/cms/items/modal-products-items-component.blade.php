@@ -74,7 +74,7 @@
                         <div class="flex-auto mb-3">
                             <label class="text-md font-semibold mb-2" for="quantity">Cantidad</label>
                             <div class="mt-1 flex rounded-md shadow-sm">
-                                <input wire:model.lazy="quantity" autocomplete="min_amount_purchase" type="number" class="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" required onkeypress="return filterInteger(event);">
+                                <input wire:model.lazy="quantity" autocomplete="min_amount_purchase" type="number" class="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" required onkeypress="return filterInteger(event);" min="1" step="1">
                                 <span class="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-800 text-sm font-bold" title="Unidad">
                                     ud.
                                 </span>
