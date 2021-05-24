@@ -1,3 +1,15 @@
+@php $delivery_free = 0; @endphp
+        {{-- Verifico si la marca tiene deliveries --}}
+        @isset( $tienda->deliveries )
+            {{-- Recorro todos los deliveries --}}
+            @foreach ($tienda->deliveries as $delivery)
+                {{-- Verifico si el delivery es free, en este caso finalizo el cilo --}}
+                @if ( $delivery->delivery_free == 1 )
+                    @php $delivery_free = 1; break; @endphp
+                @endif
+            @endforeach
+        @endisset
+
 <article class="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 p-1 md:p-3 lg:p-4 shadow-md rounded-md bg-white mb-2 md:mb-4">
     <div class="col-span-1 self-center">
         <div class="bg-no-repeat bg-cover bg-center w-16 h-16 overflow-hidden rounded-full mx-auto" style="background-image: url('/storage/{{ $tienda->profile_photo_path_brand }}');"></div>
