@@ -259,15 +259,14 @@
                             </div>
 
                             <div class="col-span-2">
-                                <x-jet-label class="font-bold" for="address" value="Dirección" />
-                                <input wire:model.defer="address" autocomplete="address" class="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" type="text" id="address" required >
+                                <x-jet-label class="font-bold" value="Dirección" />
+                                <input wire:model="address" autocomplete="address" class="flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" type="text" required >
                                 @error('address')
                                     <small class="text-red-400 italic">{{$message}}</small>
                                 @enderror
                             </div>
 
                         </div>
-                        {{  $brand }} ----**---
 
                         {{ $city_id }} //
                         {{ $state_id }} //
