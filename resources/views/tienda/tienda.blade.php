@@ -26,7 +26,7 @@
 
                     @endforeach
                 </div>
-                <div class="flex justify-center mt-4" id="pagination_nav">
+                <div class="flex justify-center my-4" id="pagination_nav">
                     {!! $items->links() !!}
                 </div>
             </div>
