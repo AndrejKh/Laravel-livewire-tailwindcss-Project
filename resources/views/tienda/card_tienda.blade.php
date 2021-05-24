@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="col-span-1 lg:col-span-1 mx-auto self-center" >
-        @if ( count($item->brand->deliveries) > 0 )
+        @if ( count($tienda->deliveries) > 0 )
 
                 @if ( $delivery_free )
                     <svg class="mx-auto w-8 h-8" viewBox="0 0 31 26" fill="none" xmlns="http://www.w3.org/2000/svg" title="Envios Gratis">
