@@ -266,6 +266,10 @@
 
                         </div>
 
+                        {{ $city_id }} //
+                        {{ $state_id }} //
+                        {{ $address }} //
+
                     </x-slot>
                     <x-slot name="footer">
                         <x-jet-secondary-button wire:loading.attr="disabled" wire:click="cancelar">
