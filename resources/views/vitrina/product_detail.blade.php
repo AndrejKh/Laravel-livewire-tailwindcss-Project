@@ -69,12 +69,18 @@
             <span class="text-gray-400 text-sm">Podrás comparar tu carrito de compras al final</span>
         </div>
     </div>
+    {{-- Listado de supermercados --}}
     <div class="flex justify-center mt-3">
         <div class="max-w-7xl w-full px-2">
             @foreach ($items as $item)
                 @include('components.card_tienda_precio_product')
             @endforeach
         </div>
+    </div>
+
+    {{-- Boton volver - seguir comprando --}}
+    <div class="flex justify-center my-4">
+        <a class="bg-green-500 text-white py-2 px-4 rounded-md shadow-md" href="{{ url()->previous() }}">Seguir comprando</a>
     </div>
 
     <div class="block md:hidden max-w-7xl w-full px-2 mx-auto mb-1 mt-3">
