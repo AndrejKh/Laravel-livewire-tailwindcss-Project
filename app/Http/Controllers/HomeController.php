@@ -56,17 +56,22 @@ class HomeController extends Controller
                     $city_selected = $city->city;
                     $state_selected = $city->state->state;
 
-                    $productsDB = Product::where('title', 'LIKE', '%'.$query.'%')
+                    $productsDBBrand = Product::where('title', 'LIKE', '%'.$query.'%')
                         ->join('items', 'products.id', '=', 'items.product_id')
-                        ->join('brands', 'items.brand_id', '=', 'brands.id')
-                        ->join('address_brands', 'brands.id', '=', 'address_brands.brand_id')
+                        // ->join('brands', 'items.brand_id', '=', 'brands.id')
+                        ->join('address_brands', 'items.brand_id', '=', 'address_brands.brand_id')
                         ->where('address_brands.city_id', $city_id)
                         ->where('products.status', 'active')
                         ->select('products.*')
                         ->get();
 
-                    $products = $this->noDuplicatedArray($productsDB);
-                    $total_products_search = count($products);
+                    $productsDBDeliveries = Product::where('title', 'LIKE', '%'.$query.'%')
+                        ->join('items', 'products.id', '=', 'items.product_id')
+                        ->join('deliveries', 'items.brand_id', '=', 'deliveries.brand_id')
+                        ->where('deliveries.city_id', $city_id)
+                        ->where('products.status', 'active')
+                        ->select('products.*')
+                        ->get();
 
                 }else{
 
@@ -76,19 +81,28 @@ class HomeController extends Controller
                     $state_selected = $state->state;
                     $city_selected = null;
 
-                    $productsDB = Product::where('title', 'LIKE', '%'.$query.'%')
+                    $productsDBBrand = Product::where('title', 'LIKE', '%'.$query.'%')
                         ->join('items', 'products.id', '=', 'items.product_id')
-                        ->join('brands', 'items.brand_id', '=', 'brands.id')
-                        ->join('address_brands', 'brands.id', '=', 'address_brands.brand_id')
+                        // ->join('brands', 'items.brand_id', '=', 'brands.id')
+                        ->join('address_brands', 'items.brand_id', '=', 'address_brands.brand_id')
                         ->where('address_brands.state_id', $state_id)
                         ->where('products.status', 'active')
                         ->select('products.*')
                         ->get();
 
-                    $products = $this->noDuplicatedArray($productsDB);
-                    $total_products_search = count($products);
+                    $productsDBDeliveries = Product::where('title', 'LIKE', '%'.$query.'%')
+                        ->join('items', 'products.id', '=', 'items.product_id')
+                        ->join('deliveries', 'items.brand_id', '=', 'deliveries.brand_id')
+                        ->where('deliveries.state_id', $state_id)
+                        ->where('products.status', 'active')
+                        ->select('products.*')
+                        ->get();
 
                 }
+                $productsDB = $productsDBBrand->merge($productsDBDeliveries);
+
+                $products = $this->noDuplicatedArray($productsDB);
+                $total_products_search = count($products);
 
             }else {
 
@@ -105,14 +119,70 @@ class HomeController extends Controller
             }
         }else {
 
-            // Obtengo todos los productos, sin filtro
-            $products = Product::inRandomOrder()->where('status', 'active')->get();
-            $total_products_search = $products->count();
+            // Obtengo los productos filtrados por la busqueda 'search' y el estado
+            if( isset($request->state) ){
 
-            // Variables que se retornan a la vista, estas variables se usan para el form de filtro
+                if( isset($request->city) ){
+                    // Obtengo los productos filtrados por la busqueda 'search' y la ciudad
+                    $ciudad = $request->city;
+                    $city = City::where('status','active')->where('city',$ciudad)->first();
+                    $city_id = $city->id;
+                    $city_selected = $city->city;
+                    $state_selected = $city->state->state;
+
+                    $productsDBBrand = Product::where('products.status', 'active')
+                        ->join('items', 'products.id', '=', 'items.product_id')
+                        ->join('address_brands', 'items.brand_id', '=', 'address_brands.brand_id')
+                        ->where('address_brands.city_id', $city_id)
+                        ->select('products.*')
+                        ->get();
+
+                    $productsDBDeliveries = Product::where('products.status', 'active')
+                        ->join('items', 'products.id', '=', 'items.product_id')
+                        ->join('deliveries', 'items.brand_id', '=', 'deliveries.brand_id')
+                        ->where('deliveries.city_id', $city_id)
+                        ->select('products.*')
+                        ->get();
+
+                }else{
+
+                    $estado = $request->state;
+                    $state = State::where('status','active')->where('state',$estado)->first();
+                    $state_id = $state->id;
+                    $state_selected = $state->state;
+                    $city_selected = null;
+
+                    $productsDBBrand = Product::where('products.status', 'active')
+                        ->join('items', 'products.id', '=', 'items.product_id')
+                        ->join('address_brands', 'items.brand_id', '=', 'address_brands.brand_id')
+                        ->where('address_brands.state_id', $state_id)
+                        ->select('products.*')
+                        ->get();
+
+                    $productsDBDeliveries = Product::where('products.status', 'active')
+                        ->join('items', 'products.id', '=', 'items.product_id')
+                        ->join('deliveries', 'items.brand_id', '=', 'deliveries.brand_id')
+                        ->where('deliveries.state_id', $state_id)
+                        ->select('products.*')
+                        ->get();
+
+                }
+                $productsDB = $productsDBBrand->merge($productsDBDeliveries);
+
+                $products = $this->noDuplicatedArray($productsDB);
+                $total_products_search = count($products);
+
+            }else {
+
+                // Obtengo todos los productos, sin filtro
+                $products = Product::inRandomOrder()->where('status', 'active')->get();
+                $total_products_search = $products->count();
+
+                // Variables que se retornan a la vista, estas variables se usan para el form de filtro
+                $city_selected = null;
+                $state_selected = null;
+            }
             $query = null;
-            $city_selected = null;
-            $state_selected = null;
 
         }
 
