@@ -50,8 +50,8 @@
                         </div>
                     </div>
                     {{-- Boton volver - seguir comprando --}}
-                    <div class="flex my-4">
-                        <a class="bg-green-500 text-white py-2 px-8 rounded-md shadow-md" href="{{ url()->previous() }}">Seguir comprando</a>
+                    <div class="flex justify-center md:justify-start my-4">
+                        <a class="bg-green-500 text-white py-2 px-8 lg:px-20 rounded-md shadow-md" href="{{ url()->previous() }}">Seguir comprando</a>
                     </div>
                     <div class="hidden md:block">
                         <h4 class="text-xl font-semibold md:mt-10">Descripción</h4>
