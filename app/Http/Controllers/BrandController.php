@@ -18,7 +18,13 @@ class BrandController extends Controller
         ->select('brands.*', 'states.state')
         ->get();
 
-        $brandsInState = Brand::where('status', 'active')->where('state_id', $state_id)->get();
+        $brandsInState = DB::table('states')
+        ->join('address_brands', 'states.id', '=', 'address_brands.state_id')
+        ->join('brands', 'address_brands.brand_id', '=', 'brands.id')
+        ->where('brands.status', 'active')
+        ->where('states.id', $state_id)
+        ->select('brands.*', 'states.state')
+        ->get();
 
         $brands = $brandsWithDeliveryInState->merge($brandsInState);
 
@@ -36,7 +42,13 @@ class BrandController extends Controller
         ->select('brands.*', 'cities.city')
         ->get();
 
-        $brandsInCity = Brand::where('status', 'active')->where('city_id', $city_id)->get();
+        $brandsInCity = DB::table('cities')
+        ->join('address_brands', 'cities.id', '=', 'address_brands.city_id')
+        ->join('brands', 'address_brands.brand_id', '=', 'brands.id')
+        ->where('brands.status', 'active')
+        ->where('cities.id', $city_id)
+        ->select('brands.*', 'cities.city')
+        ->get();
 
         $brands = $brandsWithDeliveryInCity->merge($brandsInCity);
 

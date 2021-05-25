@@ -4200,24 +4200,26 @@ function updateTotalProductsShoppingCar(arrayProductsLocalStorage) {
   var badgeIconShoppingCarNavbar = document.getElementById('badgeIconShoppingCarNavbar');
   var quantityTotal = 0;
 
-  if (arrayProductsLocalStorage !== null) {
-    if (arrayProductsLocalStorage.length == 0) {
-      if (spanQuantityFloatButtonShoppingCard !== null) {
-        spanQuantityFloatButtonShoppingCard.style.display = 'none';
+  if (spanQuantityFloatButtonShoppingCard !== null) {
+    if (arrayProductsLocalStorage !== null) {
+      if (arrayProductsLocalStorage.length == 0) {
+        if (spanQuantityFloatButtonShoppingCard !== null) {
+          spanQuantityFloatButtonShoppingCard.style.display = 'none';
+        }
+
+        badgeIconShoppingCarNavbar.style.display = 'none';
+      } else {
+        arrayProductsLocalStorage.forEach(function (product) {
+          quantityTotal += product.quantity;
+        });
+
+        if (spanQuantityFloatButtonShoppingCard !== null) {
+          spanQuantityFloatButtonShoppingCard.style.display = 'flex';
+        }
+
+        spanQuantityFloatButtonShoppingCard.lastElementChild.textContent = quantityTotal;
+        badgeIconShoppingCarNavbar.style.display = 'block';
       }
-
-      badgeIconShoppingCarNavbar.style.display = 'none';
-    } else {
-      arrayProductsLocalStorage.forEach(function (product) {
-        quantityTotal += product.quantity;
-      });
-
-      if (spanQuantityFloatButtonShoppingCard !== null) {
-        spanQuantityFloatButtonShoppingCard.style.display = 'flex';
-      }
-
-      spanQuantityFloatButtonShoppingCard.lastElementChild.textContent = quantityTotal;
-      badgeIconShoppingCarNavbar.style.display = 'block';
     }
   }
 } // Al cargar el sitio web
@@ -4230,10 +4232,12 @@ $(window).on('load', function () {
   arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
   var compareFloatButton = document.getElementById('compareFloatButton');
 
-  if (ProductsLocalStorage !== null) {
-    // Hay elementos en el carrito de compras?
-    if (arrayProductsLocalStorage.length > 0) {
-      compareFloatButton.classList.add("shownButton");
+  if (compareFloatButton !== null) {
+    if (ProductsLocalStorage !== null) {
+      // Hay elementos en el carrito de compras?
+      if (arrayProductsLocalStorage.length > 0) {
+        compareFloatButton.classList.add("shownButton");
+      }
     }
   } // Muestro el span de carrito de compras
 
