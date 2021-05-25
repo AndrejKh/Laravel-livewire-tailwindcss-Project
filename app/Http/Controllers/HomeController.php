@@ -59,11 +59,11 @@ class HomeController extends Controller
                     $productsDB = Product::where('title', 'LIKE', '%'.$query.'%')
                         ->join('items', 'products.id', '=', 'items.product_id')
                         ->join('brands', 'items.brand_id', '=', 'brands.id')
-                        ->where('brands.city_id', $city_id)
+                        ->join('address_brands', 'brands.id', '=', 'address_brands.brand_id')
+                        ->where('address_brands.city_id', $city_id)
                         ->where('products.status', 'active')
                         ->select('products.*')
                         ->get();
-                        // ->paginate($this->perPage);
 
                     $products = $this->noDuplicatedArray($productsDB);
                     $total_products_search = count($products);
@@ -79,14 +79,13 @@ class HomeController extends Controller
                     $productsDB = Product::where('title', 'LIKE', '%'.$query.'%')
                         ->join('items', 'products.id', '=', 'items.product_id')
                         ->join('brands', 'items.brand_id', '=', 'brands.id')
-                        ->where('brands.state_id', $state_id)
+                        ->join('address_brands', 'brands.id', '=', 'address_brands.brand_id')
+                        ->where('address_brands.state_id', $state_id)
                         ->where('products.status', 'active')
                         ->select('products.*')
                         ->get();
-                        // ->paginate($this->perPage);
 
                     $products = $this->noDuplicatedArray($productsDB);
-                    // return $products;
                     $total_products_search = count($products);
 
                 }
@@ -94,7 +93,10 @@ class HomeController extends Controller
             }else {
 
                 // Obtengo los productos filtrados por la busqueda 'search', sin filtr de estado ni ciudad
-                $products = Product::latest('id')->where('status', 'active')->where('title', 'LIKE', '%'.$query.'%')->get();
+                $products = Product::inRandomOrder()
+                ->where('status', 'active')
+                ->where('title', 'LIKE', '%'.$query.'%')
+                ->get();
                 $total_products_search = $products->count();
 
                 $city_selected = null;
@@ -104,7 +106,7 @@ class HomeController extends Controller
         }else {
 
             // Obtengo todos los productos, sin filtro
-            $products = Product::latest('id')->where('status', 'active')->get();
+            $products = Product::inRandomOrder()->where('status', 'active')->get();
             $total_products_search = $products->count();
 
             // Variables que se retornan a la vista, estas variables se usan para el form de filtro
@@ -134,7 +136,7 @@ class HomeController extends Controller
                 if( isset($request->city) ){
                     // Obtengo los productos filtrados por la busqueda 'search' y la ciudad
                     $ciudad = $request->city;
-                    $city = City::where('status','active')->where('city',$ciudad)->first();
+                    $city = City::where('status','active')->where('city', $ciudad)->first();
                     $city_id = $city->id;
                     $city_selected = $city->city;
                     $state_selected = $city->state->state;
@@ -142,11 +144,11 @@ class HomeController extends Controller
                     $productsDB = Product::where('category_id', $category_selected->id)
                         ->join('items', 'products.id', '=', 'items.product_id')
                         ->join('brands', 'items.brand_id', '=', 'brands.id')
-                        ->where('brands.city_id', $city_id)
+                        ->join('address_brands', 'brands.id', '=', 'address_brands.brand_id')
+                        ->where('address_brands.city_id', $city_id)
                         ->where('products.status', 'active')
                         ->select('products.*')
                         ->get();
-                        // ->paginate($this->perPage);
 
                     $products = $this->noDuplicatedArray($productsDB);
                     $total_products_search = count($products);
@@ -161,15 +163,14 @@ class HomeController extends Controller
 
                     $productsDB = Product::where('category_id', $category_selected->id)
                         ->join('items', 'products.id', '=', 'items.product_id')
-                        ->join('brands', 'items.brand_id', '=', 'brands.id')
-                        ->where('brands.city_id', $state_id)
+                        // ->join('brands', 'items.brand_id', '=', 'brands.id')
+                        ->join('address_brands', 'items.brand_id', '=', 'address_brands.brand_id')
+                        ->where('address_brands.state_id', $state_id)
                         ->where('products.status', 'active')
                         ->select('products.*')
                         ->get();
-                        // ->paginate($this->perPage);
 
                     $products = $this->noDuplicatedArray($productsDB);
-                    // return $products;
                     $total_products_search = count($products);
 
                 }
@@ -177,7 +178,7 @@ class HomeController extends Controller
             }else {
 
                 // Todos los productos de una categoria sin filtro
-                $products = Product::latest('id')->where('status', 'active')->where('category_id', $category_selected->id)->get();
+                $products = Product::inRandomOrder()->where('status', 'active')->where('category_id', $category_selected->id)->get();
                 $total_products_search = $products->count();
 
                 $city_selected = null;
@@ -188,7 +189,7 @@ class HomeController extends Controller
         }else {
 
             // Todos los productos sin filtro
-            $products = Product::latest('id')->where('status', 'active')->get();
+            $products = Product::inRandomOrder()->where('status', 'active')->get();
             $total_products_search = $products->count();
 
             $category_selected = null;
