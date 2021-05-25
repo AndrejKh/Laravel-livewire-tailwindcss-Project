@@ -13,7 +13,9 @@
     <div class="flex justify-center mt-3">
         <div class="max-w-7xl w-full px-2">
                 @foreach ($tiendas as $tienda)
+
                     @include('supermercados.card_tienda')
+
                 @endforeach
             <div class="flex justify-center mt-4" id="pagination_nav">
                 {!! $tiendas->links() !!}
