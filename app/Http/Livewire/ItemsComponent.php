@@ -20,7 +20,7 @@ class ItemsComponent extends Component
 
     public $brand_id, $item_id, $user_id, $item, $quantity, $price, $message_alert, $color_alert, $itemToDelete, $itemToUpdate, $newItem;
 
-    public $product_id=0;
+    public $product_id = 0;
     public $products_seach = '';
     public $search = '';
     public $status = '';
@@ -44,7 +44,7 @@ class ItemsComponent extends Component
         $brand = Brand::where('user_id', $this->user_id)->first();
 
         // El usuario tiene una marca?
-        if($brand){
+        if ($brand) {
             $this->brand_id = $brand->id;
             // SE esta buscando por estatus
             if ($this->status !== '') {
@@ -53,22 +53,34 @@ class ItemsComponent extends Component
                     ->whereHas('product', function (Builder $query) {
                         $query->where('title', 'like', "%{$this->search}%");
                     })->paginate($this->perPage);
-            // Se esta buscando todos los items, sin filtro por estatus
-            }else{
+
+                $total_items = Item::latest('id')->where('brand_id', $this->brand_id)
+                    ->where('status', $this->status)
+                    ->whereHas('product', function (Builder $query) {
+                        $query->where('title', 'like', "%{$this->search}%");
+                    })->count();
+                // Se esta buscando todos los items, sin filtro por estatus
+            } else {
                 $items = Item::latest('id')->where('brand_id', $this->brand_id)
+                    ->whereHas('product', function (Builder $query) {
+                        $query->where('title', 'like', "%{$this->search}%");
+                    })->paginate($this->perPage);
+
+                $total_items = Item::latest('id')->where('brand_id', $this->brand_id)
                 ->whereHas('product', function (Builder $query) {
                     $query->where('title', 'like', "%{$this->search}%");
-                })->paginate($this->perPage);
+                })->count();
             }
-        // el usuario no tiene marca
-        }else{
+            // el usuario no tiene marca
+        } else {
             $items = [];
         }
 
-        return view('cms.items.items-component', compact('items','user_id'));
+        return view('cms.items.items-component', compact('items', 'total_items', 'user_id'));
     }
 
-    public function setItemUpdate(Item $item){
+    public function setItemUpdate(Item $item)
+    {
         $this->reset(['show_alert']);
         $this->show_modal_update = 'true';
         $this->price = $item->price;
@@ -87,7 +99,7 @@ class ItemsComponent extends Component
         ]);
 
         //reinicio las propiedades
-        $this->reset(['itemToUpdate', 'quantity', 'price','show_alert','color_alert','message_alert']);
+        $this->reset(['itemToUpdate', 'quantity', 'price', 'show_alert', 'color_alert', 'message_alert']);
         $this->show_alert = 'true';
         $this->color_alert = 'green';
         $this->message_alert = 'Actualizado exitosamente!';
@@ -98,7 +110,8 @@ class ItemsComponent extends Component
         $this->reset(['item_id', 'item', 'product_id', 'quantity', 'price', 'itemToUpdate', 'itemToDelete', 'show_alert', 'show_modal_delete', 'show_modal_update']);
     }
 
-    public function setItemDelete(Item $item){
+    public function setItemDelete(Item $item)
+    {
         $this->reset(['show_alert']);
         $this->show_modal_delete = 'true';
         $this->itemToDelete = $item;

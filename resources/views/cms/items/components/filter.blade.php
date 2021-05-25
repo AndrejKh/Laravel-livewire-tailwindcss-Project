@@ -3,9 +3,9 @@
         <div class="grid grid-cols-5 lg:grid-cols-4 gap-2">
             <h1 class="col-span-5 md:col-span-2 lg:col-span-1 self-center">
                 @if ($items)
-                <strong>
-                    ({{$items->count()}})
-                </strong>
+                    <strong>
+                        ({{ $total_items }})
+                    </strong>
                 @endif
                 Todos tus productos
             </h1>
