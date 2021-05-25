@@ -19,7 +19,7 @@
 
         <div class="flex justify-center mt-3">
             <div class="max-w-7xl w-full px-2">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                     @foreach ($items as $item)
 
                         @include('tienda.card_item_seller_product_detail')
