@@ -49,6 +49,10 @@
                             </span>
                         </div>
                     </div>
+                    {{-- Boton volver - seguir comprando --}}
+                    <div class="flex justify-center my-4">
+                        <a class="bg-green-500 text-white py-2 px-8 rounded-md shadow-md" href="{{ url()->previous() }}">Seguir comprando</a>
+                    </div>
                     <div class="hidden md:block">
                         <h4 class="text-xl font-semibold md:mt-10">Descripción</h4>
                         <p class="hidden md:block text-gray-500 mt-4 md:mt-4 text-base md:text-lg">
@@ -80,7 +84,7 @@
 
     {{-- Boton volver - seguir comprando --}}
     <div class="flex justify-center my-4">
-        <a class="bg-green-500 text-white py-2 px-4 rounded-md shadow-md" href="{{ url()->previous() }}">Seguir comprando</a>
+        <a class="bg-green-500 text-white py-2 px-8 rounded-md shadow-md" href="{{ url()->previous() }}">Seguir comprando</a>
     </div>
 
     <div class="block md:hidden max-w-7xl w-full px-2 mx-auto mb-1 mt-3">
