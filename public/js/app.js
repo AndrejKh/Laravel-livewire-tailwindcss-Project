@@ -4246,11 +4246,14 @@ $(window).on('load', function () {
 
   document.querySelectorAll('.idProductCard').forEach(function (product) {
     idProduct = product.textContent;
-    arrayProductsLocalStorage.forEach(function (item) {
-      if (item.id == idProduct) {
-        product.parentNode.querySelector('.svgProdcutInShoppingCar').style.display = 'block';
-      }
-    });
+
+    if (arrayProductsLocalStorage !== null) {
+      arrayProductsLocalStorage.forEach(function (item) {
+        if (item.id == idProduct) {
+          product.parentNode.querySelector('.svgProdcutInShoppingCar').style.display = 'block';
+        }
+      });
+    }
   });
 });
 

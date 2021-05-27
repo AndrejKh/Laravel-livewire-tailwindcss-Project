@@ -476,12 +476,14 @@ $(window).on('load', function () {
     // Busco las cards de productos y verifico si se encuentran en el carrito de compras
     document.querySelectorAll('.idProductCard').forEach(product => {
         idProduct = product.textContent;
-        arrayProductsLocalStorage.forEach(item => {
-            if ( item.id == idProduct ){
-                product.parentNode.querySelector('.svgProdcutInShoppingCar').style.display = 'block';
-            }
+        if(arrayProductsLocalStorage !== null){
+            arrayProductsLocalStorage.forEach(item => {
+                if ( item.id == idProduct ){
+                    product.parentNode.querySelector('.svgProdcutInShoppingCar').style.display = 'block';
+                }
 
-        });
+            });
+        }
     });
 
 });
