@@ -85,7 +85,7 @@ Route::get('/get/brand-category/{id}', [BrandController::class, 'getBrandsByCate
 Route::get('/get/brand-order/{id}', [BrandController::class, 'getBrandByOrderId']);
 
 // Ruta para crear orden(compra)
-Route::get('/post/create-order/', [OrderController::class, 'createOrder']);
+Route::post('/post/create-order/', [OrderController::class, 'createOrder']);
 // Route::middleware(['auth:sanctum', 'verified'])->post('/post/create-order/', [OrderController::class, 'createOrder']);
 Route::get('/get/order/{id}', [OrderController::class, 'getOrderById']);
 Route::get('/get/order-products/{id}', [OrderController::class, 'getProductsByOrderId']);
