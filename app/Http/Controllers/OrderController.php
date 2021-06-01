@@ -25,15 +25,16 @@ class OrderController extends Controller
 
     // Crear orden
     public function createOrder(Request $request){
-        if ( isset(Auth::user()->id) ) {
-            $user_id = Auth::user()->id;
-        }else{
-            return 0;
-        }
+        return $request;
+        // if ( isset(Auth::user()->id) ) {
+        //     $user_id = Auth::user()->id;
+        // }else{
+        //     return 0;
+        // }
         // Marca seleccionada
-        $brandSelected = $request->brand;
-        $brand = $brandSelected['brand'];
-        $brand_id = $brandSelected['id'];
+        // $brandSelected = $request->brand;
+        // $brand = $brandSelected['brand'];
+        // $brand_id = $brandSelected['id'];
 
         // Direccion de la busqueda
         // $ubicationSelected = $request->ubication;
@@ -44,34 +45,34 @@ class OrderController extends Controller
 
         // $products = $request->products;
 
-        $amountSelected = $request->amount;
-        $amount = $amountSelected['amount'];
+        // $amountSelected = $request->amount;
+        // $amount = $amountSelected['amount'];
 
-        $items = $request->items;
+        // $items = $request->items;
 
-        // Creo la orden
-        Order::create([
-            'brand_id' => $brand_id,
-            'user_id' => $user_id,
-            'amount' => $amount
-        ]);
-        $newOrder = Order::latest('id')->first();
-        $order_id = $newOrder->id;
+        // // Creo la orden
+        // Order::create([
+        //     'brand_id' => $brand_id,
+        //     'user_id' => $user_id,
+        //     'amount' => $amount
+        // ]);
+        // $newOrder = Order::latest('id')->first();
+        // $order_id = $newOrder->id;
 
-        foreach ($items as $item) {
-            $product_id = $item['product_id'];
-            $quantity = $item['quantity'];
-            $price = $item['price'];
-            # code...
-            OrderProducts::create([
-                'order_id' => $order_id,
-                'product_id' => $product_id,
-                'quantity' => $quantity,
-                'price' => $price
-            ]);
-        }
+        // foreach ($items as $item) {
+        //     $product_id = $item['product_id'];
+        //     $quantity = $item['quantity'];
+        //     $price = $item['price'];
+        //     # code...
+        //     OrderProducts::create([
+        //         'order_id' => $order_id,
+        //         'product_id' => $product_id,
+        //         'quantity' => $quantity,
+        //         'price' => $price
+        //     ]);
+        // }
 
-        return true;
+        // return true;
 
     }
 
