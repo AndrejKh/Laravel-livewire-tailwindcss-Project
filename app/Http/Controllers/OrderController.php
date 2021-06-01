@@ -45,8 +45,8 @@ class OrderController extends Controller
         // $products = $request->products;
 
         $amountSelected = $request->amount;
-        $amount = $amountSelected['amount'];
-        return $amount.'-'.$user_id.'-'.$brand_id;
+        // $amount = $amountSelected['amount'];
+        return $amountSelected.'-'.$user_id.'-'.$brand_id;
 
         // $items = $request->items;
 
