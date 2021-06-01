@@ -44,7 +44,7 @@
                 </div>
                 <hr class="my-3">
                 {{-- Productos en el carrito y supermercado seleccionado --}}
-                <div class="mt-3 hidden" id="orderPendingContainer">
+                <div class="mt-3" style="display: none;" id="orderPendingContainer">
                     <div class="grid grid-cols-2 gap-2 ">
                         <div class="col-span-2 text-green-600">Tienes una compra pendiente.</div>
                         {{-- Productos seleccionados en el carrito --}}
@@ -95,6 +95,7 @@
     @include('common.navbar_movil_perfil')
 
     <script>
+        // Verifico si hay productos en el carrito de compras, y si ya se selecciono un abasto
         window.onload = function() {
             let orderPendingContainer = document.getElementById('orderPendingContainer');
             // Obtengo los productos del local storage
@@ -192,7 +193,6 @@
     <script>
         // Finalizar compra, al dar click en el boton  'Finalizar comprar'
         const comprar = document.getElementById('comprar');
-        console.log(comprar)
         comprar.addEventListener('click', event => {
             // Obtengo los productos del local storage
             const ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
