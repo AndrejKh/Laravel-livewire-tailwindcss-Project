@@ -86,9 +86,10 @@
                             <a class="text-sm text-blue-900 rounded-md shadow-sm block py-2 text-center" href="{{ route('comparar') }}">Comparar precios</a>
                         </div>
                         <button class="col-span-1 text-sm bg-green-400 text-white rounded-md shadow-sm block py-2 text-center" id="comprar">Finalizar compra</button>
-                        <span hidden id="csrf_token">{{ csrf_token() }}</span>
+
                     </div>
                 </div>
+                <span hidden id="csrf_token">{{ csrf_token() }}</span>
             </div>
         </div>
     </div>
@@ -192,16 +193,16 @@
         // Finalizar compra, al dar click en el boton  'Finalizar comprar'
         const comprar = document.getElementById('comprar');
         comprar.addEventListener('click', event => {
+            const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
+            const brand = JSON.parse(brandSelectedToBuy);
+
             // Obtengo los productos del local storage
             const ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
             const products = JSON.parse(ProductsLocalStorage);
 
-            // // Obtengo loa ubicacion del local storage
+            // Obtengo loa ubicacion del local storage
             const ubicationLocalStorage = localStorage.getItem('ubication');
             const ubication = JSON.parse(ubicationLocalStorage);
-
-            const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
-            const brand = JSON.parse(brandSelectedToBuy);
 
             const amountSelected = localStorage.getItem('amount');
             const amount = JSON.parse(amountSelected);
@@ -218,7 +219,6 @@
                 amount: amount,
                 items: items
             }
-
             axios({
                 method  : 'POST',
                 url : '/post/create-order/',

@@ -963,7 +963,6 @@
                 const ubication = JSON.parse(ubicationLocalStorage);
 
 
-
                 const amountSelected = localStorage.getItem('amount');
                 const amount = JSON.parse(amountSelected);
 
