@@ -978,6 +978,11 @@
                     amount: amount,
                     items: items
                 }
+                console.log(products)
+                console.log(ubication)
+                console.log(brand)
+                console.log(amount)
+                console.log(items)
 
                 axios({
                     method  : 'POST',

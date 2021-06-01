@@ -30,6 +30,7 @@ class OrderController extends Controller
         }else{
             return 0;
         }
+        return $request;
         // Marca seleccionada
         $brandSelected = $request->brand;
         // $brand = $brandSelected['brand'];
@@ -46,7 +47,7 @@ class OrderController extends Controller
 
         $amountSelected = $request->amount;
         // $amount = $amountSelected['amount'];
-        return $amountSelected.'-'.$user_id.'-'.$brandSelected;
+        // return $amountSelected.'-'.$user_id.'-'.$brandSelected;
 
         // $items = $request->items;
 
