@@ -25,6 +25,7 @@ class OrderController extends Controller
 
     // Crear orden
     public function createOrder(Request $request){
+        return $request;
         if ( isset(Auth::user()->id) ) {
             $user_id = Auth::user()->id;
         }else{
