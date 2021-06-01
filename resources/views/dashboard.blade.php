@@ -100,13 +100,17 @@
             let orderPendingContainer = document.getElementById('orderPendingContainer');
             // Obtengo los productos del local storage
             const ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+            console.log('here')
 
             if (ProductsLocalStorage !== null) {
+                console.log('Hay productos en el carrito de compras')
                 const products = JSON.parse(ProductsLocalStorage);
                 // Obtengo el supermercado selecionado, local storage
                 const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
                 if (products.lenght > 0) {
+                    console.log('Hay mas de cero productos')
                     if (brandSelectedToBuy !== null) {
+                        console.log('Se seleccciono un abasto')
                         /********************
                         Muestro la cantidad de productos que se tienen en el carrito
                         **********************/
