@@ -32,8 +32,8 @@ class OrderController extends Controller
         }
         // Marca seleccionada
         $brandSelected = $request->brand;
-        $brand = $brandSelected['brand'];
-        $brand_id = $brandSelected['id'];
+        // $brand = $brandSelected['brand'];
+        // $brand_id = $brandSelected['id'];
 
         // Direccion de la busqueda
         // $ubicationSelected = $request->ubication;
@@ -46,7 +46,7 @@ class OrderController extends Controller
 
         $amountSelected = $request->amount;
         // $amount = $amountSelected['amount'];
-        return $amountSelected.'-'.$user_id.'-'.$brand_id;
+        return $amountSelected.'-'.$user_id.'-'.$brandSelected;
 
         // $items = $request->items;
 
