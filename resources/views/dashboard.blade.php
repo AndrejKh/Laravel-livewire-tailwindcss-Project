@@ -105,47 +105,45 @@
             if (ProductsLocalStorage !== null) {
                 console.log('Hay productos en el carrito de compras')
                 const products = JSON.parse(ProductsLocalStorage);
-                console.log(products)
-                console.log(products.length)
                 // Obtengo el supermercado selecionado, local storage
                 const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
-                // if (products.length > 0) {
-                //     console.log('Hay mas de cero productos')
-                //     if (brandSelectedToBuy !== null) {
-                //         console.log('Se seleccciono un abasto')
-                //         /********************
-                //         Muestro la cantidad de productos que se tienen en el carrito
-                //         **********************/
-                //         const quantityProducts = document.getElementById('quantityProducts');
+                if (products.length > 0) {
+                    console.log('Hay mas de cero productos')
+                    if (brandSelectedToBuy !== null) {
+                        console.log('Se seleccciono un abasto')
+                        /********************
+                        Muestro la cantidad de productos que se tienen en el carrito
+                        **********************/
+                        const quantityProducts = document.getElementById('quantityProducts');
 
-                //         let quantity = 0;
-                //         // Recorro el carrito para obtener la cantidad total de productos en el
-                //         products.forEach(product => {
-                //             quantity += product.quantity;
-                //         });
-                //         console.log(quantityProducts)
+                        let quantity = 0;
+                        // Recorro el carrito para obtener la cantidad total de productos en el
+                        products.forEach(product => {
+                            quantity += product.quantity;
+                        });
+                        console.log(quantityProducts)
 
-                //         // Asigno la cantidad total de productos en el carrito
-                //         quantityProducts.textContent = quantity;
-
-
-                //         const brand = JSON.parse(brandSelectedToBuy);
-
-                //         let brandSelected = document.getElementById('brandSelected');
-                //         brandSelected.textContent = brand.brand;
-
-                //         const totalAmount = localStorage.getItem('amount');
-                //         const amount = JSON.parse(totalAmount);
-
-                //         // muestro el div de los datos
-                //         orderPendingContainer.style.display = 'block';
+                        // Asigno la cantidad total de productos en el carrito
+                        quantityProducts.textContent = quantity;
 
 
-                //     }else{
-                //         const shoppingCarPending = document.getElementById('shoppingCarPending');
-                //         shoppingCarPending.style.display = 'block';
-                //     }
-                // }
+                        const brand = JSON.parse(brandSelectedToBuy);
+
+                        let brandSelected = document.getElementById('brandSelected');
+                        brandSelected.textContent = brand.brand;
+
+                        const totalAmount = localStorage.getItem('amount');
+                        const amount = JSON.parse(totalAmount);
+
+                        // muestro el div de los datos
+                        orderPendingContainer.style.display = 'block';
+
+
+                    }else{
+                        const shoppingCarPending = document.getElementById('shoppingCarPending');
+                        shoppingCarPending.style.display = 'block';
+                    }
+                }
 
             }
         }
