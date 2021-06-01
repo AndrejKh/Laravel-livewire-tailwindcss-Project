@@ -220,7 +220,7 @@
             }
 
             axios({
-                method  : 'post',
+                method  : 'POST',
                 url : '/post/create-order/',
                 data : data,
                 headers: {
