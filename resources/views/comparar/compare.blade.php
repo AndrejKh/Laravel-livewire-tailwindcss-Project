@@ -976,7 +976,8 @@
                     ubication: ubication,
                     brand: brand,
                     amount: amount,
-                    items: items
+                    items: items,
+                    csrf_token: csrf_token
                 }
                 console.log(products)
                 console.log(ubication)
