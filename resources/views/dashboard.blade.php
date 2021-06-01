@@ -106,7 +106,7 @@
                 console.log('Hay productos en el carrito de compras')
                 const products = JSON.parse(ProductsLocalStorage);
                 console.log(products)
-                console.log((products.length)
+                console.log(products.length)
                 // Obtengo el supermercado selecionado, local storage
                 const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
                 // if (products.length > 0) {
