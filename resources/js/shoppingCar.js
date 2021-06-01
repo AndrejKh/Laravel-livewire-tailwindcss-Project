@@ -373,7 +373,6 @@ document.querySelectorAll('.shoppingCarButtonOpenModal').forEach(item => {
                 // Almaceno el producot en el localStorage
                 localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
 
-
             });
         });
 
@@ -424,9 +423,8 @@ function updateTotalProductsShoppingCar(arrayProductsLocalStorage){
         if( arrayProductsLocalStorage !== null ){
 
             if(arrayProductsLocalStorage.length == 0 ){
-                if(spanQuantityFloatButtonShoppingCard !== null){
-                    spanQuantityFloatButtonShoppingCard.style.display = 'none';
-                }
+
+                spanQuantityFloatButtonShoppingCard.style.display = 'none';
                 badgeIconShoppingCarNavbar.style.display = 'none';
 
             }else{
@@ -434,10 +432,7 @@ function updateTotalProductsShoppingCar(arrayProductsLocalStorage){
                     quantityTotal += product.quantity;
                 });
 
-                if(spanQuantityFloatButtonShoppingCard !== null){
-
-                    spanQuantityFloatButtonShoppingCard.style.display = 'flex';
-                }
+                spanQuantityFloatButtonShoppingCard.style.display = 'flex';
                 spanQuantityFloatButtonShoppingCard.lastElementChild.textContent = quantityTotal;
                 badgeIconShoppingCarNavbar.style.display = 'block';
             }
@@ -496,12 +491,9 @@ function shownHideCompareFloatButton(arrayProductsLocalStorage){
     if(arrayProductsLocalStorage == 0) {
         compareFloatButton.classList.add("hiddeButton");
         compareFloatButton.classList.remove("shownButton");
-        // compareFloatButton.classList.replace("shownButton", "hiddeButton");
     }else{
         compareFloatButton.classList.remove("hiddeButton");
         compareFloatButton.classList.add("shownButton");
-
-        // compareFloatButton.classList.replace("hiddeButton", "shownButton");
     }
 }
 
@@ -516,13 +508,18 @@ $(document).on("click",function(e) {
     let band = 0;
     // verifico se se dio click para abrir el modal
     document.querySelectorAll('.shoppingCarButtonOpenModal').forEach(item => {
-        if(item.contains(e.target)){
+        if( item.contains( e.target ) ){
             band = 1;
         }
     });
-    // verifico si se dio click fuera del modal
-    if( !contentModalShopinngCar.contains(e.target) && !band){
-            modalShoppingCar.style.display = 'none';
-    }
+
+
+        // console.log(e)
+        // console.log(contentModalShopinngCar.contains(e.target))
+
+        // verifico si se dio click fuera del modal
+        // if( !contentModalShopinngCar.contains(e.target) && !band){
+        //         modalShoppingCar.style.display = 'none';
+        // }
 })
 

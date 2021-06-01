@@ -4,18 +4,20 @@
 
         <div class="my-3 text-gray-900 font-bold text-xl lg:text-2xl">Comparar precios</div>
 
-        <div class="p-3 rounded-md shadow-sm bg-white grid grid-cols-5">
-            <div class="col-span-4">
-                <div class="text-gray-900 font-semibold text-md md:text-lg py-1">
-                    <span id="quantityProducts"></span>
-                    Productos selecionados
+        <div class="p-3 rounded-md shadow-sm bg-white ">
+            <div class="grid grid-cols-5 cursor-pointer getItemsShoppingCar">
+                <div class="col-span-4">
+                    <div class="text-gray-900 font-semibold text-md md:text-lg py-1 ">
+                        <span id="quantityProducts"></span>
+                        Productos selecionados
+                    </div>
                 </div>
-            </div>
-            <div class="col-span-1 self-center ml-auto">
-                <div class="flex h-8 w-8 self-center text-center bg-white rounded-full shadow-sm lg:shadow-md items-center cursor-pointer" id="getItemsShoppingCar">
-                    <svg class="fill-current text-green-400 h-2 mx-auto return_rotate_select_icon" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.29866 0.333143L7.50671 4.75228L12.7148 0.333143C13.2383 -0.111048 14.0839 -0.111048 14.6074 0.333143C15.1309 0.777335 15.1309 1.49487 14.6074 1.93907L8.44631 7.16686C7.92282 7.61105 7.07718 7.61105 6.55369 7.16686L0.392617 1.93907C-0.130872 1.49487 -0.130872 0.777335 0.392617 0.333143C0.916107 -0.0996583 1.77517 -0.111048 2.29866 0.333143Z" />
-                    </svg>
+                <div class="col-span-1 self-center ml-auto ">
+                    <div class="flex h-8 w-8 self-center text-center bg-white rounded-full shadow-sm lg:shadow-md items-center cursor-pointer">
+                        <svg class="fill-current text-green-400 h-2 mx-auto return_rotate_select_icon svg_icon" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.29866 0.333143L7.50671 4.75228L12.7148 0.333143C13.2383 -0.111048 14.0839 -0.111048 14.6074 0.333143C15.1309 0.777335 15.1309 1.49487 14.6074 1.93907L8.44631 7.16686C7.92282 7.61105 7.07718 7.61105 6.55369 7.16686L0.392617 1.93907C-0.130872 1.49487 -0.130872 0.777335 0.392617 0.333143C0.916107 -0.0996583 1.77517 -0.111048 2.29866 0.333143Z" />
+                        </svg>
+                    </div>
                 </div>
             </div>
 
@@ -75,7 +77,7 @@
                    <strong class="text-xs block font-bold">$ USD</strong>
                 </span>
                 <span class="col-span-3 text-gray-900 font-semibold text-sm self-center">
-                    <span class="titleBrand"></span>
+                    <a class="titleBrand"></a>
                     <div>
                         <svg class="inline h-4 w-4" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
                         <svg class="inline h-4 w-4" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
@@ -195,91 +197,136 @@
     {{-- Script para mostrar en el DOM los productos del carrito --}}
     <script>
         // Obtengo los productos del carrito y los muestro en pantalla
-        const getItemsShoppingCar = document.getElementById('getItemsShoppingCar');
-        getItemsShoppingCar.addEventListener('click', event => {
-            // Obtengo los productos del local storage
-            ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-            // En que elemento se dio click? en el span, en el svg o en el path? obtengo el nodo principal
-            if ( event.target.nodeName == 'DIV' ){
-                var svgIconSelect = event.target.firstElementChild;
-            }else if( event.target.nodeName == 'svg' ){
-                var svgIconSelect = event.target;
-            }else {
-                var svgIconSelect = event.target.parentNode;
-            }
+        const getItemsShoppingCar = document.querySelectorAll('.getItemsShoppingCar');
+        getItemsShoppingCar.forEach(item => {
+            item.addEventListener('click', event => {
 
-            const containerItemsShoppingCar = document.getElementById('containerItemsShoppingCar');
-            if( containerItemsShoppingCar.childElementCount > 0 ){
-                containerItemsShoppingCar.innerHTML = '';
-                // Girar icono de select
-                svgIconSelect.classList.replace("rotate_select_icon", "return_rotate_select_icon");
-            }else{
-                // Girar icono de select
-                svgIconSelect.classList.replace("return_rotate_select_icon", "rotate_select_icon");
-                // Obtengo el componente card de ejemplo
-                const modelItem = document.getElementById('cardModelItem');
+                if( item.contains(event.target) ){
+                    var svgIconSelect = item.querySelector('.svg_icon');
+                }
+                // Obtengo los productos del local storage
+                ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
 
-                arrayProductsLocalStorage.forEach(product => {
-                    // creo un clon del card de ejemplo
-                    newCardProductShoppingCar = modelItem.firstElementChild.cloneNode(true);
-                    // Obtengo los campos del card  clonado
-                    let newTitle = newCardProductShoppingCar.querySelector('.titleCard');
-                    let quantityTitle = newCardProductShoppingCar.querySelector('.quantityCard');
-                    let newImage = newCardProductShoppingCar.querySelector('.imgCard');
-                    let newIdProduct = newCardProductShoppingCar.querySelector('.idProduct');
-                    let quantityCardProduct = newCardProductShoppingCar.querySelector('.quantityCardProduct');
-                    // Asigno los valores del local storage a los campos html
-                    newTitle.textContent = product.title;
-                    quantityTitle.textContent = product.quantity;
-                    newImage.src = product.image;
-                    quantityCardProduct.textContent = product.quantity;
-                    newIdProduct.textContent = product.id;
-                    // Inserto el card en el modal
-                    containerItemsShoppingCar.appendChild(newCardProductShoppingCar);
+                const containerItemsShoppingCar = document.getElementById('containerItemsShoppingCar');
+                if( containerItemsShoppingCar.childElementCount > 0 ){
+                    containerItemsShoppingCar.innerHTML = '';
+                    // Girar icono de select
+                    svgIconSelect.classList.replace("rotate_select_icon", "return_rotate_select_icon");
+                }else{
+                    // Girar icono de select
+                    svgIconSelect.classList.replace("return_rotate_select_icon", "rotate_select_icon");
+                    // Obtengo el componente card de ejemplo
+                    const modelItem = document.getElementById('cardModelItem');
 
-                    // Ahora agrego los eventos para incrementar o reducir la cantidad
-                    // Se reduce la cantidad
-                    const substractProduct = newCardProductShoppingCar.querySelector('.substractProduct');
-                    substractProduct.addEventListener('click', event => {
+                    arrayProductsLocalStorage.forEach(product => {
+                        // creo un clon del card de ejemplo
+                        newCardProductShoppingCar = modelItem.firstElementChild.cloneNode(true);
+                        // Obtengo los campos del card  clonado
+                        let newTitle = newCardProductShoppingCar.querySelector('.titleCard');
+                        let quantityTitle = newCardProductShoppingCar.querySelector('.quantityCard');
+                        let newImage = newCardProductShoppingCar.querySelector('.imgCard');
+                        let newIdProduct = newCardProductShoppingCar.querySelector('.idProduct');
+                        let quantityCardProduct = newCardProductShoppingCar.querySelector('.quantityCardProduct');
+                        // Asigno los valores del local storage a los campos html
+                        newTitle.textContent = product.title;
+                        quantityTitle.textContent = product.quantity;
+                        newImage.src = product.image;
+                        quantityCardProduct.textContent = product.quantity;
+                        newIdProduct.textContent = product.id;
+                        // Inserto el card en el modal
+                        containerItemsShoppingCar.appendChild(newCardProductShoppingCar);
 
-                        // Obtengo los productos del local storage
-                        ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-                        arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+                        // Ahora agrego los eventos para incrementar o reducir la cantidad
+                        // Se reduce la cantidad
+                        const substractProduct = newCardProductShoppingCar.querySelector('.substractProduct');
+                        substractProduct.addEventListener('click', event => {
 
-                        // En que elemento se dio click? en el spna, en el svg o en el path?
-                        if ( event.target.nodeName == 'SPAN' ){
-                            var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode;
-                        }else if( event.target.nodeName == 'svg' ){
-                            var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
-                        }else {
-                            var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                        }
+                            // Obtengo los productos del local storage
+                            ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+                            arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
 
-                        const idProduct = rootContainer.querySelector('.idProduct').textContent;
-                        let quantityProductCard = rootContainer.querySelector('.quantityCardProduct');
+                            // En que elemento se dio click? en el spna, en el svg o en el path?
+                            if ( event.target.nodeName == 'SPAN' ){
+                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode;
+                            }else if( event.target.nodeName == 'svg' ){
+                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
+                            }else {
+                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+                            }
 
-                        let quantity = parseInt( quantityProductCard.textContent.trim() );
+                            const idProduct = rootContainer.querySelector('.idProduct').textContent;
+                            let quantityProductCard = rootContainer.querySelector('.quantityCardProduct');
 
-                        if (quantity > 0){
+                            let quantity = parseInt( quantityProductCard.textContent.trim() );
+
+                            if (quantity > 0){
+
+                                let productInShppingCar = false;
+                                let keyArray = 0;
+
+                                arrayProductsLocalStorage.forEach(product => {
+                                    if (idProduct == product.id ){
+                                        productInShppingCar = true;
+                                        quantity--;
+                                        product.quantity = quantity;
+                                    }
+                                    if (!productInShppingCar){
+                                        keyArray++;
+                                    }
+                                });
+
+                                // Agrego las cantidades al DOM
+                                let quantityTotalProducts = document.getElementById('quantityProducts');
+                                let quantityProducts = parseInt( quantityTotalProducts.textContent.trim() );
+                                quantityTotalProducts.textContent = --quantityProducts;
+
+                                let quantityTitle = rootContainer.querySelector('.quantityCard');
+                                quantityTitle.textContent = quantity;
+                                quantityProductCard.textContent = quantity;
+
+                                // Almaceno el producot en el localStorage
+                                localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
+
+                                // Cargo de nuevo todas las tiendas
+                                getBrands();
+                            }
+
+                        });
+
+                        // Se incrementa la cantidad
+                        const addProduct = newCardProductShoppingCar.querySelector('.addProduct');
+                        addProduct.addEventListener('click', event => {
+                            // Obtengo los productos del local storage
+                            ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+                            arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+
+                            // En que elemento se dio click? en el spna, en el svg o en el path?
+                            if ( event.target.nodeName == 'SPAN' ){
+                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode;
+                            }else if( event.target.nodeName == 'svg' ){
+                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
+                            }else {
+                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+                            }
+                            const idProduct = rootContainer.querySelector('.idProduct').textContent;
+                            let quantityProductCard = rootContainer.querySelector('.quantityCardProduct');
+
+                            let quantity = parseInt( quantityProductCard.textContent.trim() );
 
                             let productInShppingCar = false;
-                            let keyArray = 0;
 
                             arrayProductsLocalStorage.forEach(product => {
                                 if (idProduct == product.id ){
                                     productInShppingCar = true;
-                                    quantity--;
+                                    quantity++;
                                     product.quantity = quantity;
-                                }
-                                if (!productInShppingCar){
-                                    keyArray++;
                                 }
                             });
 
                             // Agrego las cantidades al DOM
                             let quantityTotalProducts = document.getElementById('quantityProducts');
                             let quantityProducts = parseInt( quantityTotalProducts.textContent.trim() );
-                            quantityTotalProducts.textContent = --quantityProducts;
+                            quantityTotalProducts.textContent = ++quantityProducts;
 
                             let quantityTitle = rootContainer.querySelector('.quantityCard');
                             quantityTitle.textContent = quantity;
@@ -290,61 +337,14 @@
 
                             // Cargo de nuevo todas las tiendas
                             getBrands();
-                        }
 
-                    });
-
-                    // Se incrementa la cantidad
-                    const addProduct = newCardProductShoppingCar.querySelector('.addProduct');
-                    addProduct.addEventListener('click', event => {
-                        // Obtengo los productos del local storage
-                        ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-                        arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
-
-                        // En que elemento se dio click? en el spna, en el svg o en el path?
-                        if ( event.target.nodeName == 'SPAN' ){
-                            var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode;
-                        }else if( event.target.nodeName == 'svg' ){
-                            var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
-                        }else {
-                            var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                        }
-                        const idProduct = rootContainer.querySelector('.idProduct').textContent;
-                        let quantityProductCard = rootContainer.querySelector('.quantityCardProduct');
-
-                        let quantity = parseInt( quantityProductCard.textContent.trim() );
-
-                        let productInShppingCar = false;
-
-                        arrayProductsLocalStorage.forEach(product => {
-                            if (idProduct == product.id ){
-                                productInShppingCar = true;
-                                quantity++;
-                                product.quantity = quantity;
-                            }
                         });
 
-                        // Agrego las cantidades al DOM
-                        let quantityTotalProducts = document.getElementById('quantityProducts');
-                        let quantityProducts = parseInt( quantityTotalProducts.textContent.trim() );
-                        quantityTotalProducts.textContent = ++quantityProducts;
-
-                        let quantityTitle = rootContainer.querySelector('.quantityCard');
-                        quantityTitle.textContent = quantity;
-                        quantityProductCard.textContent = quantity;
-
-                        // Almaceno el producot en el localStorage
-                        localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
-
-                        // Cargo de nuevo todas las tiendas
-                        getBrands();
-
                     });
 
-                });
+                }
 
-            }
-
+            });
         });
     </script>
 
@@ -466,6 +466,7 @@
                             // Asigno los valores del local storage a los campos html
                             id_brand.textContent = brand.id;
                             title.textContent = brand.brand;
+                            title.href = 'supermercado/'+brand.slug;
 
                             let precioTotal = 0;
                             // Creo el card para el supermercado en el html
@@ -696,6 +697,7 @@
                             // Asigno los valores del local storage a los campos html
                             id_brand.textContent = brand.id;
                             title.textContent = brand.brand;
+                            title.href = 'supermercado/'+brand.slug;
 
                             let precioTotal = 0;
                             // Creo el card para el supermercado en el html
@@ -1010,5 +1012,6 @@
     </script>
 
 </x-app-layout>
+
 
 

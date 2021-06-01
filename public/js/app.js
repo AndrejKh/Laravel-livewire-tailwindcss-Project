@@ -4203,20 +4203,13 @@ function updateTotalProductsShoppingCar(arrayProductsLocalStorage) {
   if (spanQuantityFloatButtonShoppingCard !== null) {
     if (arrayProductsLocalStorage !== null) {
       if (arrayProductsLocalStorage.length == 0) {
-        if (spanQuantityFloatButtonShoppingCard !== null) {
-          spanQuantityFloatButtonShoppingCard.style.display = 'none';
-        }
-
+        spanQuantityFloatButtonShoppingCard.style.display = 'none';
         badgeIconShoppingCarNavbar.style.display = 'none';
       } else {
         arrayProductsLocalStorage.forEach(function (product) {
           quantityTotal += product.quantity;
         });
-
-        if (spanQuantityFloatButtonShoppingCard !== null) {
-          spanQuantityFloatButtonShoppingCard.style.display = 'flex';
-        }
-
+        spanQuantityFloatButtonShoppingCard.style.display = 'flex';
         spanQuantityFloatButtonShoppingCard.lastElementChild.textContent = quantityTotal;
         badgeIconShoppingCarNavbar.style.display = 'block';
       }
@@ -4262,10 +4255,10 @@ function shownHideCompareFloatButton(arrayProductsLocalStorage) {
 
   if (arrayProductsLocalStorage == 0) {
     compareFloatButton.classList.add("hiddeButton");
-    compareFloatButton.classList.remove("shownButton"); // compareFloatButton.classList.replace("shownButton", "hiddeButton");
+    compareFloatButton.classList.remove("shownButton");
   } else {
     compareFloatButton.classList.remove("hiddeButton");
-    compareFloatButton.classList.add("shownButton"); // compareFloatButton.classList.replace("hiddeButton", "shownButton");
+    compareFloatButton.classList.add("shownButton");
   }
 } // Oculto el modal al dar click afuera de el
 
@@ -4281,11 +4274,12 @@ $(document).on("click", function (e) {
     if (item.contains(e.target)) {
       band = 1;
     }
-  }); // verifico si se dio click fuera del modal
-
-  if (!contentModalShopinngCar.contains(e.target) && !band) {
-    modalShoppingCar.style.display = 'none';
-  }
+  }); // console.log(e)
+  // console.log(contentModalShopinngCar.contains(e.target))
+  // verifico si se dio click fuera del modal
+  // if( !contentModalShopinngCar.contains(e.target) && !band){
+  //         modalShoppingCar.style.display = 'none';
+  // }
 });
 
 /***/ }),

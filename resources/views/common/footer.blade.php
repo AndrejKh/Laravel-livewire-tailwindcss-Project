@@ -1,5 +1,5 @@
-<footer class="bg-gray-900 max-w-screen-2xl mx-auto px-4 md:px-6 lg:px-8 pt-10 pb-3">
-    <div class="px-2 grid grid-cols-4 md:grid-cols-6 gap-1">
+<footer class="bg-gray-900 w-full mx-auto px-4 md:px-6 lg:px-8 pt-10 pb-3">
+    <div class="px-2 grid grid-cols-4 md:grid-cols-6 gap-1 max-w-7xl mx-auto">
         <div class="col-span-4 md:col-span-2 items-center md:text-left mb-8 md:mb-0">
             <img class="mx-auto md:mx-0" src="{{ asset('logo.svg') }}" alt="">
             <p class="mt-2 md:pr-10 text-white text-center md:text-left">
@@ -46,7 +46,7 @@
         </div>
 
     </div>
-    <div class="mt-4 text-center w-full text-gray-600 text-sm">
+    <div class="mt-4 text-center w-full text-gray-600 text-sm mx-auto">
         Kabasto, 2021.
     </div>
 </footer>

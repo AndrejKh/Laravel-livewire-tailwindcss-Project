@@ -13,7 +13,6 @@ use App\Http\Controllers\RatingsSellerController;
 use App\Http\Controllers\StateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CategoryComponent;
-use App\Http\Livewire\StateComponent;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // Categorias
@@ -54,16 +53,16 @@ Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.blog'])
 Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.compras'])->get('/compras', [HomeController::class, 'comprasCMS'])->name('cms.compras');
 
 /**************** APis para llamdas internas via AXIOS ****************/
-
+// Estados
 Route::get('/get/states/', [StateController::class, 'getStates']);
 Route::get('/get/state-state/', [StateController::class, 'getStateByStateTitle']);
 Route::get('/get/cities/', [CityController::class, 'getCities']);
 Route::get('/get/cities-state/{id}', [CityController::class, 'getCitiesByStateId']);
-
+// Categorias - Productos
 Route::get('/get/categories/', [CategoryController::class, 'getCategoriesPrincipals']);
 Route::get('/get/categories-child/{id}', [CategoryController::class, 'getCategoriesChildrenByCategoryId']);
 Route::get('/get/categories-child-products/{id}', [CategoryController::class, 'getQuantityOfProductsByCategoryId']);
-
+// Productos
 Route::get('/get/products/', [ProductController::class, 'getProducts']);
 Route::get('/get/product/{id}', [ProductController::class, 'getProductById']);
 Route::get('/get/product-category/{id}', [ProductController::class, 'getProductsByCategoryId']);
@@ -71,10 +70,12 @@ Route::get('/get/total-product-category/{id}', [ProductController::class, 'getTo
 Route::get('/get/product-item/{id}', [ProductController::class, 'getProductsByItemId']);
 Route::get('/get/product-state/{id}', [ProductController::class, 'getProductsByStateId']);
 Route::get('/get/product-city/{id}', [ProductController::class, 'getProductsByCityId']);
-
+// Items
 Route::get('/get/items/', [ItemController::class, 'getItems']);
 Route::get('/get/item-brand/{id}', [ItemController::class, 'getItemsByBrandId']);
-
+Route::get('/get/items-price/{id}/{items}', [ItemController::class, 'getPriceAndProductIdToShoppingCarByBrandId']);
+Route::get('/get/items-brand/{id}/{items}', [ItemController::class, 'getItemsByBrandId']);
+// Marcas - Brand
 Route::get('/get/brand-state/{id}', [BrandController::class, 'getBrandsByStateId']);
 Route::get('/get/brand-city/{id}', [BrandController::class, 'getBrandsByCityId']);
 Route::get('/get/brand-delivey/', [BrandController::class, 'getBrandsByDelivery']);
@@ -82,9 +83,6 @@ Route::get('/get/brand-delivey-free/', [BrandController::class, 'getBrandsByDeli
 Route::get('/get/brand-product/{id}', [BrandController::class, 'getBrandsByProductId']);
 Route::get('/get/brand-category/{id}', [BrandController::class, 'getBrandsByCategoryId']);
 Route::get('/get/brand-order/{id}', [BrandController::class, 'getBrandByOrderId']);
-
-Route::get('/get/items-price/{id}/{items}', [ItemController::class, 'getPriceAndProductIdToShoppingCarByBrandId']);
-Route::get('/get/items-brand/{id}/{items}', [ItemController::class, 'getItemsByBrandId']);
 
 // Ruta para crear orden(compra)
 Route::post('/post/create-order/', [OrderController::class, 'createOrder']);

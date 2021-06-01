@@ -5,24 +5,24 @@
         <div class="max-w-7xl w-full px-2">
             <div class="grid grid-cols-1 md:grid-cols-6 gap-3">
                 <div class="block md:hidden max-w-7xl col-span-1">
-                    <h1 class=" text-2xl text-gray-900 font-bold mb-1 md:mb-5 lg:mb-6" id="titleProduct">
+                    <h1 class="text-xl md:text-2xl text-gray-900 font-bold mb-1 md:mb-5 lg:mb-6" id="titleProduct">
                         {{ $product->title }}
                     </h1>
-                    <span class="text-md text-gray-900">
+                    <span class="text-sm text-gray-900">
                         Categoría:
                     </span>
-                    <a class="text-gray-400" href="{{route('products.category.show', $product->category->slug)}}">
+                    <a class="text-sm text-gray-400" href="{{route('products.category.show', $product->category->slug)}}">
                         {{ $product->category->category }}
                     </a>
                 </div>
-                <div class="max-w-7xl col-span-3 rounded-xl shadow-md overflow-hidden relative">
-                    <img class="w-full" src="/storage/{{ $product->photo_main_product }}" alt="{{ $product->title }}" id="srcImageProduct">
+                <div class="max-w-7xl col-span-1 md:col-span-3 rounded-xl shadow-md overflow-hidden relative h-64 md:h-auto bg-white mx-2 md:mx-0">
+                    <img class="h-full mx-auto" src="/storage/{{ $product->photo_main_product }}" alt="{{ $product->title }}" id="srcImageProduct">
                     <span class="absolute top-7 right-7 z-20 cursor-pointer" id="openShareModal">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
                     </span>
                 </div>
 
-                <div class="max-w-7xl col-span-3 relative px-3 mt-4">
+                <div class="max-w-7xl col-span-1 md:col-span-3 relative px-3 mt-0 lg:mt-4">
                     <div class="hidden md:block text-right">
                         @if ( count($items) > 0 )
                         <span class="bg-blue-500 text-white font-semibold rounded-sm shadow px-3 py-2">
@@ -63,9 +63,9 @@
             </div>
         </div>
     </div>
-    <div class="my-4">
+    <div class="my-1 md:my-4">
         <div class="max-w-7xl w-full px-2 mx-auto mb-1">
-            <h3 class="text-xl text-gray-900 font-semibold">
+            <h3 class="text-lg md:text-xl text-gray-900 font-semibold">
                 Los precios de los supermercados y abastos
             </h3>
         </div>
