@@ -100,17 +100,13 @@
             let orderPendingContainer = document.getElementById('orderPendingContainer');
             // Obtengo los productos del local storage
             const ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-            console.log('here')
 
             if (ProductsLocalStorage !== null) {
-                console.log('Hay productos en el carrito de compras')
                 const products = JSON.parse(ProductsLocalStorage);
                 // Obtengo el supermercado selecionado, local storage
                 const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
                 if (products.length > 0) {
-                    console.log('Hay mas de cero productos')
                     if (brandSelectedToBuy !== null) {
-                        console.log('Se seleccciono un abasto')
                         /********************
                         Muestro la cantidad de productos que se tienen en el carrito
                         **********************/
@@ -121,11 +117,9 @@
                         products.forEach(product => {
                             quantity += product.quantity;
                         });
-                        console.log(quantityProducts)
 
                         // Asigno la cantidad total de productos en el carrito
                         quantityProducts.textContent = quantity;
-
 
                         const brand = JSON.parse(brandSelectedToBuy);
 
@@ -137,7 +131,6 @@
 
                         // muestro el div de los datos
                         orderPendingContainer.style.display = 'block';
-
 
                     }else{
                         const shoppingCarPending = document.getElementById('shoppingCarPending');
@@ -151,48 +144,48 @@
 
     <script>
         // Obtengo los productos del carrito y los muestro en pantalla
-        // const getItemsShoppingCar = document.getElementById('getItemsShoppingCar');
-        // getItemsShoppingCar.addEventListener('click', event => {
-        //     // Obtengo los productos del local storage
-        //     ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-        //     // En que elemento se dio click? en el span, en el svg o en el path? obtengo el nodo principal
-        //     if ( event.target.nodeName == 'DIV' ){
-        //         var svgIconSelect = event.target.firstElementChild;
-        //     }else if( event.target.nodeName == 'svg' ){
-        //         var svgIconSelect = event.target;
-        //     }else {
-        //         var svgIconSelect = event.target.parentNode;
-        //     }
+        const getItemsShoppingCar = document.getElementById('getItemsShoppingCar');
+        getItemsShoppingCar.addEventListener('click', event => {
+            // Obtengo los productos del local storage
+            ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+            // En que elemento se dio click? en el span, en el svg o en el path? obtengo el nodo principal
+            if ( event.target.nodeName == 'DIV' ){
+                var svgIconSelect = event.target.firstElementChild;
+            }else if( event.target.nodeName == 'svg' ){
+                var svgIconSelect = event.target;
+            }else {
+                var svgIconSelect = event.target.parentNode;
+            }
 
-        //     const containerItemsShoppingCar = document.getElementById('containerItemsShoppingCar');
-        //     if( containerItemsShoppingCar.childElementCount > 0 ){
-        //         containerItemsShoppingCar.innerHTML = '';
-        //         // Girar icono de select
-        //         svgIconSelect.classList.replace("rotate_select_icon", "return_rotate_select_icon");
-        //     }else{
-        //         // Girar icono de select
-        //         svgIconSelect.classList.replace("return_rotate_select_icon", "rotate_select_icon");
-        //         // Obtengo el componente card de ejemplo
-        //         const modelItem = document.getElementById('cardModelItem');
+            const containerItemsShoppingCar = document.getElementById('containerItemsShoppingCar');
+            if( containerItemsShoppingCar.childElementCount > 0 ){
+                containerItemsShoppingCar.innerHTML = '';
+                // Girar icono de select
+                svgIconSelect.classList.replace("rotate_select_icon", "return_rotate_select_icon");
+            }else{
+                // Girar icono de select
+                svgIconSelect.classList.replace("return_rotate_select_icon", "rotate_select_icon");
+                // Obtengo el componente card de ejemplo
+                const modelItem = document.getElementById('cardModelItem');
 
-        //         arrayProductsLocalStorage.forEach(product => {
-        //             // creo un clon del card de ejemplo
-        //             newCardProductShoppingCar = modelItem.firstElementChild.cloneNode(true);
-        //             // Obtengo los campos del card  clonado
-        //             let newTitle = newCardProductShoppingCar.querySelector('.titleCard');
-        //             let newQuantity = newCardProductShoppingCar.querySelector('.quantityCard');
-        //             let newImage = newCardProductShoppingCar.querySelector('.imgCard');
-        //             // Asigno los valores del local storage a los campos html
-        //             newTitle.textContent = product.title;
-        //             newQuantity.textContent = product.quantity;
-        //             newImage.src = product.image;
-        //             // Inserto el card en el modal
-        //             containerItemsShoppingCar.appendChild(newCardProductShoppingCar);
-        //         });
+                arrayProductsLocalStorage.forEach(product => {
+                    // creo un clon del card de ejemplo
+                    newCardProductShoppingCar = modelItem.firstElementChild.cloneNode(true);
+                    // Obtengo los campos del card  clonado
+                    let newTitle = newCardProductShoppingCar.querySelector('.titleCard');
+                    let newQuantity = newCardProductShoppingCar.querySelector('.quantityCard');
+                    let newImage = newCardProductShoppingCar.querySelector('.imgCard');
+                    // Asigno los valores del local storage a los campos html
+                    newTitle.textContent = product.title;
+                    newQuantity.textContent = product.quantity;
+                    newImage.src = product.image;
+                    // Inserto el card en el modal
+                    containerItemsShoppingCar.appendChild(newCardProductShoppingCar);
+                });
 
-        //     }
+            }
 
-        // });
+        });
     </script>
 
     <script>
