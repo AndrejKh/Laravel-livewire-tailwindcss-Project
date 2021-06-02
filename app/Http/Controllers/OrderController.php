@@ -25,33 +25,22 @@ class OrderController extends Controller
 
     // Crear orden
     public function createOrder(Request $request){
-        if ( isset(Auth::user()->id) ) {
-            $user_id = Auth::user()->id;
-        }else{
-            return 0;
-        }
-        return $request;
-        // Marca seleccionada
-        $brandSelected = $request->brand;
-        // $brand = $brandSelected['brand'];
+        return 'aqui';
+        // if ( isset(Auth::user()->id) ) {
+        //     $user_id = Auth::user()->id;
+        // }else{
+        //     return 0;
+        // }
+        // return $request;
+        // // Marca seleccionada
+        // $brandSelected = $request->brand;
         // $brand_id = $brandSelected['id'];
 
-        // Direccion de la busqueda
-        // $ubicationSelected = $request->ubication;
-        // $state = $ubicationSelected['state'];
-        // $state_id = $ubicationSelected['state_id'];
-        // $city = $ubicationSelected['city'];
-        // $city_id = $ubicationSelected['city_id'];
-
-        // $products = $request->products;
-
-        $amountSelected = $request->amount;
+        // $amountSelected = $request->amount;
         // $amount = $amountSelected['amount'];
-        // return $amountSelected.'-'.$user_id.'-'.$brandSelected;
-
         // $items = $request->items;
 
-        // Creo la orden
+        // // Creo la orden
         // Order::create([
         //     'brand_id' => $brand_id,
         //     'user_id' => $user_id,
@@ -64,7 +53,7 @@ class OrderController extends Controller
         //     $product_id = $item['product_id'];
         //     $quantity = $item['quantity'];
         //     $price = $item['price'];
-        //     # code...
+
         //     OrderProducts::create([
         //         'order_id' => $order_id,
         //         'product_id' => $product_id,
@@ -73,7 +62,7 @@ class OrderController extends Controller
         //     ]);
         // }
 
-        // return true;
+        return true;
 
     }
 

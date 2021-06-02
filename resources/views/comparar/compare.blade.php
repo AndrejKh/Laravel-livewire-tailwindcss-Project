@@ -983,15 +983,8 @@
                     ubication: ubication,
                     brand: brand,
                     amount: amount,
-                    items: items,
-                    csrf_token: csrf_token
+                    items: items
                 }
-                console.log(products)
-                console.log(ubication)
-                console.log(brand)
-                console.log(amount)
-                console.log(items)
-
                 axios({
                     method  : 'POST',
                     url : '/post/create-order/',
@@ -1003,20 +996,7 @@
                 })
                 .then((res)=>{
                     console.log(res);
-                    console.log(res.data);
-                    if(res.data === 0){
-                        // El usuario no esta logeado, lo redirijo a la vista de login
-                        // window.location.href = "/login?r=1";
-                    }else{
-                        // elimino los datos del local storage
-                        // localStorage.removeItem('itemsSelected');
-                        // localStorage.removeItem('amount');
-                        // localStorage.removeItem('brandSelectedToBuy');
-                        // localStorage.removeItem('ubication');
-                        // localStorage.removeItem('productsShoppingCar');
-                        // redirecciono a la vista compras
-                        // window.location.href = "/compras";
-                    }
+
                 })
                 .catch((err) => {console.log(err)});
 
@@ -1028,4 +1008,16 @@
 @endsection
 
 
-
+{{-- if(res.data === 0){
+    // El usuario no esta logeado, lo redirijo a la vista de login
+    // window.location.href = "/login?r=1";
+}else{
+    // elimino los datos del local storage
+    // localStorage.removeItem('itemsSelected');
+    // localStorage.removeItem('amount');
+    // localStorage.removeItem('brandSelectedToBuy');
+    // localStorage.removeItem('ubication');
+    // localStorage.removeItem('productsShoppingCar');
+    // redirecciono a la vista compras
+    // window.location.href = "/compras";
+} --}}
