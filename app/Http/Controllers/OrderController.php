@@ -34,7 +34,7 @@ class OrderController extends Controller
         $brand_id = $request->brand['id'];
 
         $amount = $request->amount['amount'];
-        // $items = $request->items;
+        $items = $request->items;
 
         // Creo la orden
         Order::create([
@@ -44,7 +44,7 @@ class OrderController extends Controller
             ]);
         $newOrder = Order::latest('id')->first();
         $order_id = $newOrder->id;
-        return $newOrder;
+        return $items;
 
         // foreach ($items as $item) {
         //     $product_id = $item['product_id'];
