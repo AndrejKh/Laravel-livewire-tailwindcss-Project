@@ -24,7 +24,7 @@ class OrderController extends Controller
     }
 
     // Crear orden
-    public function createOrder(Request $request){
+    public function createOrder(){
         return 'aqui';
         // if ( isset(Auth::user()->id) ) {
         //     $user_id = Auth::user()->id;
@@ -62,7 +62,7 @@ class OrderController extends Controller
         //     ]);
         // }
 
-        return true;
+        // return true;
 
     }
 
