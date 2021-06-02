@@ -978,7 +978,6 @@
 
                 const csrf_token = document.getElementById('csrf_token').textContent;
 
-
                 const data = {
                     products: products,
                     ubication: ubication,
@@ -986,20 +985,35 @@
                     amount: amount,
                     items: items
                 }
-                axios({
-                    method  : 'POST',
-                    url : '/post/create-order/',
-                    data : data,
+
+                let config = {
                     headers: {
                         'content-type': 'application/json',
                         'X-CSRF-Token': csrf_token
                         }
-                })
-                .then((res)=>{
-                    console.log(res);
+                    };
 
-                })
-                .catch((err) => {console.log(err)});
+                    axios.post('/post/create-order/', data, config)
+                        .then((response) => {
+                            console.log(response.data);
+                    });
+
+
+
+                // axios({
+                //     method  : 'POST',
+                //     url : '/post/create-order/',
+                //     data : data,
+                //     headers: {
+                //         'content-type': 'application/json',
+                //         'X-CSRF-Token': csrf_token
+                //         }
+                // })
+                // .then((res)=>{
+                //     console.log(res);
+
+                // })
+                // .catch((err) => {console.log(err)});
 
             }
 
