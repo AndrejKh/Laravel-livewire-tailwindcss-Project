@@ -986,34 +986,47 @@
                     items: items
                 }
 
-                let config = {
-                    headers: {
-                        'content-type': 'application/json',
-                        'X-CSRF-Token': csrf_token
-                        }
-                    };
-
-                    axios.post('https://kabasto.com/post/create-order', data, config)
-                        .then((response) => {
-                            console.log(response.data);
-                    });
-
-
-
-                // axios({
-                //     method  : 'POST',
-                //     url : '/post/create-order/',
-                //     data : data,
+                // let config = {
                 //     headers: {
                 //         'content-type': 'application/json',
                 //         'X-CSRF-Token': csrf_token
                 //         }
-                // })
-                // .then((res)=>{
-                //     console.log(res);
+                //     };
 
-                // })
-                // .catch((err) => {console.log(err)});
+                //     axios.post('https://kabasto.com/post/create-order', data, config)
+                //         .then((response) => {
+                //             console.log(response.data);
+                //     });
+
+
+
+                axios({
+                    method  : 'POST',
+                    url : '/post/create-order',
+                    data : data,
+                    headers: {
+                        'content-type': 'application/json',
+                        'X-CSRF-Token': csrf_token
+                        }
+                })
+                .then((res)=>{
+                    console.log(res);
+                    if(res.data === 0){
+                        // El usuario no esta logeado, lo redirijo a la vista de login
+                        window.location.href = "/login?r=1";
+                    }else{
+                        elimino los datos del local storage
+                        localStorage.removeItem('itemsSelected');
+                        localStorage.removeItem('amount');
+                        localStorage.removeItem('brandSelectedToBuy');
+                        localStorage.removeItem('ubication');
+                        localStorage.removeItem('productsShoppingCar');
+                        redirecciono a la vista compras
+                        window.location.href = "/compras";
+                    }
+
+                })
+                .catch((err) => {console.log(err)});
 
             }
 
@@ -1023,16 +1036,4 @@
 @endsection
 
 
-{{-- if(res.data === 0){
-    // El usuario no esta logeado, lo redirijo a la vista de login
-    // window.location.href = "/login?r=1";
-}else{
-    // elimino los datos del local storage
-    // localStorage.removeItem('itemsSelected');
-    // localStorage.removeItem('amount');
-    // localStorage.removeItem('brandSelectedToBuy');
-    // localStorage.removeItem('ubication');
-    // localStorage.removeItem('productsShoppingCar');
-    // redirecciono a la vista compras
-    // window.location.href = "/compras";
-} --}}
+
