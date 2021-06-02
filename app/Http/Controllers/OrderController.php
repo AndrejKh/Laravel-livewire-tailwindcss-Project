@@ -34,17 +34,17 @@ class OrderController extends Controller
         $brand_id = $request->brand['id'];
 
         $amount = $request->amount['amount'];
-        return $user_id;
         // $items = $request->items;
 
-        // // Creo la orden
-        // Order::create([
-        //     'brand_id' => $brand_id,
-        //     'user_id' => $user_id,
-        //     'amount' => $amount
-        // ]);
-        // $newOrder = Order::latest('id')->first();
-        // $order_id = $newOrder->id;
+        // Creo la orden
+        Order::create([
+            'brand_id' => $brand_id,
+            'user_id' => $user_id,
+            'amount' => $amount
+            ]);
+        $newOrder = Order::latest('id')->first();
+        $order_id = $newOrder->id;
+        return $newOrder;
 
         // foreach ($items as $item) {
         //     $product_id = $item['product_id'];
