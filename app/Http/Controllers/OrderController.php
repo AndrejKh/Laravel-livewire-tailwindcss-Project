@@ -31,11 +31,10 @@ class OrderController extends Controller
             return 0;
         }
         // Marca seleccionada
-        // $brandSelected = $request->brand;
-        // $brand_id = $brandSelected['id'];
+        $brand_id = $request->brand['id'];
 
         $amount = $request->amount['amount'];
-        return $amount;
+        return $user_id;
         // $items = $request->items;
 
         // // Creo la orden
