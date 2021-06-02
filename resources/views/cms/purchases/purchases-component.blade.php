@@ -325,7 +325,6 @@
                         <button class="w-full rounded-md shadow py-2 mb-3 text-md bg-green-500 text-white" id="confirmarRating">Confirmar</button>
                         <button class="w-full rounded-md shadow py-2 text-md bg-white text-red-600" wire:click="cancel()">Calificar más tarde</button>
                     </div>
-                    safsdfasfdsfasf asdf asdfsaf s df
 
                 </div>
             </div>

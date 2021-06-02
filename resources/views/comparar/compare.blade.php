@@ -986,20 +986,6 @@
                     items: items
                 }
 
-                // let config = {
-                //     headers: {
-                //         'content-type': 'application/json',
-                //         'X-CSRF-Token': csrf_token
-                //         }
-                //     };
-
-                //     axios.post('https://kabasto.com/post/create-order', data, config)
-                //         .then((response) => {
-                //             console.log(response.data);
-                //     });
-
-
-
                 axios({
                     method  : 'POST',
                     url : '/post/create-order',

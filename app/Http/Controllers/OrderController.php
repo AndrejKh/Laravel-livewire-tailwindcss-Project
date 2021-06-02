@@ -45,7 +45,7 @@ class OrderController extends Controller
         $newOrder = Order::latest('id')->first();
         $order_id = $newOrder->id;
 
-
+        // Guardo los productos, precios y cantidades compradas
         foreach ($items as $item) {
             $product_id = $item['product_id'];
             $quantity = $item['quantity'];
