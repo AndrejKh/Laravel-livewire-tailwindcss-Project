@@ -44,20 +44,23 @@ class OrderController extends Controller
             ]);
         $newOrder = Order::latest('id')->first();
         $order_id = $newOrder->id;
-        return $items;
 
-        // foreach ($items as $item) {
-        //     $product_id = $item['product_id'];
-        //     $quantity = $item['quantity'];
-        //     $price = $item['price'];
 
-        //     OrderProducts::create([
-        //         'order_id' => $order_id,
-        //         'product_id' => $product_id,
-        //         'quantity' => $quantity,
-        //         'price' => $price
-        //     ]);
-        // }
+        foreach ($items as $item) {
+            $product_id = $item['product_id'];
+            $quantity = $item['quantity'];
+            $price = $item['price'];
+
+            OrderProducts::create([
+                'order_id' => $order_id,
+                'product_id' => $product_id,
+                'quantity' => $quantity,
+                'price' => $price
+            ]);
+        }
+
+        $newOrderProduct = OrderProducts::latest('id')->first();
+        return $newOrderProduct;
 
         // return true;
 
