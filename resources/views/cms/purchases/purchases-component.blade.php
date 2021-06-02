@@ -331,13 +331,11 @@
                 {{-- Script para seleccionar las estrella de la calificacion --}}
                 <script>
 
-                    console.log("inicio")
                     const stars = document.querySelectorAll('.star');
 
                     // Se rellena de Verde la estrella al hacer hover sobre ella
                     stars.forEach(star => {
                         star.addEventListener('mouseover', event => {
-                            console.log("Hover")
                             const item = event.target;
                             if ( event.target.nodeName == 'path' ){
                                 var svgStar = item.parentNode;
@@ -368,7 +366,6 @@
                     // Se quita el relleno de Verde de la estrella al dejar de hacer hover sobre ella
                     stars.forEach(star => {
                         star.addEventListener('mouseout', event => {
-                            console.log("mouseOut")
                             const item = event.target;
                             if ( event.target.nodeName == 'path' ){
                                 var svgStar = item.parentNode;
@@ -428,7 +425,6 @@
                     // Guardo en Local Storage la estrella seleccionada
                     stars.forEach(star => {
                         star.addEventListener('click', event => {
-                            console.log("MouseClick")
                             const item = event.target;
                             if ( event.target.nodeName == 'path' ){
                                 var svgStar = item.parentNode;
