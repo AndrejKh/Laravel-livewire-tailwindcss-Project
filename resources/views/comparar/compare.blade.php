@@ -978,30 +978,28 @@
 
                 const csrf_token = document.getElementById('csrf_token').textContent;
 
-                const res = axios.post('/post/create-order/', { brand: 'world' });
-                console.log(res)
 
-                // const data = {
-                //     products: products,
-                //     ubication: ubication,
-                //     brand: brand,
-                //     amount: amount,
-                //     items: items
-                // }
-                // axios({
-                //     method  : 'POST',
-                //     url : '/post/create-order/',
-                //     data : data,
-                //     headers: {
-                //         'content-type': 'application/json',
-                //         'X-CSRF-Token': csrf_token
-                //         }
-                // })
-                // .then((res)=>{
-                //     console.log(res);
+                const data = {
+                    products: products,
+                    ubication: ubication,
+                    brand: brand,
+                    amount: amount,
+                    items: items
+                }
+                axios({
+                    method  : 'POST',
+                    url : '/post/create-order/',
+                    data : data,
+                    headers: {
+                        'content-type': 'application/json',
+                        'X-CSRF-Token': csrf_token
+                        }
+                })
+                .then((res)=>{
+                    console.log(res);
 
-                // })
-                // .catch((err) => {console.log(err)});
+                })
+                .catch((err) => {console.log(err)});
 
             }
 
