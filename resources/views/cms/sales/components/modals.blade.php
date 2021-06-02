@@ -459,7 +459,7 @@
 
                 axios({
                         method  : 'post',
-                        url : '/post/rating-seller/',
+                        url : '/post/rating-seller',
                         data : data,
                         headers: {
                             'content-type': 'text/json',
