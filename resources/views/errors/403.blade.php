@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('title')
     Kabasto.com - Página no accesible :\
@@ -15,11 +15,12 @@
     </div>
     <a class="text-lg text-gray-600 mt-4 block text-center mb-10" href="{{ route('register') }}">Registrarse</a>
 
-    <script>
-        window.onload = function() {
-            window.location.href = "/";
-        }
-    </script>
 
-@endsection
 
+@endsection --}}
+
+<script>
+    window.onload = function() {
+        window.location.href = "/";
+    }
+</script>
