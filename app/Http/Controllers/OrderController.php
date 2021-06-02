@@ -59,10 +59,7 @@ class OrderController extends Controller
             ]);
         }
 
-        $newOrderProduct = OrderProducts::latest('id')->first();
-        return $newOrderProduct;
-
-        // return true;
+        return true;
 
     }
 
