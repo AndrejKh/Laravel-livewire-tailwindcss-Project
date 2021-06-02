@@ -1,6 +1,3 @@
-{{
-    redirect('/')
-}}
-{{-- <script>
+<script>
     window.location.href = "/";
-</script> --}}
+</script>
