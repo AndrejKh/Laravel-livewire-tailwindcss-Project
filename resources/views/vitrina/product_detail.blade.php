@@ -1,27 +1,27 @@
 @extends('layouts.app')
 
-    @section('title')
-        {{ $product->title }} - Kabasto.com
-    @endsection
+@section('title')
+    {{ ucwords($product->title) }} - Kabasto.com
+@endsection
 
-    @section('header')
-        {{-- precargar imagenes --}}
-        <link rel="preload" href="/storage/{{ $product->photo_main_product }}" as="image">
+@section('header')
+    {{-- precargar imagenes --}}
+    <link rel="preload" href="/storage/{{ $product->photo_main_product }}" as="image">
 
-        <!-- Primary Meta Tags -->
-        <meta name="title" content="{{ $product->title }} - Kabasto">
-        <meta name="description" content="Los precios de {{ $product->title }} en los abastos y supermercados">
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="{{ ucwords($product->title) }} - Kabasto">
+    <meta name="description" content="Los precios de {{ $product->title }} en los abastos y supermercados">
 
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://kabasto.com/">
-        <meta property="og:title" content="{{ $product->title }} - Kabasto">
-        <meta property="og:description" content="Los precios de {{ $product->title }} en los abastos y supermercados">
-        <meta property="og:image" content="/storage/{{ $product->photo_main_product }}">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kabasto.com/">
+    <meta property="og:title" content="{{ ucwords($product->title) }} - Kabasto">
+    <meta property="og:description" content="Los precios de {{ $product->title }} en los abastos y supermercados">
+    <meta property="og:image" content="/storage/{{ $product->photo_main_product }}">
 
-        {{-- url canonical --}}
-        <link rel="canonical" href="https://kabasto.com/" />
-    @endsection
+    {{-- url canonical --}}
+    <link rel="canonical" href="https://kabasto.com/" />
+@endsection
 
 @section('content')
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Kabasto - Compara precios y compra todos los productos de tu mercado
+    Kabasto.com - Compara y compra en los diferentes abastos de tu ciudad
 @endsection
 
 @section('header')
@@ -9,7 +9,7 @@
 	<link rel="preload" href="{{asset('storage/'.$carousel_banners[0]->banner)}}" as="image">
 
 	<!-- Primary Meta Tags -->
-	<meta name="title" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
+	<meta name="title" content="Kabasto.com -  Compara y compra en los diferentes abastos de tu ciudad">
 	<meta name="description" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
 
 	<!-- Open Graph / Facebook -->
