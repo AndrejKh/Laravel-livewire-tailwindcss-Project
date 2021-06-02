@@ -1010,7 +1010,6 @@
                         }
                 })
                 .then((res)=>{
-                    console.log(res);
                     if(res.data === 0){
                         // El usuario no esta logeado, lo redirijo a la vista de login
                         window.location.href = "/login?r=1";
