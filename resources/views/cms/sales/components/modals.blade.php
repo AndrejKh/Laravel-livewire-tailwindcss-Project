@@ -116,11 +116,13 @@
                 @endif
 
                 @if ($sale->seller_status == 'active' )
-                    <div class="mt-4">
-                        <button class="w-full rounded-md shadow py-2 text-md bg-green-500 text-white" wire:click="setConfirmSale( {{ $sale }} )">Ya entregue los productos</button>
-                    </div>
-                    @if ($sale->buyer_status == 'received' || $sale->buyer_status == 'qualify')
-                        <small class="text-xs text-gray-600 font-semibold mt-1">El comprador dice que ya recibio los productos.</small>
+                    @if ($sale->buyer_status != 'cancelled')
+                        <div class="mt-4">
+                            <button class="w-full rounded-md shadow py-2 text-md bg-green-500 text-white" wire:click="setConfirmSale( {{ $sale }} )">Ya entregue los productos</button>
+                        </div>
+                        @if ($sale->buyer_status == 'received' || $sale->buyer_status == 'qualify')
+                            <small class="text-xs text-gray-600 font-semibold mt-1">El comprador dice que ya recibio los productos.</small>
+                        @endif
                     @endif
                 @elseif($sale->seller_status == 'delivered')
                     <div class="mt-4">
