@@ -978,7 +978,7 @@
 
                 const csrf_token = document.getElementById('csrf_token').textContent;
 
-                const res = await axios.post('/post/create-order/', { brand: 'world' });
+                const res = axios.post('/post/create-order/', { brand: 'world' });
                 console.log(res)
 
                 // const data = {
