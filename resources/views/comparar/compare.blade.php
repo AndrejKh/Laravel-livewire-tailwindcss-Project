@@ -993,7 +993,7 @@
                         }
                     };
 
-                    axios.post('https://kabasto.com/post/create-order/', data, config)
+                    axios.post('https://kabasto.com/post/create-order', data, config)
                         .then((response) => {
                             console.log(response.data);
                     });
