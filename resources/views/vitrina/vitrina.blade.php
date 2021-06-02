@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Kabasto - Todos los productos
+    Kabasto - Todos los productos |  @if ( $query != '') {{ $query }} @endif
 @endsection
 
 @section('header')
