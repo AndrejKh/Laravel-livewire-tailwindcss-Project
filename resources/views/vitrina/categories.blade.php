@@ -1,4 +1,29 @@
-<x-app-layout>
+@extends('layouts.app')
+
+    @section('title')
+        Categorías de productos - Kabasto
+    @endsection
+
+    @section('header')
+        {{-- precargar imagenes --}}
+        {{-- <link rel="preload" href="{{asset('storage/'.$carousel_banners[0]->banner)}}" as="image"> --}}
+
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="Categorías de productos - Kabasto">
+        <meta name="description" content="Selecciona la categoría en la cual deseas buscar los productos de tu mercado. Puedes elegir entre los distintos abastos y supermercados">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://kabasto.com/">
+        <meta property="og:title" content="Categorías de productos - Kabasto">
+        <meta property="og:description" content="Selecciona la categoría en la cual deseas buscar los productos de tu mercado. Puedes elegir entre los distintos abastos y supermercados">
+        {{-- <meta property="og:image" content="/storage/{{$carousel_banners[0]->banner}}"> --}}
+
+        {{-- url canonical --}}
+        <link rel="canonical" href="https://kabasto.com/" />
+    @endsection
+
+@section('content')
 
     <div class="flex justify-center mt-3 py-3">
         <div class="max-w-7xl w-full">
@@ -34,5 +59,5 @@
         </div>
     </div>
 
-</x-app-layout>
+@endsection
 

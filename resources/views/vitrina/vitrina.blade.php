@@ -1,4 +1,30 @@
-<x-app-layout>
+@extends('layouts.app')
+
+@section('title')
+    Kabasto - Todos los productos
+@endsection
+
+@section('header')
+	{{-- precargar imagenes --}}
+	{{-- <link rel="preload" href="{{asset('storage/'.$carousel_banners[0]->banner)}}" as="image"> --}}
+
+	<!-- Primary Meta Tags -->
+	<meta name="title" content="Kabasto - Todos los productos">
+	<meta name="description" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://kabasto.com/">
+	<meta property="og:title" content="Kabasto - Todos los productos">
+	<meta property="og:description" content="Kabasto - Todos los productos">
+	{{-- <meta property="og:image" content="/storage/{{$carousel_banners[0]->banner}}"> --}}
+
+	{{-- url canonical --}}
+	<link rel="canonical" href="https://kabasto.com/" />
+@endsection
+
+@section('content')
+
     {{-- Filtro para Celulares --}}
     <div class="w-full h-13 px-2 md:px-3 flex md:hidden flex-wrap content-center pt-3">
         <div class="flex flex-wrap w-full">
@@ -117,4 +143,5 @@
             })
         }
     </script>
-</x-app-layout>
+
+@endsection

@@ -1,6 +1,10 @@
-<x-app-layout>
+@extends('layouts.app')
 
-    {{-- @include('components.categories_menu') --}}
+    @section('title')
+       Abastos y supermercados - Kabasto
+    @endsection
+
+@section('content')
 
     @include('home.sections.carousel_banners')
 
@@ -26,4 +30,4 @@
     @include('home.sections.carousel_categories_card_details')
 
 
-</x-app-layout>
+@endsection

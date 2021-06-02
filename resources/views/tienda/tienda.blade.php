@@ -1,4 +1,11 @@
-<x-app-layout>
+@extends('layouts.app')
+
+    @section('title')
+        {{ $tienda->brand }} - Kabasto
+    @endsection
+
+@section('content')
+
     @include('tienda.card_tienda')
 
     @include('tienda.carousel_banners_tienda')
@@ -33,4 +40,4 @@
         </div>
     @endif
 
-</x-app-layout>
+@endsection

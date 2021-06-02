@@ -1,6 +1,29 @@
-<x-app-layout>
+@extends('layouts.app')
 
-    {{-- @include('components.categories_menu') --}}
+@section('title')
+    Kabasto - Compara precios y compra todos los productos de tu mercado
+@endsection
+
+@section('header')
+	{{-- precargar imagenes --}}
+	<link rel="preload" href="{{asset('storage/'.$carousel_banners[0]->banner)}}" as="image">
+
+	<!-- Primary Meta Tags -->
+	<meta name="title" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
+	<meta name="description" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://kabasto.com/">
+	<meta property="og:title" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
+	<meta property="og:description" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
+	<meta property="og:image" content="/storage/{{$carousel_banners[0]->banner}}">
+
+	{{-- url canonical --}}
+	<link rel="canonical" href="https://kabasto.com/" />
+@endsection
+
+@section('content')
 
     {{-- Carousel principal --}}
     @include('home.sections.carousel_banners')
@@ -23,4 +46,4 @@
     {{-- Categorias cads con detalle --}}
     @include('home.sections.carousel_categories_card_details')
 
-</x-app-layout>
+@endsection

@@ -1,4 +1,11 @@
-<x-app-layout>
+@extends('layouts.app')
+
+    @section('title')
+       Compara los productos y abastos - Kabasto
+    @endsection
+
+@section('content')
+
     <div class="flex justify-center">
     <div class="max-w-7xl w-full px-2">
 
@@ -1018,7 +1025,7 @@
         })
     </script>
 
-</x-app-layout>
+@endsection
 
 
 

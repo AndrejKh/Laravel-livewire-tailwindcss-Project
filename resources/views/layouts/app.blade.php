@@ -13,8 +13,11 @@
         })(window,document,'script','dataLayer','GTM-WQG59HF');</script>
         <!-- End Google Tag Manager -->
 
-        <title>{{ config('app.name', 'Kabasto') }}</title>
+        <title>@yield('title')</title>
+
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon.png') }}">
+
+        @yield('header')
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -51,7 +54,7 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                @yield('content')
             </main>
 
             {{-- Verifico si estoy en el administrador, no deberia verse el carrito aqui --}}

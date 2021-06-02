@@ -1,4 +1,30 @@
-<x-app-layout>
+@extends('layouts.app')
+
+    @section('title')
+        {{ $product->title }} - Kabasto
+    @endsection
+
+    @section('header')
+        {{-- precargar imagenes --}}
+        <link rel="preload" href="'/storage/{{ $product->photo_main_product }}'" as="image">
+
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="{{ $product->title }} - Kabasto">
+        <meta name="description" content="Los precios de {{ $product->title }} en los abastos y supermercados">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://kabasto.com/">
+        <meta property="og:title" content="{{ $product->title }} - Kabasto">
+        <meta property="og:description" content="Los precios de {{ $product->title }} en los abastos y supermercados">
+        <meta property="og:image" content="/storage/{{ $product->photo_main_product }}">
+
+        {{-- url canonical --}}
+        <link rel="canonical" href="https://kabasto.com/" />
+    @endsection
+
+@section('content')
+
     <span class="hidden" id="idproduct">{{$product->id}}</span>
 
     <div class="flex justify-center mt-3">
@@ -65,9 +91,9 @@
     </div>
     <div class="my-1 md:my-4">
         <div class="max-w-7xl w-full px-2 mx-auto mb-1">
-            <h3 class="text-lg md:text-xl text-gray-900 font-semibold">
-                Los precios de los supermercados y abastos
-            </h3>
+            <h2 class="text-lg md:text-xl text-gray-900 font-semibold">
+                Los precios de los abastos y supermercados
+            </h2>
         </div>
         <div class="max-w-7xl w-full px-2 mx-auto">
             <span class="text-gray-400 text-sm">Podrás comparar tu carrito de compras al final</span>
@@ -235,4 +261,4 @@
 
     </script>
 
-</x-app-layout>
+@endsection
