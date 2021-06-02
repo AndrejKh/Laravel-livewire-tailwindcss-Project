@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
     @section('title')
-        {{ $product->title }} - Kabasto
+        {{ $product->title }} - Kabasto.com
     @endsection
 
     @section('header')
         {{-- precargar imagenes --}}
-        <link rel="preload" href="'/storage/{{ $product->photo_main_product }}'" as="image">
+        <link rel="preload" href="/storage/{{ $product->photo_main_product }}" as="image">
 
         <!-- Primary Meta Tags -->
         <meta name="title" content="{{ $product->title }} - Kabasto">
