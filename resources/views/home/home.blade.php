@@ -10,7 +10,7 @@
 
 	<!-- Primary Meta Tags -->
 	<meta name="title" content="Kabasto.com -  Compara y compra en los diferentes abastos de tu ciudad">
-	<meta name="description" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
+	<meta name="description" content="Kabasto.com - Selecciona todos tus productos, compara en los abastos y supermercados de tu ciudad, y compra!">
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
