@@ -978,40 +978,30 @@
 
                 const csrf_token = document.getElementById('csrf_token').textContent;
 
-                const data = {
-                    products: products,
-                    ubication: ubication,
-                    brand: brand,
-                    amount: amount,
-                    items: items
-                }
-                axios({
-                    method  : 'POST',
-                    url : '/post/create-order/',
-                    data : data,
-                    headers: {
-                        'content-type': 'application/json',
-                        'X-CSRF-Token': csrf_token
-                        }
-                })
-                .then((res)=>{
-                    console.log(res);
-                    if(res.data === 0){
-                        // El usuario no esta logeado, lo redirijo a la vista de login
-                        window.location.href = "/login?r=1";
-                    }else{
-                        // elimino los datos del local storage
-                        localStorage.removeItem('itemsSelected');
-                        localStorage.removeItem('amount');
-                        localStorage.removeItem('brandSelectedToBuy');
-                        localStorage.removeItem('ubication');
-                        localStorage.removeItem('productsShoppingCar');
-                        // redirecciono a la vista compras
-                        window.location.href = "/compras";
-                    }
+                const res = await axios.post('/post/create-order/', { brand: 'world' });
+                console.log(res)
 
-                })
-                .catch((err) => {console.log(err)});
+                // const data = {
+                //     products: products,
+                //     ubication: ubication,
+                //     brand: brand,
+                //     amount: amount,
+                //     items: items
+                // }
+                // axios({
+                //     method  : 'POST',
+                //     url : '/post/create-order/',
+                //     data : data,
+                //     headers: {
+                //         'content-type': 'application/json',
+                //         'X-CSRF-Token': csrf_token
+                //         }
+                // })
+                // .then((res)=>{
+                //     console.log(res);
+
+                // })
+                // .catch((err) => {console.log(err)});
 
             }
 
