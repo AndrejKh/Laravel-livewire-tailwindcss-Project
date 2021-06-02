@@ -24,45 +24,44 @@ class OrderController extends Controller
     }
 
     // Crear orden
-    public function createOrder(){
-        return 'aqui';
-        // if ( isset(Auth::user()->id) ) {
-        //     $user_id = Auth::user()->id;
-        // }else{
-        //     return 0;
-        // }
-        // return $request;
-        // // Marca seleccionada
-        // $brandSelected = $request->brand;
-        // $brand_id = $brandSelected['id'];
+    public function createOrder(Request $request){
+        if ( isset(Auth::user()->id) ) {
+            $user_id = Auth::user()->id;
+        }else{
+            return 0;
+        }
+        return $request;
+        // Marca seleccionada
+        $brandSelected = $request->brand;
+        $brand_id = $brandSelected['id'];
 
-        // $amountSelected = $request->amount;
-        // $amount = $amountSelected['amount'];
-        // $items = $request->items;
+        $amountSelected = $request->amount;
+        $amount = $amountSelected['amount'];
+        $items = $request->items;
 
-        // // Creo la orden
-        // Order::create([
-        //     'brand_id' => $brand_id,
-        //     'user_id' => $user_id,
-        //     'amount' => $amount
-        // ]);
-        // $newOrder = Order::latest('id')->first();
-        // $order_id = $newOrder->id;
+        // Creo la orden
+        Order::create([
+            'brand_id' => $brand_id,
+            'user_id' => $user_id,
+            'amount' => $amount
+        ]);
+        $newOrder = Order::latest('id')->first();
+        $order_id = $newOrder->id;
 
-        // foreach ($items as $item) {
-        //     $product_id = $item['product_id'];
-        //     $quantity = $item['quantity'];
-        //     $price = $item['price'];
+        foreach ($items as $item) {
+            $product_id = $item['product_id'];
+            $quantity = $item['quantity'];
+            $price = $item['price'];
 
-        //     OrderProducts::create([
-        //         'order_id' => $order_id,
-        //         'product_id' => $product_id,
-        //         'quantity' => $quantity,
-        //         'price' => $price
-        //     ]);
-        // }
+            OrderProducts::create([
+                'order_id' => $order_id,
+                'product_id' => $product_id,
+                'quantity' => $quantity,
+                'price' => $price
+            ]);
+        }
 
-        // return true;
+        return true;
 
     }
 
