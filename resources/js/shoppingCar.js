@@ -412,7 +412,7 @@ function localStorageProducts(arrayProductsLocalStorage){
 }
 
 
-// Funcion para actualizar productos el el boton flotante
+// Funcion para actualizar productos en el boton flotante
 function updateTotalProductsShoppingCar(arrayProductsLocalStorage){
     const spanQuantityFloatButtonShoppingCard = document.getElementById('spanQuantityFloatButtonShoppingCard');
     const badgeIconShoppingCarNavbar = document.getElementById('badgeIconShoppingCarNavbar');
