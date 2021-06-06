@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.cms')
 
     @section('title')
         Resumen de perfil - Kabasto
@@ -16,7 +16,7 @@
             <!-- Contenido -->
             <div class="w-full pb-10">
                 <div>
-                    <h3 class="text-lg text-green-600 mt-3">Bienvenido a Kabasto!</h3>
+                    <h3 class="text-lg text-green-600 mt-3 font-semibold">Bienvenido a Kabasto!</h3>
                     @role('buyer')
                     <span class="text-sm text-gray-600">Aquí encontrarás las mejores opciones para la compra de tu mercado </span>
                     @endrole
@@ -28,8 +28,11 @@
 
                     @if( count(auth()->user()->brands) == 0 )
 
-                        <div class="flex justify-center mt-10">
-                            <span class="text-md bg-white px-3 md:px-8 py-4 rounded-md shadow">
+                        <div class="flex flex-col justify-center mt-10 content-center rounded-lg shadow-lg overflow-hidden">
+                            <div class="block font-semibold text-lg bg-green-400 text-white text-center py-1">
+                                Crea tu marca
+                            </div>
+                            <span class="block text-lg bg-white px-3 md:px-8 py-4">
                                 Para poder empezar a vender tus productos con nosotros, debes primero
                                 <a class="text-blue-700" href="{{ route('cms.tiendas') }}">crear una marca</a>
                             </span>

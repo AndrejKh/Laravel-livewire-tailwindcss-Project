@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.cms')
 
     @section('title')
         Productos del abasto - Kabasto

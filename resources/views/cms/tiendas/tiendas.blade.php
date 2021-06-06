@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.cms')
 
     @section('title')
         CMS Abastos y supermercados - Kabasto
