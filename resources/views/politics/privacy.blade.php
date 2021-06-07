@@ -7,7 +7,7 @@
 @section('content')
     <div class="max-w-7xl w-full shadow rounded-md p-6 md:px-10 bg-white my-4 mx-auto">
         <div class="w-full text-center my-5">
-            <img src="{{ asset('pravacy.svg') }}" alt="imagen de piliticas de privacidad" width="50%">
+            <img src="{{ asset('privacy.svg') }}" alt="imagen de piliticas de privacidad" width="50%">
         </div>
 
 
