@@ -33,6 +33,8 @@ Route::get('/comparar', [CompareController::class, 'index'])->name('comparar');
 // Politicas
 Route::get('/politicas-de-privacidad', [HomeController::class, 'privacy'])->name('politics.privacy');
 
+// Soporte
+Route::get('/soporte', [HomeController::class, 'support'])->name('support.index');
 
 /* CMS */
 // Rutas adicionales para el cms

@@ -1,8 +1,15 @@
 @extends('layouts.app')
 
     @section('title')
-        politicas de privacidad - Kabasto
+        Politicas de privacidad - Kabasto.com
     @endsection
+
+    @section('header')
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="Kabasto.com -  Políticas de privacidad de la plataforma">
+        <meta name="description" content="Kabasto.com - Lee nuestras políticas de privacidad, e informate sobre nuestro compromiso con la seguridad de todos tus datos.">
+    @endsection
+
 
 @section('content')
     <div class="max-w-7xl w-full shadow rounded-md p-6 md:px-10 bg-white my-4 mx-auto">

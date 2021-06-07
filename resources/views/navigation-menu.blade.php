@@ -205,12 +205,9 @@
                 <x-jet-responsive-nav-link href="{{ route('categorias') }}" :active="request()->routeIs('categorias')">
                     Categorías
                 </x-jet-responsive-nav-link>
-                <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('')">
+                <x-jet-responsive-nav-link href="{{ route('support') }}" :active="request()->routeIs('')">
                     Soporte
                 </x-jet-responsive-nav-link>
-                {{-- <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('')">
-                    Ayuda
-                </x-jet-responsive-nav-link> --}}
             </div>
         </div>
     </div>

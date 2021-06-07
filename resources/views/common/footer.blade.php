@@ -42,7 +42,7 @@
                 <a href="{{ route('politics.privacy') }}">Politicas de privacidad</a>
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="">Ayuda y  soporte</a>
+                <a href="{{ route('support.support') }}">Soporte</a>
             </div>
         </div>
 

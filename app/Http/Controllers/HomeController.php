@@ -395,6 +395,10 @@ class HomeController extends Controller
         return view('politics.privacy');
     }
 
+    public function support(){
+        return view('support.support');
+    }
+
     /******* Funciones internas  *********/
 
     // Funcion que elimina duplicados
