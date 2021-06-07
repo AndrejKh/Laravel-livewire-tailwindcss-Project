@@ -5,7 +5,7 @@
     @endsection
 
 @section('content')
-    <div class="flex justify-center max-w-7xl w-full shadow rounded-md p-6 md:px-10 bg-white mt-4">
+    <div class="justify-center max-w-7xl w-full shadow rounded-md p-6 md:px-10 bg-white mt-4 mx-auto">
 
         <h1 class="text-xl font-semibold">POLÍTICA DE PRIVACIDAD</h1>
         <span class="text-gray-500">
