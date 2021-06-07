@@ -8,10 +8,10 @@
     <div class="max-w-7xl w-full shadow rounded-md p-6 md:px-10 bg-white my-4 mx-auto">
 
         <div class="w-full text-center grid grid-cols-3">
-            <div class="col-span-1 w-full my-5">
+            <div class="hidden md:col-span-1 w-full my-5">
                 <img class="mx-auto" src="{{ asset('privacy.svg') }}" alt="imagen de piliticas de privacidad" width="75%">
             </div>
-            <div class="col-span-2 text-left">
+            <div class="col-span-3 md:col-span-2 text-left">
                 <small class="text-gray-500">Última actualización Junio 2021</small>
                 <h1 class="text-3xl font-semibold">POLÍTICA DE PRIVACIDAD</h1>
                 <span class="text-gray-700">
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <hr class="my-4">
+        <hr class="my-6">
 
 
         <h2 class="text-lg mt-2">
@@ -44,7 +44,7 @@
             algún pedido o realizar una entrega o facturación.
         </p>
 
-        <hr class="my-4">
+        <hr class="my-6">
 
         <h2 class="text-lg mt-2">
             Uso de la información recogida
@@ -66,7 +66,7 @@
             ningún acceso no autorizado.
         </p>
 
-        <hr class="my-4">
+        <hr class="my-6">
 
         <h2 class="text-lg mt-2">
             Cookies
@@ -92,7 +92,7 @@
             Si se declinan es posible que no pueda utilizar algunos de nuestros servicios.
         </p>
 
-        <hr class="my-4">
+        <hr class="my-6">
 
         <h2 class="text-lg mt-2">
             Enlaces a Terceros
@@ -107,7 +107,7 @@
             recomendable que los consulte para confirmar que usted está de acuerdo con estas.
         </p>
 
-        <hr class="my-4">
+        <hr class="my-6">
 
         <h2 class="text-lg mt-2">
             Control de su información personal
