@@ -13,7 +13,7 @@
             </div>
             <div class="col-span-2 text-left">
                 <small class="text-gray-500">Última actualización Junio 2021</small>
-                <h1 class="text-xl font-semibold">POLÍTICA DE PRIVACIDAD</h1>
+                <h1 class="text-3xl font-semibold">POLÍTICA DE PRIVACIDAD</h1>
                 <span class="text-gray-700">
                     El presente Política de Privacidad establece los términos en que Kabasto.com usa y protege la
                     información que es proporcionada por sus usuarios al momento de utilizar su sitio web.
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <hr>
+        <hr class="my-4">
 
 
         <h2 class="text-lg mt-2">
@@ -43,7 +43,7 @@
             algún pedido o realizar una entrega o facturación.
         </p>
 
-        <hr>
+        <hr class="my-4">
 
         <h2 class="text-lg mt-2">
             Uso de la información recogida
@@ -65,7 +65,7 @@
             ningún acceso no autorizado.
         </p>
 
-        <hr>
+        <hr class="my-4">
 
         <h2 class="text-lg mt-2">
             Cookies
@@ -91,7 +91,7 @@
             Si se declinan es posible que no pueda utilizar algunos de nuestros servicios.
         </p>
 
-        <hr>
+        <hr class="my-4">
 
         <h2 class="text-lg mt-2">
             Enlaces a Terceros
@@ -106,7 +106,7 @@
             recomendable que los consulte para confirmar que usted está de acuerdo con estas.
         </p>
 
-        <hr>
+        <hr class="my-4">
 
         <h2 class="text-lg mt-2">
             Control de su información personal
