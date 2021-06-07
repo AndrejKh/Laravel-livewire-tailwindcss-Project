@@ -8,10 +8,10 @@
     <div class="max-w-7xl w-full shadow rounded-md p-6 md:px-10 bg-white my-4 mx-auto">
 
         <div class="w-full text-center grid grid-cols-3">
-            <div class="col-span-1 w-full text-center my-5">
-                <img src="{{ asset('privacy.svg') }}" alt="imagen de piliticas de privacidad" width="50%">
+            <div class="col-span-1 w-full my-5">
+                <img class="mx-auto" src="{{ asset('privacy.svg') }}" alt="imagen de piliticas de privacidad" width="50%">
             </div>
-            <div class="col-span-2">
+            <div class="col-span-2 text-left">
                 <small class="text-gray-500">Última actualización Junio 2021</small>
                 <h1 class="text-xl font-semibold">POLÍTICA DE PRIVACIDAD</h1>
                 <span class="text-gray-700">
@@ -28,6 +28,8 @@
             </div>
         </div>
 
+        <hr>
+
 
         <h2 class="text-lg mt-2">
             Información que es recogida
@@ -40,6 +42,8 @@
             Así mismo cuando sea necesario podrá ser requerida información específica para procesar
             algún pedido o realizar una entrega o facturación.
         </p>
+
+        <hr>
 
         <h2 class="text-lg mt-2">
             Uso de la información recogida
@@ -60,6 +64,8 @@
             Usamos los sistemas más avanzados y los actualizamos constantemente para asegurarnos que no exista
             ningún acceso no autorizado.
         </p>
+
+        <hr>
 
         <h2 class="text-lg mt-2">
             Cookies
@@ -85,6 +91,8 @@
             Si se declinan es posible que no pueda utilizar algunos de nuestros servicios.
         </p>
 
+        <hr>
+
         <h2 class="text-lg mt-2">
             Enlaces a Terceros
         </h2>
@@ -97,6 +105,8 @@
             Dichos sitios están sujetos a sus propias políticas de privacidad por lo cual es
             recomendable que los consulte para confirmar que usted está de acuerdo con estas.
         </p>
+
+        <hr>
 
         <h2 class="text-lg mt-2">
             Control de su información personal
