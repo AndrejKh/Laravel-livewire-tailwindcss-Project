@@ -71,7 +71,9 @@
 
 
     <div class="max-w-7xl w-full mt-0 md:mt-3 px-2 md:px-4">
-        <h2 class="font-bold text-lg md:text-2xl text-gray-900 mb-2"> ({{ $total_products_search }}) Productos encontrados</h2>
+        <h2 class="font-bold text-lg md:text-2xl text-gray-900 mb-2">
+            ({{ $total_products_search }}) Productos encontrados
+        </h2>
         <div class="text-md md:text-lg text-gray-900">
             @isset($query)
                 <span>
