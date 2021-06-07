@@ -7,7 +7,7 @@
                 La plataforma enfocada en cambiar la manera de hacer mercado en Venezuela.
             </p>
             <div class="mt-3 text-center md:text-left">
-                <a href="">
+                <a href="https://www.facebook.com/kabasto.ve" target="_blank">
                     <img class="inline" src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto">
                 </a>
                 <a href="">
