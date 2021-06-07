@@ -6,25 +6,28 @@
 
 @section('content')
     <div class="max-w-7xl w-full shadow rounded-md p-6 md:px-10 bg-white my-4 mx-auto">
-        <div class="w-full text-center my-5">
-            <img src="{{ asset('privacy.svg') }}" alt="imagen de piliticas de privacidad" width="50%">
+
+        <div class="w-full text-center grid grid-cols-3">
+            <div class="col-span-1 w-full text-center my-5">
+                <img src="{{ asset('privacy.svg') }}" alt="imagen de piliticas de privacidad" width="50%">
+            </div>
+            <div class="col-span-2">
+                <small class="text-gray-500">Última actualización Junio 2021</small>
+                <h1 class="text-xl font-semibold">POLÍTICA DE PRIVACIDAD</h1>
+                <span class="text-gray-700">
+                    El presente Política de Privacidad establece los términos en que Kabasto.com usa y protege la
+                    información que es proporcionada por sus usuarios al momento de utilizar su sitio web.
+                </span>
+                <p class="text-gray-700">
+                    Esta plataforma está comprometida con la seguridad de los datos de sus usuarios.
+                    Cuando le pedimos llenar los campos de información personal con la cual usted pueda ser identificado,
+                    lo hacemos asegurando que sólo se empleará de acuerdo con los términos de este documento.
+                    Sin embargo esta Política de Privacidad puede cambiar con el tiempo o ser actualizada por lo que le recomendamos
+                    y enfatizamos revisar continuamente esta página para asegurarse que está de acuerdo con dichos cambios.
+                </p>
+            </div>
         </div>
 
-
-        <small class="text-gray-500">Última actualización Junio 2021</small>
-        <h1 class="text-xl font-semibold">POLÍTICA DE PRIVACIDAD</h1>
-        <span class="text-gray-500">
-            El presente Política de Privacidad establece los términos en que Kabasto.com usa y protege la
-            información que es proporcionada por sus usuarios al momento de utilizar su sitio web.
-        </span>
-
-        <p>
-            Esta plataforma está comprometida con la seguridad de los datos de sus usuarios.
-            Cuando le pedimos llenar los campos de información personal con la cual usted pueda ser identificado,
-            lo hacemos asegurando que sólo se empleará de acuerdo con los términos de este documento.
-            Sin embargo esta Política de Privacidad puede cambiar con el tiempo o ser actualizada por lo que le recomendamos
-            y enfatizamos revisar continuamente esta página para asegurarse que está de acuerdo con dichos cambios.
-        </p>
 
         <h2 class="text-lg mt-2">
             Información que es recogida
