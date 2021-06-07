@@ -205,7 +205,7 @@
                 <x-jet-responsive-nav-link href="{{ route('categorias') }}" :active="request()->routeIs('categorias')">
                     Categorías
                 </x-jet-responsive-nav-link>
-                <x-jet-responsive-nav-link href="{{ route('support') }}" :active="request()->routeIs('')">
+                <x-jet-responsive-nav-link href="{{ route('support.index') }}" :active="request()->routeIs('')">
                     Soporte
                 </x-jet-responsive-nav-link>
             </div>
