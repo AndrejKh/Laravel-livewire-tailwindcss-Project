@@ -29,7 +29,7 @@
                         Productos
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('brands.show') }}" :active="request()->routeIs('brands.show')">
-                        Supermercados
+                        Abastos
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -197,7 +197,7 @@
                     Inicio
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('brands.show') }}" :active="request()->routeIs('brands.show')">
-                    Supermercados y abastos
+                    Abastos
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('products.show') }}" :active="request()->routeIs('products.show')">
                     Productos
