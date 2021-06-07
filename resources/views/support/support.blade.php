@@ -21,13 +21,14 @@
                 <small class="text-gray-500">Consúltanos sobre cualquier duda o recomendación que tengas</small>
                 <h1 class="text-3xl font-semibold">Soporte y Ayuda</h1>
                 <span class="text-gray-700">
-                    Nos encantaría saber todas tus dudas y ayudarte a solucionarlas. ¡Tranquilo! estamos para servirte
+                    Nos encantaría saber todas tus dudas y ayudarte a solucionarlas. <br>
+                    ¡Tranquilo! estamos para servirte
                     y ayudarte a incrementar tus ventas.
                 </span>
                 <p class="text-gray-700">
                     <br>
-                    Si tienes alguna recomendación sobre la plataforma, ten la plena confianza en decirnosla, estamos enfocados
-                    en mejorar todo aspecto del sitio web, y con tus recomendaciones podremos lograrlo!
+                    Si tienes alguna recomendación sobre la plataforma, ten la plena confianza en comentarnosla,
+                    estamos enfocados en mejorar todo aspecto del sitio web, y con tus recomendaciones podremos lograrlo!
                     <br>
                     Puedes escribirnos a cualquier hora del día, o de la noche ;), incluso en la madrugada!.
                     Apenas leamos tu mensaje correremos a responderte!
@@ -75,14 +76,13 @@
 
         <p>
             ¡Claro que sí! <br>
-            Purdes preguntarnos cualquier duda que tengas en mente. <br>
-            Pero si nos preguntas sobre el origen del universo, aún no tenemos una respuesta para eso ;)
+            Puedes preguntarnos cualquier duda que tengas en mente. <br>
         </p>
 
         <hr class="my-6">
 
         <h2 class="text-lg mt-2 font-semibold">
-            Si algo de la plataforma no me gusta, ¿Puedo sugerir algo mejor o una posuble solución?
+            Si algo de la plataforma no me gusta, ¿Puedo sugerir algo mejor o una posible solución?
         </h2>
 
         <p>
