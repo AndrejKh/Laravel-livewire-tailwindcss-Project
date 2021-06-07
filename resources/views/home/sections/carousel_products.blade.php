@@ -6,8 +6,15 @@
 
         <div class="flex justify-center mt-3 px-2">
             <div class="max-w-7xl w-full">
-                <h2 class="font-bold text-xl text-gray-900 inline">{{ $category->category }}</h2>
-                - <a class="inline text-blue-700 text-sm" href="{{route('products.category.show', $category->slug)}}">Ver todos</a>
+                <h2 class="font-bold text-xl text-gray-900 inline">
+                    {{ $category->category }} -
+                </h2>
+                <a class="inline text-blue-700 text-sm" href="{{route('products.category.show', $category->slug)}}">
+                    Ver todos
+                </a>
+                <p class="text-sm">
+                    {{ $category->description }}
+                </p>
             </div>
         </div>
         <div class="flex justify-center px-2">

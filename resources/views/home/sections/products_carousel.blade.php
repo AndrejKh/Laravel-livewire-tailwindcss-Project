@@ -1,8 +1,15 @@
 @if ( $products && count($products) > 0)
 <div class="flex justify-center mt-3 px-2">
     <div class="max-w-7xl w-full">
-        <h2 class="font-bold text-xl text-gray-900 inline">Productos destacados</h2>
-        - <a class="inline text-blue-700 text-sm" href="{{ route('products.show') }}">Ver todos</a>
+        <h2 class="font-bold text-xl text-gray-900 inline">
+            Productos destacados -
+        </h2>
+        <a class="inline text-blue-700 text-sm" href="{{ route('products.show') }}">
+            Ver todos
+        </a>
+        <p class="text-sm">
+            Los mejores productos de todos abastos
+        </p>
     </div>
 </div>
 <div class="flex justify-center px-2">
