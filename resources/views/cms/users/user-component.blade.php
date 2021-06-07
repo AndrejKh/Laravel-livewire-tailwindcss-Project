@@ -67,7 +67,21 @@
                             <td class="p-2"> {{$usuario->phone}} </td>
                             <td class="p-2"> @if ($usuario->state) {{$usuario->state->state}} @endif </td>
                             <td class="p-2"> @if ($usuario->city) {{$usuario->city->city}} @endif </td>
-                            <td class="p-2 text-center"> {{ $usuario->roles[0]->name }} </td>
+                            <td class="p-2 text-center">
+                                @if ( $usuario->roles[0]->name == 'seller' )
+                                    <span class="text-green-600">
+                                        {{ $usuario->roles[0]->name }}
+                                    </span>
+                                @elseif( $usuario->roles[0]->name == 'buyer' )
+                                    <span class="text-yellow-600">
+                                        {{ $usuario->roles[0]->name }}
+                                    </span>
+                                @else
+                                    <span class="text-blue-600">
+                                        {{ $usuario->roles[0]->name }}
+                                    </span>
+                                @endif
+                            </td>
                             <td class="p-2 text-center"> <span class="rounded-full bg-green-300 text-green-700 px-2">{{$usuario->status}}</span> </td>
                             {{-- <td class="px-6 py-4 text-center">
                                 <button @click="open= true" wire:click="edit({{$usuario}})" class="rounded-3xl bg-blue-500 p-2">
