@@ -1,5 +1,5 @@
 <footer class="bg-gray-900 w-full mx-auto px-4 md:px-6 lg:px-8 pt-10 pb-3">
-    <div class="px-2 grid grid-cols-4 md:grid-cols-6 gap-1 max-w-7xl mx-auto">
+    <div class="px-2 grid grid-cols-4 md:grid-cols-8 gap-1 max-w-7xl mx-auto">
         <div class="col-span-4 md:col-span-2 items-center md:text-left mb-8 md:mb-0">
             <img class="mx-auto md:mx-0" src="{{ asset('logo.svg') }}" alt="">
             <p class="mt-2 md:pr-10 text-white text-center md:text-left">
@@ -16,7 +16,7 @@
         </div>
         <div class="col-span-4 sm:col-span-2 mb-5 sm:mb-0">
             <div class="text-green-500 text-center md:text-left text-lg mb-4">
-                Sitemap
+                Enlaces de interés
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
                 <a href="{{ route('home') }}">Inicio</a>
@@ -29,6 +29,17 @@
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
                 <a href="{{ route('products.show') }}">Productos</a>
+            </div>
+        </div>
+        <div class="col-span-4 sm:col-span-2 mb-5 sm:mb-0">
+            <div class="text-green-500 text-center md:text-left text-lg mb-4">
+                Información general
+            </div>
+            <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
+                <a href="{{ route('politics.privacy') }}">Politicas de privacidad</a>
+            </div>
+            <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
+                <a href="{{ /* route('brands.show')  */}}">Ayuda y  soporte</a>
             </div>
         </div>
         <div class="col-span-4 sm:col-span-2">
