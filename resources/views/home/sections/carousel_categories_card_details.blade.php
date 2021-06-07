@@ -1,7 +1,7 @@
 @if ( $principal_categories && count($principal_categories) > 0)
 <div class="flex justify-center mt-3 px-2">
     <div class="max-w-7xl w-full">
-        <h3 class="text-lg text-gray-800 px-2 inline">
+        <h3 class="text-lg text-gray-800 inline">
             Algunas categorías para tí -
         </h3>
         <a class="inline text-blue-700 text-sm" href="{{ route('categorias') }}">Ver todas</a>
