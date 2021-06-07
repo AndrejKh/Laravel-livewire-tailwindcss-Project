@@ -8,7 +8,7 @@
     <div class="max-w-7xl w-full shadow rounded-md p-6 md:px-10 bg-white my-4 mx-auto">
 
         <div class="w-full text-center grid grid-cols-3">
-            <div class="hidden md:col-span-1 w-full my-5">
+            <div class="hidden md:block md:col-span-1 w-full my-5">
                 <img class="mx-auto" src="{{ asset('privacy.svg') }}" alt="imagen de piliticas de privacidad" width="75%">
             </div>
             <div class="col-span-3 md:col-span-2 text-left">
