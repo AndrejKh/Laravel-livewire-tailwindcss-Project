@@ -32,7 +32,7 @@
         <hr class="my-6">
 
 
-        <h2 class="text-lg mt-2">
+        <h2 class="text-lg mt-2 font-semibold">
             Información que es recogida
         </h2>
 
@@ -46,7 +46,7 @@
 
         <hr class="my-6">
 
-        <h2 class="text-lg mt-2">
+        <h2 class="text-lg mt-2 font-semibold">
             Uso de la información recogida
         </h2>
 
@@ -68,7 +68,7 @@
 
         <hr class="my-6">
 
-        <h2 class="text-lg mt-2">
+        <h2 class="text-lg mt-2 font-semibold">
             Cookies
         </h2>
         <p>
@@ -94,7 +94,7 @@
 
         <hr class="my-6">
 
-        <h2 class="text-lg mt-2">
+        <h2 class="text-lg mt-2 font-semibold">
             Enlaces a Terceros
         </h2>
 
@@ -109,7 +109,7 @@
 
         <hr class="my-6">
 
-        <h2 class="text-lg mt-2">
+        <h2 class="text-lg mt-2 font-semibold">
             Control de su información personal
         </h2>
         <p>
