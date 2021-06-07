@@ -9,7 +9,7 @@
 
         <div class="w-full text-center grid grid-cols-3">
             <div class="col-span-1 w-full my-5">
-                <img class="mx-auto" src="{{ asset('privacy.svg') }}" alt="imagen de piliticas de privacidad" width="50%">
+                <img class="mx-auto" src="{{ asset('privacy.svg') }}" alt="imagen de piliticas de privacidad" width="75%">
             </div>
             <div class="col-span-2 text-left">
                 <small class="text-gray-500">Última actualización Junio 2021</small>
@@ -18,6 +18,7 @@
                     El presente Política de Privacidad establece los términos en que Kabasto.com usa y protege la
                     información que es proporcionada por sus usuarios al momento de utilizar su sitio web.
                 </span>
+                <br>
                 <p class="text-gray-700">
                     Esta plataforma está comprometida con la seguridad de los datos de sus usuarios.
                     Cuando le pedimos llenar los campos de información personal con la cual usted pueda ser identificado,
