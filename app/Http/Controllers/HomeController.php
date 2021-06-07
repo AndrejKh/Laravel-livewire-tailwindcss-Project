@@ -391,6 +391,10 @@ class HomeController extends Controller
         return view('cms.sales.sales');
     }
 
+    public function privacy(){
+        return view('politics.privacy');
+    }
+
     /******* Funciones internas  *********/
 
     // Funcion que elimina duplicados

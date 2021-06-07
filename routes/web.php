@@ -27,10 +27,14 @@ Route::get('/products/', [HomeController::class, 'vitrina'])->name('products.sho
 Route::get('/categorias/{slug}', [HomeController::class, 'vitrinaPorCategoria'])->name('products.category.show');
 Route::get('/product-detail/{slug}', [HomeController::class, 'productShow'])->name('products.details.show');
 
-
 // Vista de comparar
 Route::get('/comparar', [CompareController::class, 'index'])->name('comparar');
 
+// Politicas
+Route::get('/politicas-de-privacidad', [HomeController::class, 'privacy'])->name('politics.privacy');
+
+
+/* CMS */
 // Rutas adicionales para el cms
 Route::get('/register_seller', [HomeController::class, 'register_seller'])->name('auth.register_seller');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
