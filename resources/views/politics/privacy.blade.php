@@ -5,8 +5,13 @@
     @endsection
 
 @section('content')
-    <div class="justify-center max-w-7xl w-full shadow rounded-md p-6 md:px-10 bg-white mt-4 mx-auto">
+    <div class="max-w-7xl w-full shadow rounded-md p-6 md:px-10 bg-white my-4 mx-auto">
+        <div class="w-full text-center my-5">
+            <img src="{{ asset('pravacy.svg') }}" alt="imagen de piliticas de privacidad" width="50%">
+        </div>
 
+
+        <small class="text-gray-500">Última actualización Junio 2021</small>
         <h1 class="text-xl font-semibold">POLÍTICA DE PRIVACIDAD</h1>
         <span class="text-gray-500">
             El presente Política de Privacidad establece los términos en que Kabasto.com usa y protege la
