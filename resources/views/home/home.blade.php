@@ -6,7 +6,7 @@
 
 @section('header')
 	{{-- precargar imagenes --}}
-	<link rel="preload" href="{{asset('storage/'.$carousel_banners[0]->banner)}}" as="image">
+	<link rel="preload" href="{{ asset( 'home.svg' ) }}" as="image">
 
 	<!-- Primary Meta Tags -->
 	<meta name="title" content="Kabasto.com -  Compara y compra en los diferentes abastos de tu ciudad">
@@ -17,7 +17,7 @@
 	<meta property="og:url" content="https://kabasto.com/">
 	<meta property="og:title" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
 	<meta property="og:description" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
-	<meta property="og:image" content="/storage/{{$carousel_banners[0]->banner}}">
+	<meta property="og:image" content="{{ asset( 'home.svg' ) }}">
 
 	{{-- url canonical --}}
 	<link rel="canonical" href="https://kabasto.com/" />
