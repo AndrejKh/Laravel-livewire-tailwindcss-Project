@@ -5,7 +5,7 @@
             Algunas categorías para tí -
         </h3>
         <a class="inline text-blue-700 text-sm" href="{{ route('categorias') }}">Ver todas</a>
-        <p class="text-sm">Encuentra los diversos productos que estas buscando</p>
+        <p class="text-sm font-semibold text-gray-600">Encuentra los diversos productos que estas buscando</p>
     </div>
 </div>
 <div class="flex justify-center px-2">

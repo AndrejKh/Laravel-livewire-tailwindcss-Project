@@ -7,7 +7,7 @@
         <a class="inline text-blue-700 text-sm" href="{{ route('products.show') }}">
             Ver todos
         </a>
-        <p class="text-sm">
+        <p class="text-sm font-semibold text-gray-600">
             Los mejores productos de todos abastos
         </p>
     </div>
