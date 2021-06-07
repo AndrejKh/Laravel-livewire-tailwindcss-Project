@@ -13,6 +13,9 @@
                 <a href="https://www.instagram.com/kabasto_ve/" target="_blank">
                     <img class="inline" src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto">
                 </a>
+                <a href="https://twitter.com/kabasto_ve" target="_blank">
+                    <img class="inline" src="{{ asset('twitter.svg') }}" alt="imagen twitter de kabasto">
+                </a>
             </div>
         </div>
 
