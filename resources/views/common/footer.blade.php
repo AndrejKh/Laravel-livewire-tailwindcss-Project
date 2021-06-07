@@ -10,7 +10,7 @@
                 <a href="https://www.facebook.com/kabasto.ve" target="_blank">
                     <img class="inline" src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto">
                 </a>
-                <a href="">
+                <a href="https://www.instagram.com/kabasto_ve/" target="_blank">
                     <img class="inline" src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto">
                 </a>
             </div>
