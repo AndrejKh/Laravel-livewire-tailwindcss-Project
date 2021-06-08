@@ -83,6 +83,10 @@
                                 @endif
                             </td>
                             <td class="p-2 text-center"> <span class="rounded-full bg-green-300 text-green-700 px-2">{{$usuario->status}}</span> </td>
+                            <td>
+                                <button class="rounded-full py-1 px-3 bg-blue-600 text-white" wire:click="">Pausar</button>
+                            </td>
+
                             {{-- <td class="px-6 py-4 text-center">
                                 <button @click="open= true" wire:click="edit({{$usuario}})" class="rounded-3xl bg-blue-500 p-2">
                                     <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24" ><path d="M0 0h24v24H0z" fill="none"/><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
