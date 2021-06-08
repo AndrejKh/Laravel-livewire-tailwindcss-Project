@@ -108,16 +108,27 @@
         <div class="md:col-span-7 max-w-7xl w-full px-2 md:px-3 mt-3">
 
             <div class="flex justify-center">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    @foreach ($products as $product)
+                @if ( count($products) > 0 )
 
-                    <div>
-                        @include('components.card_product')
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                        @foreach ($products as $product)
+
+                            <div>
+                                @include('components.card_product')
+                            </div>
+
+                        @endforeach
                     </div>
 
+                @else
 
-                    @endforeach
-                </div>
+                    <div class="w-full text-center">
+                        <h4 class="text-lg font-semibold">No se encontraron resultados :/</h4>
+                        <img class="mx-auto" width="75%" src="{{ asset('no_results.svg') }}" alt="sin resultados en la busqueda">
+                        <a class="rounded-lg text-white bg-green-500 shadow-md py-1 px-10" href="https://kabasto.com/products">Continuar con otra búsqueda</a>
+                    </div>
+
+                @endif
             </div>
             <div class="w-full block text-center mt-4" id="pagination_nav">
                 {{-- {!! $products->links() !!} --}}
