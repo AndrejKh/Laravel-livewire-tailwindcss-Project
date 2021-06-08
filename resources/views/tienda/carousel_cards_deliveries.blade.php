@@ -76,7 +76,7 @@
                         @endphp
                     </div>
                     <span class="col-span-1 text-right self-center font-bold">
-                        <div>
+                        <div class="text-md text-gray-900 text-semibold block mt-1">
                             Delivery en
                         </div>
                         {{-- <svg class="h-5 inline" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
