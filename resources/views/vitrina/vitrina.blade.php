@@ -43,7 +43,7 @@
             @isset($state_selected)
                 <span class="flex flex-shrink bg-green-500 text-white rounded-full shadow px-3 py-1 mb-2 ml-2 cursor-pointer">
                     <span class="inline self-center text-sm mr-1 modalStates">{{ $state_selected }}</span>
-                    <svg class="fill-current text-white stroke-current stroke-2 cursor-pointer h-3 inline self-center ml-auto removeCitySelected" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                    <svg class="fill-current text-white stroke-current stroke-2 cursor-pointer h-3 inline self-center ml-auto removeStateSelected" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg" >
                         <path d="M12.639 11.0735L23.3484 0.993304C23.5898 0.766088 23.5898 0.3977 23.3484 0.170484C23.1069 -0.0567312 22.7156 -0.0567312 22.4741 0.170484L11.7648 10.2506L1.05536 0.170412C0.813966 -0.0568039 0.422582 -0.0568039 0.181184 0.170412C-0.0602917 0.397627 -0.0602917 0.766016 0.181184 0.993231L10.8905 11.0735L0.181107 21.1537C-0.0603689 21.3809 -0.0603689 21.7493 0.181107 21.9766C0.301806 22.0902 0.459982 22.147 0.618236 22.147C0.776489 22.147 0.934665 22.0902 1.05536 21.9766L11.7648 11.8964L22.4741 21.9766C22.5949 22.0902 22.753 22.147 22.9113 22.147C23.0695 22.147 23.2277 22.0902 23.3484 21.9766C23.5898 21.7493 23.5898 21.3809 23.3484 21.1537L12.639 11.0735Z" />
                     </svg>
                 </span>
