@@ -37,9 +37,9 @@
 
             </div>
 
-            <div class="col-span-6 mt-4">
+            <div class="col-span-6">
                 <div class="grid grid-cols-4 gap-2">
-                    <div class="col-span-3 text-blue-800 text-sm md:text-md text-left" title="Días que haces delivery">
+                    <div class="col-span-3 text-blue-800 text-sm md:text-md text-left self-end" title="Días que haces delivery">
                         @php
                             $days = explode(',',$delivery->days);
                             $array_days = array();
