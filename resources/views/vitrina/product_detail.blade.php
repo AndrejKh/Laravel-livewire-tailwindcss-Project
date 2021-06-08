@@ -96,7 +96,7 @@
             </h2>
         </div>
         <div class="max-w-7xl w-full px-2 mx-auto">
-            <span class="text-gray-400 text-sm">Podrás comparar tu carrito de compras al final</span>
+            <span class="text-gray-500 text-sm">Podrás comparar tu carrito de compras al final</span>
         </div>
     </div>
     {{-- Listado de supermercados --}}
