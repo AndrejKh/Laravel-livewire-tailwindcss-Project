@@ -24,7 +24,7 @@
 
         <div class="flex px-3 py-1">
             <h6 class="text-lg font-semibold text-gray-700 hidden" id="conProdcutos">Tus productos</h6>
-            <h6 class="text-lg font-semibold text-gray-700" id="sinProdcutos">No tienes productos en el carrito!</h6>
+            {{-- <h6 class="text-lg font-semibold text-gray-700" id="sinProdcutos">No tienes productos en el carrito!</h6> --}}
         </div>
 
         <form>
@@ -60,6 +60,18 @@
                 {{-- Contenedor donde iran los productos --}}
                 <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-3 md:gap-3 lg:gap-5" id="containerProductsShoppingCar">
                 </div>
+
+                <div class="text-center" id="sinProdcutos">
+                    <strong class="text-lg">No tienes productos en el carrito de compras</strong>
+                    <div class="text-center">
+                        <img class="mx-auto" width="50%" src="{{ asset('empty_car.svg') }}" alt="carrito vacio">
+                    </div>
+                    <div class="mt-3">
+                        <a class="py-2 bg-green-500 text-white px-5 rounded-full shadow-md" href="https://kabasto.com/products">Buscar productos</a>
+                    </div>
+                </div>
+
+
             </div>
 
             <div class="bg-gray-100 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
