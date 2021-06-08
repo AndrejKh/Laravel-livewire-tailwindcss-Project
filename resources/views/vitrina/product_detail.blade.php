@@ -112,7 +112,10 @@
 
     {{-- Boton volver - seguir comprando --}}
     <div class="flex justify-center my-4">
-        <a class="bg-green-500 text-white py-2 px-8 rounded-md shadow-md" href="{{ url()->previous() }}">Seguir comprando</a>
+        <a class="bg-green-500 text-white py-2 px-8 rounded-md shadow-md" href="{{ url()->previous() }}">Seguir agregando al carrito</a>
+        <small class="text-gray-500">
+            Al final podrás comparar todos los productos de tu carrito en los diferentes abastos
+        </small>
     </div>
 
     <div class="block md:hidden max-w-7xl w-full px-2 mx-auto mb-1 mt-3">
