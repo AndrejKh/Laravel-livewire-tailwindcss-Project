@@ -103,7 +103,9 @@
     <div class="flex justify-center mt-3">
         <div class="max-w-7xl w-full px-2">
             @foreach ($items as $item)
+
                 @include('components.card_tienda_precio_product')
+
             @endforeach
         </div>
     </div>
