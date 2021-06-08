@@ -6,7 +6,7 @@
         <p class="text-gray-600 text-left pt-1 lg:pt-3 text-sm">
             {{ $category->description }}
         </p>
-        <button class="rounded shadow-md bg-green-600 text-white py-1 px-5 mt-3">
+        <button class="hidden lg:block rounded shadow-md bg-green-600 text-white py-1 px-5 mt-3">
             Ver todas
         </button>
     </div>
