@@ -2,9 +2,9 @@
 <div class="owl-carousel owl-theme w-full" id="carousel_banners_home">
 
     @foreach ($carousel_banners as $banner)
-        <a class="item" href="{{ $banner->url }}">
-            <div class="bg-no-repeat bg-cover bg-center w-full h-36 md:h-60 lg:h-72 xl:h-72 overflow-hidden z-10 rounded-md shadow-md" style="background-image: url('/storage/{{ $banner->banner }}');"></div>
-        </a>
+        <div class="item h-36 md:h-60 lg:h-72 xl:h-80 ">
+            <img src="/storage/{{$banner->banner}}">
+        </div>
     @endforeach
 </div>
 <script>
