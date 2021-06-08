@@ -2,7 +2,7 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-screen-2xl mx-auto px-4 md:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex w-10/12 md:w-9/12">
+            <div class="flex w-10/12">
                 <div class="flex w-full">
                     <!-- Logo -->
                     <div class="flex-shrink-0 flex sm:hidden items-center">
