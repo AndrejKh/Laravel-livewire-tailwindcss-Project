@@ -3,10 +3,10 @@
         <a class="text-gray-900 hover:text-gray-700 text-left font-bold text-lg" href="{{route('products.category.show', $category->slug)}}">
             {{ $category->category }}
         </a>
-        <p class="text-gray-600 text-left pt-1 lg:pt-3 text-sm">
+        <p class="text-gray-600 text-left pt-1 lg:pt-3 text-sm mb-3">
             {{ $category->description }}
         </p>
-        <a class="hidden lg:block rounded shadow-md bg-green-600 text-white py-1 px-5 mt-3" href="{{route('products.category.show', $category->slug)}}">
+        <a class="hidden lg:inline rounded shadow-md bg-green-600 text-white py-1 px-5" href="{{route('products.category.show', $category->slug)}}">
             Ver todas
         </a>
     </div>
