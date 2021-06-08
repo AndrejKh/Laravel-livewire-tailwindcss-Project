@@ -111,7 +111,10 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                     @foreach ($products as $product)
 
+                    <div>
                         @include('components.card_product')
+                    </div>
+
 
                     @endforeach
                 </div>
