@@ -5,7 +5,7 @@
 
             @foreach ($banners_promotionals as $banner)
                 <a href="{{ $banner->url }}">
-                    <div class="bg-no-repeat bg-cover bg-center w-full h-24 md:h-36 xl:h-44 overflow-hidden z-10 rounded-md shadow-md" style="background-image: url('/storage/{{ $banner->banner }}');"></div>
+                    <div class="bg-no-repeat bg-cover bg-center w-full h-24 md:h-36 xl:h-40 overflow-hidden z-10 rounded-md shadow-md" style="background-image: url('/storage/{{ $banner->banner }}');"></div>
                 </a>
             @endforeach
 
