@@ -90,9 +90,9 @@
         </div>
     </div>
     <div class="my-1 md:my-4">
-        <div class="max-w-7xl w-full px-2 mx-auto mb-1">
+        <div class="max-w-7xl w-full px-2 mx-auto">
             <h2 class="text-lg md:text-xl text-gray-900 font-semibold">
-                Los precios de los abastos y supermercados
+                Precios en los abastos y supermercados
             </h2>
         </div>
         <div class="max-w-7xl w-full px-2 mx-auto">
@@ -114,15 +114,10 @@
     <div class="flex justify-center my-4">
         <a class="bg-green-500 text-white py-2 px-8 rounded-md shadow-md" href="{{ url()->previous() }}">Seguir agregando al carrito</a>
     </div>
-    <div class="flex justify-center my-4">
-        <small class="text-gray-500">
-            Al final podrás comparar todos los productos de tu carrito en los diferentes abastos
-        </small>
-    </div>
 
     <div class="block md:hidden max-w-7xl w-full px-2 mx-auto mb-1 mt-3">
         <h3 class="text-xl text-gray-900 font-semibold">
-            Descripción
+            Descripción del producto
         </h3>
         <p class="text-gray-500 mt-4 md:mt-6 lg:mt-10 text-base md:text-lg">
             @php echo nl2br($product->description); @endphp
