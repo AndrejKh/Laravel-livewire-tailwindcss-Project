@@ -15,7 +15,7 @@ class BannerPromocional extends Model
      * @var array
      */
     protected $fillable = [
-        'banner','page','status'
+        'banner','page','url', 'status'
     ];
 
     public function getCreatedAtAttribute($date){

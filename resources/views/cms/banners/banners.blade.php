@@ -15,7 +15,6 @@
         <div class="bg-white p-6 rounded-sm shadow-sm col-span-5">
             <!-- Contenido -->
             <div class="w-full p-6">
-
                 @livewire('promotional-banner-component')
             </div>
         </div>

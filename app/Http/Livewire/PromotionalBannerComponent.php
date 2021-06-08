@@ -18,7 +18,7 @@ class PromotionalBannerComponent extends Component
 
     protected $queryString = ['status' => ['except' => 'active'], 'search' => ['except' => ''], 'perPage'  => ['except' => '10']];
 
-    public $banner, $page_banner, $banner_id, $message_alert, $color_alert;
+    public $banner, $page_banner, $banner_id, $message_alert, $color_alert,$url;
 
     public $search = '';
     public $status = 'active';
@@ -56,6 +56,7 @@ class PromotionalBannerComponent extends Component
         //en este caso se ignorara las reglas de validacion de $rules, y considerara las que se le asignan
         $this->validate([
             'page_banner' => 'required',
+            'url' => 'required',
             'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
 
@@ -64,7 +65,8 @@ class PromotionalBannerComponent extends Component
 
         BannerPromocional::create([
             'banner' => $path_imagen,
-            'page' => $this->page_banner
+            'page' => $this->page_banner,
+            'url' => $this->url
         ]);
         //reinicio las propiedades
         $this->reset(['banner', 'page_banner', 'banner_id', 'show_alert', 'message_alert', 'color_alert']);
@@ -77,6 +79,7 @@ class PromotionalBannerComponent extends Component
     {
         $this->banner_id = $banner->id;
         $this->page_banner = $banner->page_banner;
+        $this->url = $banner->url;
 
         $this->action = 'update';
     }
@@ -95,17 +98,20 @@ class PromotionalBannerComponent extends Component
 
             $banner->update([
                 'banner' => $path_imagen,
-                'page' => $this->page_banner
+                'page' => $this->page_banner,
+                'url' => $this->url
             ]);
         } else {
             $this->validate([
                 'page_banner' => 'required',
+                'url' => 'required',
             ]);
 
             $banner = BannerPromocional::find($this->banner_id);
 
             $banner->update([
-                'page' => $this->page_banner
+                'page' => $this->page_banner,
+                'url' => $this->url
             ]);
         }
 

@@ -21,7 +21,16 @@
                     <small class="text-red-400 italic">{{$message}}</small>
                 @enderror
             </div>
+            <div class="flex-auto mb-3">
+                <label class="form-label mb-2" for="url">Url de redireccion</label>
+                <input wire:model="url" class="form-control" type="text" placeholder="Ingresa una url" id="url">
+                @error('url')
+                    <small class="text-red-400 italic">{{$message}}</small>
+                @enderror
+            </div>
         </div>
+
+
 
 
             <div class="mb-3">
@@ -39,6 +48,7 @@
                 @error('banner')
                     <small class="text-red-400 italic">{{$message}}</small>
                 @enderror
+
             </div>
 
             @if ($action === 'store')
@@ -84,6 +94,7 @@
                         <th class="px-6 py-3">Id</th>
                         <th class="px-6 py-3">Imagen</th>
                         <th class="px-6 py-3">Pagina</th>
+                        <th class="px-6 py-3">URL</th>
                         <th class="px-6 py-3">Status</th>
                         <th class="px-6 py-3"></th>
                     </tr>
@@ -98,6 +109,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4"> {{$banner->page}} </td>
+                            <td class="px-6 py-4"> {{$banner->url}} </td>
                             <td class="px-6 py-4"> <span class="rounded-full bg-green-300 text-green-700 px-2 py-1">{{$banner->status}}</span> </td>
                             <td class="px-6 py-4 text-center">
                                 <button @click="open= true" wire:click="edit({{$banner}})" class="rounded-3xl bg-blue-500 p-2">
