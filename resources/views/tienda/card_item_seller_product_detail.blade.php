@@ -14,7 +14,7 @@
     </div>
     <div class="text-md font-semibold px-2">
         {{$item->price}} USD$
-        <span class="text-gray-600 font-light">
+        <span class="text-xs md:text-base text-gray-600 font-light">
             IVA Incluido
         </span>
     </div>
