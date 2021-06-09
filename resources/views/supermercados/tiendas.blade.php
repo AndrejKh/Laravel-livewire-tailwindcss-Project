@@ -6,10 +6,10 @@
 
     @section('header')
         {{-- precargar imagenes --}}
-        <link rel="preload" href="{{ asset( 'home.svg' ) }}" as="image">
+        <link rel="preload" href="{{ asset( 'home.png' ) }}" as="image">
 
         <!-- Primary Meta Tags -->
-        <meta name="title" content="Kabasto.com -  Compara y compra en los diferentes abastos de tu ciudad">
+        <meta name="title" content="Compara y compra en los diferentes abastos de tu ciudad - Kabasto.com">
         <meta name="description" content="Kabasto.com - Selecciona todos tus productos, compara en los abastos y supermercados de tu ciudad, y compra!">
 
         <!-- Open Graph / Facebook -->
@@ -17,7 +17,7 @@
         <meta property="og:url" content="https://kabasto.com/">
         <meta property="og:title" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
         <meta property="og:description" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
-        <meta property="og:image" content="{{ asset( 'home.svg' ) }}">
+        <meta property="og:image" content="{{ asset( 'home.png' ) }}">
 
         {{-- url canonical --}}
         <link rel="canonical" href="https://kabasto.com/supermercados" />
