@@ -14,13 +14,13 @@
           </a>
         </div>
     </div>
-    <div class="px-2 py-1 grid grid-cols-1 gap-4">
-        <div class="font-semibold text-sm md:mb-2 px-0 text-left">
+    <div class="px-2 py-1 grid grid-cols-4 gap-1">
+        <div class="col-span-3 font-semibold text-sm md:mb-2 px-0 text-left">
             <a class="text-gray-500 hover:text-gray-900" href="{{ route('products.category.show', $item->product->category->slug ) }}">
                 {{ $item->product->category->category }}
             </a>
         </div>
-        <div class="font-bold text-sm md:mb-2 text-blue-500 text-right">
+        <div class="col-span-1 font-light text-sm md:mb-2 text-gray-600 text-right">
                 5kg.
         </div>
     </div>
