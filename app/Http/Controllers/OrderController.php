@@ -59,6 +59,9 @@ class OrderController extends Controller
             ]);
         }
 
+        // Creo la variable de sesion que servira para notificar que se ha creado la compra
+        session(['order' => $order_id]);
+
         return true;
 
     }

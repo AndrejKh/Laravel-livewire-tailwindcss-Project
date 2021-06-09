@@ -40,6 +40,7 @@
             </div>
         </div>
     </div>
+
     @include('common.navbar_movil_perfil')
 
 @endsection

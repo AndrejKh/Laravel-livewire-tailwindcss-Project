@@ -14,7 +14,7 @@ class PurchasesComponent extends Component
 
     protected $queryString = ['status' => ['except' => 'active'], 'search' => ['except' => ''], 'perPage'  => ['except' => '10']];
 
-    public $purchase, $brand, $confirmPurchase, $purchaseToRating, $products, $user_id, $message_alert, $color_alert;
+    public $purchase, $brand, $confirmPurchase, $purchaseToRating, $products, $user_id, $message_alert, $color_alert, $test;
 
     public $search = '';
     public $status = '';
@@ -103,6 +103,16 @@ class PurchasesComponent extends Component
     public function setRatingPurchase(Order $order){
         $this->modalRating = true;
         $this->purchaseToRating = $order;
+    }
+
+
+    public function seeDetailsPurchase( $order_id ){
+        $this->cancel();
+        $order = Order::where('id', $order_id)->first();
+        $this->brand = Brand::where('id', $order->brand_id)->first();
+        $this->modalDetailPurchase = true;
+        $this->purchase = $order;
+        $this->products = $order->products_purchase;
     }
 
     public function cancel(){

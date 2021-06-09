@@ -20,7 +20,7 @@
         {{-- <meta property="og:image" content="/storage/{{$carousel_banners[0]->banner}}"> --}}
 
         {{-- url canonical --}}
-        <link rel="canonical" href="https://kabasto.com/" />
+        <link rel="canonical" href="https://kabasto.com/categorias" />
     @endsection
 
 @section('content')

@@ -9,13 +9,13 @@
 	<link rel="preload" href="{{ asset( 'home.svg' ) }}" as="image">
 
 	<!-- Primary Meta Tags -->
-	<meta name="title" content="Kabasto.com -  Compara y compra en los diferentes abastos de tu ciudad">
-	<meta name="description" content="Kabasto.com - Selecciona todos tus productos, compara en los abastos y supermercados de tu ciudad, y compra!">
+	<meta name="title" content="Compara y compra en los diferentes abastos de tu ciudad - Kabasto.com">
+	<meta name="description" content="Selecciona todos tus productos, compara en los abastos y supermercados de tu ciudad, y compra! - Kabasto.com">
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://kabasto.com/">
-	<meta property="og:title" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
+	<meta property="og:title" content="Compara precios y compra todos los productos de tu mercado - Kabasto">
 	<meta property="og:description" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
 	<meta property="og:image" content="{{ asset( 'home.svg' ) }}">
 
