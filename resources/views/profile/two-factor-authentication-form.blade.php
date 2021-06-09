@@ -1,24 +1,24 @@
 <x-jet-action-section>
     <x-slot name="title">
-        {{ __('Two Factor Authentication') }}
+        {{ __('Autenticación de dos factores') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Add additional security to your account using two factor authentication.') }}
+        {{ __('Agrega mayor seguridad a tu cuenta con la autenticación de dos factores.') }}
     </x-slot>
 
     <x-slot name="content">
         <h3 class="text-lg font-medium text-gray-900">
             @if ($this->enabled)
-                {{ __('You have enabled two factor authentication.') }}
+                {{ __('Has habilitado la autenticación de dos factores. ') }}
             @else
-                {{ __('You have not enabled two factor authentication.') }}
+                {{ __('No has habilitado la autenticación de dos factores.') }}
             @endif
         </h3>
 
         <div class="mt-3 max-w-xl text-sm text-gray-600">
             <p>
-                {{ __('When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone\'s Google Authenticator application.') }}
+                {{ __('Cuando la autenticación de dos factores está habilitada, se le solicitará un código aleatorio durante el inicio de sesión. Puede obtener este código de la aplicación "Google Authenticator" de su teléfono.') }}
             </p>
         </div>
 
