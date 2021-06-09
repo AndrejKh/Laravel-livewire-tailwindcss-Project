@@ -6,7 +6,7 @@
 
     @section('header')
         {{-- precargar imagenes --}}
-        <link rel="preload" href="/storage/{{ $item->product->photo_main_product }}" as="image">
+        <link rel="preload" href="/storage/{{ $tienda->profile_photo_path_brand }}" as="image">
 
         <!-- Primary Meta Tags -->
         <meta name="title" content="Todos los productos de {{ $tienda->brand }} - Kabasto.com">
@@ -18,7 +18,7 @@
         <meta property="og:url" content="https://kabasto.com/supermercado/{{ $tienda->slug }}">
         <meta property="og:title" content="Todos los productos de {{ $tienda->brand }} - Kabasto.com">
         <meta property="og:description" content="Haz tus compras en {{ $tienda->brand }} y recomiendalo a tu familia y amigos - Kabasto.com">
-        <meta property="og:image" content="/storage/{{ $item->product->photo_main_product }}">
+        <meta property="og:image" content="/storage/{{ $tienda->profile_photo_path_brand }}">
 
         {{-- url canonical --}}
         <link rel="canonical" href="https://kabasto.com/supermercado/{{ $tienda->slug }}" />
