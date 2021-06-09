@@ -845,12 +845,12 @@
                             <div class="text-center">
                                 <img class="mx-auto" width="50%" src="{{ asset('purchase_success.svg') }}" alt="carrito vacio">
                             </div>
-                            <div class="mt-3 mb-5">
+                            {{-- <div class="mt-3 mb-5">
                                 <button class="py-2 bg-green-500 text-white px-10 rounded-full shadow-md" wire:click="contactSeller({{ $id_order_crated }})">Contactar con el abasto</button>
-                            </div>
+                            </div> --}}
 
                             <div class="mt-3 mb-5">
-                                <button class=" text-blue-600" wire:click="seeDetailsPurchase({{ $id_order_crated }})">Ver detalles de la compra</a>
+                                <button class="py-2 bg-green-500 text-white px-10 rounded-full shadow-md" wire:click="seeDetailsPurchase({{ $id_order_crated }})">Ver detalles de la compra</a>
                             </div>
                         </div>
                         {{ $test }}
