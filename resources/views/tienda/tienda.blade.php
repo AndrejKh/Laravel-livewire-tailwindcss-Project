@@ -278,6 +278,12 @@
             }
         </script>
 
+    @else
+        <div class="w-full text-center">
+            <h4 class="text-lg font-semibold"> {{ $tienda->brand }} aún no tiene productos en su tienda </h4>
+            <img class="mx-auto" width="75%" src="{{ asset('no_products_brand.svg') }}" alt="sin productos en la tienda">
+            <a class="rounded-lg text-white bg-green-500 shadow-md py-1 px-10" href="https://kabasto.com/supermercados">Continuar con otros abastos</a>
+        </div>
     @endif
 
 @endsection
