@@ -305,6 +305,22 @@ class HomeController extends Controller
         return view('vitrina.product_detail', compact('principal_categories','product','items'));
     }
 
+    // Metodo que devuelve la vista del detalle de producto, viniendo desde la vista de supermrecado
+    public function productShowBrand(Request $request){
+
+        $brand = Brand::where('slug', $request->brand)->first();
+
+        $brand_id = $brand->id;
+
+        $product = Product::where('status', 'active')->where('slug', $request->product)->first();
+        $item = Item::where('product_id', $product->id)->first();
+        $other_products_of_brand = Item::where('status', 'active')->where('brand_id', $brand_id)->take(10)->get();
+        // return $other_products_of_brand;
+
+        return view('tienda.product_detail', compact('brand', 'product','item', 'other_products_of_brand'));
+
+    }
+
     // listado de categorias
     function categorias() {
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->get();

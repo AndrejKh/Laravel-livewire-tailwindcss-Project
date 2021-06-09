@@ -257,7 +257,6 @@ document.querySelectorAll('.shoppingCarButtonOpenModal').forEach(item => {
     });
 });
 
-
 // Reducir la cantidad de productos en el modal de carrito de comrpas, desde el modal del carrito
 document.querySelectorAll('.shoppingCarButtonOpenModal').forEach(item => {
     item.addEventListener('click', event => {

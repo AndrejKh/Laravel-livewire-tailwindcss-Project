@@ -21,6 +21,7 @@ Route::get('/categorias', [HomeController::class, 'categorias'])->name('categori
 // Vistas de Tiendas, detalles de tiendas
 Route::get('/supermercados', [HomeController::class, 'brands'])->name('brands.show');
 Route::get('/supermercado/{slug}', [HomeController::class, 'brandsDetail'])->name('brands.details.show');
+Route::get('/supermercado/{brand}/{product}', [HomeController::class, 'productShowBrand'])->name('brands.products.details.show');
 
 // Vistas de vitrina de productos, detalles de productos, incluyendo filtro
 Route::get('/products/', [HomeController::class, 'vitrina'])->name('products.show');

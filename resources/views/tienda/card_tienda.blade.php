@@ -77,4 +77,5 @@
 
         @endif
     </div>
+    <span hidden id="idBrandCurrent">{{ $tienda->id }}</span>
 </article>
