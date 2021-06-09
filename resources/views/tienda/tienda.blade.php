@@ -4,6 +4,26 @@
         {{ $tienda->brand }} - Kabasto
     @endsection
 
+    @section('header')
+        {{-- precargar imagenes --}}
+        <link rel="preload" href="/storage/{{ $item->product->photo_main_product }}" as="image">
+
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="Todos los productos de {{ $tienda->brand }} - Kabasto.com">
+        <meta name="description" content="Haz tus compras en {{ $tienda->brand }} y recomiendalo a tu familia y amigos - Kabasto.com">
+        <meta name="keywords" content="precio de productos de {{ $tienda->brand }} en venezuela">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://kabasto.com/supermercado/{{ $tienda->slug }}">
+        <meta property="og:title" content="Todos los productos de {{ $tienda->brand }} - Kabasto.com">
+        <meta property="og:description" content="Haz tus compras en {{ $tienda->brand }} y recomiendalo a tu familia y amigos - Kabasto.com">
+        <meta property="og:image" content="/storage/{{ $item->product->photo_main_product }}">
+
+        {{-- url canonical --}}
+        <link rel="canonical" href="https://kabasto.com/supermercado/{{ $tienda->slug }}" />
+    @endsection
+
 @section('content')
 
     @include('tienda.card_tienda')

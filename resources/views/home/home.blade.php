@@ -8,9 +8,12 @@
 	{{-- precargar imagenes --}}
 	<link rel="preload" href="{{ asset( 'home.png' ) }}" as="image">
 
+    <meta name="robots" content="index,follow"/>
+
 	<!-- Primary Meta Tags -->
 	<meta name="title" content="Compara y compra en los diferentes abastos de tu ciudad - Kabasto.com">
 	<meta name="description" content="Selecciona todos los productos de tu mercado, comprara en los diferentes abastos y supermercados de tu ciudad, y compra! - Kabasto.com">
+    <meta name="keywords" content="abastos y supermercados en venezuela">
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">

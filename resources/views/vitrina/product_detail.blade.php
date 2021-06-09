@@ -11,6 +11,7 @@
     <!-- Primary Meta Tags -->
     <meta name="title" content="{{ ucwords($product->title) }} - Kabasto">
     <meta name="description" content="Los precios de {{ $product->title }} en los abastos y supermercados de tu ciudad - Kabasto.com">
+    <meta name="keywords" content="precio de {{ $product->category->category }} en venezuela">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">

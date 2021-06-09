@@ -11,6 +11,7 @@
 	<!-- Primary Meta Tags -->
 	<meta name="title" content="Encuentra los mejores productos que venden los abastos cercanos a ti- Kabasto.com">
 	<meta name="description" content="Tendrás disponible una increible cantidad de productos y podrás comparar los precios en cada abasto y supermercado de tu cuidad - Kabasto.com">
+    <meta name="keywords" content="precio de productos en abastos y supermercados en venezuela">
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">

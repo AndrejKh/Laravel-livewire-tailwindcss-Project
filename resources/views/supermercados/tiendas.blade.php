@@ -11,6 +11,7 @@
         <!-- Primary Meta Tags -->
         <meta name="title" content="Eligue el abasto de tu preferencia en nuestra red - Kabasto.com">
         <meta name="description" content="Selecciona el abasto o supermercado donde deseas comprar en tu ciudad. Elige la opción de tu preferencia - Kabasto.com">
+        <meta name="keywords" content="precio de abastos y supermercados en venezuela">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
