@@ -279,10 +279,10 @@
         </script>
 
     @else
-        <div class="w-full text-center">
+        <div class="w-full text-center mt-6">
             <h4 class="text-lg font-semibold"> {{ $tienda->brand }} aún no tiene productos en su tienda </h4>
-            <img class="mx-auto mb-8 w-full md:w-1/2 px-4" src="{{ asset('no_products_brand.svg') }}" alt="sin productos en la tienda">
-            <a class="block md:inline mx-2 md:mx-0 rounded-lg text-white bg-green-500 shadow-md py-1 px-10" href="https://kabasto.com/supermercados">Continuar con otros abastos</a>
+            <img class="mx-auto mb-8 w-full md:w-1/2 lg:w-1/3 px-4" src="{{ asset('no_products_brand.svg') }}" alt="sin productos en la tienda">
+            <a class="block md:inline mx-2 md:mx-0 rounded-lg text-white bg-green-500 shadow-md py-3 px-10" href="https://kabasto.com/supermercados">Continuar con otros abastos</a>
         </div>
     @endif
 
