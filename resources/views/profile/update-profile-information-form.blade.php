@@ -41,12 +41,12 @@
                     </div>
 
                     <x-jet-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
-                        {{ __('Select A New Photo') }}
+                        {{ __('Seleccionar nueva foto') }}
                     </x-jet-secondary-button>
 
                     @if ($this->user->profile_photo_path)
                         <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
-                            {{ __('Remove Photo') }}
+                            {{ __('Eliminar foto') }}
                         </x-jet-secondary-button>
                     @endif
 

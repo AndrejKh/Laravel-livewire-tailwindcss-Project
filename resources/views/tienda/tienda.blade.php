@@ -33,7 +33,6 @@
     @include('tienda.carousel_cards_deliveries')
 
 
-
     @if ( count($items) > 0 )
 
         <div class="flex justify-center mt-3">
@@ -58,6 +57,7 @@
                 </div>
             </div>
         </div>
+
     @endif
 
 @endsection
