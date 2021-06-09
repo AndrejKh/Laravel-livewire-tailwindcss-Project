@@ -6,21 +6,21 @@
 
 @section('header')
 	{{-- precargar imagenes --}}
-	{{-- <link rel="preload" href="{{asset('storage/'.$carousel_banners[0]->banner)}}" as="image"> --}}
+	<link rel="preload" href="{{ asset('home.png') }}" as="image">
 
 	<!-- Primary Meta Tags -->
-	<meta name="title" content="Kabasto - Todos los productos">
-	<meta name="description" content="Kabasto - Compara precios y compra todos los productos de tu mercado">
+	<meta name="title" content="Encuentra los mejores productos que venden los abastos cercanos a ti- Kabasto.com">
+	<meta name="description" content="Tendrás disponible una increible cantidad de productos y podrás comparar los precios en cada abasto y supermercado de tu cuidad - Kabasto.com">
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://kabasto.com/">
-	<meta property="og:title" content="Kabasto - Todos los productos">
-	<meta property="og:description" content="Kabasto - Todos los productos">
-	{{-- <meta property="og:image" content="/storage/{{$carousel_banners[0]->banner}}"> --}}
+	<meta property="og:url" content="https://kabasto.com/products">
+	<meta property="og:title" content="Encuentra los mejores productos que venden los abastos cercanos a ti- Kabasto.com">
+	<meta property="og:description" content="Tendrás disponible una increible cantidad de productos y podrás comparar los precios en cada abasto y supermercado de tu cuidad - Kabasto.com">
+	<meta property="og:image" content="{{ asset('home.png') }}">
 
 	{{-- url canonical --}}
-	<link rel="canonical" href="https://kabasto.com/" />
+	<link rel="canonical" href="https://kabasto.com/products" />
 @endsection
 
 @section('content')

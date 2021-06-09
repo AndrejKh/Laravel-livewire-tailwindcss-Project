@@ -4,6 +4,25 @@
        Compara los productos y abastos - Kabasto
     @endsection
 
+    @section('header')
+        {{-- precargar imagenes --}}
+        <link rel="preload" href="{{ asset('home.png') }}" as="image">
+
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="Compara todos los productos de tu carrito de compras en los abastos de tu ciudad - Kabasto.com">
+        <meta name="description" content="Selecciona el supermercado que más te guste para realizar tus compras. Diviertete comparando en los diferentes abastos de tu ciudad - Kabasto.com">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://kabasto.com/comparar">
+        <meta property="og:title" content="Compara todos los productos de tu carrito de compras en los abastos de tu ciudad - Kabasto.com">
+        <meta property="og:description" content="Selecciona el supermercado que más te guste para realizar tus compras. Diviertete comparando en los diferentes abastos de tu ciudad - Kabasto.com">
+        <meta property="og:image" content="{{ asset('home.png') }}">
+
+        {{-- url canonical --}}
+        <link rel="canonical" href="https://kabasto.com/comparar" />
+    @endsection
+
 @section('content')
 
     <div class="flex justify-center">

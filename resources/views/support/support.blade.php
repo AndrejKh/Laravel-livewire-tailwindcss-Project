@@ -5,9 +5,22 @@
     @endsection
 
     @section('header')
+        {{-- precargar imagenes --}}
+        <link rel="preload" href="{{ asset('home.png') }}" as="image">
+
         <!-- Primary Meta Tags -->
-        <meta name="title" content="Kabasto.com -  Políticas de privacidad de la plataforma">
-        <meta name="description" content="Kabasto.com - Lee nuestras políticas de privacidad, e informate sobre nuestro compromiso con la seguridad de todos tus datos.">
+        <meta name="title" content="Kabasto.com -  Consúltanos sobre cualquier duda o recomendación que tengas">
+        <meta name="description" content="Kabasto.com - Nos encantaría saber todas tus dudas y ayudarte a solucionarlas. ¡Tranquilo! estamos para servirte y ayudarte a incrementar tus ventas.">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://kabasto.com/soporte">
+        <meta property="og:title" content="Kabasto.com -  Políticas de privacidad de la plataforma">
+        <meta property="og:description" content="Kabasto.com - Nos encantaría saber todas tus dudas y ayudarte a solucionarlas. ¡Tranquilo! estamos para servirte y ayudarte a incrementar tus ventas.">
+        <meta property="og:image" content="{{ asset('home.png') }}">
+
+        {{-- url canonical --}}
+        <link rel="canonical" href="https://kabasto.com/soporte" />
     @endsection
 
 @section('content')

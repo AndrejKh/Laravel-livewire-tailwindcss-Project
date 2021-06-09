@@ -10,17 +10,17 @@
 
     <!-- Primary Meta Tags -->
     <meta name="title" content="{{ ucwords($product->title) }} - Kabasto">
-    <meta name="description" content="Los precios de {{ $product->title }} en los abastos y supermercados">
+    <meta name="description" content="Los precios de {{ $product->title }} en los abastos y supermercados de tu ciudad - Kabasto.com">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kabasto.com/">
+    <meta property="og:url" content="https://kabasto.com/product-detail/{{$product->slug}}">
     <meta property="og:title" content="{{ ucwords($product->title) }} - Kabasto">
     <meta property="og:description" content="Los precios de {{ $product->title }} en los abastos y supermercados">
     <meta property="og:image" content="/storage/{{ $product->photo_main_product }}">
 
     {{-- url canonical --}}
-    <link rel="canonical" href="https://kabasto.com/" />
+    <link rel="canonical" href="https://kabasto.com/product-detail/{{$product->slug}}" />
 @endsection
 
 @section('content')

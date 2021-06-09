@@ -4,6 +4,16 @@
     Kabasto.com - Página no encontrada :\
 @endsection
 
+    @section('header')
+        {{-- Meta No indexar --}}
+        <meta name="robots" content="noindex,nofollow" />
+
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="Kabasto.com - Página no encontrada :\">
+        <meta name="description" content="Kabasto.com - Página no encontrada :\">
+
+    @endsection
+
 @section('content')
 
     <div class="text-2xl font-bold text-gray-900 text-center mt-14">
