@@ -16,7 +16,7 @@
             <!-- Contenido -->
             <div class="w-full mx-auto pb-6 sm:px-6 lg:px-8">
 
-                <h2 class="text-lg font-bold px-2">Tus datos personales</h2>
+                <h2 class="text-lg font-bold px-2 mt-3">Tus datos personales</h2>
 
                     @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                         @livewire('profile.update-profile-information-form')
