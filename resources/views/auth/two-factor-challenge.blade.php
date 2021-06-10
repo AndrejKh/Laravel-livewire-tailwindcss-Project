@@ -60,7 +60,7 @@
                     </button>
 
                     <x-jet-button class="ml-4">
-                        {{ __('Iniciar sesión') }}
+                        {{ __('Continuar') }}
                     </x-jet-button>
                 </div>
             </form>
