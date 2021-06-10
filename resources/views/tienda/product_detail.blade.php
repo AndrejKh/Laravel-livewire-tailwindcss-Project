@@ -15,13 +15,13 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kabasto.com/supermercado/{{$brand->brand}}/{{$product->slug}}">
+    <meta property="og:url" content="https://kabasto.com/supermercado/{{$brand->slug}}/{{$product->slug}}">
     <meta property="og:title" content="{{ ucwords($product->title) }} - Kabasto">
     <meta property="og:description" content="Los precios de {{ $product->title }} en {{$brand->brand}} en {{$brand->address->city->city}}">
     <meta property="og:image" content="/storage/{{ $product->photo_main_product }}">
 
     {{-- url canonical --}}
-    <link rel="canonical" href="https://kabasto.com/supermercado/{{$brand->brand}}/{{$product->slug}}" />
+    <link rel="canonical" href="https://kabasto.com/supermercado/{{$brand->slug}}/{{$product->slug}}" />
 @endsection
 
 @section('content')
