@@ -118,19 +118,17 @@
                                     <div class="col-span-2 text-right">
 
                                         @if ($deliveries[0]->delivery_free === 1)
-                                        <span class="text-xs sm:text-sm text-light text-white bg-green-450 px-3 py-1 rounded-full">
-                                            Delivery gratis
-                                        </span>
+                                            <span class="text-xs sm:text-sm text-light text-white bg-green-450 px-3 py-1 rounded-full">
+                                                Delivery gratis
+                                            </span>
+                                        @else
+                                            <span class="text-sm text-light text-white bg-blue-450 px-3 py-1 rounded-full">
+                                                {{ $deliveries[0]->min_amount_purchase }}$ Delivery
+                                            </span>
+                                        @endif
                                         <span class="font-bold block">
                                             En {{ $deliveries[0]->delivery_time }} Hrs.
                                         </span>
-
-                                        @else
-                                        <span class="text-sm text-light text-white bg-blue-450 px-3 py-1 rounded-full">
-                                            {{ $deliveries[0]->min_amount_purchase }}$ Delivery
-                                        </span>
-                                        @endif
-
                                     </div>
 
                                     <div class="col-span-6">
