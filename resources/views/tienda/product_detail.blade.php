@@ -123,7 +123,7 @@
                                             </span>
                                         @else
                                             <span class="text-sm text-light text-white bg-blue-450 px-3 py-1 rounded-full">
-                                                {{ $deliveries[0]->min_amount_purchase }}$ Delivery
+                                                Delivery
                                             </span>
                                         @endif
                                         <span class="font-bold block">
