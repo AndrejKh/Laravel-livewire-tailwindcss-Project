@@ -57,7 +57,9 @@
                             Producto Disponible
                         </span>
                         @endif
-                        <h1 class="text-left text-4xl text-gray-900 font-semibold mb-3 md:mb-4 mt-4">{{ $product->title }}</h1>
+                        <h1 class="text-left text-2xl text-gray-900 font-semibold mt-4">
+                            {{ $product->title }}
+                        </h1>
                         <div class="text-left">
                             <a class="text-md text-gray-900" href="{{route('products.category.show', $product->category->slug)}}">
                                 Categoría: <span class="text-gray-400">{{ $product->category->category }}</span>
@@ -77,7 +79,7 @@
                         </div>
                     </div>
                     <div class="hidden md:block">
-                        <h4 class="text-xl font-semibold md:mt-10">Descripción</h4>
+                        <h4 class="text-lg font-regular md:mt-10">Descripción del producto</h4>
                         <p class="hidden md:block text-gray-500 mt-4 md:mt-4 text-base md:text-lg">
                             @php echo nl2br($product->description); @endphp
                         </p>
