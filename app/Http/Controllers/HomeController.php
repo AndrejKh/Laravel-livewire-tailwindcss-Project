@@ -315,9 +315,9 @@ class HomeController extends Controller
         $product = Product::where('status', 'active')->where('slug', $request->product)->first();
         $item = Item::where('product_id', $product->id)->first();
         $other_products_of_brand = Item::where('status', 'active')->where('brand_id', $brand_id)->take(10)->get();
-        // return $other_products_of_brand;
+        $deliveries = Delivery::where('status','active')->where('brand_id',$brand_id)->get();
 
-        return view('tienda.product_detail', compact('brand', 'product','item', 'other_products_of_brand'));
+        return view('tienda.product_detail', compact('brand', 'product','item', 'other_products_of_brand', 'deliveries'));
 
     }
 

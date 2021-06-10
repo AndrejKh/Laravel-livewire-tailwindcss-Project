@@ -72,7 +72,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="">
+                    <div class="mt-5">
                         <div class="text-md font-base text-gray-700">
                             <strong>{{$item->quantity}}</strong>
                             <span class="inline" title="Disponibles">Disponibles</span>
@@ -97,6 +97,94 @@
                             <span class="flex-shrink-0 self-center bg-green-400 rounded-full p-2 cursor-pointer" id="addProduct">
                                 <svg class="fill-current text-white h-7 w-7" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M13 19V7.83l4.88 4.88c.39.39 1.03.39 1.42 0 .39-.39.39-1.02 0-1.41l-6.59-6.59c-.39-.39-1.02-.39-1.41 0l-6.6 6.58c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L11 7.83V19c0 .55.45 1 1 1s1-.45 1-1z"/></svg>
                             </span>
+                        </div>
+                    </div>
+                    <div class="hidden md:block mt-10">
+                        <h4 class="text-left text-lg text-gray-900 font-light">
+                            Zonas de delivery de <span class="text-gray-700">{{ $brand->brand }}</span>
+                        </h4>
+                        <div class="mt-2">
+                            @if ( count($deliveries) > 0 )
+                                <div class="bg-white rounded-md shadow-md grid grid-cols-6 gap-1 py-3 px-2">
+                                    <div class="col-span-4 text-left">
+                                        <span class="font-regular text-gray-900">
+                                            {{ $deliveries[0]->delivery_zone }}
+                                        </span>
+                                        <span class="text-sm text-gray-700 block">
+                                            {{ $deliveries[0]->state->state }}, {{ $deliveries[0]->city->city }}
+                                        </span>
+
+                                    </div>
+                                    <div class="col-span-2 text-right">
+
+                                        @if ($deliveries[0]->delivery_free === 1)
+                                        <span class="text-xs sm:text-sm text-light text-white bg-green-450 px-3 py-1 rounded-full">
+                                            Delivery gratis
+                                        </span>
+                                        <span class="font-bold block">
+                                            En {{ $deliveries[0]->delivery_time }} Hrs.
+                                        </span>
+
+                                        @else
+                                        <span class="text-sm text-light text-white bg-blue-450 px-3 py-1 rounded-full">
+                                            {{ $deliveries[0]->min_amount_purchase }}$ Delivery
+                                        </span>
+                                        @endif
+
+                                    </div>
+
+                                    <div class="col-span-6">
+                                        <div class="grid grid-cols-4">
+                                            <div class="col-span-3 text-blue-800 text-sm md:text-md text-left self-end" title="Días que haces delivery">
+                                                @php
+                                                    $days = explode(',',$deliveries[0]->days);
+                                                    $array_days = array();
+                                                    foreach ($days as $day) {
+                                                        switch ($day) {
+                                                            case 'lunes':
+                                                                $array_days[0] = 'Lun';
+                                                                break;
+                                                            case 'martes':
+                                                                $array_days[1] = 'Mar';
+                                                                break;
+                                                            case 'miercoles':
+                                                                $array_days[2] = 'Mie';
+                                                                break;
+                                                            case 'jueves':
+                                                                $array_days[3] = 'Jue';
+                                                                break;
+                                                            case 'viernes':
+                                                                $array_days[4] = 'Vie';
+                                                                break;
+                                                            case 'sabado':
+                                                                $array_days[5] = 'Sab';
+                                                                break;
+                                                            default:
+                                                                array_push($array_days,'Dom');
+                                                                break;
+                                                        }
+                                                    }
+                                                    ksort($array_days) ;
+                                                    $days = implode(', ',$array_days);
+                                                    echo $days;
+                                                @endphp
+                                            </div>
+                                            <span class="col-span-1 text-right self-center">
+                                                <span class="text-md text-gray-900 text-semibold block mt-1">
+                                                    A partir de
+                                                </span>
+                                                <strong class="text-xl font-semibold text-gray-900 block">
+                                                    {{ $deliveries[0]->min_amount_purchase }} $
+                                                </strong>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            @else
+                                No tiene delivery
+                            @endif
+
                         </div>
                     </div>
                 </div>
