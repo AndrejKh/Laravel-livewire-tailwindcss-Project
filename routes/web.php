@@ -39,7 +39,7 @@ Route::get('/soporte', [HomeController::class, 'support'])->name('support.index'
 
 /* CMS */
 // Rutas adicionales para el cms
-Route::get('/register_seller', [HomeController::class, 'register_seller'])->name('auth.register_seller');
+Route::get('/registro-abasto', [HomeController::class, 'register_seller'])->name('auth.register_seller');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
 /* Componente de Livewire para 'Administradores' */

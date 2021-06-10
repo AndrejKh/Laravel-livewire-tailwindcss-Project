@@ -1,4 +1,32 @@
-<x-guest-layout>
+@extends('layouts.guest')
+    @section('title')
+        Sé parte de nuestra red de abastos y supermercados - Kabasto.com
+    @endsection
+
+    @section('header')
+        {{-- precargar imagenes --}}
+        <link rel="preload" href="{{ asset( 'home.png' ) }}" as="image">
+
+        <meta name="robots" content="index,follow"/>
+
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="Sé parte de nuestra red de abastos y supermercados - Kabasto.com">
+        <meta name="description" content="¿Vendes productos de supermercado? Únete a nuestra red de abastos y supermercados. Y ofrece todos tus productos a una mayor cantidad de personas. Kabasto.com">
+        <meta name="keywords" content="supermercados en venezuela">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://kabasto.com/registro-abasto">
+        <meta property="og:title" content="Sé parte de nuestra red de abastos y supermercados - Kabasto.com">
+        <meta property="og:description" content="¿Vendes productos de supermercado? Únete a nuestra red de abastos y supermercados. Y ofrece todos tus productos a una mayor cantidad de personas. Kabasto.com">
+        <meta property="og:image" content="{{ asset( 'home.png' ) }}">
+
+        {{-- url canonical --}}
+        <link rel="canonical" href="https://kabasto.com/registro-abasto" />
+    @endsection
+
+@section('content')
+
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
@@ -104,4 +132,5 @@
             </div>
         </form>
     </x-jet-authentication-card>
-</x-guest-layout>
+
+@endsection

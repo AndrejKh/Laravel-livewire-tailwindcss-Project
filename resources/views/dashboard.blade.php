@@ -4,6 +4,11 @@
         Resumen de perfil - Kabasto
     @endsection
 
+    @section('header')
+        {{-- Meta No indexar --}}
+        <meta name="robots" content="noindex,nofollow" />
+    @endsection
+
 @section('content')
 
     <div class="grid grid-cols-1 md:grid-cols-6">

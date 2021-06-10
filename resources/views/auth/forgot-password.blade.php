@@ -1,4 +1,15 @@
-<x-guest-layout>
+@extends('layouts.guest')
+
+@section('title')
+    Enviar enlace de reinicio de contraseña - Kabasto
+@endsection
+
+@section('header')
+    {{-- Meta No indexar --}}
+    <meta name="robots" content="noindex,nofollow" />
+@endsection
+
+@section('content')
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
@@ -38,4 +49,4 @@
 
         </form>
     </x-jet-authentication-card>
-</x-guest-layout>
+@endsection

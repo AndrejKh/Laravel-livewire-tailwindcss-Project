@@ -1,4 +1,32 @@
-<x-guest-layout>
+@extends('layouts.guest')
+    @section('title')
+        Regístrate en Kabasto
+    @endsection
+
+    @section('header')
+        {{-- precargar imagenes --}}
+        <link rel="preload" href="{{ asset( 'home.png' ) }}" as="image">
+
+        <meta name="robots" content="index,follow"/>
+
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="Registrate y compra en los diferentes abastos de tu ciudad - Kabasto.com">
+        <meta name="description" content="Disfruta de comparar y comprar en los diferentes abastos y supermercados de tu ciudad. Todo desde un solo lugar, sin salir de casa. Kabasto.com">
+        <meta name="keywords" content="supermercados en venezuela">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://kabasto.com/register">
+        <meta property="og:title" content="Registrate y compra en los diferentes abastos de tu ciudad - Kabasto.com">
+        <meta property="og:description" content="Disfruta de comparar y comprar en los diferentes abastos y supermercados de tu ciudad. Todo desde un solo lugar, sin salir de casa. Kabasto.com">
+        <meta property="og:image" content="{{ asset( 'home.png' ) }}">
+
+        {{-- url canonical --}}
+        <link rel="canonical" href="https://kabasto.com/register" />
+    @endsection
+
+@section('content')
+
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
@@ -71,4 +99,5 @@
             </div>
         </form>
     </x-jet-authentication-card>
-</x-guest-layout>
+
+@endsection

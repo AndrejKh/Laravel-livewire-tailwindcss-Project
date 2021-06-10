@@ -1,4 +1,32 @@
-<x-guest-layout>
+@extends('layouts.guest')
+    @section('title')
+        Inicia sesión y disfruta de comprar en Kabasto
+    @endsection
+
+    @section('header')
+        {{-- precargar imagenes --}}
+        <link rel="preload" href="{{ asset( 'home.png' ) }}" as="image">
+
+        <meta name="robots" content="index,follow"/>
+
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="Inicia sesión para disfrutar de toda la experiencia - Kabasto.com">
+        <meta name="description" content="Ingresa a la plataforma y descubre lo fácil que es encontrar un abasto en tu ciudad. Kabasto.com">
+        <meta name="keywords" content="precios en los supermercados en venezuela">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://kabasto.com/login">
+        <meta property="og:title" content="Inicia sesión para disfrutar de toda la experiencia - Kabasto.com">
+        <meta property="og:description" content="Ingresa a la plataforma y descubre lo fácil que es encontrar un abasto en tu ciudad. Kabasto.com">
+        <meta property="og:image" content="{{ asset( 'home.png' ) }}">
+
+        {{-- url canonical --}}
+        <link rel="canonical" href="https://kabasto.com/login" />
+    @endsection
+
+@section('content')
+
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
@@ -65,4 +93,5 @@
             </div>
         </form>
     </x-jet-authentication-card>
-</x-guest-layout>
+
+@endsection
