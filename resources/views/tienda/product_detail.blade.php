@@ -169,7 +169,11 @@
                                             </div>
                                             <span class="col-span-1 text-right self-center">
                                                 <span class="text-md text-gray-900 text-semibold block mt-1">
-                                                    A partir de
+                                                    @if ($deliveries[0]->delivery_free === 1)
+                                                        A partir de
+                                                    @else
+                                                        Cuesta
+                                                    @endif
                                                 </span>
                                                 <strong class="text-xl font-semibold text-gray-900 block">
                                                     {{ $deliveries[0]->min_amount_purchase }} $
