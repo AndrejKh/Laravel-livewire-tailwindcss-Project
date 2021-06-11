@@ -43,21 +43,21 @@ Route::get('/registro-abasto', [HomeController::class, 'register_seller'])->name
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
 /* Componente de Livewire para 'Administradores' */
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.usuarios'])->get('/usuarios',[HomeController::class, 'usuarios'])->name('cms.usuarios');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.categorias'])->get('/categorias-cms',[HomeController::class, 'categories'])->name('cms.categorias');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.estados'])->get('/estados',[HomeController::class, 'estados'])->name('cms.estados');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ciudades'])->get('/ciudades',[HomeController::class, 'ciudades'])->name('cms.ciudades');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.home'])->get('/banners_home',[HomeController::class, 'banners'])->name('cms.home');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.productos'])->get('/productos',[HomeController::class, 'productos'])->name('cms.productos');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.usuarios'])->get('/cms/usuarios',[HomeController::class, 'usuarios'])->name('cms.usuarios');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.categorias'])->get('/cms/categorias-cms',[HomeController::class, 'categories'])->name('cms.categorias');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.estados'])->get('/cms/estados',[HomeController::class, 'estados'])->name('cms.estados');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ciudades'])->get('/cms/ciudades',[HomeController::class, 'ciudades'])->name('cms.ciudades');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.home'])->get('/cms/banners_home',[HomeController::class, 'banners'])->name('cms.home');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.productos'])->get('/cms/productos',[HomeController::class, 'productos'])->name('cms.productos');
 
 /* Componente de Livewire para 'Sellers' */
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ventas'])->get('/tiendas',[HomeController::class, 'tiendasCMS'])->name('cms.tiendas');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ventas'])->get('/ventas',[HomeController::class, 'ventasCMS'])->name('cms.ventas');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.items'])->get('/items', [HomeController::class, 'itemsCMS'])->name('cms.items');
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.blog'])->get('/blog',CategoryComponent::class)->name('cms.blog');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ventas'])->get('/cms/tiendas',[HomeController::class, 'tiendasCMS'])->name('cms.tiendas');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.ventas'])->get('/cms/ventas',[HomeController::class, 'ventasCMS'])->name('cms.ventas');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.items'])->get('/cms/items', [HomeController::class, 'itemsCMS'])->name('cms.items');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.blog'])->get('/cms/blog',CategoryComponent::class)->name('cms.blog');
 
 /* Componente de Livewire para 'Buyers' */
-Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.compras'])->get('/compras', [HomeController::class, 'comprasCMS'])->name('cms.compras');
+Route::middleware(['auth:sanctum', 'verified'])->middleware(['can:perfil.compras'])->get('/cms/compras', [HomeController::class, 'comprasCMS'])->name('cms.compras');
 
 /**************** APis para llamdas internas via AXIOS ****************/
 // Estados
