@@ -10,8 +10,8 @@
 
     <!-- Primary Meta Tags -->
     <meta name="title" content="{{ ucwords($product->title) }} - Kabasto">
-    <meta name="description" content="Los precios de {{ $product->title }} en los abastos y supermercados de tu ciudad - Kabasto.com">
-    <meta name="keywords" content="precio de {{ $product->category->category }} en venezuela">
+    <meta name="description" content="Los precios de {{ $product->title }} en {{$brand->brand}} en {{$brand->address->city->city}}">
+    <meta name="keywords" content="{{ $title }}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
