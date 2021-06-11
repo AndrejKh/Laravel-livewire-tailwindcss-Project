@@ -57,9 +57,9 @@
                             Producto Disponible
                         </span>
                         @endif
-                        <h1 class="text-left text-2xl text-gray-900 font-semibold mt-4">
+                        <h2 class="text-left text-2xl text-gray-900 font-semibold mt-4">
                             {{ $product->title }}
-                        </h1>
+                        </h2>
                         <div class="text-left">
                             <a class="text-md text-gray-900" href="{{route('products.category.show', $product->category->slug)}}">
                                 Categoría: <span class="text-gray-400">{{ $product->category->category }}</span>
