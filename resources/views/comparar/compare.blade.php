@@ -28,7 +28,7 @@
     <div class="flex justify-center">
     <div class="max-w-7xl w-full px-2">
 
-        <div class="my-3 text-gray-900 font-bold text-xl lg:text-2xl">Comparar precios</div>
+        <h1 class="my-3 text-gray-900 font-bold text-xl lg:text-2xl">Comparar precios en abastos y supermercados</h1>
 
         <div class="p-3 rounded-md shadow-sm bg-white ">
             <div class="grid grid-cols-5 cursor-pointer getItemsShoppingCar">
