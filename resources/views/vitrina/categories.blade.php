@@ -6,18 +6,19 @@
 
     @section('header')
         {{-- precargar imagenes --}}
-        {{-- <link rel="preload" href="{{asset('storage/'.$carousel_banners[0]->banner)}}" as="image"> --}}
+        <link rel="preload" href="{{ asset( 'home.png' ) }}" as="image">
 
         <!-- Primary Meta Tags -->
         <meta name="title" content="Categorías de productos - Kabasto">
         <meta name="description" content="Selecciona la categoría en la cual deseas buscar los productos de tu mercado. Puedes elegir entre los distintos abastos y supermercados">
+        <meta name="keywords" content="productos de abastos y supermercados en venezuela">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://kabasto.com/">
         <meta property="og:title" content="Categorías de productos - Kabasto">
         <meta property="og:description" content="Selecciona la categoría en la cual deseas buscar los productos de tu mercado. Puedes elegir entre los distintos abastos y supermercados">
-        {{-- <meta property="og:image" content="/storage/{{$carousel_banners[0]->banner}}"> --}}
+        <meta property="og:image" content="{{ asset( 'home.png' ) }}">
 
         {{-- url canonical --}}
         <link rel="canonical" href="https://kabasto.com/categorias" />
