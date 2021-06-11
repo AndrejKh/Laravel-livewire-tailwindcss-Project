@@ -18,7 +18,7 @@
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
     @isset ( $category_selected )
-        <meta property="og:url" content="https://kabasto.com/{{ $category_selected->category }}">
+        <meta property="og:url" content="https://kabasto.com/{{ $category_selected->slug }}">
     @else
         <meta property="og:url" content="https://kabasto.com/products">
     @endif
@@ -28,9 +28,9 @@
 
 	{{-- url canonical --}}
     @isset ( $category_selected )
-        <link rel="canonical" href="https://kabasto.com/categorias/{{ $category_selected->category }}" />
+        <link rel="canonical" href="https://kabasto.com/categorias/{{ $category_selected->slug }}" />
     @else
-        <link rel="canonical" href="https://kabasto.com/products" />
+        <link rel="canonical" href="https://kabasto.com/productos" />
     @endif
 @endsection
 

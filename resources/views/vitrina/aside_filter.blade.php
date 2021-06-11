@@ -4,49 +4,49 @@
     <ul class="mt-6">
         {{-- categorias --}}
         @if ( count($principal_categories) > 0 )
-        <li class="mb-8">
-            <h3 class="font-bold text-gray-900 text-lg mb-1"> Categorias </h3>
+            <li class="mb-8">
+                <h3 class="font-bold text-gray-900 text-lg mb-1"> Categorias </h3>
 
-            @foreach ($principal_categories as $category)
-                <div>
-                    <div class="flex text-gray-700 font-semibold my-1 text-md">
-                        <a class="hover:text-blue-600" href="{{ route('products.category.show', $category->slug) }}">
-                            <span class="categoryPrincipal">{{ $category->category }}</span>
-                            <span class="text-gray-400"> ({{ count($category->products) }}) </span>
+                @foreach ($principal_categories as $category)
+                    <div>
+                        <div class="flex text-gray-700 font-semibold my-1 text-md">
+                            <a class="hover:text-blue-600" href="{{ route('products.category.show', $category->slug) }}">
+                                <span class="categoryPrincipal">{{ $category->category }}</span>
+                                <span class="text-gray-400"> ({{ count($category->products) }}) </span>
+                            </a>
+                            @if ( count( $category->categories_children($category->id) ) > 0 )
+                                <div class="flex h-5 w-5 self-center text-center bg-white rounded-full shadow-sm lg:shadow-md ml-auto items-center cursor-pointer displayCategoriesChildren">
+                                    <svg class="fill-current text-gray-900 h-1 mx-auto return_rotate_select_icon" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2.29866 0.333143L7.50671 4.75228L12.7148 0.333143C13.2383 -0.111048 14.0839 -0.111048 14.6074 0.333143C15.1309 0.777335 15.1309 1.49487 14.6074 1.93907L8.44631 7.16686C7.92282 7.61105 7.07718 7.61105 6.55369 7.16686L0.392617 1.93907C-0.130872 1.49487 -0.130872 0.777335 0.392617 0.333143C0.916107 -0.0996583 1.77517 -0.111048 2.29866 0.333143Z" />
+                                    </svg>
+                                </div>
+                            @endif
+                            <span hidden class="categoryId">{{ $category->id }}</span>
+                        </div>
+                        {{-- contenedor de las categorias hijo --}}
+                        <div class="containerChildCategories">
+                        </div>
+                    </div>
+                @endforeach
+
+                {{-- Modelo de categorias hijos --}}
+                <div hidden id="modelCategoryChild">
+                    <div class="col-span-1 my-1 text-sm pl-1">
+                        <a class="text-gray-500 hover:text-blue-600 slugCategoryChild" href="">
+                            <span class="titleCategoryChild categoryPrincipal"></span>
+                            <span class="text-gray-400 quantityProductsCategoryChild"> </span>
                         </a>
-                        @if ( count( $category->categories_children($category->id) ) > 0 )
-                            <div class="flex h-5 w-5 self-center text-center bg-white rounded-full shadow-sm lg:shadow-md ml-auto items-center cursor-pointer displayCategoriesChildren">
-                                <svg class="fill-current text-gray-900 h-1 mx-auto return_rotate_select_icon" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M2.29866 0.333143L7.50671 4.75228L12.7148 0.333143C13.2383 -0.111048 14.0839 -0.111048 14.6074 0.333143C15.1309 0.777335 15.1309 1.49487 14.6074 1.93907L8.44631 7.16686C7.92282 7.61105 7.07718 7.61105 6.55369 7.16686L0.392617 1.93907C-0.130872 1.49487 -0.130872 0.777335 0.392617 0.333143C0.916107 -0.0996583 1.77517 -0.111048 2.29866 0.333143Z" />
-                                </svg>
-                            </div>
-                        @endif
                         <span hidden class="categoryId">{{ $category->id }}</span>
                     </div>
-                    {{-- contenedor de las categorias hijo --}}
-                    <div class="containerChildCategories">
-                    </div>
                 </div>
-            @endforeach
 
-            {{-- Modelo de categorias hijos --}}
-            <div hidden id="modelCategoryChild">
-                <div class="col-span-1 my-1 text-sm pl-1">
-                    <a class="text-gray-500 hover:text-blue-600 slugCategoryChild" href="">
-                        <span class="titleCategoryChild categoryPrincipal"></span>
-                        <span class="text-gray-400 quantityProductsCategoryChild"> </span>
-                    </a>
-                    <span hidden class="categoryId">{{ $category->id }}</span>
+                <div class="text-blue-600 font-semibold my-1 text-md">
+                    <button class="hover:text-blue-600 modalCategories">
+                        Ver más
+                    </button>
                 </div>
-            </div>
-
-            <div class="text-blue-600 font-semibold my-1 text-md">
-                <button class="hover:text-blue-600 modalCategories">
-                    Ver más
-                </button>
-            </div>
-        </li>
-        <hr>
+            </li>
+            <hr>
         @endif
 
         {{-- estaods --}}

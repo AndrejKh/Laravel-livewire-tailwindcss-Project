@@ -16,7 +16,7 @@
     </div>
     <div class="col-span-3 md:col-span-3 lg:col-span-4">
         <div class="">
-            <h1 class="font-bold text-lg">
+            <h1 class="font-bold text-lg inline">
                 {{ $tienda->brand }}
             </h1>
             <span class="hidden md:inline text-sm text-gray-500"> - {{ count($tienda->items) }} Productos <span class="hidden md:inline">disponibles</span> </span>

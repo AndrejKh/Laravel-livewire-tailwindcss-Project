@@ -47,7 +47,7 @@
             </span>
         </div>
     </div>
-    <span hidden class="idProductBrand">{{ $item->id }}</span>
+    <span hidden class="idProductBrand">{{ $item->product->id }}</span>
 </div>
 
 

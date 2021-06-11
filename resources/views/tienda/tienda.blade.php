@@ -25,6 +25,7 @@
     @endsection
 
 @section('content')
+    <span hidden id="brandIdCurrent">{{ $tienda->id }}</span>
 
     @include('tienda.card_tienda')
 
@@ -59,6 +60,20 @@
                 </div>
             </div>
         </div>
+
+        {{-- Al cargar la pagina --}}
+        <script>
+            $(window).on('load', function () {
+                // Obtengo los productos del local storage
+                ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+                // Transformo el string a array
+                arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+
+
+
+
+            });
+        </script>
 
         <script>
             /* Agregar Productos al carrito desde la vista de detalles del producto */
@@ -231,8 +246,6 @@
                 })
             }
 
-
-
             // Funcion para actualizar productos en el boton flotante
             function updateTotalProductsShoppingCar(arrayProductsLocalStorage){
                 const spanQuantityFloatButtonShoppingCard = document.getElementById('spanQuantityFloatButtonShoppingCard');
@@ -274,9 +287,26 @@
                 }else{
                     compareFloatButton.classList.remove("hiddeButton");
                     compareFloatButton.classList.add("shownButton");
+                    setBrandInLocalStorage();
                 }
             }
+
+            function setBrandInLocalStorage(){
+                const brandIdCurrent = document.getElementById('brandIdCurrent').textContent;
+                // Obtengo la marca del local storage
+                ProductsLocalStorage = localStorage.getItem('brandSelectedInBrandDetailView');
+
+                if( ProductsLocalStorage === null ){
+                    localStorage.setItem('brandSelectedInBrandDetailView',brandIdCurrent);
+                }else{
+                    if( ProductsLocalStorage != brandIdCurrent ){
+                        alert('estas agregando un porducto de otra tienda')
+                    }
+                }
+
+            }
         </script>
+
 
     @else
         <div class="w-full text-center mt-6">
