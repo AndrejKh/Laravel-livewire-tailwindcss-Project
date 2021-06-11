@@ -8,6 +8,8 @@
 	{{-- precargar imagenes --}}
 	<link rel="preload" href="{{ asset('home.png') }}" as="image">
 
+    <meta name="robots" content="index,follow"/>
+
 	<!-- Primary Meta Tags -->
 	<meta name="title" content="Encuentra los mejores productos que venden los abastos cercanos a ti- Kabasto.com">
 	<meta name="description" content="Tendrás disponible una increible cantidad de productos y podrás comparar los precios en cada abasto y supermercado de tu cuidad - Kabasto.com">
@@ -15,13 +17,21 @@
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://kabasto.com/products">
+    @isset ( $category_selected )
+        <meta property="og:url" content="https://kabasto.com/{{ $category_selected->category }}">
+    @else
+        <meta property="og:url" content="https://kabasto.com/products">
+    @endif
 	<meta property="og:title" content="Encuentra los mejores productos que venden los abastos cercanos a ti- Kabasto.com">
 	<meta property="og:description" content="Tendrás disponible una increible cantidad de productos y podrás comparar los precios en cada abasto y supermercado de tu cuidad - Kabasto.com">
 	<meta property="og:image" content="{{ asset('home.png') }}">
 
 	{{-- url canonical --}}
-	<link rel="canonical" href="https://kabasto.com/products" />
+    @isset ( $category_selected )
+        <link rel="canonical" href="https://kabasto.com/categorias/{{ $category_selected->category }}" />
+    @else
+        <link rel="canonical" href="https://kabasto.com/products" />
+    @endif
 @endsection
 
 @section('content')

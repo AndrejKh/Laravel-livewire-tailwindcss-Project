@@ -252,15 +252,6 @@ class HomeController extends Controller
                         ->select('products.*')
                         ->get();
 
-                    // $productsDB = Product::where('category_id', $category_id)
-                    //     ->join('items', 'products.id', '=', 'items.product_id')
-                    //     // ->join('brands', 'items.brand_id', '=', 'brands.id')
-                    //     ->join('address_brands', 'items.brand_id', '=', 'address_brands.brand_id')
-                    //     ->where('address_brands.state_id', $state_id)
-                    //     ->where('products.status', 'active')
-                    //     ->select('products.*')
-                    //     ->get();
-
                 }
                 $productsDB = $productsDBBrand->merge($productsDBDeliveries);
 
