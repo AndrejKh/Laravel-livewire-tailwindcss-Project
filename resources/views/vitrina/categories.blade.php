@@ -28,8 +28,11 @@
 
     <div class="flex justify-center mt-3 py-3">
         <div class="max-w-7xl w-full">
-            <h2 class="font-semibold text-3xl text-gray-900 px-2 md:px-0">
+            <h1 class="font-semibold text-3xl text-gray-900 px-2 md:px-0">
                 Categorias del sitio web - Kabasto
+            </h1>
+            <h2>
+                Contamos con gran variedad de productos disponibles para ti
             </h2>
         </div>
     </div>
