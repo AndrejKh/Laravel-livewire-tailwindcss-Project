@@ -11,6 +11,7 @@
         <!-- Primary Meta Tags -->
         <meta name="title" content="Kabasto.com -  Políticas de privacidad de la plataforma">
         <meta name="description" content="Kabasto.com - Lee nuestras políticas de privacidad, e informate sobre nuestro compromiso con la seguridad de todos tus datos.">
+        <meta name="keywords" content="terminos y condiciones de kabasto">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">

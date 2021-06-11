@@ -11,6 +11,7 @@
         <!-- Primary Meta Tags -->
         <meta name="title" content="Kabasto.com -  Consúltanos sobre cualquier duda o recomendación que tengas">
         <meta name="description" content="Kabasto.com - Nos encantaría saber todas tus dudas y ayudarte a solucionarlas. ¡Tranquilo! estamos para servirte y ayudarte a incrementar tus ventas.">
+        <meta name="keywords" content="como vender productos en venezuela">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
