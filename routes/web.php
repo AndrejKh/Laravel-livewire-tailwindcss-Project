@@ -17,6 +17,7 @@ use App\Http\Livewire\CategoryComponent;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // Categorias
 Route::get('/categorias', [HomeController::class, 'categorias'])->name('categorias');
+Route::get('/categorias/{slug}', [HomeController::class, 'vitrinaPorCategoria'])->name('products.category.show');
 
 // Vistas de Tiendas, detalles de tiendas
 Route::get('/supermercados', [HomeController::class, 'brands'])->name('brands.show');
@@ -24,9 +25,8 @@ Route::get('/supermercado/{slug}', [HomeController::class, 'brandsDetail'])->nam
 Route::get('/supermercado/{brand}/{product}', [HomeController::class, 'productShowBrand'])->name('brands.products.details.show');
 
 // Vistas de vitrina de productos, detalles de productos, incluyendo filtro
-Route::get('/products/', [HomeController::class, 'vitrina'])->name('products.show');
-Route::get('/categorias/{slug}', [HomeController::class, 'vitrinaPorCategoria'])->name('products.category.show');
-Route::get('/product-detail/{slug}', [HomeController::class, 'productShow'])->name('products.details.show');
+Route::get('/listado-de-productos/', [HomeController::class, 'vitrina'])->name('products.show');
+Route::get('/productos/{slug}', [HomeController::class, 'productShow'])->name('products.details.show');
 
 // Vista de comparar
 Route::get('/comparar', [CompareController::class, 'index'])->name('comparar');
