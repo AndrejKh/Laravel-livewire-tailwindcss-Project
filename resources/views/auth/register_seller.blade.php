@@ -12,7 +12,7 @@
         <!-- Primary Meta Tags -->
         <meta name="title" content="Sé parte de nuestra red de abastos y supermercados - Kabasto.com">
         <meta name="description" content="¿Vendes productos de supermercado? Únete a nuestra red de abastos y supermercados. Y ofrece todos tus productos a una mayor cantidad de personas. Kabasto.com">
-        <meta name="keywords" content="supermercados en venezuela">
+        <meta name="keywords" content="vender comida en venezuela">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
