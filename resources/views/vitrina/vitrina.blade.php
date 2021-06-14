@@ -121,20 +121,20 @@
         </h1>
         <div class="text-md md:text-lg text-gray-900">
             @isset($query)
-                <span>
+                <h2>
                     Búsqueda realizada:
-                </span>
-                <strong class="font-semibold">
-                    {{ $query }}
-                </strong>
+                    <span class="font-semibold">
+                        {{ $query }}
+                    </span>
+                </h2>
             @endisset
             @isset($category_selected)
-                <span class="hidden md:inline">
+                <h2 class="hidden md:inline">
                     Categoria seleccionada:
                     <strong class="font-semibold">
                         {{ $category_selected->category }}
                     </strong>
-                </span>
+                </h2>
             @endisset
         </div>
     </div>
