@@ -175,7 +175,7 @@
                     <div class="w-full text-center">
                         <h4 class="text-lg font-semibold">No se encontraron resultados :/</h4>
                         <img class="mx-auto" width="75%" src="{{ asset('no_results.svg') }}" alt="sin resultados en la busqueda">
-                        <a class="rounded-lg text-white bg-green-500 shadow-md py-1 px-10" href="{{ route('products.show') }}">Continuar con otra búsqueda</a>
+                        <a class="rounded-lg text-white bg-green-500 shadow-md py-1 px-10" href="{{ route('products.show') }}" aria-label="hacer otra búsqueda">Continuar con otra búsqueda</a>
                     </div>
 
                 @endif

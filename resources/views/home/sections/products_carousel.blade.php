@@ -4,7 +4,7 @@
         <h2 class="font-bold text-xl text-gray-900 inline">
             Productos destacados -
         </h2>
-        <a class="inline text-blue-700 text-sm" href="{{ route('products.show') }}">
+        <a class="inline text-blue-700 text-sm" href="{{ route('products.show') }}" aria-label="ver todos los productos destacados">
             Ver todos
         </a>
         <p class="text-sm font-semibold text-gray-600">

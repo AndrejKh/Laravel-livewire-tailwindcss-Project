@@ -34,7 +34,7 @@
         <div class="max-w-7xl w-full px-2">
             <div class="grid grid-cols-1 md:grid-cols-6 gap-3">
                 <div class="block md:hidden max-w-7xl col-span-1 mx-2">
-                    <a class="text-blue-500 font-light text-xs" href="{{ route('brands.details.show', [$brand->slug]) }}">
+                    <a class="text-blue-500 font-light text-xs" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ver detalles del abasto {{ $brand->brand }}">
                         En: {{ $brand->brand }}
                     </a>
                     <h1 class="text-xl md:text-2xl text-gray-900 leading-5 font-semibold md:font-bold md:mb-5 lg:mb-6" id="titleProduct">
@@ -43,7 +43,7 @@
                     <span class="text-sm text-gray-900">
                         Categoría:
                     </span>
-                    <a class="text-sm text-gray-400" href="{{route('products.category.show', $product->category->slug)}}">
+                    <a class="text-sm text-gray-400" href="{{route('products.category.show', $product->category->slug)}}" aria-label="ver productos de la categoría {{ $product->category->category }}">
                         {{ $product->category->category }}
                     </a>
                 </div>
@@ -62,14 +62,14 @@
                                 Producto Disponible
                             </span>
                         @endisset
-                        <a class="text-left text-blue-500 font-light text-xs block mt-4" href="{{ route('brands.details.show', [$brand->slug]) }}">
+                        <a class="text-left text-blue-500 font-light text-xs block mt-4" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ver detalles del abasto {{ $brand->brand }}">
                             En: {{ $brand->brand }}
                         </a>
                         <h2 class="text-left text-2xl text-gray-900 font-semibold">
                             {{ $product->title }} - {{ $brand->brand }}
                         </h2>
                         <div class="text-left">
-                            <a class="text-sm text-gray-900" href="{{route('products.category.show', $product->category->slug)}}">
+                            <a class="text-sm text-gray-900" href="{{route('products.category.show', $product->category->slug)}}" aria-label="ver los productos de la categoría {{ $product->category->category }}">
                                 Categoría: <span class="text-gray-400">{{ $product->category->category }}</span>
                             </a>
                         </div>
@@ -207,7 +207,7 @@
     </div>
     {{-- Boton volver - seguir comprando --}}
     <div class="text-center my-8">
-        <a class="block md:inline mx-2 bg-green-500 text-white py-3 px-8 rounded-md shadow-md" href="{{ route('brands.details.show', [$brand->slug]) }}">
+        <a class="block md:inline mx-2 bg-green-500 text-white py-3 px-8 rounded-md shadow-md" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ir a los productos del abasto">
             Seguir agregando al carrito
             <img class="inline" src="{{ asset('rigth_arrow.svg') }}">
         </a>
@@ -242,7 +242,7 @@
 
                 <div class="flex justify-center py-5 shareModal">
                     <div class="flex px-1 ">
-                        <a class="flex px-2 md:px-1 lg:px-2" href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" id="facebook" target="_blank">
+                        <a class="flex px-2 md:px-1 lg:px-2" href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" id="facebook" target="_blank" aria-label="compartir en facebook">
                             <svg class="inline" version="1.1" width="16px" heigth="16px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 155.139 155.139" style="enable-background:new 0 0 155.139 155.139;" xml:space="preserve">
                             <g>
@@ -254,7 +254,7 @@
                         </a>
                     </div>
                     <div class="flex px-1 ">
-                        <a class="px-2 md:px-1 lg:px-2" href="https://web.whatsapp.com/send?text={{ Request::url() }}" id="whastapp" target="_blank">
+                        <a class="px-2 md:px-1 lg:px-2" href="https://web.whatsapp.com/send?text={{ Request::url() }}" id="whastapp" target="_blank" aria-label="compartir en whatsapp">
                             <svg class="inline" width="16px" heigth="16px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                             <g>	<g>
@@ -279,7 +279,7 @@
                         </a>
                     </div>
                     <div class="flex px-1">
-                        <a class="px-2 md:px-1 lg:px-2" href="https://twitter.com/intent/tweet?text={{ $product->title }}&url={{ Request::url() }}" id="twitter" target="_blank">
+                        <a class="px-2 md:px-1 lg:px-2" href="https://twitter.com/intent/tweet?text={{ $product->title }}&url={{ Request::url() }}" id="twitter" target="_blank" aria-label="compartir en twitter">
                             <svg class="inline" version="1.1" width="16px" heigth="16px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                             <path style="fill:#03A9F4;" d="M512,97.248c-19.04,8.352-39.328,13.888-60.48,16.576c21.76-12.992,38.368-33.408,46.176-58.016

@@ -9,7 +9,7 @@
                 <h2 class="font-bold text-xl text-gray-900 inline">
                     {{ $category->category }} -
                 </h2>
-                <a class="inline text-blue-700 text-sm" href="{{route('products.category.show', $category->slug)}}">
+                <a class="inline text-blue-700 text-sm" href="{{route('products.category.show', $category->slug)}}" aria-label="ver todos los productos de la categoría {{ $category->category }}">
                     Ver todos
                 </a>
                 <p class="text-sm font-semibold text-gray-600">

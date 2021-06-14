@@ -10,7 +10,7 @@
                 @foreach ($principal_categories as $category)
                     <div>
                         <div class="flex text-gray-700 font-semibold my-1 text-md">
-                            <a class="hover:text-blue-600" href="{{ route('products.category.show', $category->slug) }}">
+                            <a class="hover:text-blue-600" href="{{ route('products.category.show', $category->slug) }}"  aria-label="categoría seleccionada {{ $category->category }}">
                                 <span class="categoryPrincipal">{{ $category->category }}</span>
                                 <span class="text-gray-400"> ({{ count($category->products) }}) </span>
                             </a>
@@ -32,7 +32,7 @@
                 {{-- Modelo de categorias hijos --}}
                 <div hidden id="modelCategoryChild">
                     <div class="col-span-1 my-1 text-sm pl-1">
-                        <a class="text-gray-500 hover:text-blue-600 slugCategoryChild" href="">
+                        <a class="text-gray-500 hover:text-blue-600 slugCategoryChild" href="" aria-label="seleccionar a subcategoria">
                             <span class="titleCategoryChild categoryPrincipal"></span>
                             <span class="text-gray-400 quantityProductsCategoryChild"> </span>
                         </a>

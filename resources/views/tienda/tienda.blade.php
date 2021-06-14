@@ -314,7 +314,7 @@
         <div class="w-full text-center mt-6">
             <h4 class="text-lg font-semibold"> {{ $tienda->brand }} aún no tiene productos en su tienda </h4>
             <img class="mx-auto mb-8 w-full md:w-1/2 lg:w-1/3 px-4" src="{{ asset('no_products_brand.svg') }}" alt="sin productos en la tienda">
-            <a class="block md:inline mx-2 md:mx-0 rounded-lg text-white bg-green-500 shadow-md py-3 px-10" href="{{ route('brands.show') }}">Continuar con otros abastos</a>
+            <a class="block md:inline mx-2 md:mx-0 rounded-lg text-white bg-green-500 shadow-md py-3 px-10" href="{{ route('brands.show') }}" aria-label="ir a listado de abastos y supermercados">Continuar con otros abastos</a>
         </div>
     @endif
 

@@ -114,11 +114,11 @@
         </h2>
 
         <p>
-            Facebook <a class="text-blue-600" href="https://www.facebook.com/kabasto.ve" target="_blank">@kabasto.ve</a>
+            Facebook <a class="text-blue-600" href="https://www.facebook.com/kabasto.ve" rel="nofollow" target="_blank" aria-label="ir al perfil de facebook de kabasto">@kabasto.ve</a>
             <br>
-            Instagram <a class="text-blue-600" href="https://www.instagram.com/kabasto_ve/" target="_blank">@kabasto_ve</a>
+            Instagram <a class="text-blue-600" href="https://www.instagram.com/kabasto_ve/" rel="nofollow" target="_blank" aria-label="ir al perfil de instagram de kabasto">@kabasto_ve</a>
             <br>
-            Twitter <a class="text-blue-600" href="https://twitter.com/kabasto_ve" target="_blank">@kabasto_ve</a>
+            Twitter <a class="text-blue-600" href="https://twitter.com/kabasto_ve" target="_blank" rel="nofollow" aria-label="ir al perfil de twitter de kabasto">@kabasto_ve</a>
             <br>
             <span class="text-semibold">Siguenos!!</span>
         </p>

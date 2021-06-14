@@ -40,7 +40,7 @@
                     <span class="text-sm text-gray-900">
                         Categoría:
                     </span>
-                    <a class="text-sm text-gray-400" href="{{route('products.category.show', $product->category->slug)}}">
+                    <a class="text-sm text-gray-400" href="{{route('products.category.show', $product->category->slug)}}" aria-label="ver productos de la categoría {{ $product->category->category }}">
                         {{ $product->category->category }}
                     </a>
                 </div>
@@ -63,7 +63,7 @@
                             {{ $product->title }}
                         </h2>
                         <div class="text-left">
-                            <a class="text-md text-gray-900" href="{{route('products.category.show', $product->category->slug)}}">
+                            <a class="text-md text-gray-900" href="{{route('products.category.show', $product->category->slug)}}" aria-label="ver productos de la categoría {{ $product->category->category }}">
                                 Categoría: <span class="text-gray-400">{{ $product->category->category }}</span>
                             </a>
                         </div>
@@ -113,7 +113,7 @@
 
     {{-- Boton volver - seguir comprando --}}
     <div class="flex justify-center my-4">
-        <a class="bg-green-500 text-white py-2 px-8 rounded-md shadow-md" href="{{ url()->previous() }}">Seguir agregando al carrito</a>
+        <a class="bg-green-500 text-white py-2 px-8 rounded-md shadow-md" href="{{ url()->previous() }}" aria-label="seguir agregando al carrito">Seguir agregando al carrito</a>
     </div>
 
     <div class="block md:hidden max-w-7xl w-full px-2 mx-auto mb-1 mt-3">
@@ -154,7 +154,7 @@
 
                 <div class="flex justify-center py-5 shareModal">
                     <div class="flex px-1 ">
-                        <a class="flex px-2 md:px-1 lg:px-2" href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" id="facebook" target="_blank">
+                        <a class="flex px-2 md:px-1 lg:px-2" href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" id="facebook" target="_blank" aria-label="compartir en facebook">
                             <svg class="inline" version="1.1" width="16px" heigth="16px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 155.139 155.139" style="enable-background:new 0 0 155.139 155.139;" xml:space="preserve">
                             <g>
@@ -166,7 +166,7 @@
                         </a>
                     </div>
                     <div class="flex px-1 ">
-                        <a class="px-2 md:px-1 lg:px-2" href="https://web.whatsapp.com/send?text={{ Request::url() }}" id="whastapp" target="_blank">
+                        <a class="px-2 md:px-1 lg:px-2" href="https://web.whatsapp.com/send?text={{ Request::url() }}" id="whastapp" target="_blank" aria-label="compartir en whatsapp">
                             <svg class="inline" width="16px" heigth="16px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                             <g>	<g>
@@ -191,7 +191,7 @@
                         </a>
                     </div>
                     <div class="flex px-1">
-                        <a class="px-2 md:px-1 lg:px-2" href="https://twitter.com/intent/tweet?text={{ $product->title }}&url={{ Request::url() }}" id="twitter" target="_blank">
+                        <a class="px-2 md:px-1 lg:px-2" href="https://twitter.com/intent/tweet?text={{ $product->title }}&url={{ Request::url() }}" id="twitter" target="_blank" aria-label="compartir en twitter">
                             <svg class="inline" version="1.1" width="16px" heigth="16px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                             <path style="fill:#03A9F4;" d="M512,97.248c-19.04,8.352-39.328,13.888-60.48,16.576c21.76-12.992,38.368-33.408,46.176-58.016

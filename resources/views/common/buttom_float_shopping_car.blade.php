@@ -1,7 +1,7 @@
 <div class="fixed bottom-0 z-30">
 
     <div class="fixed mb-1 bottom-5 right-3 mr-2 z-30" id="compareFloatButton">
-        <a class="flex h-11 w-11 self-center text-center bg-blue-600 rounded-full shadow-md items-center" href="{{ route('comparar') }}">
+        <a class="flex h-11 w-11 self-center text-center bg-blue-600 rounded-full shadow-md items-center" href="{{ route('comparar') }}" aria-label="ir a comparar precios">
             <svg class="mx-auto fill-current text-white" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 0 24 24" width="28px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9.01 14H3c-.55 0-1 .45-1 1s.45 1 1 1h6.01v1.79c0 .45.54.67.85.35l2.78-2.79c.19-.2.19-.51 0-.71l-2.78-2.79c-.31-.32-.85-.09-.85.35V14zm5.98-2.21V10H21c.55 0 1-.45 1-1s-.45-1-1-1h-6.01V6.21c0-.45-.54-.67-.85-.35l-2.78 2.79c-.19.2-.19.51 0 .71l2.78 2.79c.31.31.85.09.85-.36z"/></svg>
         </a>
     </div>

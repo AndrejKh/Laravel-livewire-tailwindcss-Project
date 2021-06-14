@@ -1,5 +1,5 @@
 <div class="max-w-xs rounded-md overflow-hidden shadow-md my-2 bg-white relative">
-    <a href="{{route('brands.products.details.show', ['brand' => $brand->slug, 'product' => $item->product->slug] ) }}">
+    <a href="{{route('brands.products.details.show', ['brand' => $brand->slug, 'product' => $item->product->slug] ) }}" aria-label="ver detalles del producto {{ $item->product->title }}">
         <img class="w-full" src="/storage/{{ $item->product->photo_main_product }}" alt="{{ $item->product->title }}">
     </a>
     <span class="absolute top-4 left-2 svgProdcutInShoppingCar hidden" title="Producto en carrito">
@@ -9,14 +9,14 @@
     </span>
     <div class="px-2 pt-2">
         <div class="font-bold text-xl text-gray-900 hover:text-gray-700 text-left">
-          <a href="{{route('brands.products.details.show', ['brand' => $brand->slug, 'product' => $item->product->slug] ) }}">
+          <a href="{{route('brands.products.details.show', ['brand' => $brand->slug, 'product' => $item->product->slug] ) }}" aria-label="ver detalles del producto {{ $item->product->title }}">
               {{ $item->product->title }}
           </a>
         </div>
     </div>
     <div class="px-2 py-1 grid grid-cols-4 gap-1">
         <div class="col-span-3 font-semibold text-sm md:mb-2 px-0 text-left">
-            <a class="text-gray-500 hover:text-gray-900" href="{{ route('products.category.show', $item->product->category->slug ) }}">
+            <a class="text-gray-500 hover:text-gray-900" href="{{ route('products.category.show', $item->product->category->slug ) }}" aria-label="ver productos de la categoría {{ $item->product->category->category }}">
                 {{ $item->product->category->category }}
             </a>
         </div>
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="px-2 pb-2 flex justify-center">
-        <a class="btn-primary" href="{{route('brands.products.details.show', ['brand' => $brand->slug, 'product' => $item->product->slug] ) }}">
+        <a class="btn-primary" href="{{route('brands.products.details.show', ['brand' => $brand->slug, 'product' => $item->product->slug] ) }}" aria-label="ver detalles del producto {{ $item->product->title }}">
           Ver más
         </a>
     </div>

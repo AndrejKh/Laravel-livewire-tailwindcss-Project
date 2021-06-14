@@ -1,5 +1,5 @@
 <div class="max-w-xs rounded-md overflow-hidden shadow-md my-2 bg-white relative cardProductBrand">
-    <a href="{{route('brands.products.details.show', ['brand' => $tienda->slug, 'product' => $item->product->slug] ) }}">
+    <a href="{{route('brands.products.details.show', ['brand' => $tienda->slug, 'product' => $item->product->slug] ) }}" aria-label="ver detalle del producto {{ $item->product->title }}">
         <img class="w-full srcImageProductBrand" src="/storage/{{ $item->product->photo_main_product }}" alt="{{ $item->product->title }}">
     </a>
     <span class="absolute top-4 left-2 svgProdcutInShoppingCar hidden" title="Producto en carrito">
@@ -9,14 +9,14 @@
     </span>
     <div class="px-2 pt-2">
         <div class="font-bold text-xl text-gray-900 hover:text-gray-700 text-left">
-            <a class="titleProductBrand" href="{{route('brands.products.details.show', ['brand' => $tienda->slug, 'product' => $item->product->slug] ) }}">
+            <a class="titleProductBrand" href="{{route('brands.products.details.show', ['brand' => $tienda->slug, 'product' => $item->product->slug] ) }}" aria-label="ver detalle del producto {{ $item->product->title }}">
                 {{ $item->product->title }}
             </a>
         </div>
     </div>
     <div class="grid grid-cols-3 gap-1 px-2 mb-2">
         <div class="col-span-2 text-sm px-0 text-left">
-            <a class="text-gray-600 hover:text-gray-900" href="">
+            <a class="text-gray-600 hover:text-gray-900" href="" aria-label="ver productos de la categoría {{ $item->product->category->category }}">
                 {{ $item->product->category->category }}
             </a>
         </div>

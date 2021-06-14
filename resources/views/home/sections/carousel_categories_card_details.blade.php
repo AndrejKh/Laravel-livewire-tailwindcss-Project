@@ -4,7 +4,7 @@
         <h3 class="text-lg text-gray-800 inline">
             Algunas categorías para tí -
         </h3>
-        <a class="inline text-blue-700 text-sm" href="{{ route('categorias') }}">Ver todas</a>
+        <a class="inline text-blue-700 text-sm" href="{{ route('categorias') }}" aria-label="ver todas las categorías de kabasto">Ver todas</a>
         <p class="text-sm font-semibold text-gray-600">Encuentra los diversos productos que estas buscando</p>
     </div>
 </div>

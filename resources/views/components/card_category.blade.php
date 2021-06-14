@@ -5,7 +5,7 @@
     <div class="owl-carousel owl-theme max-w-7xl my-4 text-center relative" id="carousel_cards_categories">
         @foreach ($categories as $category)
 
-        <a class="w-full overflow-hidden" href="{{route('products.category.show', $category->slug)}}">
+        <a class="w-full overflow-hidden" href="{{route('products.category.show', $category->slug)}}" aria-label="ver los precios de la categoría {{ $product->category->category }}">
             <span class="absolute inset-x-0 w-full h-full object-cover bg-gray-800 rounded-md opacity-70 hover:opacity-90 flex justify-center">
                 <span class="self-center text-white text-2xl opacity-100 text-center">
                     {{$category->category}}

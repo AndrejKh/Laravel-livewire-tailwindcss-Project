@@ -7,13 +7,13 @@
                 La plataforma enfocada en cambiar la manera de hacer mercado en Venezuela.
             </p>
             <div class="mt-3 text-center md:text-left">
-                <a href="https://www.facebook.com/kabasto.ve" target="_blank" rel="nofollow">
+                <a href="https://www.facebook.com/kabasto.ve" target="_blank" rel="nofollow" aria-label="ir al perfil de facebook de kabasto">
                     <img class="inline" src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto">
                 </a>
-                <a href="https://www.instagram.com/kabasto_ve/" target="_blank" rel="nofollow">
+                <a href="https://www.instagram.com/kabasto_ve/" target="_blank" rel="nofollow" aria-label="ir al perfil de instagram de kabasto">
                     <img class="inline" src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto">
                 </a>
-                <a href="https://twitter.com/kabasto_ve" target="_blank" rel="nofollow">
+                <a href="https://twitter.com/kabasto_ve" target="_blank" rel="nofollow" aria-label="ir al perfil de twitter de kabasto">
                     <img class="inline" src="{{ asset('twitter.svg') }}" alt="imagen twitter de kabasto">
                 </a>
             </div>
@@ -24,16 +24,16 @@
                 Enlaces de interés
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('home') }}">Inicio</a>
+                <a href="{{ route('home') }}" aria-label="ir a la página de inicio de kabasto">Inicio</a>
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('brands.show') }}">Abastos</a>
+                <a href="{{ route('brands.show') }}" aria-label="ver todos los abastos y supermercados">Abastos</a>
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('categorias') }}">Categorias</a>
+                <a href="{{ route('categorias') }}" aria-label="ver todas las categorías de kabasto">Categorias</a>
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('products.show') }}">Productos</a>
+                <a href="{{ route('products.show') }}" aria-label="ver todos los prodcutos de kabasto.com">Productos</a>
             </div>
         </div>
 
@@ -42,10 +42,10 @@
                 Información general
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('politics.privacy') }}">Politicas de privacidad</a>
+                <a href="{{ route('politics.privacy') }}" aria-label="ver las politicas de privacidad de kabasto">Politicas de privacidad</a>
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('support.index') }}">Soporte</a>
+                <a href="{{ route('support.index') }}" aria-label="ir al soporte y ayuda de kabasto">Soporte</a>
             </div>
         </div>
 
