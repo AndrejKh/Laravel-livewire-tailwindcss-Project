@@ -165,7 +165,7 @@
                 // Limpio la ubicacion del local Storage
                 localStorage.removeItem('ubication');
                 // Redirecciono a la vista de productos
-                window.location.href = "/products";
+                window.location.href = "/listado-de-productos";
 
             })
         }
