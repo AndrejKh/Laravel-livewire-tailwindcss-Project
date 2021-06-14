@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <meta name="title" content="{{ ucwords($product->title) }} - Kabasto">
     <meta name="description" content="Los precios de {{ $product->title }} en {{$brand->brand}} en {{$brand->address->city->city}}">
-    <meta name="keywords" content="{{ $product->title }}">
+    <meta name="keywords" content="precio de {{ $product->title }} en {{$brand->brand}}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
