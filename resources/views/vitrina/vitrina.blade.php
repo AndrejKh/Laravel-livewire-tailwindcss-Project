@@ -2,12 +2,32 @@
 
 @section('title')
     @if ( $query != '')
-        {{ ucwords($query) }}
+
+       @php
+        $subtitle = ucwords($query);
+        $description = 'Todos los resultados para la búsqueda '. $query . ' en un solo lugar. Kabasto.com - Busca en nuestra red de abatos y supermercados.';
+       @endphp
+
     @elseif( $category_selected !== null)
-        Productos de {{ ucwords($category_selected->category) }} en tu ciudad
+
+        @php
+            $subtitle = "Productos de". ucwords($category_selected->category) ."en tu ciudad";
+            $description = 'Todos los productos de '. $category_selected->category . ' en un solo lugar. Kabasto.com - Busca en nuestra red de abatos y supermercados.';
+        @endphp
+
     @else
-        Todos los productos
-    @endif - Kabasto.com
+
+        @php
+            $subtitle = "Todos los productos";
+            $description = 'Tendrás disponible una increible cantidad de productos y podrás comparar los precios en cada abasto y supermercado de tu cuidad - Kabasto.com';
+        @endphp
+
+    @endif
+
+    @php
+        $title = $subtitle."- Kabasto.com";
+    @endphp
+
 @endsection
 
 @section('header')
@@ -17,8 +37,8 @@
     <meta name="robots" content="index,follow"/>
 
 	<!-- Primary Meta Tags -->
-	<meta name="title" content="Encuentra los mejores productos que venden los abastos cercanos a ti- Kabasto.com">
-	<meta name="description" content="Tendrás disponible una increible cantidad de productos y podrás comparar los precios en cada abasto y supermercado de tu cuidad - Kabasto.com">
+	<meta name="title" content="{{ $title }}">
+	<meta name="description" content="{{ $description }}">
     <meta name="keywords" content="precio de productos en abastos y supermercados en venezuela">
 
 	<!-- Open Graph / Facebook -->
@@ -28,8 +48,8 @@
     @else
         <meta property="og:url" content="https://kabasto.com/listado-de-productos">
     @endif
-	<meta property="og:title" content="Encuentra los mejores productos que venden los abastos cercanos a ti- Kabasto.com">
-	<meta property="og:description" content="Tendrás disponible una increible cantidad de productos y podrás comparar los precios en cada abasto y supermercado de tu cuidad - Kabasto.com">
+	<meta property="og:title" content="{{ $title }}">
+	<meta property="og:description" content="{{ $description }}">
 	<meta property="og:image" content="{{ asset('home.png') }}">
 
 	{{-- url canonical --}}
