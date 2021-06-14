@@ -415,7 +415,7 @@
        const categorySelected = document.getElementById('categorySelected');
        if( querySearch !== null ){
 
-           formQueryFilter.action = '/products/';
+           formQueryFilter.action = '/listado-de-productos/';
 
        }else if( categorySelected !== null ){
 
