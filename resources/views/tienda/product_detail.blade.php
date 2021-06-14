@@ -38,7 +38,7 @@
                         En: {{ $brand->brand }}
                     </a>
                     <h1 class="text-xl md:text-2xl text-gray-900 leading-5 font-bold md:mb-5 lg:mb-6" id="titleProduct">
-                        {{ $product->title }}
+                        {{ $product->title }} - {{ $brand->brand }}
                     </h1>
                     <span class="text-sm text-gray-900">
                         Categoría:
