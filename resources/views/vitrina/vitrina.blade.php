@@ -20,7 +20,7 @@
     @isset ( $category_selected )
         <meta property="og:url" content="https://kabasto.com/{{ $category_selected->slug }}">
     @else
-        <meta property="og:url" content="https://kabasto.com/productos">
+        <meta property="og:url" content="https://kabasto.com/listado-de-productos">
     @endif
 	<meta property="og:title" content="Encuentra los mejores productos que venden los abastos cercanos a ti- Kabasto.com">
 	<meta property="og:description" content="Tendrás disponible una increible cantidad de productos y podrás comparar los precios en cada abasto y supermercado de tu cuidad - Kabasto.com">
@@ -30,7 +30,7 @@
     @isset ( $category_selected )
         <link rel="canonical" href="https://kabasto.com/categorias/{{ $category_selected->slug }}" />
     @else
-        <link rel="canonical" href="https://kabasto.com/productos" />
+        <link rel="canonical" href="https://kabasto.com/listado-de-productos" />
     @endif
 @endsection
 

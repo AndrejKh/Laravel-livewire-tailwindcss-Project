@@ -15,7 +15,7 @@
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
-        <meta property="og:url" content="https://kabasto.com/">
+        <meta property="og:url" content="https://kabasto.com/categorias">
         <meta property="og:title" content="Categorías de productos - Kabasto">
         <meta property="og:description" content="Selecciona la categoría en la cual deseas buscar los productos de tu mercado. Puedes elegir entre los distintos abastos y supermercados">
         <meta property="og:image" content="{{ asset( 'home.png' ) }}">
