@@ -7,13 +7,13 @@
                 La plataforma enfocada en cambiar la manera de hacer mercado en Venezuela.
             </p>
             <div class="mt-3 text-center md:text-left">
-                <a href="https://www.facebook.com/kabasto.ve" target="_blank">
+                <a href="https://www.facebook.com/kabasto.ve" target="_blank" rel="nofollow">
                     <img class="inline" src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto">
                 </a>
-                <a href="https://www.instagram.com/kabasto_ve/" target="_blank">
+                <a href="https://www.instagram.com/kabasto_ve/" target="_blank" rel="nofollow">
                     <img class="inline" src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto">
                 </a>
-                <a href="https://twitter.com/kabasto_ve" target="_blank">
+                <a href="https://twitter.com/kabasto_ve" target="_blank" rel="nofollow">
                     <img class="inline" src="{{ asset('twitter.svg') }}" alt="imagen twitter de kabasto">
                 </a>
             </div>
