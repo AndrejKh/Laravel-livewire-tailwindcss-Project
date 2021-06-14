@@ -1,5 +1,5 @@
 @if ( $products && count($products) > 0)
-<div class="flex justify-center mt-3 px-2">
+<div class="flex justify-center mt-5 md:mt-10 px-2">
     <div class="max-w-7xl w-full">
         <h2 class="font-bold text-xl text-gray-900 inline">
             Productos destacados -
@@ -27,7 +27,7 @@
 <script>
     $('#carousel_products_categories').owlCarousel({
         loop:true,
-        margin:10,
+        margin:15,
         nav:false,
         dots:false,
         responsive:{
