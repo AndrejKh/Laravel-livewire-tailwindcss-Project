@@ -6,6 +6,7 @@
        @php
         $subtitle = ucwords($query);
         $description = 'Todos los resultados para la búsqueda '. $query . ' en un solo lugar. Kabasto.com - Busca en nuestra red de abatos y supermercados.';
+        $keyword = $query;
        @endphp
 
     @elseif( $category_selected !== null)
@@ -13,6 +14,7 @@
         @php
             $subtitle = "Productos de". ucwords($category_selected->category) ."en tu ciudad";
             $description = 'Todos los productos de '. $category_selected->category . ' en un solo lugar. Kabasto.com - Busca en nuestra red de abatos y supermercados.';
+            $keyword = 'precio de '.$category_selected->category;
         @endphp
 
     @else
@@ -20,6 +22,7 @@
         @php
             $subtitle = "Todos los productos";
             $description = 'Tendrás disponible una increible cantidad de productos y podrás comparar los precios en cada abasto y supermercado de tu cuidad - Kabasto.com';
+            $keyword = 'precio de productos en abastos y supermercados en venezuela';
         @endphp
 
     @endif
@@ -39,7 +42,7 @@
 	<!-- Primary Meta Tags -->
 	<meta name="title" content="{{ $title }}">
 	<meta name="description" content="{{ $description }}">
-    <meta name="keywords" content="precio de productos en abastos y supermercados en venezuela">
+    <meta name="keywords" content="{{ $keyword }}">
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
