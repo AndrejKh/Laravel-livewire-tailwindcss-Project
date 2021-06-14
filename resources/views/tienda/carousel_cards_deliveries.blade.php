@@ -2,7 +2,7 @@
 
 <div class="flex justify-center mt-3 px-2">
     <div class="max-w-7xl w-full">
-        <h2 class="font-bold text-xl text-gray-900">Zonas de Delivery</h2>
+        <h4 class="font-bold text-xl text-gray-900">Zonas de Delivery</h4>
     </div>
 </div>
 

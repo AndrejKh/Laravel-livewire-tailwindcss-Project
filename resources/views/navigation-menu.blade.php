@@ -167,7 +167,7 @@
                         @endif
 
                         <!-- Authentication -->
-                        <form method="POST" class="text-center" action="{{ route('logout') }}">
+                        {{-- <form method="POST" class="text-center" action="{{ route('logout') }}">
                             @csrf
 
                             <x-jet-responsive-nav-link href="{{ route('logout') }}"
@@ -175,7 +175,7 @@
                                             this.closest('form').submit();">
                                 {{ __('Cerrrar sesión') }}
                             </x-jet-responsive-nav-link>
-                        </form>
+                        </form> --}}
 
                     </div>
             @else
