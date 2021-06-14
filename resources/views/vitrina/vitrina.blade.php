@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('title')
-   @if ( $query != '') {{ ucwords($query) }} @else Todos los productos  @endif - Kabasto.com
+    @if ( $query != '')
+        {{ ucwords($query) }}
+    @elseif( $category_selected !== null)
+        Productos de {{ ucwords($category_selected->category) }} en tu ciudad
+    @else
+        Todos los productos
+    @endif - Kabasto.com
 @endsection
 
 @section('header')
