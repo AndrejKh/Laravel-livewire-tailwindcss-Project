@@ -32,6 +32,7 @@
 
     @php
         $title = $subtitle."- Kabasto.com";
+        echo $title;
     @endphp
 
 @endsection
