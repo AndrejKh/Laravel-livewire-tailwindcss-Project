@@ -1,5 +1,5 @@
 @if ( $banners_promotionals && count($banners_promotionals) > 0)
-<div class="flex justify-center mt-4 px-2">
+<div class="flex justify-center mt-5 md:mt-10 px-2">
     <div class="max-w-7xl w-full">
         <h1 class="font-semibold md:font-bold text-lg md:text-xl text-gray-900 inline">
             Compara los diferentes abastos y supermercados de tu ciudad
