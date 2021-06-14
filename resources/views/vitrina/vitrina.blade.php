@@ -13,7 +13,7 @@
     @elseif( $category_selected !== null)
 
         @php
-            $subtitle = "Productos de". ucwords($category_selected->category) ."en tu ciudad";
+            $subtitle = "Productos de ". ucwords($category_selected->category) ." en tu ciudad";
             $description = 'Todos los productos de '. $category_selected->category . ' en un solo lugar. Kabasto.com - Busca en nuestra red de abatos y supermercados.';
             $keyword = 'precio de '.$category_selected->category;
             $h1 = "Todos los productos para la categoría: $category_selected->category ";
