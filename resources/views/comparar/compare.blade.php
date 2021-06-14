@@ -32,6 +32,7 @@
     <div class="max-w-7xl w-full px-2">
 
         <h1 class="my-3 text-gray-900 font-bold text-xl lg:text-2xl">Comparar precios en abastos y supermercados</h1>
+        <h2 class="text-gray-600">Selecciona el que más se adapte a tí, y compra.</h2>
 
         <div class="p-3 rounded-md shadow-sm bg-white ">
             <div class="grid grid-cols-5 cursor-pointer getItemsShoppingCar">
