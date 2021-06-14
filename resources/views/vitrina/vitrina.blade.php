@@ -127,14 +127,19 @@
                         {{ $query }}
                     </span>
                 </h2>
-            @endisset
-            @isset($category_selected)
+            @else
+                @isset($category_selected)
                 <h2 class="hidden md:inline">
                     Categoria seleccionada:
                     <strong class="font-semibold">
                         {{ $category_selected->category }}
                     </strong>
                 </h2>
+                @else
+                    <h2>
+                        Encuentra los productos disponibles en tu ciudad.
+                    </h2>
+                @endisset
             @endisset
         </div>
     </div>
