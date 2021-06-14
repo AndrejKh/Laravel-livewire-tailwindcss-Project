@@ -171,7 +171,7 @@
                     </a>
                 </div>
                 <div class="col-span-1 lg:col-span-3 w-full">
-                    <button class="rounded-md shadow-sm py-2 w-full block text-center bg-gray-300 text-white" id="comprar">
+                    <button class="rounded-md shadow-sm py-2 w-full block text-center bg-gray-300 text-white" id="comprar" aria-label="comprar">
                         Comprar
                     </button>
                     <span hidden id="csrf_token">{{ csrf_token() }}</span>

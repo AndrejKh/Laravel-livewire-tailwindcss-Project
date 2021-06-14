@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="text-blue-600 font-semibold my-1 text-md">
-                    <button class="hover:text-blue-600 modalCategories">
+                    <button class="hover:text-blue-600 modalCategories" aria-label="ver más categorías">
                         Ver más
                     </button>
                 </div>
@@ -65,7 +65,7 @@
             <div id="containerEstados"> </div>
 
             <div class="text-blue-600 font-semibold my-1 text-md">
-                <button class="hover:text-blue-600 modalStates">
+                <button class="hover:text-blue-600 modalStates" aria-label="ver más estados">
                     Ver más
                 </button>
             </div>
@@ -89,7 +89,7 @@
             <div id="containerCiudades"> </div>
 
             <div class="text-blue-600 font-semibold my-1 text-md">
-                <button class="hover:text-blue-600 modalCities">
+                <button class="hover:text-blue-600 modalCities" aria-label="ver más ciudades">
                     Ver más
                 </button>
             </div>
