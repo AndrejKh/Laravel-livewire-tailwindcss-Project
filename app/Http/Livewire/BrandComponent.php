@@ -109,9 +109,6 @@ class BrandComponent extends Component
                 $brand->update([
                     'brand' => $this->brand,
                     'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
-                    'address' => Null,
-                    'state_id' => Null,
-                    'city_id' => Null,
                 ]);
             }
 
