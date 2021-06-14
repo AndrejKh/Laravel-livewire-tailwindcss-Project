@@ -26,7 +26,7 @@
     <script>
         $('#carousel_banners_promotionals').owlCarousel({
             loop:true,
-            margin:10,
+            margin:15,
             nav:false,
             dots:false,
             navText: ['<img src="{{asset('icons/arrow_left.svg')}}"/>', '<img src="{{asset('icons/arrow_right.svg')}}"/>'],

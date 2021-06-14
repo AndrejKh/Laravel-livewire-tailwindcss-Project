@@ -32,7 +32,7 @@
         <script>
             $('.carousel_products').owlCarousel({
                 loop:true,
-                margin:10,
+                margin:15,
                 nav:false,
                 dots:false,
                 responsive:{
@@ -47,9 +47,6 @@
                     },
                     1024:{
                         items:5
-                    },
-                    1280:{
-                        items:6
                     }
                 }
             })

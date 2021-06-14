@@ -27,7 +27,7 @@
 <script>
     $('#carousel_products_categories').owlCarousel({
         loop:true,
-        margin:5,
+        margin:10,
         nav:false,
         dots:false,
         responsive:{
@@ -42,9 +42,6 @@
             },
             1024:{
                 items:5
-            },
-            1280:{
-                items:6
             }
         }
     })
