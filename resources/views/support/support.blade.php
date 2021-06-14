@@ -31,7 +31,7 @@
 
         <div class="w-full text-center grid grid-cols-3">
             <div class="hidden md:block md:col-span-1 w-full my-5">
-                <img class="mx-auto" src="{{ asset('support.svg') }}" alt="imagen Soporte" width="75%">
+                <img class="mx-auto" src="{{ asset('support.svg') }}" alt="imagen de Soporte kabasto" width="75%">
             </div>
             <div class="col-span-3 md:col-span-2 text-left">
                 <small class="text-gray-500">Consúltanos sobre cualquier duda o recomendación que tengas</small>

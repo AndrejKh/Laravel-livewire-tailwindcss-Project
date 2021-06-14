@@ -209,7 +209,7 @@
     <div class="text-center my-8">
         <a class="block md:inline mx-2 bg-green-500 text-white py-3 px-8 rounded-md shadow-md" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ir a los productos del abasto">
             Seguir agregando al carrito
-            <img class="inline" src="{{ asset('rigth_arrow.svg') }}">
+            <img class="inline" src="{{ asset('rigth_arrow.svg') }}" alt="icono de seguir agregando al carrito">
         </a>
     </div>
 
