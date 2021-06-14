@@ -3,9 +3,9 @@
 
     <div class="max-w-7xl bg-white py-7 px-2 lg:hidden">
 
-        <span class="text-xl font-semibold text-gray-900 mb-4 text-left">Inicia sesión para comprar en el supermercado que desees.</span>
+        <span class="text-lg font-semibold text-gray-900 mb-4 text-left">Registrate y compra donde desees</span>
 
-        <a class="rounded-md shadow-md text-white bg-blue-600 w-full py-3 block text-center my-3" href="{{ route('register') }}">
+        <a class="rounded-md shadow-md text-white bg-green-500 w-full py-2 block text-center mt-3 mb-1" href="{{ route('register') }}">
             Crear cuenta
         </a>
 
