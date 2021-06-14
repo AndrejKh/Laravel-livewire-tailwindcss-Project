@@ -65,9 +65,9 @@
                         <a class="text-left text-blue-500 font-light text-xs block mt-4" href="{{ route('brands.details.show', [$brand->slug]) }}">
                             En: {{ $brand->brand }}
                         </a>
-                        <h3 class="text-left text-2xl text-gray-900 font-semibold">
-                            {{ $product->title }}
-                        </h3>
+                        <h2 class="text-left text-2xl text-gray-900 font-semibold">
+                            {{ $product->title }} - {{ $brand->brand }}
+                        </h2>
                         <div class="text-left">
                             <a class="text-sm text-gray-900" href="{{route('products.category.show', $product->category->slug)}}">
                                 Categoría: <span class="text-gray-400">{{ $product->category->category }}</span>
