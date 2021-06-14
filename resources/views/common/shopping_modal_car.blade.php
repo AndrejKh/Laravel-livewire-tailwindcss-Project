@@ -67,7 +67,7 @@
                         <img class="mx-auto" width="50%" src="{{ asset('empty_car.svg') }}" alt="carrito vacio">
                     </div>
                     <div class="mt-3">
-                        <a class="py-2 bg-green-500 text-white px-5 rounded-full shadow-md" href="https://kabasto.com/products">Buscar productos</a>
+                        <a class="py-2 bg-green-500 text-white px-5 rounded-full shadow-md" href="{{ route('products.show') }}">Buscar productos</a>
                     </div>
                 </div>
 
