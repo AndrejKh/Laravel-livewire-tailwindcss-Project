@@ -8,6 +8,8 @@
         {{-- precargar imagenes --}}
         <link rel="preload" href="{{ asset('home.png') }}" as="image">
 
+        <meta name="robots" content="index,follow"/>
+
         <!-- Primary Meta Tags -->
         <meta name="title" content="Compara todos los productos de tu carrito de compras en los abastos de tu ciudad - Kabasto.com">
         <meta name="description" content="Selecciona el supermercado que más te guste para realizar tus compras. Diviertete comparando en los diferentes abastos de tu ciudad - Kabasto.com">

@@ -8,6 +8,8 @@
         {{-- precargar imagenes --}}
         <link rel="preload" href="/storage/{{ $tienda->profile_photo_path_brand }}" as="image">
 
+        <meta name="robots" content="index,follow"/>
+
         <!-- Primary Meta Tags -->
         <meta name="title" content="Todos los productos de {{ $tienda->brand }} - Kabasto.com">
         <meta name="description" content="Haz tus compras en {{ $tienda->brand }} y recomiendalo a tu familia y amigos - Kabasto.com">

@@ -8,6 +8,8 @@
         {{-- precargar imagenes --}}
         <link rel="preload" href="{{ asset('home.png') }}" as="image">
 
+        <meta name="robots" content="index,follow"/>
+
         <!-- Primary Meta Tags -->
         <meta name="title" content="Kabasto.com -  Políticas de privacidad de la plataforma">
         <meta name="description" content="Kabasto.com - Lee nuestras políticas de privacidad, e informate sobre nuestro compromiso con la seguridad de todos tus datos.">

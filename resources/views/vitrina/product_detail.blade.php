@@ -8,6 +8,8 @@
     {{-- precargar imagenes --}}
     <link rel="preload" href="/storage/{{ $product->photo_main_product }}" as="image">
 
+    <meta name="robots" content="index,follow"/>
+
     <!-- Primary Meta Tags -->
     <meta name="title" content="{{ ucwords($product->title) }} - Kabasto">
     <meta name="description" content="Precios de {{ $product->title }} en los abastos y supermercados de tu ciudad - Kabasto.com">

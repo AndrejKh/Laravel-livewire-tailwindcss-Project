@@ -8,6 +8,8 @@
         {{-- precargar imagenes --}}
         <link rel="preload" href="{{ asset('home.png') }}" as="image">
 
+        <meta name="robots" content="index,follow"/>
+
         <!-- Primary Meta Tags -->
         <meta name="title" content="Kabasto.com -  Consúltanos sobre cualquier duda o recomendación que tengas">
         <meta name="description" content="Kabasto.com - Nos encantaría saber todas tus dudas y ayudarte a solucionarlas. ¡Tranquilo! estamos para servirte y ayudarte a incrementar tus ventas.">
