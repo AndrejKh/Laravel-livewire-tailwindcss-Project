@@ -3,10 +3,10 @@
 
     <div class="max-w-7xl bg-white py-7 px-2 lg:hidden">
 
-        <span class="text-lg font-semibold text-gray-900 mb-4 text-left">Registrate y compra donde desees</span>
+        <span class="text-lg font-semibold text-gray-900 mb-4 text-left">Registrate gratis y compra</span>
 
         <a class="rounded-md shadow-md text-white bg-green-500 w-full py-2 block text-center mt-3 mb-1" href="{{ route('register') }}">
-            Crear cuenta
+            Registrarme
         </a>
 
         <a class="" href="{{ route('login') }}">Iniciar sesión</a>
