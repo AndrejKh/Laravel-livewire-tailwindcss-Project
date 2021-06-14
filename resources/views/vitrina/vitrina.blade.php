@@ -7,7 +7,7 @@
         $subtitle = ucwords($query);
         $description = 'Todos los resultados para la búsqueda '. $query . ' en un solo lugar. Kabasto.com - Busca en nuestra red de abatos y supermercados.';
         $keyword = $query;
-        $h1 = "Todos los productos para la búsqueda: $query";
+        $h1 = "Todos los productos para la búsqueda: <span class='text-gray-500'> $query </span>";
        @endphp
 
     @elseif( $category_selected !== null)
@@ -16,7 +16,7 @@
             $subtitle = "Productos de". ucwords($category_selected->category) ."en tu ciudad";
             $description = 'Todos los productos de '. $category_selected->category . ' en un solo lugar. Kabasto.com - Busca en nuestra red de abatos y supermercados.';
             $keyword = 'precio de '.$category_selected->category;
-            $h1 = "Todos los productos para la categoría: $category_selected->category";
+            $h1 = "Todos los productos para la categoría: <span class='text-gray-500'>$category_selected->category </span>";
         @endphp
 
     @else
@@ -114,7 +114,7 @@
 
 
     <div class="max-w-7xl w-full mt-0 md:mt-3 px-2 md:px-4">
-        <span class="font-semibold text-lg md:text-2xl text-gray-700">({{ $total_products_search }})</span>
+        <span class="font-semibold text-lg md:text-2xl text-gray-500">({{ $total_products_search }})</span>
         <h1 class="inline font-semibold md:font-bold text-lg md:text-2xl text-gray-900 mb-2">
              {{ $h1 }}
         </h1>
