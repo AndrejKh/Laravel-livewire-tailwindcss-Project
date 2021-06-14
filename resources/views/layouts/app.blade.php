@@ -34,8 +34,8 @@
         <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.theme.default.min.css') }}">
 
-        <script src="{{ asset('vendor/jquery/jquery.min.js') }}" async></script>
-        <script src="{{ asset('vendor/carouseljs/owl.carousel.min.js') }}" async></script>
+        <script src="{{ asset('vendor/jquery/jquery.min.js') }}" defer></script>
+        <script src="{{ asset('vendor/carouseljs/owl.carousel.min.js') }}" defer></script>
 
         @livewireStyles
 
