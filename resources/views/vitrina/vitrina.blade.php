@@ -114,7 +114,7 @@
 
 
     <div class="max-w-7xl w-full mt-0 md:mt-3 px-2 md:px-4">
-        <span class="font-semibold md:font-bold text-lg md:text-2xl text-gray-700">({{ $total_products_search }})</span>
+        <span class="font-semibold text-lg md:text-2xl text-gray-700">({{ $total_products_search }})</span>
         <h1 class="inline font-semibold md:font-bold text-lg md:text-2xl text-gray-900 mb-2">
              {{ $h1 }}
         </h1>
