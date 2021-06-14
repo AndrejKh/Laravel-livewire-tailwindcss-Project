@@ -11,6 +11,7 @@
         <!-- Primary Meta Tags -->
         <meta name="title" content="Compara todos los productos de tu carrito de compras en los abastos de tu ciudad - Kabasto.com">
         <meta name="description" content="Selecciona el supermercado que más te guste para realizar tus compras. Diviertete comparando en los diferentes abastos de tu ciudad - Kabasto.com">
+        <meta name="keywords" content="compara precios en venezuela">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
