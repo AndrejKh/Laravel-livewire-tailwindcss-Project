@@ -25,9 +25,9 @@
         </div>
     </div>
     <div class="px-2 pb-2 flex justify-center">
-        <a class="btn-primary" href="{{route('brands.products.details.show', ['brand' => $brand->slug, 'product' => $item->product->slug] ) }}" aria-label="ver detalles del producto {{ $item->product->title }}">
+        {{-- <a class="btn-primary" href="{{route('brands.products.details.show', ['brand' => $brand->slug, 'product' => $item->product->slug] ) }}" aria-label="ver detalles del producto {{ $item->product->title }}">
           Ver más
-        </a>
+        </a> --}}
     </div>
     <span class="idProductCard" hidden>{{$item->product->id}}</span>
 </div>
