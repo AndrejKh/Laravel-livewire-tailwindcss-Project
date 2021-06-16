@@ -9,7 +9,7 @@
             Registrarme
         </a>
 
-        <a class="text-base py-2" href="{{ route('login') }}" aria-label="ir a iniciar sesión">Iniciar sesión</a>
+        <a class="text-base py-4" href="{{ route('login') }}" aria-label="ir a iniciar sesión">Iniciar sesión</a>
 
     </div>
 @endauth
