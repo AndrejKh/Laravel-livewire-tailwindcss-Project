@@ -1,14 +1,14 @@
 @if ( $banners_promotionals && count($banners_promotionals) > 0)
-<div class="flex justify-center mt-5 md:mt-10 px-2">
-    <div class="max-w-7xl w-full">
-        <h1 class="font-semibold md:font-bold text-lg md:text-xl text-gray-900 inline">
-            Compara los diferentes abastos y supermercados de tu ciudad
-        </h1>
-        <p class="text-sm font-semibold text-gray-600">
-            Haz tus compras en el abasto que mejor se adapte a ti.
-        </p>
+    <div class="flex justify-center mt-5 md:mt-10 px-2">
+        <div class="max-w-7xl w-full">
+            <h1 class="font-semibold md:font-bold text-lg md:text-xl text-gray-900 inline">
+                Compara los diferentes abastos y supermercados de tu ciudad
+            </h1>
+            <p class="text-sm font-semibold text-gray-600">
+                Haz tus compras en el abasto que mejor se adapte a ti.
+            </p>
+        </div>
     </div>
-</div>
     <div class="flex justify-center px-2">
 
         <div class="owl-carousel owl-theme max-w-7xl my-4 text-center" id="carousel_banners_promotionals">

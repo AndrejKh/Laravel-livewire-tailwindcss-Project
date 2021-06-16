@@ -1,7 +1,4 @@
 @foreach ($principal_categories as $category)
-        @php
-            $products = $category->products;
-        @endphp
 
 
         <div class="flex justify-center mt-5 md:mt-10 px-2">
@@ -20,7 +17,7 @@
         <div class="flex justify-center px-2">
             <div class="owl-carousel owl-theme max-w-7xl my-1 text-center relative carousel_products">
 
-                @foreach ($products as $product)
+                @foreach ($category->products as $product)
 
                     @include('components.card_product')
 
