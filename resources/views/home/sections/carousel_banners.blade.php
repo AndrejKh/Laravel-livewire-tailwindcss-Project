@@ -6,6 +6,7 @@
                 <img src="/storage/{{$banner->banner}}" alt="imagen principal de kabasto">
             </div>
         @endforeach
+
     </div>
     <script>
         $('#carousel_banners_home').owlCarousel({

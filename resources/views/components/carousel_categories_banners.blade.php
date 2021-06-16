@@ -1,8 +1,6 @@
 @if ( $principal_categories && count($principal_categories) > 0)
 
-<div class="flex justify-center px-2">
-
-    <div class="owl-carousel owl-theme max-w-7xl my-4 text-center relative" id="carousel_banners_categories">
+    <div class="owl-carousel owl-theme max-w-7xl mx-auto my-4 text-center relative px-2" id="carousel_banners_categories">
         @foreach ($principal_categories as $category)
 
         <a class="w-full" href="{{route('products.category.show', $category->slug)}}" aria-label="ver los productos de la categoría {{$category->category}}">
@@ -17,23 +15,22 @@
         @endforeach
 
     </div>
-</div>
-<script>
-    $('#carousel_banners_categories').owlCarousel({
-        loop:true,
-        margin:10,
-        nav:false,
-        dots:false,
-        responsive:{
-            0:{
-                items:2
-            },
-            768:{
-                items:3
+    <script>
+        $('#carousel_banners_categories').owlCarousel({
+            loop:true,
+            margin:10,
+            nav:false,
+            dots:false,
+            responsive:{
+                0:{
+                    items:2
+                },
+                768:{
+                    items:3
+                }
             }
-        }
-    })
-</script>
+        })
+    </script>
 @endif
 
 
