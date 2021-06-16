@@ -9,7 +9,7 @@
     </span>
     <div class="px-2 pt-2">
         <div class="font-bold text-xl text-gray-900 hover:text-gray-700 text-left">
-          <a href="{{route('products.details.show', $product->slug)}}" aria-label="ver los precios del producto {{ $product->title }}">
+          <a class="py-3" href="{{route('products.details.show', $product->slug)}}" aria-label="ver los precios del producto {{ $product->title }}">
               {{ $product->title }}
           </a>
         </div>
