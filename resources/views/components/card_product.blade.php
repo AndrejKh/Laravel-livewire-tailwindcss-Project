@@ -16,7 +16,7 @@
     </div>
     <div class="px-2 py-1 grid grid-cols-1 gap-4">
         <div class="font-semibold text-sm md:mb-2 px-0 text-left">
-            <a class="text-gray-500 hover:text-gray-900 text-base" href="{{ route('products.category.show', $product->category->slug ) }}" aria-label="ver los precios de la categoría {{ $product->category->category }}">
+            <a class="text-gray-500 hover:text-gray-900 text-base py-4" href="{{ route('products.category.show', $product->category->slug ) }}" aria-label="ver los precios de la categoría {{ $product->category->category }}">
                 {{ $product->category->category }}
             </a>
         </div>
