@@ -5,7 +5,7 @@
 
         <span class="text-lg font-semibold text-gray-900 mb-4 text-left">Registrate gratis y compra</span>
 
-        <a class="rounded-md shadow-md text-white bg-green-500 w-full py-2 block text-center mt-3 mb-1" href="{{ route('register') }}" aria-label="ir a registrarse gratuitamente">
+        <a class="rounded-md shadow-md text-gray-800 bg-green-400 w-full py-2 block text-center mt-3 mb-1" href="{{ route('register') }}" aria-label="ir a registrarse gratuitamente">
             Registrarme
         </a>
 
