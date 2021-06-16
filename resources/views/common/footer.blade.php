@@ -63,7 +63,7 @@
         </div>
 
     </div>
-    <div class="mt-4 text-center w-full text-gray-600 text-sm mx-auto">
+    <div class="mt-4 text-center w-full text-gray-200 text-sm mx-auto">
         Kabasto, 2021.
     </div>
 </footer>
