@@ -24,16 +24,16 @@
                 Enlaces de interés
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('home') }}" aria-label="ir a la página de inicio de kabasto">Inicio</a>
+                <a class="py-4" href="{{ route('home') }}" aria-label="ir a la página de inicio de kabasto">Inicio</a>
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('brands.show') }}" aria-label="ver todos los abastos y supermercados">Abastos</a>
+                <a class="py-4" href="{{ route('brands.show') }}" aria-label="ver todos los abastos y supermercados">Abastos</a>
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('categorias') }}" aria-label="ver todas las categorías de kabasto">Categorias</a>
+                <a class="py-4" href="{{ route('categorias') }}" aria-label="ver todas las categorías de kabasto">Categorias</a>
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('products.show') }}" aria-label="ver todos los prodcutos de kabasto.com">Productos</a>
+                <a class="py-4" href="{{ route('products.show') }}" aria-label="ver todos los prodcutos de kabasto.com">Productos</a>
             </div>
         </div>
 
@@ -42,10 +42,10 @@
                 Información general
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('politics.privacy') }}" aria-label="ver las politicas de privacidad de kabasto">Politicas de privacidad</a>
+                <a class="py-4" href="{{ route('politics.privacy') }}" aria-label="ver las politicas de privacidad de kabasto">Politicas de privacidad</a>
             </div>
             <div class="text-gray-100 text-center md:text-left hover:text-gray-400">
-                <a href="{{ route('support.index') }}" aria-label="ir al soporte y ayuda de kabasto">Soporte</a>
+                <a class="py-4" href="{{ route('support.index') }}" aria-label="ir al soporte y ayuda de kabasto">Soporte</a>
             </div>
         </div>
 
