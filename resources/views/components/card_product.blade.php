@@ -25,9 +25,9 @@
         </div> --}}
     </div>
     <div class="px-2 pb-2 flex justify-center">
-        <a class="btn-primary" href="{{route('products.details.show', $product->slug)}}" aria-label="ver los precios del producto {{ $product->title }}">
+        {{-- <a class="btn-primary" href="{{route('products.details.show', $product->slug)}}" aria-label="ver los precios del producto {{ $product->title }}">
           Ver precios
-        </a>
+        </a> --}}
     </div>
     <span class="idProductCard" hidden>{{$product->id}}</span>
 </div>
