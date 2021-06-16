@@ -1,4 +1,4 @@
-@foreach ($categories as $category)
+@foreach ($principal_categories as $category)
         @php
             $products = $category->products;
         @endphp
