@@ -32,7 +32,7 @@
 
         <!-- Styles Carousel Lybrary -->
         <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.carousel.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.theme.default.min.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.theme.default.min.css') }}"> --}}
 
         <script src="{{ asset('vendor/jquery/jquery.min.js') }}" ></script>
         <script src="{{ asset('vendor/carouseljs/owl.carousel.min.js') }}"></script>
