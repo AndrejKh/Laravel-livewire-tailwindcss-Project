@@ -2,7 +2,7 @@
     <div class="px-2 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-9 gap-1 max-w-7xl mx-auto">
 
         <div class="col-span-1 sm:col-span-3 items-center md:text-left mb-8 md:mb-0">
-            <img class="mx-auto md:mx-0" src="{{ asset('logo.svg') }}" alt="logo de kabasto">
+            <img class="mx-auto md:mx-0" src="{{ asset('logo.svg') }}" alt="logo de kabasto" width="93" height="39" >
             <p class="mt-2 md:pr-10 text-white text-center md:text-left">
                 La plataforma enfocada en cambiar la manera de hacer mercado en Venezuela.
             </p>
