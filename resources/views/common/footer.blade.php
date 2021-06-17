@@ -8,13 +8,13 @@
             </p>
             <div class="mt-3 text-center md:text-left">
                 <a class="p-3" href="https://www.facebook.com/kabasto.ve" target="_blank" rel="noreferrer" aria-label="ir al perfil de facebook de kabasto">
-                    <img class="inline" src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto">
+                    <img class="inline" src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto" width="30px" height="30px">
                 </a>
                 <a class="p-3" href="https://www.instagram.com/kabasto_ve/" target="_blank" rel="noreferrer" aria-label="ir al perfil de instagram de kabasto">
-                    <img class="inline" src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto">
+                    <img class="inline" src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto" width="30px" height="30px">
                 </a>
                 <a class="p-3" href="https://twitter.com/kabasto_ve" target="_blank" rel="noreferrer" aria-label="ir al perfil de twitter de kabasto">
-                    <img class="inline" src="{{ asset('twitter.svg') }}" alt="imagen twitter de kabasto">
+                    <img class="inline" src="{{ asset('twitter.svg') }}" alt="imagen twitter de kabasto" width="30px" height="30px">
                 </a>
             </div>
         </div>
@@ -55,10 +55,10 @@
                 Pronto también en celulares
             </div>
             <div>
-                <img class="mx-auto md:mx-0" src="{{ asset('appstore.svg') }}" alt="imagen app store proximamente kabasto">
+                <img class="mx-auto md:mx-0" src="{{ asset('appstore.svg') }}" alt="imagen app store proximamente kabasto" width="158px" height="52px">
             </div>
             <div class="pt-3">
-                <img class="mx-auto md:mx-0" src="{{ asset('googleplay.svg') }}" alt="imagen google play proximamente kabasto">
+                <img class="mx-auto md:mx-0" src="{{ asset('googleplay.svg') }}" alt="imagen google play proximamente kabasto" width="158px" height="53px">
             </div>
         </div>
 
