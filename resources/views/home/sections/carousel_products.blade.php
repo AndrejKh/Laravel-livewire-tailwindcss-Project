@@ -1,6 +1,5 @@
 @foreach ($principal_categories as $category)
 
-
         <div class="max-w-7xl w-full mx-auto mt-5 md:mt-10 px-2">
             <h2 class="font-bold text-xl text-gray-900 inline">
                 {{ $category->category }} -
@@ -46,4 +45,4 @@
             })
         </script>
 
-    @endforeach
+@endforeach
