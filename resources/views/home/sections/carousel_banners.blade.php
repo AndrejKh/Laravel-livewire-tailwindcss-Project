@@ -3,7 +3,7 @@
 
         @foreach ($carousel_banners as $banner)
             <div class="item h-28 sm:h-40 md:h-60 lg:h-72 xl:h-80 ">
-                <img src="/storage/{{$banner->banner}}" alt="imagen principal de kabasto">
+                <img src="/storage/{{$banner->banner}}" alt="imagen principal de kabasto" width="100%" height="auto">
             </div>
         @endforeach
 
