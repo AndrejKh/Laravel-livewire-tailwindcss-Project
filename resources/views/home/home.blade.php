@@ -6,7 +6,7 @@
 
 @section('header')
 	{{-- precargar imagenes --}}
-	<link rel="preload" href="{{ asset( 'home.png' ) }}" as="image">
+	<link rel="preload" href="{{ asset( 'home.webp' ) }}" as="image">
 
     <meta name="robots" content="index,follow"/>
 
