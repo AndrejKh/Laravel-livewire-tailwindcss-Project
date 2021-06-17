@@ -58,7 +58,7 @@
                 $ruta = Route::currentRouteName();
                 $rutaArray = explode(".", $ruta);
             @endphp
-            @if ( !in_array('dashboard', $rutaArray) && !in_array('comparar', $rutaArray) )
+            @if ( !in_array('profile', $rutaArray) && !in_array('comparar', $rutaArray) )
 
                 {{-- Boton flotante de carrito de compras --}}
                 @include('common.buttom_float_shopping_car')
