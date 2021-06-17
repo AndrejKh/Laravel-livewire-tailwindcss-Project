@@ -19,7 +19,7 @@ class ProductComponent extends Component
 
     protected $queryString = ['status' => ['except' => 'active'], 'search' => ['except' => ''], 'perPage'  => ['except' => '10']];
 
-    public $product, $product_id, $title, $description, $slug, $photo_main_product, $category_id, $message_alert, $color_alert;
+    public $product, $product_id, $title, $description, $slug, $thumbnail, $photo_main_product, $category_id, $message_alert, $color_alert;
 
     public $search = '';
     public $status = 'active';
@@ -33,7 +33,8 @@ class ProductComponent extends Component
         'title' => 'required',
         'description' => 'required',
         'slug' => 'required',
-        'photo_main_product' => 'required'
+        'photo_main_product' => 'required',
+        'thumbnail' => 'required'
     ];
 
     // para cambiar los nombres de los atributos de validacion que vienen por default
@@ -63,21 +64,25 @@ class ProductComponent extends Component
             'title' => 'required|max:60',
             'description' => 'required',
             'category_id' => 'required',
-            'photo_main_product' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'photo_main_product' => 'required|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
         ]);
 
         //Guardo la imagen en la carpeta storage, enlace public
         $path_imagen = $this->photo_main_product->store('public');
+        // thumbnail
+        $path_thumbnail = $this->thumbnail->store('public');
 
         Product::create([
             'title' => $this->title,
             'description' => $this->description,
             'slug' => SlugService::createSlug(Product::class, 'slug', $this->title),
             'photo_main_product' => $path_imagen,
+            'thumbnail' => $path_thumbnail,
             'category_id' => $this->category_id
         ]);
         //reinicio las propiedades
-        $this->reset(['title', 'description', 'action', 'slug', 'photo_main_product', 'category_id', 'show_alert', 'message_alert', 'color_alert']);
+        $this->cancel();
         $this->show_alert = 'true';
         $this->color_alert = 'green';
         $this->message_alert = 'Creado exitosamente!';
@@ -97,23 +102,8 @@ class ProductComponent extends Component
     public function update()
     {
 
-        if ($this->photo_main_product) {
-            //validacion de valores
-            $this->validate();
+        if (!$this->photo_main_product && !$this->thumbnail) {
 
-            //Guardo la imagen en la carpeta storage, enlace public
-            $path_imagen = $this->photo_main_product->store('public');
-
-            $product = Product::find($this->product_id);
-
-            $product->update([
-                'title' => $this->title,
-                'description' => $this->description,
-                'slug' => SlugService::createSlug(Product::class, 'slug', $this->title),
-                'photo_main_product' => $path_imagen,
-                'category_id' => $this->category_id
-            ]);
-        } else {
             $this->validate([
                 'title' => 'required|max:60',
                 'description' => 'required',
@@ -129,9 +119,47 @@ class ProductComponent extends Component
                 'category_id' => $this->category_id
             ]);
         }
+        if($this->photo_main_product){
+
+            //validacion de valores
+            $this->validate();
+
+            //Guardo la imagen en la carpeta storage, enlace public
+            $path_imagen = $this->photo_main_product->store('public');
+
+            $product = Product::find($this->product_id);
+
+            $product->update([
+                'title' => $this->title,
+                'description' => $this->description,
+                'slug' => SlugService::createSlug(Product::class, 'slug', $this->title),
+                'photo_main_product' => $path_imagen,
+                'category_id' => $this->category_id
+            ]);
+
+        }
+        if($this->thumbnail){
+
+            //validacion de valores
+            $this->validate();
+
+            //Guardo la imagen en la carpeta storage, enlace public
+            $path_imagen_thumbnail = $this->thumbnail->store('public');
+
+            $product = Product::find($this->product_id);
+
+            $product->update([
+                'title' => $this->title,
+                'description' => $this->description,
+                'slug' => SlugService::createSlug(Product::class, 'slug', $this->title),
+                'thumbnail' => $path_imagen_thumbnail,
+                'category_id' => $this->category_id
+            ]);
+
+        }
 
         //reinicio las propiedades
-        $this->reset(['title', 'description', 'action', 'slug', 'photo_main_product', 'category_id', 'show_alert', 'message_alert', 'color_alert']);
+        $this->cancel();
         $this->show_alert = 'true';
         $this->color_alert = 'blue';
         $this->message_alert = 'Actualizado exitosamente!';
@@ -139,14 +167,14 @@ class ProductComponent extends Component
 
     public function cancel()
     {
-        $this->reset(['title', 'description', 'action', 'slug', 'photo_main_product', 'category_id', 'show_alert', 'message_alert', 'color_alert']);
+        $this->reset(['title', 'description', 'action', 'slug', 'thumbnail', 'photo_main_product', 'category_id', 'show_alert', 'message_alert', 'color_alert']);
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
         //reinicio las propiedades
-        $this->reset(['title', 'description', 'action', 'slug', 'photo_main_product', 'category_id', 'show_alert', 'message_alert', 'color_alert']);
+        $this->cancel();
         $this->show_alert = 'true';
         $this->color_alert = 'red';
         $this->message_alert = 'Eliminado exitosamente!';

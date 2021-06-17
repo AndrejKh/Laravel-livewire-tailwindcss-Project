@@ -47,6 +47,20 @@
             </div>
 
             <div class="mb-3">
+                <span>Selecciona la imagen pequeña(thumbnail) del producto</span> <label class="text-green-600 cursor-pointer mb-2" for="thumbnail">aqui</label>
+                <input type="file" class="hidden" id="thumbnail" wire:model="thumbnail">
+                @if ($thumbnail)
+                    <img class="inline-block w-8 h-8 rounded-xl" src="{{ $thumbnail->temporaryUrl() }}">
+                @endif
+                <div class="text-green-500" wire:loading wire:target="thumbnail">
+                    Cargando...
+                </div>
+                @error('thumbnail')
+                    <small class="text-red-400 italic">{{$message}}</small>
+                @enderror
+            </div>
+
+            <div class="mb-3">
                 <label class="form-label mb-2" for="description">Descripcion</label>
                 <textarea wire:model="description" class="form-control" id="description" rows="4" placeholder="Ingrese la descripcoin del post"></textarea>
                 @error('description')
