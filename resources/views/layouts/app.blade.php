@@ -59,6 +59,8 @@
                 @yield('content')
             </main>
 
+            {{-- Boton flotante de carrito de compras --}}
+            @include('common.buttom_float_shopping_car')
         </div>
 
         @stack('modals')
