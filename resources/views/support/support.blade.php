@@ -20,7 +20,7 @@
         <meta property="og:url" content="https://kabasto.com/soporte">
         <meta property="og:title" content="Kabasto.com -  Políticas de privacidad de la plataforma">
         <meta property="og:description" content="Kabasto.com - Nos encantaría saber todas tus dudas y ayudarte a solucionarlas. ¡Tranquilo! estamos para servirte y ayudarte a incrementar tus ventas.">
-        <meta property="og:image" content="{{ asset('home.png') }}">
+        <meta property="og:image" content="{{ asset( 'home.webp' ) }}">
 
         {{-- url canonical --}}
         <link rel="canonical" href="https://kabasto.com/soporte" />

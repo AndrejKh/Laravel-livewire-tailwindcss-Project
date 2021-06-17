@@ -20,7 +20,7 @@
         <meta property="og:url" content="https://kabasto.com/supermercados">
         <meta property="og:title" content="Eligue el abasto de tu preferencia en nuestra red - Kabasto.com">
         <meta property="og:description" content="Selecciona el abasto o supermercado donde deseas comprar en tu ciudad. Elige la opción de tu preferencia - Kabasto.com">
-        <meta property="og:image" content="{{ asset( 'home.png' ) }}">
+        <meta property="og:image" content="{{ asset( 'home.webp' ) }}">
 
         {{-- url canonical --}}
         <link rel="canonical" href="https://kabasto.com/supermercados" />

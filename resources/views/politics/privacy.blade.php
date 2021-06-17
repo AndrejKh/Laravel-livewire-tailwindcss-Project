@@ -20,7 +20,7 @@
         <meta property="og:url" content="https://kabasto.com/politicas-de-privacidad">
         <meta property="og:title" content="Kabasto.com -  Políticas de privacidad de la plataforma">
         <meta property="og:description" content="Kabasto.com - Lee nuestras políticas de privacidad, e informate sobre nuestro compromiso con la seguridad de todos tus datos.">
-        <meta property="og:image" content="{{ asset('home.png') }}">
+        <meta property="og:image" content="{{ asset( 'home.webp' ) }}">
 
         {{-- url canonical --}}
         <link rel="canonical" href="https://kabasto.com/politicas-de-privacidad" />

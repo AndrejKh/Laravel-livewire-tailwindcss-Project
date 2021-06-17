@@ -20,7 +20,7 @@
 	<meta property="og:url" content="https://kabasto.com/">
 	<meta property="og:title" content="Compara precios y compra todos los productos de tu mercado - Kabasto">
 	<meta property="og:description" content="Selecciona todos los productos de tu mercado, comprara en los diferentes abastos y supermercados de tu ciudad, y compra! - Kabasto.com">
-	<meta property="og:image" content="{{ asset( 'home.png' ) }}">
+	<meta property="og:image" content="{{ asset( 'home.webp' ) }}">
 
 	{{-- url canonical --}}
 	<link rel="canonical" href="https://kabasto.com/" />
