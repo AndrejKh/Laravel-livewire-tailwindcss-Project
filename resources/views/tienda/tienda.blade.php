@@ -24,6 +24,11 @@
 
         {{-- url canonical --}}
         <link rel="canonical" href="https://kabasto.com/supermercado/{{ $tienda->slug }}" />
+
+        <!-- Styles Carousel Lybrary -->
+    <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.carousel.min.css') }}">
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}" ></script>
+    <script src="{{ asset('vendor/carouseljs/owl.carousel.min.js') }}" ></script>
     @endsection
 
 @section('content')

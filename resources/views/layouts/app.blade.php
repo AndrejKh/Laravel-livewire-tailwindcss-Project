@@ -27,12 +27,6 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-        <!-- Styles Carousel Lybrary -->
-        <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.carousel.min.css') }}">
-
-        <script src="{{ asset('vendor/jquery/jquery.min.js') }}" asyn></script>
-        <script src="{{ asset('vendor/carouseljs/owl.carousel.min.js') }}" asyn></script>
-
         @livewireStyles
 
         <!-- Scripts -->
