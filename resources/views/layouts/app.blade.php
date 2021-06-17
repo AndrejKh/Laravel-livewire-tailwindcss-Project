@@ -53,8 +53,18 @@
                 @yield('content')
             </main>
 
-            {{-- Boton flotante de carrito de compras --}}
-            @include('common.buttom_float_shopping_car')
+            {{-- Verifico si estoy en el administrador, no deberia verse el carrito aqui --}}
+            @php
+                $ruta = Route::currentRouteName();
+                $rutaArray = explode(".", $ruta);
+            @endphp
+            @if ( !in_array('comparar', $rutaArray) )
+
+                {{-- Boton flotante de carrito de compras --}}
+                @include('common.buttom_float_shopping_car')
+
+            @endif
+
         </div>
 
         @stack('modals')
