@@ -24,17 +24,13 @@
 
         @yield('header')
 
-        <!-- Fonts -->
-        {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
-
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
         <!-- Styles Carousel Lybrary -->
         <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.carousel.min.css') }}">
-        {{-- <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.theme.default.min.css') }}"> --}}
 
-        <script src="{{ asset('vendor/jquery/jquery.min.js') }}" ></script>
+        {{-- <script src="{{ asset('vendor/jquery/jquery.min.js') }}" ></script> --}}
         <script src="{{ asset('vendor/carouseljs/owl.carousel.min.js') }}"></script>
 
         @livewireStyles
