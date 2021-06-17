@@ -22,9 +22,6 @@
 
         @yield('header')
 
-        <!-- Fonts -->
-        {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
-
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
@@ -52,23 +49,11 @@
             <main>
                 @yield('content')
             </main>
-
-            {{-- Verifico si estoy en el administrador, no deberia verse el carrito aqui --}}
-            @php
-                $ruta = Route::currentRouteName();
-                $rutaArray = explode(".", $ruta);
-            @endphp
-            @if ( !in_array('profile', $rutaArray) && !in_array('cms', $rutaArray) && !in_array('dashboard', $rutaArray) && !in_array('comparar', $rutaArray) )
-
-                {{-- Boton flotante de carrito de compras --}}
-                {{-- @include('common.buttom_float_shopping_car') --}}
-
-            @endif
+            
         </div>
 
         @stack('modals')
 
         @livewireScripts
-        {{-- @include('common.footer') --}}
     </body>
 </html>
