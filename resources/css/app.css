@@ -2,6 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import 'owlcarousel.css';
+
 @import 'components.css';
 @import 'carousels.css';
 @import 'animations.css';
