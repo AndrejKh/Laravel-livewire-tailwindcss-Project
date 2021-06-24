@@ -1,6 +1,7 @@
 // Script para Carrito de compras
 
-$(window).on('load', function () {
+
+document.addEventListener("DOMContentLoaded", function() {
     /* VISIBILIDAD DEL CARRITO DE COMPRAS */
 
     // Modal de carrito de compras
@@ -13,9 +14,43 @@ $(window).on('load', function () {
         item.addEventListener('click', event => {
             // Hago visible el modal
             modalShoppingCar.style.display = 'block';
+
+            // Hay una tienda seleccionada --- en caso de si, se esta agregando los productos de esta tienda
+            brandSelectedInBrandDetailView = localStorage.getItem('brandSelectedInBrandDetailView');
+            //  obtengo el contenedor donde se mostrara la marca seleccionada
+            const containerBrandShoppingCar = document.getElementById('containerBrandShoppingCar');
+            containerBrandShoppingCar.innerHTML = '';
+            // Obtengo el componente card de ejemplo
+            const cardBrandShoppingCar = document.getElementById('cardBrandShoppingCar');
+            if( brandSelectedInBrandDetailView !== null ){
+                // Llevo el string al formato JSON
+                brandSelected = JSON.parse(brandSelectedInBrandDetailView);
+
+                // creo un clon del card de ejemplo
+                newCardBrandShoppingCar = cardBrandShoppingCar.firstElementChild.cloneNode(true);
+                // Obtengo los campos del card  clonado
+                let newTitle = newCardBrandShoppingCar.querySelector('#titleCardBrandShoppingCar');
+                let newImage = newCardBrandShoppingCar.querySelector('#imgCardBrandShoppingCar');
+                let newAddress = newCardBrandShoppingCar.querySelector('#addressCardBrandShoppingCar');
+                // Asigno los valores del local storage a los campos html
+                newTitle.textContent = brandSelected.title;
+                newTitle.href = brandSelected.href;
+                newImage.style.backgroundImage = brandSelected.image;
+                newAddress.textContent = brandSelected.address;
+                // Inserto el card en el modal
+                containerBrandShoppingCar.appendChild(newCardBrandShoppingCar);
+
+                // agrego el nombre de la tienda donde se esta comprando
+                document.getElementById('titleBrandInShoppingCar').textContent = brandSelected.title;
+
+                // Muestro la tienda
+                document.getElementById('brandInShoppingCar').removeAttribute('hidden');
+
+            }
+
+
             // Obtengo los productos del local storage
             ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-
             // Hay elementos en el carrito de compras?
             if(ProductsLocalStorage !== null) {
                 // Llevo el string al formato JSON
@@ -37,18 +72,140 @@ $(window).on('load', function () {
                     let newIdProductCardModalShoppingCar = newCardProductShoppingCar.querySelector('.idProductCardModalShoppingCar');
                     let newTitle = newCardProductShoppingCar.querySelector('.titleCardProductShoppingCar');
                     let newQuantity = newCardProductShoppingCar.querySelector('.quantityCardProductShoppingCar');
+                    let newPrice = newCardProductShoppingCar.querySelector('.priceItemInShoppingCar');
                     let newImage = newCardProductShoppingCar.querySelector('.imgCardProductShoppingCar');
                     // Asigno los valores del local storage a los campos html
                     newIdProductCardModalShoppingCar.textContent = product.id;
                     newTitle.textContent = product.title;
                     newQuantity.textContent = product.quantity;
                     newImage.src = product.image;
+
+                    // Si hay tienda seleccionada, debo colocar los precios de cada producto en esa tienda
+                    if( brandSelectedInBrandDetailView !== null ){
+                        newPrice.textContent = product.price;
+                    }
+
+
                     // Inserto el card en el modal
                     containerProductsShoppingCar.appendChild(newCardProductShoppingCar);
                 });
 
 
             }
+
+
+
+            // Eliminar la tienda donde se esta comprando
+            const deleteBrandDetailInShoppingCar = document.getElementById('deleteBrandDetailInShoppingCar');
+
+            if(deleteBrandDetailInShoppingCar !== null){
+                deleteBrandDetailInShoppingCar.addEventListener('click', event => {
+                    localStorage.removeItem('brandSelectedInBrandDetailView');
+                    document.getElementById('brandInShoppingCar').setAttribute("hidden", true);
+
+                    // verifico si hay produtos en el carrito
+                    // Obtengo los productos del local storage
+                    ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+
+                    if( ProductsLocalStorage !== null ){
+                        arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+
+                        if( arrayProductsLocalStorage.length < 1 ){
+                            // cambio la url d el enlace en caso de tener el carrito vacio
+                            document.getElementById('enlaceNoBrand').style.display = 'block';
+                            document.getElementById('enlaceConBrand').style.display = 'none';
+
+                        }else{
+                            // Actualizo las cantidades de los productos en el DOM, en la vista de la tienda
+
+                            // Ahora verifico si estoy en la vista de la tienda que se acaba de eliminar,
+                            let idProductsBrand = document.querySelectorAll('.idProductBrand');
+
+                            if( idProductsBrand.length > 0 ){
+                                // coloco todas las cantidades de los productos a cero, en el DOM
+                                idProductsBrand.forEach(product => {
+
+                                    product.parentElement.querySelector('.quantityProductDetail').textContent = 0
+
+                                });
+
+                            }
+                        }
+                    }
+
+                })
+            }
+
+
+
+            // Finalizar compra, al dar click en el boton comprar
+            const finalizarCompra = document.getElementById('finalizarCompra');
+            finalizarCompra.addEventListener('click', event => {
+                // alert("'asfsd")
+
+                // Hay una tienda seleccionada --- en caso de si, se esta agregando los productos de esta tienda
+                const brandSelectedInBrandDetailView = localStorage.getItem('brandSelectedInBrandDetailView');
+                const brand = JSON.parse(brandSelectedInBrandDetailView);
+
+                if (brandSelectedInBrandDetailView !== null) {
+
+                    // Obtengo los productos del local storage
+                    const ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+                    const products = JSON.parse(ProductsLocalStorage);
+
+                    // // Obtengo loa ubicacion del local storage
+                    // const ubicationLocalStorage = localStorage.getItem('ubication');
+                    // const ubication = JSON.parse(ubicationLocalStorage);
+
+
+                    const amountSelected = localStorage.getItem('amount');
+                    const amount = JSON.parse(amountSelected);
+
+                    const itemsSelected = localStorage.getItem('itemsSelected');
+                    const items = JSON.parse(itemsSelected);
+
+                    const csrf_token = document.getElementById('csrf_token').textContent;
+
+                    const data = {
+                        products: products,
+                        // ubication: ubication,
+                        brand: brand,
+                        amount: amount,
+                        items: items
+                    }
+
+                    console.log(data)
+
+                    // axios({
+                    //     method  : 'POST',
+                    //     url : '/post/create-order',
+                    //     data : data,
+                    //     headers: {
+                    //         'content-type': 'application/json',
+                    //         'X-CSRF-Token': csrf_token
+                    //         }
+                    // })
+                    // .then((res)=>{
+                    //     if(res.data === 0){
+                    //         // El usuario no esta logeado, lo redirijo a la vista de login
+                    //         window.location.href = "/login?r=1";
+                    //     }else{
+                    //         // elimino los datos del local storage
+                    //         localStorage.removeItem('itemsSelected');
+                    //         localStorage.removeItem('amount');
+                    //         localStorage.removeItem('brandSelectedToBuy');
+                    //         localStorage.removeItem('ubication');
+                    //         localStorage.removeItem('productsShoppingCar');
+                    //         // redirecciono a la vista compras
+                    //         window.location.href = "/compras";
+                    //     }
+
+                    // })
+                    // .catch((err) => {console.log(err)});
+
+                }
+
+            })
         });
     });
 
@@ -101,6 +258,7 @@ $(window).on('load', function () {
 
             // El carrito tiene productos
             }else{
+
                 arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
 
                 let productInShppingCar = false;
@@ -228,11 +386,8 @@ $(window).on('load', function () {
 
                     let quantity = parseInt( rootContainer.querySelector('.quantityCardProductShoppingCar').textContent.trim() );
 
-                    let productInShppingCar = false;
-
                     arrayProductsLocalStorage.forEach(product => {
                         if (idProduct == product.id ){
-                            productInShppingCar = true;
                             quantity++;
                             product.quantity = quantity;
                         }
@@ -248,6 +403,8 @@ $(window).on('load', function () {
                     // actualizo el span de carrito de compras
                     updateTotalProductsShoppingCar(arrayProductsLocalStorage);
                     shownHideCompareFloatButton(arrayProductsLocalStorage);
+                    // actualizo la cantidad en el DOM de la vista de tienda, en caso se estar en la vista de detalles de la tienda seleccionada
+                    updateQuantityProductsInBrandView(idProduct, quantity);
                     // Almaceno el producot en el localStorage
                     localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
 
@@ -316,6 +473,8 @@ $(window).on('load', function () {
                         // actualizo el span de carrito de compras
                         updateTotalProductsShoppingCar(arrayProductsLocalStorage);
                         shownHideCompareFloatButton(arrayProductsLocalStorage);
+                        // actualizo la cantidad en el DOM de la vista de tienda, en caso se estar en la vista de detalles de la tienda seleccionada
+                        updateQuantityProductsInBrandView(idProduct, quantity);
                         // Almaceno el producot en el localStorage
                         localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
                     }
@@ -337,7 +496,13 @@ $(window).on('load', function () {
                     arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
 
                     // En que elemento se dio click? en el spna, en el svg o en el path?
-                    const rootContainer = event.target.parentNode;
+                    if( event.target.tagName == "path"){
+                        var rootContainer = event.target.parentNode.parentNode.parentNode;
+                    }else if( event.target.tagName == "svg" ){
+                        var rootContainer = event.target.parentNode.parentNode;
+                    }else{
+                        var rootContainer = event.target.parentNode;
+                    }
 
                     const idProduct = rootContainer.querySelector('.idProductCardModalShoppingCar').textContent;
 
@@ -377,8 +542,6 @@ $(window).on('load', function () {
 
         });
     });
-
-
 
 
 
@@ -423,7 +586,7 @@ $(window).on('load', function () {
     $(document).on("click",function(e) {
         const contentModalShopinngCar = document.getElementById('contentModalShopinngCar');
         const modalShoppingCar = document.getElementById('modalShoppingCar');
-    
+
         // Verifico si el elemento al q se le dio click esta fuera del modal
         // Debe ser distinto ademas del boton q hace mostrar el modal
         let band = 0;
@@ -433,11 +596,11 @@ $(window).on('load', function () {
                 band = 1;
             }
         });
-    
-    
+
+
             // console.log(e)
             // console.log(contentModalShopinngCar.contains(e.target))
-    
+
             // verifico si se dio click fuera del modal
             // if( !contentModalShopinngCar.contains(e.target) && !band){
             //         modalShoppingCar.style.display = 'none';
@@ -468,14 +631,48 @@ function removeCardProductShoppingCar ( idProduct ){
 
 // funcion para ocultar o mostrar botones y textos dependiendo de si hay o no productos en el localstorage
 function localStorageProducts(arrayProductsLocalStorage){
+    // Hay una tienda seleccionada --- en caso de si, se esta agregando los productos de esta tienda
+    brandSelectedInBrandDetailView = localStorage.getItem('brandSelectedInBrandDetailView');
+
     if (arrayProductsLocalStorage.length > 0 ){
+
+        if(brandSelectedInBrandDetailView === null ){
+            document.getElementById('finalizarCompraButton').style.display = 'none';
+            document.getElementById('compararButton').style.display = 'block';
+            document.getElementById('compararButtonOutline').style.display = 'none';
+        }else{
+            document.getElementById('finalizarCompraButton').style.display = 'block';
+            document.getElementById('compararButton').style.display = 'none';
+            document.getElementById('compararButtonOutline').style.display = 'block';
+
+        }
         document.getElementById('conProdcutos').style.display = 'block';
         document.getElementById('sinProdcutos').style.display = 'none';
-        document.getElementById('compararButton').style.display = 'block';
     }else{
+
+        if(brandSelectedInBrandDetailView === null ){
+            document.getElementById('enlaceNoBrand').style.display = 'block';
+            document.getElementById('enlaceConBrand').style.display = 'none';
+
+        }else{
+            brandSelected = JSON.parse(brandSelectedInBrandDetailView);
+            href = brandSelected.href;
+            let enlaceConBrand = document.getElementById('enlaceConBrand');
+
+            // enlaceConBrand.querySelector('a');
+            enlaceConBrand.querySelector('a').href = href;
+            console.log( href )
+
+            enlaceConBrand.style.display = 'block';
+            document.getElementById('enlaceNoBrand').style.display = 'none';
+        }
         document.getElementById('sinProdcutos').style.display = 'block';
         document.getElementById('conProdcutos').style.display = 'none';
         document.getElementById('compararButton').style.display = 'none';
+        document.getElementById('compararButtonOutline').style.display = 'none';
+
+        document.getElementById('finalizarCompraButton').style.display = 'none';
+
     }
 }
 
@@ -512,7 +709,7 @@ function updateTotalProductsShoppingCar(arrayProductsLocalStorage){
 
 }
 
-// Mostrar u ocultar el boton flotante de comparar precios 
+// Mostrar u ocultar el boton flotante de comparar precios
 function shownHideCompareFloatButton(arrayProductsLocalStorage){
     let compareFloatButton = document.getElementById('compareFloatButton');
 
@@ -525,6 +722,32 @@ function shownHideCompareFloatButton(arrayProductsLocalStorage){
         compareFloatButton.classList.add("shownButton");
     }
 }
+
+
+// actualizo la cantidad en el DOM de la vista de tienda, en caso se estar en la vista de detalles de la tienda seleccionada
+function updateQuantityProductsInBrandView(product_id, quantity){
+
+    // Ahora verifico si estoy en la vista de la tienda que se acaba de eliminar,
+    let idProductsBrand = document.querySelectorAll('.idProductBrand');
+
+    if( idProductsBrand.length > 0 ){
+        // coloco todas las cantidades de los productos a cero, en el DOM
+        idProductsBrand.forEach(product => {
+
+            if( product.textContent == product_id ){
+
+
+                product.parentElement.querySelector('.quantityProductDetail').textContent = quantity
+
+            }
+
+        });
+
+    }
+
+}
+
+
 
 
 

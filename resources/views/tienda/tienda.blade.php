@@ -71,13 +71,49 @@
         {{-- Al cargar la pagina --}}
         <script>
             $(window).on('load', function () {
-                // Obtengo los productos del local storage
-                ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-                // Transformo el string a array
-                arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+                // Actualizo las cantidades de los productos en el DOM al cargar la pagina
 
+                // Confirmo que estoy en la vista de la tienda que he elegido, y donde estoy comprando
+                // Obtengo la tienda del local storage
+                brandSelectedInBrandDetailView = localStorage.getItem('brandSelectedInBrandDetailView');
 
+                if(brandSelectedInBrandDetailView !== null){
+                    brandSelected = JSON.parse(brandSelectedInBrandDetailView);
+                    const brandIdCurrent = document.getElementById('brandIdCurrent').textContent;
 
+                    if( brandSelected.id == brandIdCurrent ){
+
+                        // Obtengo los productos del local storage
+                        ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+                        // Transformo el string a array
+                        arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+
+                        let idProductInLocalStorage = new Array();
+                        let quantityProductInLocalStorage = new Array();
+
+                        arrayProductsLocalStorage.forEach(product => {
+                            idProductInLocalStorage.push(product.id);
+                            quantityProductInLocalStorage.push(product.quantity);
+                        })
+
+                        // obtngo todos los cards de productos del DOm
+                        const productsId = document.querySelectorAll('.idProductBrand');
+                        // Recorro todos los cards del DOM
+                        productsId.forEach(product => {
+
+                            product_id = product.textContent;
+
+                            // Verifico si el producto esta agregado al carrito de compras
+                            if( idProductInLocalStorage.includes( product_id ) ){
+                                key = idProductInLocalStorage.indexOf(product_id);
+
+                                // En caso de si, actualizo la cantidad en el DOM
+                                product.parentElement.querySelector('.quantityProductDetail').textContent = quantityProductInLocalStorage[key]
+                            }
+                        });
+
+                    }
+                }
 
             });
         </script>
@@ -95,6 +131,8 @@
                 addProduct.forEach(item => {
 
                     item.addEventListener('click', function(event){
+                        // Actualizo la tienda en el local Storage
+                        setBrandInLocalStorage();
 
                         let tagName = event.target.tagName;
                         if( tagName == 'SPAN' ){
@@ -114,6 +152,7 @@
                         const idProduct = rootCardProduct.querySelector('.idProductBrand').textContent;
                         const titleProduct = rootCardProduct.querySelector('.titleProductBrand').textContent;
                         const srcImageProduct = rootCardProduct.querySelector('.srcImageProductBrand').src;
+                        const priceItem = rootCardProduct.querySelector('.priceItem').textContent;
 
                         // El carrito tiene productos?
                         if( ProductsLocalStorage === null ){
@@ -122,8 +161,9 @@
 
                             let newProduct = {
                                 id: idProduct,
-                                title: titleProduct,
+                                title: titleProduct.trim(),
                                 quantity: quantity,
+                                price: priceItem,
                                 image: srcImageProduct
                             }
 
@@ -167,8 +207,9 @@
 
                                 let newProduct = {
                                     id: idProduct,
-                                    title: titleProduct,
+                                    title: titleProduct.trim(),
                                     quantity: quantity,
+                                    price: priceItem,
                                     image: srcImageProduct
                                 }
 
@@ -294,20 +335,42 @@
                 }else{
                     compareFloatButton.classList.remove("hiddeButton");
                     compareFloatButton.classList.add("shownButton");
-                    setBrandInLocalStorage();
+                    // setBrandInLocalStorage();
                 }
             }
 
             function setBrandInLocalStorage(){
-                const brandIdCurrent = document.getElementById('brandIdCurrent').textContent;
                 // Obtengo la marca del local storage
-                ProductsLocalStorage = localStorage.getItem('brandSelectedInBrandDetailView');
+                brandSelectedInBrandDetailView = localStorage.getItem('brandSelectedInBrandDetailView');
 
-                if( ProductsLocalStorage === null ){
-                    localStorage.setItem('brandSelectedInBrandDetailView',brandIdCurrent);
+                const brandIdCurrent = document.getElementById('brandIdCurrent').textContent;
+                const titleBrand = document.getElementById('titleBrand').textContent.trim();
+                const imageBrand = document.getElementById('imageBrand').style.backgroundImage.slice(5, -2);
+                const addressBrand = document.getElementById('addressBrand').textContent;
+                const slugBrand = document.getElementById('hrefBrand').textContent;
+
+                const siteUrl = document.getElementById('siteUrl').textContent.trim();
+
+                newBrand = {
+                    id: brandIdCurrent,
+                    title: titleBrand,
+                    image: `url('${imageBrand}')`,
+                    address: addressBrand,
+                    href: `${siteUrl}/supermercado/${slugBrand}`
+                }
+
+                if( brandSelectedInBrandDetailView === null ){
+                    // como se esta agregando una tienda desde cero, debo eliminar todos los productos antes agregados
+                    localStorage.removeItem('productsShoppingCar');
+
+                    localStorage.setItem('brandSelectedInBrandDetailView',JSON.stringify(newBrand));
                 }else{
-                    if( ProductsLocalStorage != brandIdCurrent ){
-                        alert('estas agregando un porducto de otra tienda')
+                    let brand = JSON.parse(brandSelectedInBrandDetailView);
+                    if( brand.id != brandIdCurrent ){
+                        // como se esta agregando un0 nueva tienda, debo eliminar todos los productos antes agregados
+                        localStorage.removeItem('productsShoppingCar');
+                        // alert('estas agregando un porducto de otra tienda')
+                        localStorage.setItem('brandSelectedInBrandDetailView',JSON.stringify(newBrand));
                     }
                 }
 

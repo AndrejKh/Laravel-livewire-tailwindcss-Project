@@ -30,7 +30,7 @@
     <div class="px-2 text-center">
         <span class="text-xl font-semibold">
             @php $price = number_format($item->price, 2, '.', ','); @endphp
-            {{ $price }} USD$
+            <span class="priceItem">{{ $price }}</span> USD$
         </span>
         <span class="text-xs md:text-xs text-gray-600 font-light">
                 IVA Incluido
