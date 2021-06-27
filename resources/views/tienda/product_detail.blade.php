@@ -42,9 +42,12 @@
                     <a class="text-blue-500 font-light text-xs" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ver detalles del abasto {{ $brand->brand }}">
                         En: {{ $brand->brand }}
                     </a>
-                    <h1 class="text-xl md:text-2xl text-gray-900 leading-5 font-semibold md:font-bold md:mb-5 lg:mb-6" id="titleProduct">
-                        {{ $product->title }} - {{ $brand->brand }}
-                    </h1>
+                    <div class="text-xl md:text-2xl text-gray-900 leading-5 font-semibold md:font-bold">
+                        <h1 class="inline md:mb-5 lg:mb-6" id="titleProduct">
+                            {{ $product->title }}
+                        </h1>
+                        <span>- {{ $brand->brand }}</span>
+                    </div>
                     <span class="text-sm text-gray-900">
                         Categoría:
                     </span>
@@ -70,9 +73,12 @@
                         <a class="text-left text-blue-500 font-light text-xs block mt-4" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ver detalles del abasto {{ $brand->brand }}">
                             En: {{ $brand->brand }}
                         </a>
-                        <h2 class="text-left text-2xl text-gray-900 font-semibold">
-                            {{ $product->title }} - {{ $brand->brand }}
-                        </h2>
+                        <div class="text-2xl text-gray-900 font-semibold text-left">
+                            <h2 class="inline md:mb-5 lg:mb-6" id="titleProduct">
+                                {{ $product->title }}
+                            </h2>
+                            <span>- {{ $brand->brand }}</span>
+                        </div>
                         <div class="text-left">
                             <a class="text-sm text-gray-900" href="{{route('products.category.show', $product->category->slug)}}" aria-label="ver los productos de la categoría {{ $product->category->category }}">
                                 Categoría: <span class="text-gray-400">{{ $product->category->category }}</span>
@@ -88,7 +94,10 @@
                         <div class="">
                             <span class="text-3xl font-regular">
                                 @php $price = number_format($item->price, 2, '.', ','); @endphp
-                                {{ $price }} USD$
+                                <span id="priceProductDetailBrandView">
+                                    {{ $price }}
+                                </span>
+                                USD$
                             </span>
                             <span class="text-gray-600">
                                 IVA Incluido

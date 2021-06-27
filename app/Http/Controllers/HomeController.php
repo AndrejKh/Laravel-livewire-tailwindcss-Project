@@ -31,8 +31,10 @@ class HomeController extends Controller
         $banners_promotionals = BannerPromocional::latest('id')->where('page', 'promotions')->where('status', 'active')->get();
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(5)->get();
         $products = Product::inRandomOrder()->where('status', 'active')->take(15)->get();
+        $states = State::all();
+        $cities = City::where('state_id', 1)->get();
 
-        return view('home.home', compact('carousel_banners', 'principal_categories','products', 'banners_promotionals'));
+        return view('home.home', compact('carousel_banners', 'principal_categories','products', 'banners_promotionals', 'states', 'cities'));
     }
 
     // Vitirna de productos, controlador del input search del navbar

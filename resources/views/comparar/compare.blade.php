@@ -399,7 +399,7 @@
                 city: ''
             };
 
-            // Almaceno el producot en el localStorage
+            // Almaceno la ubicacion en el localStorage
             localStorage.setItem('ubication',JSON.stringify(objectUbicationLocalStorage));
 
             // vacio el select de ciudades
@@ -1027,7 +1027,7 @@
                         localStorage.removeItem('itemsSelected');
                         localStorage.removeItem('amount');
                         localStorage.removeItem('brandSelectedToBuy');
-                        localStorage.removeItem('ubication');
+                        // localStorage.removeItem('ubication');
                         localStorage.removeItem('productsShoppingCar');
                         // redirecciono a la vista compras
                         window.location.href = "/compras";

@@ -364,6 +364,13 @@
                     localStorage.removeItem('productsShoppingCar');
 
                     localStorage.setItem('brandSelectedInBrandDetailView',JSON.stringify(newBrand));
+
+                    // Muestro los precios de los productos
+                    // Oculto los precios de cada producto en el modal de carrito de compras
+                    const productInShoppingCarDOM = document.querySelectorAll('.priceItemInShoppingCar');
+                    productInShoppingCarDOM.forEach(product => {
+                        product.style.display = 'block';
+                    });
                 }else{
                     let brand = JSON.parse(brandSelectedInBrandDetailView);
                     if( brand.id != brandIdCurrent ){

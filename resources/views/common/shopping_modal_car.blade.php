@@ -1,4 +1,4 @@
-<div class="fixed z-40 inset-0 overflow-y-auto ease-out duration-400 " style="display:none;" id="modalShoppingCar">
+<div class="fixed inset-0 overflow-y-auto ease-out duration-400" style="display:none;z-index: 2100000000 !important;" id="modalShoppingCar">
 
     <div class="flex md:items-end justify-center min-h-screen md:pt-4 md:px-4 pb-20 text-center sm:block sm:p-0">
 
@@ -42,11 +42,11 @@
                 {{-- Card de Ejemplo para la tienda seleccionada--- NO Eleiminar FUNDAMENTAL para el Carrito de compras --}}
                 <div hidden id="cardBrandShoppingCar">
                     <article class="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-6 p-2 md:p-3 lg:p-4 shadow-md bg-white rounded-lg relative">
-                        <span class="w-6 h-6 md:w-7 md:h-7 absolute -top-2 -right-2 rounded-full bg-gray-600 text-white flex items-center justify-center cursor-pointer" id="deleteBrandDetailInShoppingCar">
+                        {{-- <span class="w-6 h-6 md:w-7 md:h-7 absolute -top-2 -right-2 rounded-full bg-gray-600 text-white flex items-center justify-center cursor-pointer" id="deleteBrandDetailInShoppingCar">
                             <svg class="h-2 cursor-pointer stroke-current stroke-3" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12.639 11.0735L23.3484 0.993304C23.5898 0.766088 23.5898 0.3977 23.3484 0.170484C23.1069 -0.0567312 22.7156 -0.0567312 22.4741 0.170484L11.7648 10.2506L1.05536 0.170412C0.813966 -0.0568039 0.422582 -0.0568039 0.181184 0.170412C-0.0602917 0.397627 -0.0602917 0.766016 0.181184 0.993231L10.8905 11.0735L0.181107 21.1537C-0.0603689 21.3809 -0.0603689 21.7493 0.181107 21.9766C0.301806 22.0902 0.459982 22.147 0.618236 22.147C0.776489 22.147 0.934665 22.0902 1.05536 21.9766L11.7648 11.8964L22.4741 21.9766C22.5949 22.0902 22.753 22.147 22.9113 22.147C23.0695 22.147 23.2277 22.0902 23.3484 21.9766C23.5898 21.7493 23.5898 21.3809 23.3484 21.1537L12.639 11.0735Z" fill="white"/>
                             </svg>
-                        </span>
+                        </span> --}}
                         <div class="col-span-1 self-center">
                             <div class="bg-no-repeat bg-cover bg-center h-12 w-12 md:w-16 md:h-16 overflow-hidden rounded-full mx-auto" id="imgCardBrandShoppingCar"></div>
                         </div>
@@ -77,7 +77,6 @@
                                 <div class="text-base">
                                     <span class="priceItemInShoppingCar">
                                     </span>
-                                    USD$
                                 </div>
                                 <div class="flex justify-between mb-2">
                                     <div class="flex bg-gray-50 rounded-full">
@@ -115,6 +114,13 @@
                 </div>
 
 
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xl font-semibold text-gray-900 bg-gray-100 px-4 pt-5 pb-4 sm:p-6 sm:pb-4" {{-- style="display: none;" --}}>
+                <div class="md:col-start-3 col-span-1">
+                    TOTAL
+                </div>
+                <div class="md:col-start-4 col-span-1 text-right" id="amountShoppingCar"></div>
             </div>
 
             <div class="bg-gray-100 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
