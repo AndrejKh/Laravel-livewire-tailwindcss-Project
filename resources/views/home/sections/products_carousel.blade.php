@@ -20,26 +20,26 @@
 
     </div>
 
-    <script>
-        $('#carousel_products_categories').owlCarousel({
-            loop:true,
-            margin:15,
-            nav:false,
-            dots:false,
-            responsive:{
-                0:{
-                    items:2
-                },
-                640:{
-                    items:3
-                },
-                768:{
-                    items:4
-                },
-                1024:{
-                    items:5
-                }
-            }
-        })
-    </script>
 @endif
+<script>
+    $('.carousel_products_categories').owlCarousel({
+        loop:true,
+        margin:15,
+        nav:false,
+        dots:false,
+        responsive:{
+            0:{
+                items:2
+            },
+            640:{
+                items:3
+            },
+            768:{
+                items:4
+            },
+            1024:{
+                items:5
+            }
+        }
+    })
+</script>

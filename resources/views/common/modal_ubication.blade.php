@@ -6,9 +6,6 @@
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
       </div>
 
-
-      <!-- This element is to trick the browser into centering the modal contents. -->
-
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
 
       <div class="max-w-7xl w-full sm:max-w-xl md:max-w-lg inline-block align-bottom md:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle bg-gray-100" role="dialog" aria-modal="true" aria-labelledby="modal-headline" id="contentModalShopinngCar">
@@ -22,33 +19,25 @@
             </span>
         </div>
 
-        <div>
+        <div class="px-3">
 
-            <div class="bg-gray-100 px-3 pt-2 xl:pt-5 pb-4 sm:pb-4">
-
-                <span class="text-lg font-semibold mb-3">Selecciona el estado y ciudad</span>
-                <div class="grid grid-cols-2 gap-2 mt-3">
-                    <select class="col-span-1 rounded-lg h-12 shadow-sm bg-white border-0 py-2 text-sm font-semibold cursor-pointer" id="selectState">
-                        @foreach ($states as $state)
-                            <option value="{{ $state->id }}"> {{ $state->state }} </option>
-                        @endforeach
-                    </select>
-                    <select class="col-span-1 rounded-lg h-12 shadow-sm bg-white border-0 py-2 text-sm font-semibold cursor-pointer ml-3" id="selectCity">
-                        @foreach ($cities as $city)
-                            <option value="{{ $city->id }}"> {{ $city->city }} </option>
-                        @endforeach
-                    </select>
-                </div>
-
+            <span class="text-lg font-semibold mb-3">Selecciona el estado y ciudad</span>
+            <div class="grid grid-cols-2 gap-2 mt-3">
+                <select class="col-span-1 rounded-lg h-12 shadow-sm bg-white border-0 py-2 text-sm font-semibold cursor-pointer" id="selectState">
+                    @foreach ($states as $state)
+                        <option value="{{ $state->id }}"> {{ $state->state }} </option>
+                    @endforeach
+                </select>
+                <select class="col-span-1 rounded-lg h-12 shadow-sm bg-white border-0 py-2 text-sm font-semibold cursor-pointer ml-3" id="selectCity">
+                    @foreach ($cities as $city)
+                        <option value="{{ $city->id }}"> {{ $city->city }} </option>
+                    @endforeach
+                </select>
             </div>
 
-            <div class="bg-gray-100 px-4 py-5 sm:px-6 sm:flex sm:flex-row-reverse">
-                <span class="mr-0">
-                    <div class="inline-flex justify-center w-full rounded-md border cursor-pointer border-transparent px-14 py-2 bg-gray-900 text-white font-semibold text-base leading-6 shadow-md hover:bg-gray-800 focus:outline-none focus:blue-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 items-center" aria-label="ir a comparar precios" id="setUbication">
-                        Listo
-                        <svg class="fill-current text-white mr-2" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#fff"><rect fill="none" height="24" width="24"/><path d="M14.29,5.71L14.29,5.71c-0.39,0.39-0.39,1.02,0,1.41L18.17,11H3c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h15.18l-3.88,3.88 c-0.39,0.39-0.39,1.02,0,1.41l0,0c0.39,0.39,1.02,0.39,1.41,0l5.59-5.59c0.39-0.39,0.39-1.02,0-1.41L15.7,5.71 C15.32,5.32,14.68,5.32,14.29,5.71z"/></svg>
-                    </div>
-                </span>
+            <div class="inline-flex justify-center w-full rounded-md border cursor-pointer border-transparent my-5 py-2 bg-gray-900 text-white font-semibold text-base leading-6 shadow-md hover:bg-gray-800 focus:outline-none focus:blue-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 items-center" aria-label="ir a comparar precios" id="setUbication">
+                Listo
+                <svg class="fill-current text-white mr-2" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#fff"><rect fill="none" height="24" width="24"/><path d="M14.29,5.71L14.29,5.71c-0.39,0.39-0.39,1.02,0,1.41L18.17,11H3c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h15.18l-3.88,3.88 c-0.39,0.39-0.39,1.02,0,1.41l0,0c0.39,0.39,1.02,0.39,1.41,0l5.59-5.59c0.39-0.39,0.39-1.02,0-1.41L15.7,5.71 C15.32,5.32,14.68,5.32,14.29,5.71z"/></svg>
             </div>
         </div>
       </div>
