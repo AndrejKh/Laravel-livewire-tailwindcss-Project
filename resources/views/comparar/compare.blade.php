@@ -279,7 +279,7 @@
 
                             setProductsFromCompareView( product, event, 'substract');
 
-                        });
+                        }, {passive: true});
 
                         // Se incrementa la cantidad
                         const addProduct = newCardProductShoppingCar.querySelector('.addProduct');
@@ -287,13 +287,13 @@
 
                             setProductsFromCompareView( product, event, 'add');
 
-                        });
+                        }, {passive: true});
 
                     });
 
                 }
 
-            });
+            }, {passive: true});
         });
 
         // Funcion que incrementar o reducir la cantidad de los productos
@@ -398,7 +398,7 @@
              **********************/
              setBrandsByLocation(state_id, 'state')
 
-        })
+        }, {passive: true})
 
         // Al cambiar el select de ciudades
         cityUbication.addEventListener('change', event => {
@@ -427,7 +427,7 @@
              **********************/
              setBrandsByLocation(city_id, 'city')
 
-        })
+        }, {passive: true})
     </script>
 
     <script>
@@ -783,11 +783,10 @@
                                         // seteo el monto total en el local storage
                                         setAmountInLocalStorage(amount);
 
-                                    })
-
+                                    }, {passive: true})
                                 });
                             }
-                        });
+                        }, {passive: true});
                     });
 
                 }
@@ -846,7 +845,7 @@
                             // desactivo el boton de comprar
                             document.getElementById('finalizarCompra').classList.replace("bg-green-500", "bg-gray-300");
                         }
-                    })
+                    }, {passive: true})
                 })
 
             });
@@ -961,7 +960,7 @@
 
             }
 
-        })
+        }, {passive: true})
     </script>
 
 @endsection

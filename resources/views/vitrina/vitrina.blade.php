@@ -206,7 +206,7 @@
                 // Redirecciono a la vista de productos
                 window.location.href = "/listado-de-productos";
 
-            })
+            }, {passive: true})
         }
     </script>
 

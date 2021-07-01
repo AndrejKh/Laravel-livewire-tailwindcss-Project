@@ -349,11 +349,11 @@
         openShareModal.addEventListener('click', event => {
             // alert("sdf")
             shareModal.style.display = 'block';
-        });
+        }, {passive: true});
 
         closeShareModal.addEventListener('click', event => {
             shareModal.style.display = 'none';
-        });
+        }, {passive: true});
 
          // Oculto el modal al dar click afuera de el
          $(document).on("click",function(e) {

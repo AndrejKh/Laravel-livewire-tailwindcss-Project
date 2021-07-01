@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         }
                     }
 
-                })
+                }, {passive: true})
             }
 
             updateAmount();
@@ -200,15 +200,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 }
 
-            })
-        });
+            }, {passive: true})
+        }, {passive: true});
     });
 
     // Ocultar el modal de carrito de compras
     if(shoppingCarButtonModalClose !== null){
         shoppingCarButtonModalClose.addEventListener('click', function(){
             modalShoppingCar.style.display = 'none';
-        });
+        }, {passive: true});
     }
 
     /* Agregar Productos al carrito desde la vista de detalles del producto */
@@ -427,7 +427,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             }
 
-        });
+        }, {passive: true});
     }
 
     if (subtractProduct !== null ){
@@ -480,9 +480,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }
 
-        });
+        }, {passive: true});
     }
-
 
     /* Manejar los productos del Modal de Carrito de Compras*/
 
@@ -537,10 +536,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
                     updateAmount();
 
-                });
+                }, {passive: true});
             });
 
-        });
+        }, {passive: true});
     });
 
     // Reducir la cantidad de productos en el modal de carrito de comrpas, desde el modal del carrito
@@ -615,15 +614,16 @@ document.addEventListener("DOMContentLoaded", function() {
                         updateAmount();
                     }
 
-                });
+                } ,{passive: true});
             });
 
-        });
+        }, {passive: true});
     });
 
     // Eliminar prodcuto del modal de carrito de compras, con boton de elminar que esta en el modal del carrito
     document.querySelectorAll('.shoppingCarButtonOpenModal').forEach(item => {
         item.addEventListener('click', event => {
+
             document.querySelectorAll('.removeProductModalShoppingCar').forEach(item => {
                 item.addEventListener('click', event => {
 
@@ -690,10 +690,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Almaceno el producot en el localStorage
                     localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
                     updateAmount();
-                });
+                }, {passive: true});
             });
 
-        });
+        }, {passive: true});
     });
 
 
@@ -756,7 +756,7 @@ document.addEventListener("DOMContentLoaded", function() {
             //         modalShoppingCar.style.display = 'none';
             // }
     })
-});
+}, {passive: true});
 
 
 
