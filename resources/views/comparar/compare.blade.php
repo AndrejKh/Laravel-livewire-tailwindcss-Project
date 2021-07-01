@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
     @section('title')
-       Compara los productos y abastos - Kabasto
+       Compara abastos y supermercados de tu ciudad - Kabasto
     @endsection
 
     @section('header')
@@ -29,10 +29,10 @@
 @section('content')
 
     <div class="flex justify-center">
-    <div class="max-w-7xl w-full px-2">
+    <div class="max-w-7xl w-full px-2 pb-10">
 
-        <h1 class="text-gray-900 font-bold text-xl lg:text-2xl mt-3">Comparar precios en abastos y supermercados</h1>
-        <h2 class="text-gray-600 mb-4">Selecciona el que más se adapte a tí, y compra.</h2>
+        <h1 class="text-gray-900 font-bold text-lg lg:text-2xl mt-3">Comparar abastos y supermercados</h1>
+        <h2 class="text-gray-600 mb-4 text-sm lg:text-base">Selecciona el que más se adapte a tí, y compra.</h2>
 
         <div class="p-3 rounded-md shadow-sm bg-white ">
             <div class="grid grid-cols-5 cursor-pointer getItemsShoppingCar">
@@ -42,7 +42,7 @@
                         Productos selecionados
                     </div>
                 </div>
-                <div class="col-span-1 self-center ml-auto ">
+                <div class="col-span-1 self-center ml-auto">
                     <div class="flex h-8 w-8 self-center text-center bg-white rounded-full shadow-sm lg:shadow-md items-center cursor-pointer">
                         <svg class="fill-current text-green-400 h-2 mx-auto return_rotate_select_icon svg_icon" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.29866 0.333143L7.50671 4.75228L12.7148 0.333143C13.2383 -0.111048 14.0839 -0.111048 14.6074 0.333143C15.1309 0.777335 15.1309 1.49487 14.6074 1.93907L8.44631 7.16686C7.92282 7.61105 7.07718 7.61105 6.55369 7.16686L0.392617 1.93907C-0.130872 1.49487 -0.130872 0.777335 0.392617 0.333143C0.916107 -0.0996583 1.77517 -0.111048 2.29866 0.333143Z" />
@@ -93,21 +93,27 @@
             @endforeach
             </select>
             <select class="col-span-1 rounded-lg shadow-sm bg-white border-0 py-2 text-sm font-semibold cursor-pointer" id="cityUbication">
+                @foreach ($cities as $city)
+                    <option value="{{ $city->id }}"> {{ $city->city }} </option>
+                @endforeach
             </select>
         </div>
 
-        <div class="text-gray-900 font-bold text-md mt-4 mb-2">Selecciona el supermercado donde compraras</div>
-        {{-- Mostrar los productos del carrito --}}
+        <h2 class="text-gray-900 font-semibold text-md mt-8 mb-2">Selecciona el supermercado donde compraras</h2>
+        {{-- Contenedor de todas las marcas --}}
         <div class="grid grid-cols-1 gap-2" id="containerBrands"></div>
         {{-- Card modelo de Supermercados --}}
         <div class="hidden" id="cardModelBrand">
-            <div class="rounded-md shadow-sm bg-white grid grid-cols-5 gap-1 py-2 px-2">
-                <span class="col-span-1 text-center self-center">
+            <div class="rounded-md shadow-sm bg-white grid grid-cols-12 gap-1 py-2 px-2">
+                <div class="col-span-1 self-center text-center">
+                    <input class="rounded-full h-5 w-5 inputCheckboxselectBrand" type="checkbox" name="brand">
+                </div>
+                <span class="col-span-2 text-center self-center">
                    <span class="totalPriceBrand font-bold text-xl text-gray-900"></span>
                    <strong class="text-xs block font-bold">$ USD</strong>
                 </span>
-                <span class="col-span-3 text-gray-900 font-semibold text-sm self-center">
-                    <a class="titleBrand"></a>
+                <span class="col-span-7 text-gray-900 text-sm self-center">
+                    <div class="cursor-pointer titleBrand font-semibold seePriceItemsBrand"></div>
                     <div>
                         <svg class="inline h-4 w-4" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
                         <svg class="inline h-4 w-4" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
@@ -124,20 +130,20 @@
                         </span>
                     </div> --}}
                 </span>
-                <div class="col-span-1 self-center">
-                    <div class="flex h-8 w-8 self-center text-center bg-gry-100 rounded-full shadow-md items-center cursor-pointer  ml-auto seePriceItemsBrand">
+                <div class="col-span-2 self-center">
+                    <div class="flex h-8 w-8 self-center text-center bg-gry-100 rounded-full shadow-md items-center cursor-pointer bg-white ml-auto seePriceItemsBrand">
                         <svg class="fill-current text-green-400 h-2 mx-auto return_rotate_select_icon svgIconSelect" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.29866 0.333143L7.50671 4.75228L12.7148 0.333143C13.2383 -0.111048 14.0839 -0.111048 14.6074 0.333143C15.1309 0.777335 15.1309 1.49487 14.6074 1.93907L8.44631 7.16686C7.92282 7.61105 7.07718 7.61105 6.55369 7.16686L0.392617 1.93907C-0.130872 1.49487 -0.130872 0.777335 0.392617 0.333143C0.916107 -0.0996583 1.77517 -0.111048 2.29866 0.333143Z" />
                         </svg>
                     </div>
                 </div>
-                <div class="col-span-5 grid grid-cols-1 md:grid-cols-2 gap-2 containerItemsBrand"></div>
+                <div class="col-span-12 grid grid-cols-1 md:grid-cols-2 gap-2 containerItemsBrand"></div>
                 <span class="idBrand" hidden></span>
             </div>
         </div>
         {{-- Card modelo para los items de Supermercados --}}
         <div class="hidden" id="cardModelItemsBrand">
-            <div class="rounded-md shadow-sm bg-white grid grid-cols-5 gap-2 py-2 my-1" >
+            <div class="rounded-md shadow-sm bg-white grid grid-cols-5 gap-2 py-2" >
                 <span class="col-span-1 text-center self-center">
                     <img class="imgCardItem" src="" alt="">
                 </span>
@@ -171,10 +177,9 @@
                     </a>
                 </div>
                 <div class="col-span-1 lg:col-span-3 w-full">
-                    <button class="rounded-md shadow-sm py-2 w-full block text-center bg-gray-300 text-white" id="comprar" aria-label="comprar">
-                        Comprar
+                    <button class="rounded-md shadow-sm py-2 w-full block text-center bg-gray-300 text-white" id="finalizarCompra" aria-label="finalizar la comprar">
+                        Finalizar compra
                     </button>
-                    <span hidden id="csrf_token">{{ csrf_token() }}</span>
                 </div>
                 <div class="col-span-1 lg:hidden w-full">
                     <a class="rounded-md shadow-sm py-2 w-full block text-center bg-white text-red-600 border-red-600" href="{{ route('home') }}">
@@ -216,11 +221,12 @@
 
             getBrands();
 
-
-            // elimino los datos del local storage
-            localStorage.removeItem('itemsSelected');
-            localStorage.removeItem('amount');
-            localStorage.removeItem('brandSelectedToBuy');
+            // Obtengo la marca del Local Storage
+            const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
+            if( brandSelectedToBuy !== null ){
+                // habilito el boton de finalizar compra
+                document.getElementById('finalizarCompra').classList.replace("bg-gray-300", "bg-green-500");
+            }
         }
     </script>
 
@@ -271,102 +277,15 @@
                         const substractProduct = newCardProductShoppingCar.querySelector('.substractProduct');
                         substractProduct.addEventListener('click', event => {
 
-                            // Obtengo los productos del local storage
-                            ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-                            arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
-
-                            // En que elemento se dio click? en el spna, en el svg o en el path?
-                            if ( event.target.nodeName == 'SPAN' ){
-                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode;
-                            }else if( event.target.nodeName == 'svg' ){
-                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
-                            }else {
-                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                            }
-
-                            const idProduct = rootContainer.querySelector('.idProduct').textContent;
-                            let quantityProductCard = rootContainer.querySelector('.quantityCardProduct');
-
-                            let quantity = parseInt( quantityProductCard.textContent.trim() );
-
-                            if (quantity > 0){
-
-                                let productInShppingCar = false;
-                                let keyArray = 0;
-
-                                arrayProductsLocalStorage.forEach(product => {
-                                    if (idProduct == product.id ){
-                                        productInShppingCar = true;
-                                        quantity--;
-                                        product.quantity = quantity;
-                                    }
-                                    if (!productInShppingCar){
-                                        keyArray++;
-                                    }
-                                });
-
-                                // Agrego las cantidades al DOM
-                                let quantityTotalProducts = document.getElementById('quantityProducts');
-                                let quantityProducts = parseInt( quantityTotalProducts.textContent.trim() );
-                                quantityTotalProducts.textContent = --quantityProducts;
-
-                                let quantityTitle = rootContainer.querySelector('.quantityCard');
-                                quantityTitle.textContent = quantity;
-                                quantityProductCard.textContent = quantity;
-
-                                // Almaceno el producot en el localStorage
-                                localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
-
-                                // Cargo de nuevo todas las tiendas
-                                getBrands();
-                            }
+                            setProductsFromCompareView( product, event, 'substract');
 
                         });
 
                         // Se incrementa la cantidad
                         const addProduct = newCardProductShoppingCar.querySelector('.addProduct');
                         addProduct.addEventListener('click', event => {
-                            // Obtengo los productos del local storage
-                            ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-                            arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
 
-                            // En que elemento se dio click? en el spna, en el svg o en el path?
-                            if ( event.target.nodeName == 'SPAN' ){
-                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode;
-                            }else if( event.target.nodeName == 'svg' ){
-                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
-                            }else {
-                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                            }
-                            const idProduct = rootContainer.querySelector('.idProduct').textContent;
-                            let quantityProductCard = rootContainer.querySelector('.quantityCardProduct');
-
-                            let quantity = parseInt( quantityProductCard.textContent.trim() );
-
-                            let productInShppingCar = false;
-
-                            arrayProductsLocalStorage.forEach(product => {
-                                if (idProduct == product.id ){
-                                    productInShppingCar = true;
-                                    quantity++;
-                                    product.quantity = quantity;
-                                }
-                            });
-
-                            // Agrego las cantidades al DOM
-                            let quantityTotalProducts = document.getElementById('quantityProducts');
-                            let quantityProducts = parseInt( quantityTotalProducts.textContent.trim() );
-                            quantityTotalProducts.textContent = ++quantityProducts;
-
-                            let quantityTitle = rootContainer.querySelector('.quantityCard');
-                            quantityTitle.textContent = quantity;
-                            quantityProductCard.textContent = quantity;
-
-                            // Almaceno el producot en el localStorage
-                            localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
-
-                            // Cargo de nuevo todas las tiendas
-                            getBrands();
+                            setProductsFromCompareView( product, event, 'add');
 
                         });
 
@@ -376,6 +295,60 @@
 
             });
         });
+
+        // Funcion que incrementar o reducir la cantidad de los productos
+        function setProductsFromCompareView( product, event, typeSet ){
+            // Obtengo los productos del local storage
+            ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+            arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+
+            // En que elemento se dio click? en el spna, en el svg o en el path?
+            if ( event.target.nodeName == 'SPAN' ){
+                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode;
+            }else if( event.target.nodeName == 'svg' ){
+                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
+            }else {
+                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+            }
+
+            const idProduct = rootContainer.querySelector('.idProduct').textContent;
+            let quantityProductCard = rootContainer.querySelector('.quantityCardProduct');
+
+            let quantity = parseInt( quantityProductCard.textContent.trim() );
+
+            if( ( quantity > 0 && typeSet == 'substract' ) || typeSet == 'add'){
+
+                arrayProductsLocalStorage.forEach(product => {
+                    if (idProduct == product.id ){
+                        if( typeSet == 'add' ){
+                            product.quantity = ++quantity;
+                        }else{
+                            product.quantity = --quantity;
+                        }
+                    }
+                });
+
+                // Agrego las cantidades al DOM
+                let quantityTotalProducts = document.getElementById('quantityProducts');
+                let quantityProducts = parseInt( quantityTotalProducts.textContent.trim() );
+                if( typeSet == 'add' ){
+                    quantityTotalProducts.textContent = ++quantityProducts;
+                }else{
+                    quantityTotalProducts.textContent = --quantityProducts;
+                }
+
+                let quantityTitle = rootContainer.querySelector('.quantityCard');
+                quantityTitle.textContent = quantity;
+                quantityProductCard.textContent = quantity;
+
+                // Almaceno el producot en el localStorage
+                localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
+
+                // Cargo de nuevo todas las tiendas
+                getBrands();
+            }
+
+        }
     </script>
 
     {{-- Script para obtener las tiendas dependiendo del estado y ciudad --}}
@@ -392,7 +365,7 @@
 
             const ubication = JSON.parse(ubicationLocalStorage);
 
-            objectUbicationLocalStorage = {
+            newUbicationLocalStorage = {
                 state_id: state_id,
                 state: state,
                 city_id: '',
@@ -400,7 +373,7 @@
             };
 
             // Almaceno la ubicacion en el localStorage
-            localStorage.setItem('ubication',JSON.stringify(objectUbicationLocalStorage));
+            localStorage.setItem('ubication',JSON.stringify(newUbicationLocalStorage));
 
             // vacio el select de ciudades
             cityUbication.innerHTML = ''
@@ -423,7 +396,7 @@
             /********************
              Ahora busco los supermercados con el id del estado, y agrego los resultados en el DOM. via api
              **********************/
-             setBrandsByStateId(state_id);
+             setBrandsByLocation(state_id, 'state')
 
         })
 
@@ -452,470 +425,12 @@
             /********************
              Ahora busco los supermercados con el id del estado, y agrego los resultados en el DOM. via api
              **********************/
-             setBransByCityId(city_id);
+             setBrandsByLocation(city_id, 'city')
 
         })
     </script>
 
     <script>
-        // Funcion que busca e imprime en el DOM, los supermercados, buscados por el id de un estado, via api
-        function setBrandsByStateId(state_id){
-            // Luego vacio el contendor de los supermercados
-            document.getElementById('containerBrands').innerHTML = '';
-            // Obtengo los productos del local storage
-            ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-
-            // Obtengo el array de los id de los productos del carrito de compras
-            if (ProductsLocalStorage !== null) {
-                // Paso a formato JSON el string que obtuve del local Storage
-                arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
-                // Creo un array de los id de los productos, esto para enviar a la api
-                const array_products_id_shoppping_car = [];
-                arrayProductsLocalStorage.forEach(product => {
-                    array_products_id_shoppping_car.push( product.id );
-                });
-                // El contendor de los supermercados
-                const containerBrands = document.getElementById('containerBrands');
-                // Obtengo el componente card de ejemplo de cada supermercado
-                const modelCardBrand = document.getElementById('cardModelBrand');
-
-                // Obtengo las marcas del estado, via api
-                axios.get('/get/brand-state/'+state_id).then( function(response){
-                    let brands = response.data;
-                    // Hay supermercados haciendo delivery en este estado?
-                    if (brands.length > 0) {
-
-                        brands.forEach(brand => {
-                            // creo un clon del card de ejemplo
-                            newCardBrand = modelCardBrand.firstElementChild.cloneNode(true);
-
-                            let title = newCardBrand.querySelector('.titleBrand');
-                            let totalPrice = newCardBrand.querySelector('.totalPriceBrand');
-                            let id_brand = newCardBrand.querySelector('.idBrand');
-
-                            // Asigno los valores del local storage a los campos html
-                            id_brand.textContent = brand.id;
-                            title.textContent = brand.brand;
-                            title.href = 'supermercado/'+brand.slug;
-
-                            let precioTotal = 0;
-                            // Creo el card para el supermercado en el html
-                            axios.get('/get/items-price/'+brand.id+'/'+array_products_id_shoppping_car).then( function(respuesta){
-                                let items = respuesta.data;
-
-                                items.forEach(item => {
-
-                                    arrayProductsLocalStorage.forEach(productShoppingCar => {
-
-                                        if( productShoppingCar.id == item.product_id ){
-                                            precioTotal += productShoppingCar.quantity*item.price
-                                            return
-                                        }
-
-                                    });
-
-                                });
-
-                                // Asigno el precio total del supermercado
-                                totalPrice.textContent = precioTotal.toFixed(2);
-                            });
-
-                            containerBrands.appendChild(newCardBrand);
-
-                        });
-
-                        // Obtengo el componente card de ejemplo para los items de cada supermercado
-                        const cardModelItemsBrand = document.getElementById('cardModelItemsBrand');
-
-                        // Agrego un listener para buscar los precios de los productos
-                        let seePriceItemsBrand = containerBrands.querySelectorAll('.seePriceItemsBrand');
-
-                        // Al darle click para ver los productos de la marca
-                        seePriceItemsBrand.forEach(item => {
-                            item.addEventListener('click', event => {
-
-                                    // En que elemento se dio click? en el span, en el svg o en el path? obtengo el nodo principal
-                                    if ( event.target.nodeName == 'DIV' ){
-                                        var rootContainer = event.target.parentNode.parentNode;
-                                    }else if( event.target.nodeName == 'svg' ){
-                                        var rootContainer = event.target.parentNode.parentNode.parentNode;
-                                    }else {
-                                        var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode;
-                                    }
-
-                                    let brand_id = rootContainer.lastElementChild.textContent;
-                                    let brand = rootContainer.querySelector('.titleBrand').textContent;
-                                    // // Obtengo el contenedor donde iran los items de cada supermercado
-                                    let containerItemsBrand = rootContainer.querySelector('.containerItemsBrand');
-                                    let svgIconSelect = rootContainer.querySelector('.svgIconSelect');
-
-                                    if( containerItemsBrand.childElementCount > 0 ){
-                                        containerItemsBrand.innerHTML = '';
-                                        rootContainer.classList.replace("bg-green-50", "bg-white");
-                                        // Girar icono de select
-                                        svgIconSelect.classList.replace("rotate_select_icon", "return_rotate_select_icon");
-                                    }else{
-                                        rootContainer.classList.replace("bg-white", "bg-green-50");
-                                        // Girar icono de select
-                                        svgIconSelect.classList.replace("return_rotate_select_icon", "rotate_select_icon");
-
-                                        axios.get('/get/items-brand/'+brand_id+'/'+array_products_id_shoppping_car).then( function(respuesta){
-                                            let items = respuesta.data;
-
-                                            arrayProductsLocalStorage.forEach(productShoppingCar => {
-
-                                                // creo un clon del card de ejemplo
-                                                newCardItemsBrand = cardModelItemsBrand.firstElementChild.cloneNode(true);
-                                                let productIdItem = newCardItemsBrand.querySelector('.productId');
-                                                let titleItem = newCardItemsBrand.querySelector('.titleItemBrand');
-                                                let imgCardItem = newCardItemsBrand.querySelector('.imgCardItem');
-                                                let priceItem = newCardItemsBrand.querySelector('.priceItemBrandUnidad');
-                                                let quantityItem = newCardItemsBrand.querySelector('.quantityItemBrandUnidad');
-                                                let totalPriceItemBrand = newCardItemsBrand.querySelector('.totalPriceItemBrand');
-                                                let quantityShoppingCar = productShoppingCar.quantity;
-                                                // Asigno los valores del local storage a los campos html
-
-                                                titleItem.textContent = `(${ quantityShoppingCar }) ${ productShoppingCar.title }`;
-                                                imgCardItem.src = productShoppingCar.image;
-
-                                                let itemInShoppingCar = false;
-
-                                                items.forEach(item => {
-
-                                                    if ( productShoppingCar.id == item.product_id) {
-                                                        productIdItem.textContent = item.product_id;
-                                                        quantityItem.textContent = quantityShoppingCar;
-                                                        priceItem.textContent = `${ item.price.toFixed(2) }`;
-                                                        totalPriceItemBrand.textContent = `${ (item.price*quantityShoppingCar).toFixed(2) }$`;
-                                                        itemInShoppingCar = true;
-                                                        return
-                                                    }
-
-                                                });
-                                                if (!itemInShoppingCar) {
-                                                    let containerPrices = newCardItemsBrand.querySelector('.containerPrices').style.display = 'none';
-                                                    let productNotAble = newCardItemsBrand.querySelector('.productNotAble');
-                                                    productNotAble.textContent = `Producto no disponible`
-                                                }
-
-                                                // Agrego el card del item
-                                                containerItemsBrand.appendChild(newCardItemsBrand);
-                                            });
-                                            // Agrego el boton para seleccionar el supermercado
-                                            let buttonSelectBrand = document.createElement("div");
-                                            buttonSelectBrand.textContent = 'Seleccionar supermercado';
-                                            buttonSelectBrand.classList.add("btn-primary-sm", "col-span-1", "md:col-span-2");
-                                            // Agrego el card del item
-                                            containerItemsBrand.appendChild(buttonSelectBrand);
-
-                                            // Agrego un listener de click al boton de seleccionar supermercado
-                                            buttonSelectBrand.addEventListener('click', buttonSelect => {
-
-                                                // verifico si ya se habia seleccionado otro supermercado
-                                                let brandsTest = containerBrands.children;
-                                                for (let item of brandsTest) {
-                                                    item.classList.replace("bg-green-200", "bg-white");
-                                                }
-
-                                                rootContainer.classList.replace("bg-green-50", "bg-green-200");
-                                                let buttonComprar = document.getElementById('comprar');
-                                                buttonComprar.classList.replace("bg-gray-300", "bg-green-500");
-
-                                                // Girar icono de select
-                                                svgIconSelect.classList.replace("rotate_select_icon", "return_rotate_select_icon");
-                                                // Seteo el supermercado en el local storage
-                                                // Obtengo el supermercado del local storage
-                                                const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
-                                                const brandToBuy = JSON.parse(brandSelectedToBuy);
-                                                var newBrandSelectedToBuy = {
-                                                    id: brand_id,
-                                                    brand: brand
-                                                };
-                                                // Almaceno el producto en el localStorage
-                                                localStorage.setItem('brandSelectedToBuy',JSON.stringify(newBrandSelectedToBuy));
-
-                                                // busco el precio total de la marca
-                                                let amount = containerItemsBrand.parentNode.querySelector('.totalPriceBrand').textContent;
-
-                                                let amountTotal = {
-                                                    amount: amount
-                                                };
-
-                                                // Almaceno el preico total en el local storage
-                                                localStorage.setItem('amount',JSON.stringify(amountTotal));
-
-                                                // Ahora guardo en Local Storage los productos de la marca que elegi
-                                                const itemsSelected = containerItemsBrand.querySelectorAll('.containerPrices');
-
-                                                let arrayItemsSelected = [];
-                                                itemsSelected.forEach(item => {
-                                                    let quantityItemSelected = item.querySelector('.quantityItemBrandUnidad').textContent;
-
-                                                    if(quantityItemSelected !== ''){
-                                                        // obtengo el precio del item
-                                                        let priceItemBrandUnidad = item.querySelector('.priceItemBrandUnidad').textContent;
-                                                        // Obtengo el id del producto
-                                                        let idProductSelected = item.querySelector('.productId').textContent;
-
-                                                        itemSelected = {
-                                                            product_id: idProductSelected,
-                                                            quantity: quantityItemSelected,
-                                                            price: priceItemBrandUnidad
-                                                        }
-                                                        arrayItemsSelected.push(itemSelected)
-                                                    }
-
-                                                })
-                                                // Almaceno el producto en el localStorage
-                                                localStorage.setItem('itemsSelected',JSON.stringify(arrayItemsSelected));
-
-                                                containerItemsBrand.innerHTML = '';
-
-                                            })
-                                        });
-                                    }
-                            });
-                        });
-
-                    // NO Hay supermercados haciendo delivery en este estado
-                    }else{
-                        let spanNoBrands = document.createElement("span");
-                        spanNoBrands.textContent = 'No se encontraron supermercados en este estado.';
-                        spanNoBrands.classList.add("text-gray-600","font-light","px-2","py-4", "border-b-2", "border-gray-600","bg-red-50","text-sm");
-                        containerBrands.appendChild(spanNoBrands);
-                    }
-
-                });
-            }
-        }
-
-        // Funcion que busca e imprime en el DOM, los supermercados, buscados por el id de una ciudad, via api
-        function setBransByCityId(city_id){
-            // Luego vacio el contendor de los supermercados
-            document.getElementById('containerBrands').innerHTML = '';
-            // Obtengo los productos del local storage
-            ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-
-            // Obtengo el array de los id de los productos del carrito de compras
-            if (ProductsLocalStorage !== null) {
-                // Paso a formato JSON el string que obtuve del local Storage
-                arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
-                // Creo un array de los id de los productos, esto para enviar a la api
-                const array_products_id_shoppping_car = [];
-                arrayProductsLocalStorage.forEach(product => {
-                    array_products_id_shoppping_car.push( product.id );
-                });
-                // El contendor de los supermercados
-                const containerBrands = document.getElementById('containerBrands');
-                // Obtengo el componente card de ejemplo de cada supermercado
-                const modelCardBrand = document.getElementById('cardModelBrand');
-
-                // Obtengo las marcas del estado, via api
-                axios.get('/get/brand-city/'+city_id).then( function(response){
-                    let brands = response.data;
-                    // Hay supermercados haciendo delivery en este estado?
-                    if (brands.length > 0) {
-
-                        brands.forEach(brand => {
-                            // creo un clon del card de ejemplo
-                            newCardBrand = modelCardBrand.firstElementChild.cloneNode(true);
-
-                            let title = newCardBrand.querySelector('.titleBrand');
-                            let totalPrice = newCardBrand.querySelector('.totalPriceBrand');
-                            let id_brand = newCardBrand.querySelector('.idBrand');
-
-                            // Asigno los valores del local storage a los campos html
-                            id_brand.textContent = brand.id;
-                            title.textContent = brand.brand;
-                            title.href = 'supermercado/'+brand.slug;
-
-                            let precioTotal = 0;
-                            // Creo el card para el supermercado en el html
-                            axios.get('/get/items-price/'+brand.id+'/'+array_products_id_shoppping_car).then( function(respuesta){
-                                let items = respuesta.data;
-
-                                items.forEach(item => {
-
-                                    arrayProductsLocalStorage.forEach(productShoppingCar => {
-
-                                        if( productShoppingCar.id == item.product_id ){
-                                            precioTotal += productShoppingCar.quantity*item.price
-                                            return
-                                        }
-
-                                    });
-
-                                });
-
-                                // Asigno los valores del local storage a los campos html
-                                totalPrice.textContent = precioTotal.toFixed(2);
-                            });
-
-                            containerBrands.appendChild(newCardBrand);
-
-                        });
-
-                        // Obtengo el componente card de ejemplo para los items de cada supermercado
-                        const cardModelItemsBrand = document.getElementById('cardModelItemsBrand');
-
-                        // Agrego un listener para buscar los precios de los productos
-                        let seePriceItemsBrand = containerBrands.querySelectorAll('.seePriceItemsBrand');
-
-                        seePriceItemsBrand.forEach(item => {
-                            item.addEventListener('click', event => {
-
-                                    // En que elemento se dio click? en el span, en el svg o en el path? obtengo el nodo principal
-                                    if ( event.target.nodeName == 'DIV' ){
-                                        var rootContainer = event.target.parentNode.parentNode;
-                                    }else if( event.target.nodeName == 'svg' ){
-                                        var rootContainer = event.target.parentNode.parentNode.parentNode;
-                                    }else {
-                                        var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode;
-                                    }
-
-                                    let brand_id = rootContainer.lastElementChild.textContent;
-                                    let brand = rootContainer.querySelector('.titleBrand').textContent;
-                                    // // Obtengo el contenedor donde iran los items de cada supermercado
-                                    let containerItemsBrand = rootContainer.querySelector('.containerItemsBrand');
-                                    let svgIconSelect = rootContainer.querySelector('.svgIconSelect');
-
-                                    if( containerItemsBrand.childElementCount > 0 ){
-                                        containerItemsBrand.innerHTML = '';
-                                        rootContainer.classList.replace("bg-green-50", "bg-white");
-                                        // Girar icono de select
-                                        svgIconSelect.classList.replace("rotate_select_icon", "return_rotate_select_icon");
-                                    }else{
-                                        rootContainer.classList.replace("bg-white", "bg-green-50");
-                                        // Girar icono de select
-                                        svgIconSelect.classList.replace("return_rotate_select_icon", "rotate_select_icon");
-
-                                        axios.get('/get/items-brand/'+brand_id+'/'+array_products_id_shoppping_car).then( function(respuesta){
-                                            let items = respuesta.data;
-
-                                            arrayProductsLocalStorage.forEach(productShoppingCar => {
-
-                                                // creo un clon del card de ejemplo
-                                                newCardItemsBrand = cardModelItemsBrand.firstElementChild.cloneNode(true);
-                                                let productIdItem = newCardItemsBrand.querySelector('.productId');
-                                                let titleItem = newCardItemsBrand.querySelector('.titleItemBrand');
-                                                let imgCardItem = newCardItemsBrand.querySelector('.imgCardItem');
-                                                let priceItem = newCardItemsBrand.querySelector('.priceItemBrandUnidad');
-                                                let quantityItem = newCardItemsBrand.querySelector('.quantityItemBrandUnidad');
-                                                let totalPriceItemBrand = newCardItemsBrand.querySelector('.totalPriceItemBrand');
-                                                let quantityShoppingCar = productShoppingCar.quantity;
-                                                // Asigno los valores del local storage a los campos html
-
-                                                titleItem.textContent = `(${ quantityShoppingCar }) ${ productShoppingCar.title }`;
-                                                imgCardItem.src = productShoppingCar.image;
-
-                                                let itemInShoppingCar = false;
-
-                                                items.forEach(item => {
-
-                                                    if ( productShoppingCar.id == item.product_id) {
-                                                        productIdItem.textContent = item.product_id;
-                                                        quantityItem.textContent = quantityShoppingCar;
-                                                        priceItem.textContent = `${ item.price.toFixed(2) }`;
-                                                        totalPriceItemBrand.textContent = `${ (item.price*quantityShoppingCar).toFixed(2) }$`;
-                                                        itemInShoppingCar = true;
-                                                        return
-                                                    }
-
-                                                });
-                                                if (!itemInShoppingCar) {
-                                                    let containerPrices = newCardItemsBrand.querySelector('.containerPrices').style.display = 'none';
-                                                    let productNotAble = newCardItemsBrand.querySelector('.productNotAble');
-                                                    productNotAble.textContent = `Producto no disponible`
-                                                }
-
-                                                // Agrego el card del item
-                                                containerItemsBrand.appendChild(newCardItemsBrand);
-                                            });
-                                            // Agrego el boton para seleccionar el supermercado
-                                            let buttonSelectBrand = document.createElement("div");
-                                            buttonSelectBrand.textContent = 'Seleccionar supermercado';
-                                            buttonSelectBrand.classList.add("btn-primary-sm", "col-span-1", "md:col-span-2");
-                                            // Agrego el card del item
-                                            containerItemsBrand.appendChild(buttonSelectBrand);
-
-                                            // Agrego un listener de click al boton de seleccionar supermercado
-                                            buttonSelectBrand.addEventListener('click', buttonSelect => {
-
-                                                // verifico si ya se habia seleccionado otro supermercado
-                                                let brandsTest = containerBrands.children;
-                                                for (let item of brandsTest) {
-                                                    item.classList.replace("bg-green-200", "bg-white");
-                                                }
-
-                                                rootContainer.classList.replace("bg-green-50", "bg-green-200");
-                                                let buttonComprar = document.getElementById('comprar');
-                                                buttonComprar.classList.replace("bg-gray-300", "bg-green-500");
-
-                                                // Girar icono de select
-                                                svgIconSelect.classList.replace("rotate_select_icon", "return_rotate_select_icon");
-                                                // Seteo el supermercado en el local storage
-                                                // Obtengo el supermercado del local storage
-                                                const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
-                                                const brandToBuy = JSON.parse(brandSelectedToBuy);
-                                                var newBrandSelectedToBuy = {
-                                                    id: brand_id,
-                                                    brand: brand
-                                                };
-                                                // Almaceno el producot en el localStorage
-                                                localStorage.setItem('brandSelectedToBuy',JSON.stringify(newBrandSelectedToBuy));
-                                                // busco el precio total de la marca
-                                                let amount = containerItemsBrand.parentNode.querySelector('.totalPriceBrand').textContent;
-
-                                                let amountTotal = {
-                                                    amount: amount
-                                                };
-                                                // Almaceno el preico total en el local storage
-                                                localStorage.setItem('amount',JSON.stringify(amountTotal));
-
-                                                // Ahora guardo en Local Storage los productos de la marca que elegi
-                                                const itemsSelected = containerItemsBrand.querySelectorAll('.containerPrices');
-
-                                                let arrayItemsSelected = [];
-                                                itemsSelected.forEach(item => {
-                                                    let quantityItemSelected = item.querySelector('.quantityItemBrandUnidad').textContent;
-
-                                                    if(quantityItemSelected !== ''){
-                                                        // obtengo el precio del item
-                                                        let priceItemBrandUnidad = item.querySelector('.priceItemBrandUnidad').textContent;
-                                                        // Obtengo el id del producto
-                                                        let idProductSelected = item.querySelector('.productId').textContent;
-
-                                                        itemSelected = {
-                                                            product_id: idProductSelected,
-                                                            quantity: quantityItemSelected,
-                                                            price: priceItemBrandUnidad
-                                                        }
-                                                        arrayItemsSelected.push(itemSelected)
-                                                    }
-
-                                                })
-                                                // Almaceno el producto en el localStorage
-                                                localStorage.setItem('itemsSelected',JSON.stringify(arrayItemsSelected));
-
-                                                containerItemsBrand.innerHTML = '';
-
-                                            })
-                                        });
-                                    }
-                            });
-                        });
-
-                    // NO Hay supermercados haciendo delivery en este estado
-                    }else{
-                        let spanNoBrands = document.createElement("span");
-                        spanNoBrands.textContent = 'No se encontraron supermercados en este estado.';
-                        spanNoBrands.classList.add("text-gray-600","font-light","px-2","py-4", "border-b-2", "border-gray-600","bg-red-50","text-sm");
-                        containerBrands.appendChild(spanNoBrands);
-                    }
-
-                });
-            }
-        }
 
         // Funcion para carga de tiendas, carga inicial de todas las tiendas
         function getBrands(){
@@ -927,6 +442,7 @@
             const cityUbication = document.getElementById('cityUbication');
             let option = document.createElement("option");
             cityUbication.add(option);
+            cityUbication.innerHTML = ''
 
             // Obtengo loa ubicacion del local storage
             ubicationLocalStorage = localStorage.getItem('ubication');
@@ -970,50 +486,459 @@
             /********************
             Ahora cargo los supermercados e items de cada supermercado
             **********************/
-            setBrandsByStateId(state_id);
+            setBrandsByLocation(state_id, 'state')
         }
+
+        // Funcion que busca e imprime en el DOM, los supermercados, buscados por el id de una ciudad o estado, via api
+        function setBrandsByLocation(ubication_id, ubication){
+            if( ubication == "state"){
+                var urlAjax = '/get/brand-state/'+ubication_id;
+            }else{
+                var urlAjax = '/get/brand-city/'+ubication_id;
+            }
+
+
+            // Obtengo los productos del local storage
+            const ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+            const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
+
+            // Obtengo el array de los id de los productos del carrito de compras
+            if (ProductsLocalStorage !== null) {
+                // Paso a formato JSON el string que obtuve del local Storage
+                const arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+                // Creo un array de los id de los productos, esto para enviar a la api
+                const array_products_id_shoppping_car = [];
+                arrayProductsLocalStorage.forEach(product => {
+                    array_products_id_shoppping_car.push( product.id );
+                });
+                // El contendor de los supermercados
+                const containerBrands = document.getElementById('containerBrands');
+                // Obtengo el componente card de ejemplo de cada supermercado
+                const modelCardBrand = document.getElementById('cardModelBrand');
+
+                // Obtengo las marcas del estado, via api
+                axios.get(urlAjax).then( function(response){
+                    // verifico que no haya tiendas en el DOM, para el primer valor
+                    // Luego vacio el contendor de los supermercados
+                    document.getElementById('containerBrands').innerHTML = '';
+                    let brands = response.data;
+                    // Hay supermercados haciendo delivery en este estado?
+                    if (brands.length > 0) {
+
+                        brands.forEach(brand => {
+                            let brand_id = brand.id;
+                            // creo un clon del card de ejemplo
+                            newCardBrand = modelCardBrand.firstElementChild.cloneNode(true);
+
+                            let title = newCardBrand.querySelector('.titleBrand');
+                            let totalPriceElement = newCardBrand.querySelector('.totalPriceBrand');
+                            let id_brand = newCardBrand.querySelector('.idBrand');
+
+                            // Asigno los valores del local storage a los campos html
+                            id_brand.textContent = brand_id;
+                            title.textContent = brand.brand;
+
+                            if( brandSelectedToBuy !== null ){
+                                // verifico si la marca del localstorage es la misma que voy a agregar al DOM, de ser asi debo seleccionarla
+                                const brandInLocalStorage = JSON.parse(brandSelectedToBuy);
+                                const brandIdLocalStorage = brandInLocalStorage.id;
+                                if( brandIdLocalStorage == brand_id ){
+                                    newCardBrand.classList.replace('bg-white', 'bg-green-200');
+                                    newCardBrand.querySelector('.inputCheckboxselectBrand').checked = true;
+                                }
+                            }
+
+                            setBrandInDOM(containerBrands, newCardBrand, brand_id, totalPriceElement, array_products_id_shoppping_car, arrayProductsLocalStorage);
+
+                        });
+
+
+                    // NO Hay supermercados haciendo delivery en este estado
+                    }else{
+                        noBradsInThisLocation(containerBrands);
+                    }
+
+                });
+            }
+        }
+
+
+        function setBrandInLocalStorage(brand_id){
+            // Obtengo la marca del local storage
+            brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
+
+            const siteUrl = document.getElementById('siteUrl').textContent.trim();
+
+            axios.get('/get/brand/'+brand_id).then( function(respuesta){
+                let brand = respuesta.data;
+
+                var newBrandSelectedToBuy = {
+                    id: brand_id,
+                    title: brand.brand,
+                    image: `url('storage/${brand.profile_photo_path_brand}')`,
+                    address: brand.brand,
+                    href: `${siteUrl}/supermercado/${brand.slug}`
+                }
+
+                localStorage.setItem('brandSelectedToBuy',JSON.stringify(newBrandSelectedToBuy));
+            });
+
+            setPricesInLocalStorage(brand_id);
+
+        }
+
+        // Setear el monto total en el LocalStorage
+        function setAmountInLocalStorage(amount){
+
+            let amountTotal = {
+                amount: amount
+            };
+
+            // Almaceno el preico total en el local storage
+            localStorage.setItem('amount',JSON.stringify(amountTotal));
+        }
+
+        // Colocar los precios da cada producto de la marca
+        function setBrandInDOM(containerBrands, newCardBrand, brand_id, totalPriceElement, array_products_id_shoppping_car, arrayProductsLocalStorage){
+
+            var precioTotal = 0;
+            // Creo el card para el supermercado en el html
+            axios.get('/get/items-price/'+brand_id+'/'+array_products_id_shoppping_car).then( function(respuesta){
+                let items = respuesta.data;
+
+                items.forEach(item => {
+
+                    arrayProductsLocalStorage.forEach(productShoppingCar => {
+
+                        if( productShoppingCar.id == item.product_id ){
+                            precioTotal += productShoppingCar.quantity*item.price
+                            return
+                        }
+
+                    });
+
+                });
+
+                // Asigno el precio total del supermercado
+                totalPriceElement.textContent = precioTotal.toFixed(2);
+
+                // si el monto total es mayor que cero, muestro la marca
+                if( precioTotal > 0 ){
+                    // antes de agregar la nueva marca, veo si ya esta en el DOM, en caso de SI, reemplazarla
+                    const brandsInDOM = containerBrands.childNodes;
+
+                    if( brandsInDOM.length > 0 ){
+
+                        let brandInDOM = false;
+
+                        brandsInDOM.forEach(element => {
+                            let brandIdInDOM = element.querySelector('.idBrand');
+
+                            if( brand_id == brandIdInDOM.textContent ){
+                                brandInDOM = true;
+                                // reemplazo el elemento
+                                containerBrands.replaceChild( newCardBrand , element );
+                            }
+
+                        });
+
+                        if( !brandInDOM ){
+                            containerBrands.appendChild(newCardBrand);
+                        }
+
+                    }else{
+                        containerBrands.appendChild(newCardBrand);
+                    }
+
+                    // Obtengo el componente card de ejemplo para los items de cada supermercado
+                    const cardModelItemsBrand = document.getElementById('cardModelItemsBrand');
+
+                    // Agrego un listener para buscar los precios de los productos
+                    let seePriceItemsBrand = newCardBrand.querySelectorAll('.seePriceItemsBrand');
+                    // Al darle click para ver los productos de la marca
+                    seePriceItemsBrand.forEach(item => {
+                        item.addEventListener('click', event => {
+
+                            // En que elemento se dio click? en el span, en el svg o en el path? obtengo el nodo principal
+                            if ( event.target.nodeName == 'DIV' ){
+                                var rootContainer = event.target.parentNode.parentNode;
+                            }else if( event.target.nodeName == 'svg' ){
+                                var rootContainer = event.target.parentNode.parentNode.parentNode;
+                            }else if( event.target.nodeName == 'SPAN'){
+                                var rootContainer = event.target.parentNode;
+                            }else {
+                                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode;
+                            }
+
+                            let brand_id = rootContainer.lastElementChild.textContent;
+                            let brand = rootContainer.querySelector('.titleBrand').textContent;
+                            // // Obtengo el contenedor donde iran los items de cada supermercado
+                            let containerItemsBrand = rootContainer.querySelector('.containerItemsBrand');
+                            let svgIconSelect = rootContainer.querySelector('.svgIconSelect');
+
+                            if( containerItemsBrand.childElementCount > 0 ){
+                                containerItemsBrand.innerHTML = '';
+                                // Girar icono de select
+                                svgIconSelect.classList.replace("rotate_select_icon", "return_rotate_select_icon");
+                            }else{
+                                // Girar icono de select
+                                svgIconSelect.classList.replace("return_rotate_select_icon", "rotate_select_icon");
+
+                                axios.get('/get/items-brand/'+brand_id+'/'+array_products_id_shoppping_car).then( function(respuesta){
+                                    let items = respuesta.data;
+
+                                    arrayProductsLocalStorage.forEach(productShoppingCar => {
+
+                                        // creo un clon del card de ejemplo
+                                        newCardItemsBrand = cardModelItemsBrand.firstElementChild.cloneNode(true);
+                                        let productIdItem = newCardItemsBrand.querySelector('.productId');
+                                        let titleItem = newCardItemsBrand.querySelector('.titleItemBrand');
+                                        let imgCardItem = newCardItemsBrand.querySelector('.imgCardItem');
+                                        let priceItem = newCardItemsBrand.querySelector('.priceItemBrandUnidad');
+                                        let quantityItem = newCardItemsBrand.querySelector('.quantityItemBrandUnidad');
+                                        let totalPriceItemBrand = newCardItemsBrand.querySelector('.totalPriceItemBrand');
+                                        let quantityShoppingCar = productShoppingCar.quantity;
+                                        // Asigno los valores del local storage a los campos html
+
+                                        titleItem.textContent = `(${ quantityShoppingCar }) ${ productShoppingCar.title }`;
+                                        imgCardItem.src = productShoppingCar.image;
+
+                                        let itemInShoppingCar = false;
+
+                                        items.forEach(item => {
+
+                                            if ( productShoppingCar.id == item.product_id) {
+                                                productIdItem.textContent = item.product_id;
+                                                quantityItem.textContent = quantityShoppingCar;
+                                                priceItem.textContent = `${ item.price.toFixed(2) }`;
+                                                totalPriceItemBrand.textContent = `${ (item.price*quantityShoppingCar).toFixed(2) }$`;
+                                                itemInShoppingCar = true;
+                                                return
+                                            }
+
+                                        });
+                                        if (!itemInShoppingCar) {
+                                            let containerPrices = newCardItemsBrand.querySelector('.containerPrices').style.display = 'none';
+                                            let productNotAble = newCardItemsBrand.querySelector('.productNotAble');
+                                            productNotAble.textContent = `Producto no disponible`
+                                        }
+
+                                        // Agrego el card del item
+                                        containerItemsBrand.appendChild(newCardItemsBrand);
+                                    });
+                                    // Agrego el boton para seleccionar el supermercado
+                                    let buttonSelectBrand = document.createElement("div");
+                                    buttonSelectBrand.textContent = 'Seleccionar supermercado';
+                                    buttonSelectBrand.classList.add("btn-primary-sm", "col-span-1", "md:col-span-2");
+                                    // Agrego el card del item
+                                    containerItemsBrand.appendChild(buttonSelectBrand);
+
+
+                                    // Agrego un listener de click al boton de seleccionar supermercado
+                                    buttonSelectBrand.addEventListener('click', buttonSelect => {
+
+                                        // activo o descativo el input checbox
+                                        let inputCheckboxselectBrand = containerItemsBrand.parentNode.querySelector('.inputCheckboxselectBrand');
+
+                                        // cambio el color de los cards de todas las tiendas
+                                        let brandsTest = containerBrands.children;
+                                        for (let item of brandsTest) {
+                                            item.classList.replace("bg-green-200", "bg-white");
+                                            item.querySelector('.inputCheckboxselectBrand').checked = false;
+                                        }
+
+                                        let buttonComprar = document.getElementById('finalizarCompra');
+                                        // Obtengo la marca del local storage
+                                        brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
+                                        if( brandSelectedToBuy !== null ){
+                                            brandInLocalStorage = JSON.parse(brandSelectedToBuy);
+                                            // verifico si ya se habia seleccionado otro supermercado
+                                            if(brand_id == brandInLocalStorage.id ){
+                                                rootContainer.classList.replace("bg-green-200", "bg-white");
+                                                // elimino la marca del localstorage
+                                                localStorage.removeItem('brandSelectedToBuy');
+                                                // deshabilito el boton de comprar
+                                                buttonComprar.classList.replace("bg-green-500", "bg-gray-300");
+                                                inputCheckboxselectBrand.checked = false;
+                                            }else{
+                                                rootContainer.classList.replace("bg-white", "bg-green-200");
+                                                buttonComprar.classList.replace("bg-gray-300", "bg-green-500");
+                                                // Seteo el supermercado en el local storage
+                                                setBrandInLocalStorage(brand_id);
+
+                                                inputCheckboxselectBrand.checked = true;
+                                            }
+
+                                        }else{
+                                            rootContainer.classList.replace("bg-white", "bg-green-200");
+                                            buttonComprar.classList.replace("bg-gray-300", "bg-green-500");
+                                            // Seteo el supermercado en el local storage
+                                            setBrandInLocalStorage(brand_id);
+
+                                            inputCheckboxselectBrand.checked = true;
+                                        }
+
+                                        // busco el precio total de la marca
+                                        let amount = containerItemsBrand.parentNode.querySelector('.totalPriceBrand').textContent;
+                                        // seteo el monto total en el local storage
+                                        setAmountInLocalStorage(amount);
+
+                                    })
+
+                                });
+                            }
+                        });
+                    });
+
+                }
+
+
+                // Agrego el evento clck a los input checkbox de seleccionar marca
+                const inputCheckboxselectBrand = newCardBrand.querySelectorAll('.inputCheckboxselectBrand')
+                inputCheckboxselectBrand.forEach(item => {
+                    item.addEventListener('click', event => {
+
+                        if( event.target.checked == true ){
+                            // desactivo todas las demas marcas
+                            let brandsTest = containerBrands.children;
+                            for (let item of brandsTest) {
+                                item.classList.replace("bg-green-200", "bg-white");
+                                item.querySelector('.inputCheckboxselectBrand').checked = false;
+                            }
+                            event.target.checked = true;
+
+                            newCardBrand.classList.replace('bg-white', 'bg-green-200');
+                            let brand_id = newCardBrand.querySelector('.idBrand').textContent;
+                            let siteUrl = document.getElementById('siteUrl').textContent.trim();
+                            // obtengo la marca
+                            axios.get('/get/brand/'+brand_id).then( function(respuesta){
+                                let brand = respuesta.data;
+                                let titleBrand = brand.brand;
+                                let imageBrand = brand.profile_photo_path_brand;
+                                let slugBrand = brand.slug;
+                                let addressBrand = 'state, city';
+                                // guardo esta marca en el localstorage
+                                newBrand = {
+                                    id: brand_id,
+                                    title: titleBrand,
+                                    image: `url('${imageBrand}')`,
+                                    address: addressBrand,
+                                    href: `${siteUrl}/supermercado/${slugBrand}`
+                                }
+                                localStorage.setItem('brandSelectedToBuy',JSON.stringify(newBrand));
+
+                            })
+                            // actualizo el precio de los productos en el local storage
+                            setPricesInLocalStorage(brand_id);
+
+                            // busco el precio total de la marca
+                            let amount = newCardBrand.querySelector('.totalPriceBrand').textContent;
+                            // seteo el monto total en el local storage
+                            setAmountInLocalStorage(amount);
+
+                            // activo el boton de comprar
+                            document.getElementById('finalizarCompra').classList.replace("bg-gray-300", "bg-green-500");
+
+                        }else{
+                            newCardBrand.classList.replace('bg-green-200', 'bg-white');
+                            // elimino esta marca en el localstorage
+                            localStorage.removeItem('brandSelectedToBuy');
+                            // desactivo el boton de comprar
+                            document.getElementById('finalizarCompra').classList.replace("bg-green-500", "bg-gray-300");
+                        }
+                    })
+                })
+
+            });
+
+
+        }
+
+        // Funcion q actualiza el precio de cada producto dependiendo de la marca elegida
+        function setPricesInLocalStorage(brand_id){
+
+            const ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+
+            // Obtengo el array de los id de los productos del carrito de compras
+            if (ProductsLocalStorage !== null) {
+                // Paso a formato JSON el string que obtuve del local Storage
+                const arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+                // Creo un array de los id de los productos, esto para enviar a la api
+                const array_products_id_shoppping_car = [];
+                arrayProductsLocalStorage.forEach(product => {
+                    array_products_id_shoppping_car.push( product.id );
+                });
+
+                arrayProductsLocalStorage.forEach(product => {
+                    const product_id = product.id;
+
+                    axios.get('/get/items-price/'+brand_id+'/'+array_products_id_shoppping_car).then( function(respuesta){
+                        let items = respuesta.data;
+
+                        items.forEach(item => {
+
+                            arrayProductsLocalStorage.forEach(productShoppingCar => {
+
+                                if( productShoppingCar.id == item.product_id ){
+                                    // actualizo el valor del local storage
+                                    productShoppingCar.price = item.price;
+
+                                }
+
+                            });
+
+                        });
+
+                        localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
+
+                    });
+
+                });
+            }
+
+        }
+
+        function noBradsInThisLocation(containerBrands){
+            let spanNoBrands = document.createElement("span");
+            spanNoBrands.textContent = 'No se encontraron supermercados en este lugar.';
+            spanNoBrands.classList.add("text-gray-600","font-light","px-2","py-4", "border-b-2", "border-gray-600","bg-red-50","text-sm");
+            containerBrands.appendChild(spanNoBrands);
+        }
+
     </script>
 
     {{-- Script para finalizar la compra --}}
     <script>
         // Finalizar compra, al dar click en el boton comprar
-        const comprar = document.getElementById('comprar');
-        comprar.addEventListener('click', event => {
+        const finalizarCompra = document.getElementById('finalizarCompra');
+        finalizarCompra.addEventListener('click', event => {
+
+            // Hay una tienda seleccionada --- en caso de si, se esta agregando los productos de esta tienda
             const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
             const brand = JSON.parse(brandSelectedToBuy);
 
-            if (brandSelectedToBuy !== null) {
+            if (brandSelectedToBuy !== null && finalizarCompra.classList.contains('bg-green-500')) {
 
                 // Obtengo los productos del local storage
                 const ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
                 const products = JSON.parse(ProductsLocalStorage);
-
-                // // Obtengo loa ubicacion del local storage
-                const ubicationLocalStorage = localStorage.getItem('ubication');
-                const ubication = JSON.parse(ubicationLocalStorage);
-
-
                 const amountSelected = localStorage.getItem('amount');
                 const amount = JSON.parse(amountSelected);
-
-                const itemsSelected = localStorage.getItem('itemsSelected');
-                const items = JSON.parse(itemsSelected);
 
                 const csrf_token = document.getElementById('csrf_token').textContent;
 
                 const data = {
                     products: products,
-                    ubication: ubication,
                     brand: brand,
                     amount: amount,
-                    items: items
                 }
+
 
                 axios({
                     method  : 'POST',
-                    url : '/post/create-order',
-                    data : data,
-                    headers: {
+                    url     : '/post/create-order',
+                    data    : data,
+                    headers : {
                         'content-type': 'application/json',
                         'X-CSRF-Token': csrf_token
                         }
@@ -1024,13 +949,11 @@
                         window.location.href = "/login?r=1";
                     }else{
                         // elimino los datos del local storage
-                        localStorage.removeItem('itemsSelected');
                         localStorage.removeItem('amount');
                         localStorage.removeItem('brandSelectedToBuy');
-                        // localStorage.removeItem('ubication');
                         localStorage.removeItem('productsShoppingCar');
                         // redirecciono a la vista compras
-                        window.location.href = "/compras";
+                        window.location.href = "/cms/compras";
                     }
 
                 })

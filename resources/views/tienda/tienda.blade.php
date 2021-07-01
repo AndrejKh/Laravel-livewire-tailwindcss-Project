@@ -75,10 +75,10 @@
 
                 // Confirmo que estoy en la vista de la tienda que he elegido, y donde estoy comprando
                 // Obtengo la tienda del local storage
-                brandSelectedInBrandDetailView = localStorage.getItem('brandSelectedInBrandDetailView');
+                const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
 
-                if(brandSelectedInBrandDetailView !== null){
-                    brandSelected = JSON.parse(brandSelectedInBrandDetailView);
+                if(brandSelectedToBuy !== null){
+                    brandSelected = JSON.parse(brandSelectedToBuy);
                     const brandIdCurrent = document.getElementById('brandIdCurrent').textContent;
 
                     if( brandSelected.id == brandIdCurrent ){
@@ -171,7 +171,7 @@
 
                             // Muestro el span que indica que hay producots en el carrito
                             updateTotalProductsShoppingCar(JSON.parse(ProductsLocalStorage));
-                            shownHideCompareFloatButton(arrayProductsLocalStorage);
+                            shownHideCompareFloatButton(JSON.parse(ProductsLocalStorage));
                             // Almaceno el producot en el localStorage
                             localStorage.setItem('productsShoppingCar',ProductsLocalStorage);
 
@@ -341,12 +341,12 @@
 
             function setBrandInLocalStorage(){
                 // Obtengo la marca del local storage
-                brandSelectedInBrandDetailView = localStorage.getItem('brandSelectedInBrandDetailView');
+                brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
 
                 const brandIdCurrent = document.getElementById('brandIdCurrent').textContent;
                 const titleBrand = document.getElementById('titleBrand').textContent.trim();
                 const imageBrand = document.getElementById('imageBrand').style.backgroundImage.slice(5, -2);
-                const addressBrand = document.getElementById('addressBrand').textContent;
+                const addressBrand = document.getElementById('addressBrand').textContent.trim();
                 const slugBrand = document.getElementById('hrefBrand').textContent;
 
                 const siteUrl = document.getElementById('siteUrl').textContent.trim();
@@ -359,11 +359,11 @@
                     href: `${siteUrl}/supermercado/${slugBrand}`
                 }
 
-                if( brandSelectedInBrandDetailView === null ){
+                if( brandSelectedToBuy === null ){
                     // como se esta agregando una tienda desde cero, debo eliminar todos los productos antes agregados
                     localStorage.removeItem('productsShoppingCar');
 
-                    localStorage.setItem('brandSelectedInBrandDetailView',JSON.stringify(newBrand));
+                    localStorage.setItem('brandSelectedToBuy',JSON.stringify(newBrand));
 
                     // Muestro los precios de los productos
                     // Oculto los precios de cada producto en el modal de carrito de compras
@@ -372,18 +372,17 @@
                         product.style.display = 'block';
                     });
                 }else{
-                    let brand = JSON.parse(brandSelectedInBrandDetailView);
+                    let brand = JSON.parse(brandSelectedToBuy);
                     if( brand.id != brandIdCurrent ){
                         // como se esta agregando un0 nueva tienda, debo eliminar todos los productos antes agregados
                         localStorage.removeItem('productsShoppingCar');
                         // alert('estas agregando un porducto de otra tienda')
-                        localStorage.setItem('brandSelectedInBrandDetailView',JSON.stringify(newBrand));
+                        localStorage.setItem('brandSelectedToBuy',JSON.stringify(newBrand));
                     }
                 }
 
             }
         </script>
-
 
     @else
         <div class="w-full text-center mt-6">

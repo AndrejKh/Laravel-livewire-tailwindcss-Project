@@ -7,6 +7,13 @@ use Illuminate\Support\Facades\DB;
 
 class BrandController extends Controller
 {
+
+    // Obtener una marca por su id
+    public function getBrandById($brand_id){
+
+        return Brand::findOrFail($brand_id);
+
+    }
     // Obtengo las marcas dependiendo del estado
     // Estas marcas son las q tienen delivery a ese estado, y las marcas que su direccion es ese estado
     public function getBrandsByStateId($state_id){

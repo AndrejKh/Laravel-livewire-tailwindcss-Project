@@ -290,9 +290,10 @@ class HomeController extends Controller
     public function productShow(Request $request){
         $product = Product::where('status', 'active')->where('slug', $request->slug)->first();
         $items = Item::where('status','active')->where('product_id',$product->id)->get();
-        $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(9)->get();
+        // $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(9)->get();
+        $other_products = Product::where('status', 'active')->take(10)->get();;
 
-        return view('vitrina.product_detail', compact('principal_categories','product','items'));
+        return view('vitrina.product_detail', compact('other_products','product','items'));
     }
 
     // Metodo que devuelve la vista del detalle de producto, viniendo desde la vista de supermrecado

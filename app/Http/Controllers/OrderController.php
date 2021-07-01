@@ -30,11 +30,11 @@ class OrderController extends Controller
         }else{
             return 0;
         }
-        // Marca seleccionada
-        $brand_id = $request->brand['id'];
 
+        // datos del reuqest
+        $brand_id = $request->brand['id'];
         $amount = $request->amount['amount'];
-        $items = $request->items;
+        $products = $request->products;
 
         // Creo la orden
         Order::create([
@@ -45,11 +45,11 @@ class OrderController extends Controller
         $newOrder = Order::latest('id')->first();
         $order_id = $newOrder->id;
 
-        // Guardo los productos, precios y cantidades compradas
-        foreach ($items as $item) {
-            $product_id = $item['product_id'];
-            $quantity = $item['quantity'];
-            $price = $item['price'];
+        // Guardo los productos, precios y cantidades compradas en la orden
+        foreach ($products as $product) {
+            $product_id = $product['id'];
+            $quantity = $product['quantity'];
+            $price = $product['price'];
 
             OrderProducts::create([
                 'order_id' => $order_id,
@@ -78,3 +78,4 @@ class OrderController extends Controller
     }
 
 }
+

@@ -6,9 +6,6 @@
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
       </div>
 
-
-      <!-- This element is to trick the browser into centering the modal contents. -->
-
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
 
       <div class="max-w-7xl w-full lg:max-w-4xl inline-block align-bottom md:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle bg-gray-100" role="dialog" aria-modal="true" aria-labelledby="modal-headline" id="contentModalShopinngCar">
@@ -26,7 +23,6 @@
             <h4>Estas comprando en <strong id="titleBrandInShoppingCar"></strong> </h4>
 
             <div class="mt-2" id="containerBrandShoppingCar">
-
             </div>
 
         </div>
@@ -38,15 +34,14 @@
         <form>
 
             <div class="bg-gray-100 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <span hidden id="csrf_token">{{ csrf_token() }}</span>
                 {{-- Card de Ejemplo para la tienda seleccionada--- NO Eleiminar FUNDAMENTAL para el Carrito de compras --}}
                 <div hidden id="cardBrandShoppingCar">
                     <article class="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-6 p-2 md:p-3 lg:p-4 shadow-md bg-white rounded-lg relative">
-                        {{-- <span class="w-6 h-6 md:w-7 md:h-7 absolute -top-2 -right-2 rounded-full bg-gray-600 text-white flex items-center justify-center cursor-pointer" id="deleteBrandDetailInShoppingCar">
+                        <span class="w-6 h-6 md:w-7 md:h-7 absolute -top-2 -right-2 rounded-full bg-gray-600 text-white flex items-center justify-center cursor-pointer" id="deleteBrandDetailInShoppingCar">
                             <svg class="h-2 cursor-pointer stroke-current stroke-3" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12.639 11.0735L23.3484 0.993304C23.5898 0.766088 23.5898 0.3977 23.3484 0.170484C23.1069 -0.0567312 22.7156 -0.0567312 22.4741 0.170484L11.7648 10.2506L1.05536 0.170412C0.813966 -0.0568039 0.422582 -0.0568039 0.181184 0.170412C-0.0602917 0.397627 -0.0602917 0.766016 0.181184 0.993231L10.8905 11.0735L0.181107 21.1537C-0.0603689 21.3809 -0.0603689 21.7493 0.181107 21.9766C0.301806 22.0902 0.459982 22.147 0.618236 22.147C0.776489 22.147 0.934665 22.0902 1.05536 21.9766L11.7648 11.8964L22.4741 21.9766C22.5949 22.0902 22.753 22.147 22.9113 22.147C23.0695 22.147 23.2277 22.0902 23.3484 21.9766C23.5898 21.7493 23.5898 21.3809 23.3484 21.1537L12.639 11.0735Z" fill="white"/>
                             </svg>
-                        </span> --}}
+                        </span>
                         <div class="col-span-1 self-center">
                             <div class="bg-no-repeat bg-cover bg-center h-12 w-12 md:w-16 md:h-16 overflow-hidden rounded-full mx-auto" id="imgCardBrandShoppingCar"></div>
                         </div>
@@ -74,7 +69,7 @@
                             </div>
                             <div class="col-span-2 flex flex-col justify-between py-3 sm:py-1 md:py-2 lg:py-4 xl:py-1">
                                 <h6 class="titleCardProductShoppingCar text-lg md:text-lg sm:mt-3 md:mt-2 xl:mt-4"></h6>
-                                <div class="text-base">
+                                <div class="text-base font-semibold">
                                     <span class="priceItemInShoppingCar">
                                     </span>
                                 </div>
@@ -108,7 +103,7 @@
                     <div class="mt-3" id="enlaceNoBrand">
                         <a class="py-2 bg-green-500 text-white px-5 rounded-full shadow-md" href="{{ route('products.show') }}" aria-label="ir a todos los productos del sitio">Buscar productos</a>
                     </div>
-                    <div class="mt-3" id="enlaceConBrand">
+                    <div class="mt-3" id="enlaceConBrand" style="display:none;">
                         <a class="py-2 bg-green-500 text-white px-5 rounded-full shadow-md" href="" aria-label="ir a todos los productos del supermercado">Buscar productos</a>
                     </div>
                 </div>
@@ -116,16 +111,18 @@
 
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xl font-semibold text-gray-900 bg-gray-100 px-4 pt-5 pb-4 sm:p-6 sm:pb-4" {{-- style="display: none;" --}}>
-                <div class="md:col-start-3 col-span-1">
-                    TOTAL
+            <div style="display: none;" id="amountContainerShoppingCar">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xl font-semibold text-gray-900 bg-gray-100 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="md:col-start-3 col-span-1">
+                        TOTAL
+                    </div>
+                    <div class="md:col-start-4 col-span-1 text-right" id="amountShoppingCar"></div>
                 </div>
-                <div class="md:col-start-4 col-span-1 text-right" id="amountShoppingCar"></div>
             </div>
 
             <div class="bg-gray-100 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <span class="mr-0" id="finalizarCompraButton">
-                    <div class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:blue-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 items-center" aria-label="ir a comparar precios" id="finalizarCompra">
+                <span class="mr-0" id="finalizarCompraButton" style="display:none;">
+                    <div class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:blue-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 items-center cursor-pointer" aria-label="ir a comparar precios" id="finalizarCompra">
                         <svg class="fill-current text-white mr-2" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#fff"><rect fill="none" height="24" width="24"/><path d="M14.29,5.71L14.29,5.71c-0.39,0.39-0.39,1.02,0,1.41L18.17,11H3c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h15.18l-3.88,3.88 c-0.39,0.39-0.39,1.02,0,1.41l0,0c0.39,0.39,1.02,0.39,1.41,0l5.59-5.59c0.39-0.39,0.39-1.02,0-1.41L15.7,5.71 C15.32,5.32,14.68,5.32,14.29,5.71z"/></svg>
                         Finalizar compra
                     </div>

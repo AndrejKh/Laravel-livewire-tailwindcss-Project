@@ -4,7 +4,7 @@
         <span class="absolute top-4 left-2 svgProdcutInShoppingCar hidden" title="Producto en carrito">
             <img src="{{ asset('in_car.svg') }}" alt="imagen producto en carrito de compras">
         </span>
-        <div class="font-bold text-xl text-gray-900 hover:text-gray-700 text-left px-2 pt-2">
+        <div class="font-semibold text-xl text-gray-900 hover:text-gray-700 text-left px-2 pt-2">
             {{ $product->title }}
         </div>
     </a>

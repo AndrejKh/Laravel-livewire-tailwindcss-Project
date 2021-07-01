@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Delivery;
 use App\Models\Item;
 use App\Models\Product;
@@ -15,7 +16,8 @@ class CompareController extends Controller
     public function index()
     {
         $states = State::where('status','active')->get();
-        return view('comparar.compare', compact('states'));
+        $cities = City::where('state_id', 1)->where('status', 'active')->get();
+        return view('comparar.compare', compact('states','cities'));
     }
 
 }

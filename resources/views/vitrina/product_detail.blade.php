@@ -72,6 +72,27 @@
                                 Categoría: <span class="text-gray-400">{{ $product->category->category }}</span>
                             </a>
                         </div>
+                        <div id="availbleStockInBrandSelected" style="display:none;">
+                            <div>
+                                <span class="text-left text-green-600 font-regular text-sm block mt-4">
+                                    Producto Disponible en
+                                    <span class="font-bold" id="bradnselectedDOM"></span>
+                                </span>
+                            </div>
+                            <div class="block text-left">
+                                <span class="text-3xl">
+                                    <span id="priceProductDOM"></span> USD$
+                                </span>
+                                <span class="font-bold text-gray-600">
+                                    <span id="quantityProductDOM"></span> Disp.
+                                </span>
+                            </div>
+                        </div>
+                        <div id="notAvailbleStockInBrandSelected" style="display: none">
+                            <span class="text-left text-red-500 font-regular text-sm block mt-4">
+                                Producto no disponible en <span class="font-bold" id="notBradnselectedDOM"></span>
+                            </span>
+                        </div>
                     </div>
 
                     <div class="flex justify-center md:justify-start my-2 md:my-6">
@@ -130,8 +151,8 @@
         </p>
     </div>
 
-    {{-- Categorias cads con detalle --}}
-    @include('home.sections.carousel_categories_card_details')
+    {{-- Otros productos  --}}
+    @include('vitrina.other_products')
 
     {{-- Modal para compartir --}}
     <div class="fixed z-40 inset-0 overflow-y-auto ease-out duration-400" style="display:none;" id="shareModal" >
@@ -269,4 +290,42 @@
 
     </script>
 
+    {{-- Colocar disponibilidad dependiendo si hay una marca seleccionada --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Hay una tienda seleccionada --- en caso de si, se esta agregando los productos de esta tienda
+            let brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
+            //  obtengo el contenedor donde se mostrara la marca seleccionada
+            const availbleStockInBrandSelected = document.getElementById('availbleStockInBrandSelected');
+
+            if( brandSelectedToBuy !== null ){
+                // Llevo el string al formato JSON
+                let brandSelected = JSON.parse(brandSelectedToBuy);
+                const brand_id = brandSelected.id;
+                const brand = brandSelected.title;
+
+                const product_id = document.getElementById('idproduct').textContent;
+
+
+                 // consulto a ver si el producto lo tiene disponible esta marca
+                axios.get('/get/item-brand/'+brand_id+'/'+product_id).then( function(response){
+
+                    const item = response.data;
+
+                    if ( item.length > 0 ){
+                        document.getElementById('bradnselectedDOM').textContent = brand;
+                        document.getElementById('priceProductDOM').textContent = item[0].price;
+                        document.getElementById('quantityProductDOM').textContent = item[0].quantity;
+
+                        availbleStockInBrandSelected.style.display = 'block';
+                    }else{
+                        document.getElementById('notBradnselectedDOM').textContent = brand;
+                        document.getElementById('notAvailbleStockInBrandSelected').style.display = 'block'
+                    }
+                })
+            }
+        })
+    </script>
+
 @endsection
+

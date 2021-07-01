@@ -45,11 +45,12 @@
 
             @livewire('navigation-menu')
 
-            {{-- Modal de carrito de compras --}}
-            @include('common.shopping_modal_car')
+
 
             <!-- Page Content -->
             <main>
+                <span hidden id="siteUrl"> {{ env('APP_URL') }} </span>
+                <span hidden id="csrf_token">{{ csrf_token() }}</span>
                 @yield('content')
             </main>
 
@@ -62,29 +63,18 @@
 
                 {{-- Boton flotante de carrito de compras --}}
                 @include('common.buttom_float_shopping_car')
+                {{-- Modal de carrito de compras --}}
+                @include('common.shopping_modal_car')
+
+                @include('common.tawk_io')
 
             @endif
 
         </div>
 
-
-
         @stack('modals')
 
         @livewireScripts
         @include('common.footer')
-        <!--Start of Tawk.to Script-->
-        <script type="text/javascript">
-            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-            (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/60d125fb65b7290ac6372ab7/1f8ofonpi';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-            })();
-        </script>
-        <!--End of Tawk.to Script-->
     </body>
 </html>

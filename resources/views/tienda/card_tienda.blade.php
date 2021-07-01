@@ -81,5 +81,4 @@
     </div>
     <span hidden id="idBrandCurrent">{{ $tienda->id }}</span>
     <span hidden id="hrefBrand">{{ $tienda->slug }}</span>
-    <span hidden id="siteUrl"> {{ env('APP_URL') }} </span>
 </article>

@@ -79,10 +79,11 @@ Route::get('/get/product-state/{id}', [ProductController::class, 'getProductsByS
 Route::get('/get/product-city/{id}', [ProductController::class, 'getProductsByCityId']);
 // Items
 Route::get('/get/items/', [ItemController::class, 'getItems']);
-Route::get('/get/item-brand/{id}', [ItemController::class, 'getItemsByBrandId']);
+Route::get('/get/item-brand/{id}/{product_id}', [ItemController::class, 'getItemByBrandIdAndProductId']);
 Route::get('/get/items-price/{id}/{items}', [ItemController::class, 'getPriceAndProductIdToShoppingCarByBrandId']);
 Route::get('/get/items-brand/{id}/{items}', [ItemController::class, 'getItemsByBrandId']);
 // Marcas - Brand
+Route::get('/get/brand/{id}', [BrandController::class, 'getBrandById']);
 Route::get('/get/brand-state/{id}', [BrandController::class, 'getBrandsByStateId']);
 Route::get('/get/brand-city/{id}', [BrandController::class, 'getBrandsByCityId']);
 Route::get('/get/brand-delivey/', [BrandController::class, 'getBrandsByDelivery']);

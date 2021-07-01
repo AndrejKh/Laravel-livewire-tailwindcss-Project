@@ -8,7 +8,7 @@
         </svg>
     </span>
     <div class="px-2 pt-2">
-        <div class="font-bold text-xl text-gray-900 hover:text-gray-700 text-left">
+        <div class="font-semibold text-xl text-gray-900 hover:text-gray-700 text-left">
             <a class="titleProductBrand" href="{{route('brands.products.details.show', ['brand' => $tienda->slug, 'product' => $item->product->slug] ) }}" aria-label="ver detalle del producto {{ $item->product->title }}">
                 {{ $item->product->title }}
             </a>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="px-2 text-center">
-        <span class="text-xl font-semibold">
+        <span class="text-xl font-semibold text-blue-900">
             @php $price = number_format($item->price, 2, '.', ','); @endphp
             <span class="priceItem">{{ $price }}</span> USD$
         </span>
