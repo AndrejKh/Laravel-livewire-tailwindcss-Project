@@ -46,7 +46,7 @@
                             <div class="bg-no-repeat bg-cover bg-center h-12 w-12 md:w-16 md:h-16 overflow-hidden rounded-full mx-auto" id="imgCardBrandShoppingCar"></div>
                         </div>
                         <div class="col-span-4 lg:col-span-5">
-                            <a class="font-semibold text-lg inline" id="titleCardBrandShoppingCar" href=""></a>
+                            <a class="font-semibold text-lg inline" id="titleCardBrandShoppingCar" href="#"></a>
                             <div class="flex self-center text-xs md:text-sm text-gray-600">
                                 <svg class="inline h-4 md:h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#999"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                                 <h2 class="inline font-semibold" id="addressCardBrandShoppingCar"></h2>
@@ -104,7 +104,7 @@
                         <a class="py-2 bg-green-500 text-white px-5 rounded-full shadow-md" href="{{ route('products.show') }}" aria-label="ir a todos los productos del sitio">Buscar productos</a>
                     </div>
                     <div class="mt-3" id="enlaceConBrand" style="display:none;">
-                        <a class="py-2 bg-green-500 text-white px-5 rounded-full shadow-md" href="" aria-label="ir a todos los productos del supermercado">Buscar productos</a>
+                        <a class="py-2 bg-green-500 text-white px-5 rounded-full shadow-md" href="#" aria-label="ir a todos los productos del supermercado">Buscar productos</a>
                     </div>
                 </div>
 
