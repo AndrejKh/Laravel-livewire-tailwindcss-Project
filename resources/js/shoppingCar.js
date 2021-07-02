@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Modal de carrito de compras
     const modalShoppingCar = document.querySelector('#modalShoppingCar');
-    // Boton para cerrar carrito de compras
-    const shoppingCarButtonModalClose = document.querySelector('#shoppingCarButtonModalClose');
 
     // Seleccion los elementos que abren el modal de carrito, y les agrego el evento 'click'
     document.querySelectorAll('.shoppingCarButtonOpenModal').forEach(item => {
@@ -58,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 // oculto y muestro los textos dependiendo de si hay o no productos en el localsotorage
                 localStorageProducts(arrayProductsLocalStorage);
 
-
                 //  obtengo el contenedor donde se mostraran todos los productos del carrito
                 const containerProductsShoppingCar = document.getElementById('containerProductsShoppingCar');
                 containerProductsShoppingCar.innerHTML = '';
@@ -92,9 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     containerProductsShoppingCar.appendChild(newCardProductShoppingCar);
                 });
 
-
             }
-
 
             // Eliminar la tienda donde se esta comprando
             const deleteBrandDetailInShoppingCar = document.getElementById('deleteBrandDetailInShoppingCar');
@@ -204,6 +199,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }, {passive: true});
     });
 
+    // Boton para cerrar carrito de compras
+    const shoppingCarButtonModalClose = document.querySelector('#shoppingCarButtonModalClose');
+
     // Ocultar el modal de carrito de compras
     if(shoppingCarButtonModalClose !== null){
         shoppingCarButtonModalClose.addEventListener('click', function(){
@@ -237,13 +235,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 quantity++;
                 quantityProductDetail.textContent = quantity;
 
-                let newProduct = {
-                    id: idProduct,
-                    title: titleProduct,
-                    quantity: quantity,
-                    price: 0,
-                    image: srcImageProduct
-                }
+                newProduct = setNewProduct( idProduct, titleProduct, quantity, 0, srcImageProduct );
 
                 // Agrego el precio del producto, en caso de tener una tienda seleccionada y estar en la vista de detalles del producto de la tienda
 
@@ -252,21 +244,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 // veo si existe tal tienda
                 if (brandSelectedToBuy !== null) {
-                    console.log("existe marca")
                     const priceProductDetailBrandView = document.getElementById('priceProductDetailBrandView')
 
                     // veo si estoy en la vista de detalles del producto de la tienda
                     if(priceProductDetailBrandView !== null){
-                        console.log("existe precio en vista de detalles en la marca")
                         let price = priceProductDetailBrandView.textContent;
 
-                        newProduct = {
-                            id: idProduct,
-                            title: titleProduct,
-                            quantity: quantity,
-                            price: price,
-                            image: srcImageProduct
-                        }
+                        newProduct = setNewProduct( idProduct, titleProduct, quantity, price, srcImageProduct );
 
                     }else{
                             const quantityAvalaible = document.getElementById('quantityProductDOM').textContent;
@@ -275,13 +259,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                             if( quantityAvalaible !== '' ){
                                 // El producto esta disponible en esta marca
-                                newProduct = {
-                                    id: idProduct,
-                                    title: titleProduct,
-                                    quantity: quantity,
-                                    price: price,
-                                    image: srcImageProduct
-                                }
+                                newProduct = setNewProduct( idProduct, titleProduct, quantity, price, srcImageProduct );
 
                             }else{
                                 // producto no disponible en esta marca
@@ -289,19 +267,10 @@ document.addEventListener("DOMContentLoaded", function() {
                                 localStorage.removeItem('brandSelectedToBuy');
                                 document.getElementById('brandInShoppingCar').setAttribute("hidden", true);
                                 // notificacion de que ya no se esta comprando en la marca
-
-                                newProduct = {
-                                    id: idProduct,
-                                    title: titleProduct,
-                                    quantity: quantity,
-                                    price: 0,
-                                    image: srcImageProduct
-                                }
+                                newProduct = setNewProduct( idProduct, titleProduct, quantity, 0, srcImageProduct );
                             }
 
                     }
-
-
 
                 }
 
@@ -328,7 +297,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         product.quantity = quantity;
                     }
                 });
-                console.log(productInShppingCar)
 
                 // El producto estaba en el carrito de compras?
                 if (productInShppingCar){
@@ -345,13 +313,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     quantity++;
                     quantityProductDetail.textContent = quantity;
 
-                    let newProduct = {
-                        id: idProduct,
-                        title: titleProduct,
-                        quantity: quantity,
-                        price: 0,
-                        image: srcImageProduct
-                    }
+                    newProduct = setNewProduct( idProduct, titleProduct, quantity, 0, srcImageProduct );
 
                     // Agrego el precio del producto, en caso de tener una tienda seleccionada y estar en la vista de detalles del producto de la tienda
 
@@ -366,14 +328,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         if(priceProductDetailBrandView !== null){
 
                             let price = priceProductDetailBrandView.textContent;
-
-                            newProduct = {
-                                id: idProduct,
-                                title: titleProduct,
-                                quantity: quantity,
-                                price: price,
-                                image: srcImageProduct
-                            }
+                            newProduct = setNewProduct( idProduct, titleProduct, quantity, price, srcImageProduct );
 
                         }else{
 
@@ -385,13 +340,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                             if( quantityAvalaible !== '' ){
                                 // El producto esta disponible en esta marca
-                                newProduct = {
-                                    id: idProduct,
-                                    title: titleProduct,
-                                    quantity: quantity,
-                                    price: price,
-                                    image: srcImageProduct
-                                }
+                                newProduct = setNewProduct( idProduct, titleProduct, quantity, price, srcImageProduct );
 
                             }else{
                                 // producto no disponible en esta marca
@@ -399,16 +348,8 @@ document.addEventListener("DOMContentLoaded", function() {
                                 localStorage.removeItem('brandSelectedToBuy');
                                 document.getElementById('brandInShoppingCar').setAttribute("hidden", true);
                                 // notificacion de que ya no se esta comprando en la marca
-
-                                newProduct = {
-                                    id: idProduct,
-                                    title: titleProduct,
-                                    quantity: quantity,
-                                    price: 0,
-                                    image: srcImageProduct
-                                }
+                                newProduct = setNewProduct( idProduct, titleProduct, quantity, 0, srcImageProduct );
                             }
-
 
                         }
 
@@ -485,145 +426,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     /* Manejar los productos del Modal de Carrito de Compras*/
 
-    // Incrementar la cantidad de productos en el modal de carrito de comrpas, desde el modal del carrito
-    document.querySelectorAll('.shoppingCarButtonOpenModal').forEach(item => {
-        item.addEventListener('click', event => {
-            document.querySelectorAll('.addProductModalShoppingCard').forEach(item => {
-                item.addEventListener('click', event => {
-                    // Obtengo los productos del local storage
-                    let ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-                    let arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
-
-                    // En que elemento se dio click? en el spna, en el svg o en el path?
-                    if ( event.target.nodeName == 'SPAN' ){
-                        var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
-                    }else if( event.target.nodeName == 'svg' ){
-                        var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                    }else {
-                        var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                    }
-
-                    const idProduct = rootContainer.querySelector('.idProductCardModalShoppingCar').textContent;
-
-                    let quantity = parseInt( rootContainer.querySelector('.quantityCardProductShoppingCar').textContent.trim() );
-
-                    arrayProductsLocalStorage.forEach(product => {
-                        if (idProduct == product.id ){
-                            quantity++;
-                            product.quantity = quantity;
-                        }
-                    });
-                    // preguntar si el id del producto que estoy incrementando es el mismo de la vista de detalles
-                    const id_product_DOM = document.getElementById('idproduct').textContent;
-                    if( id_product_DOM == idProduct ){
-                        // actualizo la cantidad del producto en la vista de detalles
-                        // Cantidad de productos en carrito, en vista de detalles de producto
-                        const quantityProductDetail = document.querySelector('#quantityProductDetail');
-                        if ( quantityProductDetail !== null ){
-                            quantityProductDetail.textContent = quantity;
-                        }
-
-                    }
-
-                    rootContainer.querySelector('.quantityCardProductShoppingCar').textContent = quantity;
-
-                    // actualizo el span de carrito de compras
-                    updateTotalProductsShoppingCar(arrayProductsLocalStorage);
-                    shownHideCompareFloatButton(arrayProductsLocalStorage);
-                    // actualizo la cantidad en el DOM de la vista de tienda, en caso se estar en la vista de detalles de la tienda seleccionada
-                    updateQuantityProductsInBrandView(idProduct, quantity);
-                    // Almaceno el producot en el localStorage
-                    localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
-                    updateAmount();
-
-                }, {passive: true});
-            });
-
-        }, {passive: true});
-    });
-
-    // Reducir la cantidad de productos en el modal de carrito de comrpas, desde el modal del carrito
-    document.querySelectorAll('.shoppingCarButtonOpenModal').forEach(item => {
-        item.addEventListener('click', event => {
-            document.querySelectorAll('.substractProductModalShoppingCard').forEach(item => {
-                item.addEventListener('click', event => {
-
-                    // Obtengo los productos del local storage
-                    let ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
-                    let arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
-
-                    // En que elemento se dio click? en el spna, en el svg o en el path?
-                    if ( event.target.nodeName == 'SPAN' ){
-                        var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
-                    }else if( event.target.nodeName == 'svg' ){
-                        var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                    }else {
-                        var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                    }
-
-                    const idProduct = rootContainer.querySelector('.idProductCardModalShoppingCar').textContent;
-
-                    let quantity = parseInt( rootContainer.querySelector('.quantityCardProductShoppingCar').textContent.trim() );
-
-                    if (quantity > 0){
-
-                        let productInShppingCar = false;
-                        let keyArray = 0;
-
-                        arrayProductsLocalStorage.forEach(product => {
-                            if (idProduct == product.id ){
-                                productInShppingCar = true;
-                                quantity--;
-                                product.quantity = quantity;
-                            }
-                            if (!productInShppingCar){
-                                keyArray++;
-                            }
-                        });
-
-                        // preguntar si el id del producto que estoy incrementando es el mismo de la vista de detalles
-                        const id_product_DOM = document.getElementById('idproduct').textContent;
-                        if( id_product_DOM == idProduct ){
-                            // actualizo la cantidad del producto en la vista de detalles
-                            // Cantidad de productos en carrito, en vista de detalles de producto
-                            const quantityProductDetail = document.querySelector('#quantityProductDetail');
-                            if ( quantityProductDetail !== null ){
-                                quantityProductDetail.textContent = quantity;
-                            }
-
-                        }
-
-                        rootContainer.querySelector('.quantityCardProductShoppingCar').textContent = quantity;
-                        // El producto llego a cero? se debe eliminar del local storage
-                        if ( quantity == 0 ){
-                            // Se elimina el producto del carrito de compras
-                            arrayProductsLocalStorage.splice(keyArray, 1);
-
-                            // Elimino el card del carrito
-                            removeCardProductShoppingCar(idProduct);
-                        }
-                        // oculto y muestro los textos dependiendo de si hay o no productos en el localsotorage
-                        localStorageProducts(arrayProductsLocalStorage);
-                        // actualizo el span de carrito de compras
-                        updateTotalProductsShoppingCar(arrayProductsLocalStorage);
-                        shownHideCompareFloatButton(arrayProductsLocalStorage);
-                        // actualizo la cantidad en el DOM de la vista de tienda, en caso se estar en la vista de detalles de la tienda seleccionada
-                        updateQuantityProductsInBrandView(idProduct, quantity);
-                        // Almaceno el producot en el localStorage
-                        localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
-                        updateAmount();
-                    }
-
-                } ,{passive: true});
-            });
-
-        }, {passive: true});
-    });
-
-    // Eliminar prodcuto del modal de carrito de compras, con boton de elminar que esta en el modal del carrito
+    // Editar la cantidad de productos en el modal de carrito de compras
     document.querySelectorAll('.shoppingCarButtonOpenModal').forEach(item => {
         item.addEventListener('click', event => {
 
+            // Incrementar la cantidad de productos en el modal de carrito de compras, desde el modal del carrito
+            setQuantiyFromShoppingCar( 'addProductModalShoppingCard', 'add' );
+
+            // Reducir la cantidad de productos en el modal de carrito de comrpas, desde el modal del carrito
+            setQuantiyFromShoppingCar( 'substractProductModalShoppingCard', 'substract' );
+
+            // Eliminar prodcuto del modal de carrito de compras, con boton de elminar que esta en el modal del carrito
             document.querySelectorAll('.removeProductModalShoppingCar').forEach(item => {
                 item.addEventListener('click', event => {
 
@@ -732,33 +545,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Oculto el modal al dar click afuera de el
-    $(document).on("click",function(e) {
-        const contentModalShopinngCar = document.getElementById('contentModalShopinngCar');
-        const modalShoppingCar = document.getElementById('modalShoppingCar');
-
-        // Verifico si el elemento al q se le dio click esta fuera del modal
-        // Debe ser distinto ademas del boton q hace mostrar el modal
-        let band = 0;
-        // verifico se se dio click para abrir el modal
-        document.querySelectorAll('.shoppingCarButtonOpenModal').forEach(item => {
-            if( item.contains( e.target ) ){
-                band = 1;
-            }
-        });
-
-
-            // console.log(e)
-            // console.log(contentModalShopinngCar.contains(e.target))
-
-            // verifico si se dio click fuera del modal
-            // if( !contentModalShopinngCar.contains(e.target) && !band){
-            //         modalShoppingCar.style.display = 'none';
-            // }
-    })
 }, {passive: true});
-
-
 
 // Funcion para eliminar el card element del producto en el carrito de compras
 function removeCardProductShoppingCar ( idProduct ){
@@ -895,6 +682,7 @@ function updateQuantityProductsInBrandView(product_id, quantity){
 
 }
 
+// Actualizar monto total
 function updateAmount(){
 
     const brandSelectedToBuy = localStorage.getItem('brandSelectedToBuy');
@@ -927,6 +715,109 @@ function updateAmount(){
 
 }
 
+// Actualizar la cantidad productos desde el carrito de compras
+function setQuantiyFromShoppingCar( editButton, typeSet ){
 
+    // Reducir la cantidad de productos en el modal de carrito de comrpas, desde el modal del carrito
+    document.querySelectorAll('.'+editButton).forEach(item => {
+        item.addEventListener('click', event => {
 
+            // Obtengo los productos del local storage
+            let ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+            let arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
 
+            // En que elemento se dio click? en el spna, en el svg o en el path?
+            if ( event.target.nodeName == 'SPAN' ){
+                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
+            }else if( event.target.nodeName == 'svg' ){
+                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+            }else {
+                var rootContainer = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+            }
+
+            const idProduct = rootContainer.querySelector('.idProductCardModalShoppingCar').textContent;
+
+            let quantity = parseInt( rootContainer.querySelector('.quantityCardProductShoppingCar').textContent.trim() );
+
+            if ( ( quantity > 0 && typeSet == 'substract' ) || typeSet == 'add'){
+
+                let productInShppingCar = false;
+                let keyArray = 0;
+
+                arrayProductsLocalStorage.forEach(product => {
+                    if (idProduct == product.id ){
+                        productInShppingCar = true;
+                        if( typeSet == 'add' ){
+                            product.quantity = ++quantity;
+                        }else{
+                            product.quantity = --quantity;
+                        }
+                    }
+                    if (!productInShppingCar){
+                        keyArray++;
+                    }
+                });
+
+                // SOLO PARA SUBSTRACT
+                // El producto llego a cero? se debe eliminar del local storage
+                if ( quantity == 0 && typeSet == 'substract' ){
+                    // Se elimina el producto del carrito de compras
+                    arrayProductsLocalStorage.splice(keyArray, 1);
+
+                    // Elimino el card del carrito
+                    removeCardProductShoppingCar(idProduct);
+                }
+
+                // preguntar si el id del producto que estoy incrementando es el mismo de la vista de detalles
+                const id_product_DOM = document.getElementById('idproduct');
+                if( id_product_DOM !== null ){
+
+                    if( id_product_DOM.textContent == idProduct ){
+                        // actualizo la cantidad del producto en la vista de detalles
+                        // Cantidad de productos en carrito, en vista de detalles de producto
+                        const quantityProductDetail = document.querySelector('#quantityProductDetail');
+                        if ( quantityProductDetail !== null ){
+                            quantityProductDetail.textContent = quantity;
+                        }
+
+                    }
+                }
+                rootContainer.querySelector('.quantityCardProductShoppingCar').textContent = quantity;
+                // El producto llego a cero? se debe eliminar del local storage
+                if ( quantity == 0 ){
+                    // Se elimina el producto del carrito de compras
+                    arrayProductsLocalStorage.splice(keyArray, 1);
+
+                    // Elimino el card del carrito
+                    removeCardProductShoppingCar(idProduct);
+                }
+
+                // oculto y muestro los textos dependiendo de si hay o no productos en el localsotorage
+                localStorageProducts(arrayProductsLocalStorage);
+                // actualizo el span de carrito de compras
+                updateTotalProductsShoppingCar(arrayProductsLocalStorage);
+                shownHideCompareFloatButton(arrayProductsLocalStorage);
+                // actualizo la cantidad en el DOM de la vista de tienda, en caso se estar en la vista de detalles de la tienda seleccionada
+                updateQuantityProductsInBrandView(idProduct, quantity);
+                // Almaceno el producot en el localStorage
+                localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
+                updateAmount();
+
+            }
+
+        } ,{passive: true});
+    });
+
+}
+
+// Crear un objeto para un nuevo product
+function setNewProduct( product_id, title, quantity, price, image ){
+    let newProduct = {
+        id: product_id,
+        title: title,
+        quantity: quantity,
+        price: price,
+        image: image
+    }
+    return newProduct;
+}

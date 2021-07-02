@@ -166,16 +166,7 @@
                             </x-jet-responsive-nav-link>
                         @endif
 
-                        <!-- Authentication -->
-                        {{-- <form method="POST" class="text-center" action="{{ route('logout') }}">
-                            @csrf
 
-                            <x-jet-responsive-nav-link href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                                {{ __('Cerrrar sesión') }}
-                            </x-jet-responsive-nav-link>
-                        </form> --}}
 
                     </div>
             @else
@@ -208,6 +199,18 @@
                 <x-jet-responsive-nav-link href="{{ route('support.index') }}" :active="request()->routeIs('')">
                     Soporte
                 </x-jet-responsive-nav-link>
+                <hr />
+                <!-- Authentication -->
+                <form method="POST" class="text-center bg-gray-100" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-jet-responsive-nav-link href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                        {{ __('Cerrrar sesión') }}
+                    </x-jet-responsive-nav-link>
+                </form>
+                <hr />
             </div>
         </div>
     </div>
