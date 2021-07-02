@@ -1,4 +1,4 @@
-<section class="fixed bottom-0 bg-green-700 h-12 w-full md:hidden py-2">
+<section class="fixed bottom-0 bg-green-600 h-12 w-full md:hidden py-2">
     @role('buyer')
         <div class="grid grid-cols-3">
     @else
