@@ -4,10 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
         {{-- Facebook --}}
         <meta name="facebook-domain-verification" content="g2sprhx1aauu2l7e2kdeipenk0bze7" />
-
         <!-- Google Tag Manager -->
         <script>
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -19,16 +17,13 @@
         <!-- End Google Tag Manager -->
 
         <title>@yield('title')</title>
-
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon.png') }}">
 
         @yield('header')
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
         @livewireStyles
-
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
@@ -44,8 +39,6 @@
         <div class="min-h-screen bg-gray-100 relative">
 
             @livewire('navigation-menu')
-
-
 
             <!-- Page Content -->
             <main>
