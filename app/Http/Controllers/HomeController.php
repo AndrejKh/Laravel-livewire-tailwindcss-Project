@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
         $carousel_banners = BannerPromocional::latest('id')->where('page', 'home')->where('status', 'active')->get();
         $banners_promotionals = BannerPromocional::latest('id')->where('page', 'promotions')->where('status', 'active')->get();
-        $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(4)->get();
+        $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(3)->get();
         $products = Product::inRandomOrder()->where('status', 'active')->take(12)->get();
         $states = State::all();
         $cities = City::where('state_id', 1)->get();
