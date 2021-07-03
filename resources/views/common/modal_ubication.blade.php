@@ -13,7 +13,7 @@
         <div class="grid grid-cols-5 px-3 py-5">
             <h3 class="col-span-4 text-xl font-bold text-gray-900">¿En que lugar te encuentras?</h3>
             <span class="justify-self-end">
-                <img class="cursor-pointer h-6" src="{{ asset('close_icon_dark.svg') }}" alt="icono de cerrar modal de ubicacion" width="24px" height="23px">
+                <img class="cursor-pointer h-6" src="{{ asset('close_icon_dark.svg') }}" alt="icono de cerrar modal de ubicacion" width="24px" height="23px" id="modalUbicationButtonClose">
             </span>
         </div>
 
