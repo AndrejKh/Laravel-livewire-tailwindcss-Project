@@ -13,7 +13,7 @@
         <div class="grid grid-cols-5 px-3 py-5">
             <h5 class="col-span-4 text-xl font-bold text-gray-900">Carrito de compras</h5>
             <span class="justify-self-end">
-                <img class="h-6 cursor-pointer" src="{{ asset('close_icon_dark.svg') }}" alt="icono para cerrar modal de carrito de compras">
+                <img class="h-6 cursor-pointer" src="{{ asset('close_icon_dark.svg') }}" alt="icono para cerrar modal de carrito de compras" width="24px" height="23px">
             </span>
         </div>
 
@@ -36,7 +36,7 @@
                 <div hidden id="cardBrandShoppingCar">
                     <article class="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-6 p-2 md:p-3 lg:p-4 shadow-md bg-white rounded-lg relative">
                         <span class="w-6 h-6 md:w-7 md:h-7 absolute -top-2 -right-2 rounded-full bg-gray-600 text-white flex items-center justify-center cursor-pointer" id="deleteBrandDetailInShoppingCar">
-                            <img class="h-2 cursor-pointer" src="{{ asset('close_icon.svg') }}" alt="icono para cerrar modal de carrito de compras">
+                            <img class="h-2 cursor-pointer" src="{{ asset('close_icon.svg') }}" alt="icono para cerrar modal de carrito de compras" width="24px" height="23px">
                         </span>
                         <div class="col-span-1 self-center">
                             <div class="bg-no-repeat bg-cover bg-center h-12 w-12 md:w-16 md:h-16 overflow-hidden rounded-full mx-auto" id="imgCardBrandShoppingCar"></div>
@@ -44,7 +44,7 @@
                         <div class="col-span-4 lg:col-span-5">
                             <a class="font-semibold text-lg inline" id="titleCardBrandShoppingCar" href="#"></a>
                             <div class="flex self-center text-xs md:text-sm text-gray-600">
-                                <img class="inline h-4 md:h-5" src="{{ asset('address.svg') }}" alt="icono de la ubicacion del abasto o supermercado">
+                                <img class="inline h-4 md:h-5" src="{{ asset('address.svg') }}" alt="icono de la ubicacion del abasto o supermercado" width="24px" height="24px">
                                 <h2 class="inline font-semibold" id="addressCardBrandShoppingCar"></h2>
                             </div>
                         </div>
@@ -55,11 +55,11 @@
                 <div hidden id="cardProductShoppingCar">
                     <div class="max-w-7xl w-full rounded-xl shadow-md relative bg-white mb-2">
                         <span class="w-7 h-7 absolute -top-2 -right-2 rounded-full bg-gray-600 text-white flex items-center justify-center cursor-pointer removeProductModalShoppingCar">
-                            <img class="h-3 cursor-pointer" src="{{ asset('close_icon.svg') }}" alt="icono para cerrar modal de carrito de compras">
+                            <img class="h-3 cursor-pointer" src="{{ asset('close_icon.svg') }}" alt="icono para cerrar modal de carrito de compras" width="24px" height="23px">
                         </span>
                         <div class="grid grid-cols-3 px-2">
                             <div class="col-span-1">
-                                <img class="w-full self-center imgCardProductShoppingCar" src="" alt="imagen de banner">
+                                <img class="w-full self-center imgCardProductShoppingCar" src="" alt="imagen de banner" width="250px" height="250px">
                             </div>
                             <div class="col-span-2 flex flex-col justify-between py-3 sm:py-1 md:py-2 lg:py-4 xl:py-1">
                                 <h6 class="titleCardProductShoppingCar text-lg md:text-lg sm:mt-3 md:mt-2 xl:mt-4"></h6>
@@ -117,19 +117,19 @@
             <div class="bg-gray-100 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <span class="mr-0" id="finalizarCompraButton" style="display:none;">
                     <div class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:blue-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 items-center cursor-pointer" aria-label="ir a comparar precios" id="finalizarCompra">
-                        <img class="mr-2" src="{{ asset('arrow_finally.svg') }}" alt="icono de flecha para finalizar compra en kabasto">
+                        <img class="mr-2" src="{{ asset('arrow_finally.svg') }}" alt="icono de flecha para finalizar compra en kabasto" width="24px" height="24px">
                         Finalizar compra
                     </div>
                 </span>
                 <span class="hidden lg:mr-2 mt-3 md:mt-0" id="compararButton">
                     <a class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-blue-600 hover:bg-blue-500 text-base leading-6 font-medium text-white shadow-sm focus:outline-none focus:blue-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 items-center" href="{{ route('comparar') }}" aria-label="ir a comparar precios">
-                        <img src="{{ asset('compare.svg') }}" alt="icono de comparar precios de supermercados y abastos">
+                        <img src="{{ asset('compare.svg') }}" alt="icono de comparar precios de supermercados y abastos" width="28px" height="28px">
                         Comparar precios
                     </a>
                 </span>
                 <span class="hidden lg:mr-2 mt-3 md:mt-0" id="compararButtonOutline">
                     <a class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-white hover:bg-gray-200 text-base leading-6 font-medium text-blue-600 shadow-sm focus:outline-none focus:blue-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 items-center" href="{{ route('comparar') }}" aria-label="ir a comparar precios">
-                        <img class="mr-2" src="{{ asset('compare_blue.svg') }}" alt="icono de comparar precios de supermercados y abastos">
+                        <img class="mr-2" src="{{ asset('compare_blue.svg') }}" alt="icono de comparar precios de supermercados y abastos" width="28px" height="28px">
                         Comparar precios
                     </a>
                 </span>

@@ -7,7 +7,7 @@
                     <!-- Logo -->
                     <div class="flex-shrink-0 flex sm:hidden items-center">
                         <a href="{{ route('home') }}" aria-label="ir al inicio de kabasto">
-                            <img src=" {{ asset('logo_nav.svg') }} " alt="logo de Kabasto">
+                            <img src=" {{ asset('logo_nav.svg') }} " alt="logo de Kabasto" width="22px" height="33px">
                         </a>
                     </div>
                     <div class="flex-shrink-0 hidden sm:flex items-center">
@@ -33,7 +33,7 @@
             <div class="hidden md:flex md:items-center md:ml-6">
                 <div class="ml-3 relative">
                     <a class="shoppingCarButtonOpenModal" href="#" aria-label="mostrar carrito de compras">
-                        <img src="{{ asset('shopping_car.svg') }}" alt="icono del carrito de compras">
+                        <img src="{{ asset('shopping_car.svg') }}" alt="icono del carrito de compras" width="30px" height="25px">
                     </a>
                     <span class="w-2 h-2 absolute -top-1 -right-1 rounded-full bg-blue-600 hidden" id="badgeIconShoppingCarNavbar"></span>
                 </div>
