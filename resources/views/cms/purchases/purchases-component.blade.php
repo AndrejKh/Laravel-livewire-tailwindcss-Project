@@ -873,7 +873,7 @@
                             </div>
                             {{-- Detalles de la compra --}}
                             <div class="mt-2 mb-5">
-                                <button class="py-2 text-green-600 px-10 rounded-full shadow-md" {{-- wire:click="seeDetailsPurchase({{ $new_order->id }})" --}}>
+                                <button class="py-2 text-green-600 px-10 rounded-full shadow-md" wire:click="seeDetailsPurchase({{ $new_order->id }})">
                                     Ver detalles de la compra
                                 </button>
                             </div>
