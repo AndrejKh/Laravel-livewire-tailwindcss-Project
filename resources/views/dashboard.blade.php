@@ -236,7 +236,7 @@
             }
             axios({
                 method  : 'POST',
-                url : '/post/create-order/',
+                url : '/post/create-order',
                 data : data,
                 headers: {
                     'content-type': 'text/json',
@@ -249,10 +249,8 @@
                     window.location.href = "/login?r=1";
                 }else{
                     // elimino los datos del local storage
-                    localStorage.removeItem('itemsSelected');
                     localStorage.removeItem('amount');
                     localStorage.removeItem('brandSelectedToBuy');
-                    localStorage.removeItem('ubication');
                     localStorage.removeItem('productsShoppingCar');
                     // redirecciono a la vista compras
                     window.location.href = "/cms/compras";
