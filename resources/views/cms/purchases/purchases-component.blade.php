@@ -1,7 +1,7 @@
 <div>
     @php
-        $id_order_crated = session('order');
-        session()->forget('order');
+        // $id_order_crated = session('order');
+        // session()->forget('order');
     @endphp
     <div class="grid grid-cols-3 gap-1 mt-3 mb-4">
         <span class="col-span-2 self-center">Todas tus compras</span>
@@ -816,7 +816,7 @@
 
 
     {{-- Modal de compra exitosa --}}
-    @isset ( $id_order_crated )
+    @isset ( $new_order )
         <div class="fixed z-40 inset-0 overflow-y-auto ease-out duration-400"  id="modalSuccessPurchase">
 
             <div class="flex md:items-end justify-center md:pt-4 md:px-4 pb-20 text-center sm:block sm:p-0">
@@ -845,15 +845,39 @@
                             <div class="text-center">
                                 <img class="mx-auto" width="50%" src="{{ asset('purchase_success.svg') }}" alt="carrito vacio">
                             </div>
-                            {{-- <div class="mt-3 mb-5">
-                                <button class="py-2 bg-green-500 text-white px-10 rounded-full shadow-md" wire:click="contactSeller({{ $id_order_crated }})">Contactar con el abasto</button>
-                            </div> --}}
-
+                            {{-- Finalizar compra en WS --}}
                             <div class="mt-3 mb-5">
-                                <button class="py-2 bg-green-500 text-white px-10 rounded-full shadow-md" wire:click="seeDetailsPurchase({{ $id_order_crated }})">Ver detalles de la compra</a>
+                                <a class="py-2 bg-green-500 text-white px-4 md:px-10 rounded-full shadow-md" href="https://api.whatsapp.com/send?phone={{ $new_order->brand->user->phone }}&text=Compra realizada en *Kabasto.com*%0A%0A*{{ $new_order->user->name }}*%0A%0A*{{ $new_order->user->email }}*" target="_blank" aria-label="compartir en whatsapp">
+                                    <svg class="inline" width="20px" heigth="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                    <g>	<g>
+                                            <path fill="#fff" d="M440.164,71.836C393.84,25.511,332.249,0,266.737,0S139.633,25.511,93.308,71.836S21.473,179.751,21.473,245.263
+                                                c0,41.499,10.505,82.279,30.445,118.402L0,512l148.333-51.917c36.124,19.938,76.904,30.444,118.403,30.444
+                                                c65.512,0,127.104-25.512,173.427-71.836C486.488,372.367,512,310.776,512,245.263S486.488,118.16,440.164,71.836z
+                                                M266.737,460.495c-38.497,0-76.282-10.296-109.267-29.776l-6.009-3.549L48.952,463.047l35.878-102.508l-3.549-6.009
+                                                c-19.479-32.985-29.775-70.769-29.775-109.266c0-118.679,96.553-215.231,215.231-215.231s215.231,96.553,215.231,215.231
+                                                C481.968,363.943,385.415,460.495,266.737,460.495z"/>
+                                        </g></g><g>	<g>
+                                            <path fill="#fff" d="M398.601,304.521l-35.392-35.393c-11.709-11.71-30.762-11.71-42.473,0l-13.538,13.538
+                                                c-32.877-17.834-60.031-44.988-77.866-77.865l13.538-13.539c5.673-5.672,8.796-13.214,8.796-21.236
+                                                c0-8.022-3.124-15.564-8.796-21.236l-35.393-35.393c-5.672-5.672-13.214-8.796-21.236-8.796c-8.023,0-15.564,3.124-21.236,8.796
+                                                l-28.314,28.314c-15.98,15.98-16.732,43.563-2.117,77.664c12.768,29.791,36.145,62.543,65.825,92.223
+                                                c29.68,29.68,62.432,53.057,92.223,65.825c16.254,6.965,31.022,10.44,43.763,10.44c13.992,0,25.538-4.193,33.901-12.557
+                                                l28.314-28.314c5.673-5.672,8.796-13.214,8.796-21.236S404.273,310.193,398.601,304.521z M349.052,354.072
+                                                c-6.321,6.32-23.827,4.651-44.599-4.252c-26.362-11.298-55.775-32.414-82.818-59.457c-27.043-27.043-48.158-56.455-59.457-82.818
+                                                c-8.903-20.772-10.571-38.278-4.252-44.599l28.315-28.314l35.393,35.393l-28.719,28.719l4.53,9.563
+                                                c22.022,46.49,59.753,84.221,106.244,106.244l9.563,4.53l28.719-28.719l35.393,35.393L349.052,354.072z"/>
+                                        </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                                    <span class="self-center ml-2 md:text-lg">Finalizar compra en Whatsapp</span>
+                                </a>
+                            </div>
+                            {{-- Detalles de la compra --}}
+                            <div class="mt-2 mb-5">
+                                <button class="py-2 text-green-600 px-10 rounded-full shadow-md" {{-- wire:click="seeDetailsPurchase({{ $new_order->id }})" --}}>
+                                    Ver detalles de la compra
+                                </button>
                             </div>
                         </div>
-                        {{ $test }}
 
                     </div>
 
@@ -889,3 +913,4 @@
 
     @include('common.alert')
 </div>
+

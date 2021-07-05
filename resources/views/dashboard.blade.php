@@ -255,7 +255,7 @@
                     localStorage.removeItem('ubication');
                     localStorage.removeItem('productsShoppingCar');
                     // redirecciono a la vista compras
-                    window.location.href = "/compras";
+                    window.location.href = "/cms/compras";
                 }
             })
             .catch((err) => {console.log(err)});

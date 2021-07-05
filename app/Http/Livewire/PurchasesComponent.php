@@ -14,7 +14,7 @@ class PurchasesComponent extends Component
 
     protected $queryString = ['status' => ['except' => 'active'], 'search' => ['except' => ''], 'perPage'  => ['except' => '10']];
 
-    public $purchase, $brand, $confirmPurchase, $purchaseToRating, $products, $user_id, $message_alert, $color_alert, $test;
+    public $purchase, $brand, $confirmPurchase, $purchaseToRating, $products, $user_id, $message_alert, $color_alert;
 
     public $search = '';
     public $status = '';
@@ -35,8 +35,17 @@ class PurchasesComponent extends Component
         } else {
             $orders = Order::latest('id')->where('user_id', $this->user_id)->paginate($this->perPage);
         }
+        // Para una nueva compra
+        if( session('order') !== null ){
+            $id_order_crated = session('order');
+            $new_order = Order::where('id', $id_order_crated)->first();
 
-        return view('cms.purchases.purchases-component', compact('orders'));
+            session()->forget('order');
+        }else{
+            $new_order = null;
+        }
+
+        return view('cms.purchases.purchases-component', compact('orders','new_order'));
     }
 
 

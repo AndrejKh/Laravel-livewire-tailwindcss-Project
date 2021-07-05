@@ -13,7 +13,7 @@
         <div class="grid grid-cols-5 px-3 py-5">
             <h5 class="col-span-4 text-xl font-bold text-gray-900">Carrito de compras</h5>
             <span class="justify-self-end">
-                <img class="h-6 cursor-pointer" src="{{ asset('close_icon_dark.svg') }}" alt="icono para cerrar modal de carrito de compras" width="24px" height="23px">
+                <img class="h-6 cursor-pointer" src="{{ asset('close_icon_dark.svg') }}" alt="icono para cerrar modal de carrito de compras" width="24px" height="23px" id="shoppingCarButtonModalClose">
             </span>
         </div>
 
