@@ -6,7 +6,7 @@
 
 @section('header')
     <!-- Styles Carousel Lybrary -->
-    <script src="{{ asset('vendor/carouseljs/owl.carousel.min.js') }}" async></script>
+    <script src="{{ asset('vendor/carouseljs/owl.carousel.min.js') }}"></script>
     {{-- precargar imagenes --}}
     <link rel="preload" href="{{ asset( 'home.webp' ) }}" as="image">
 
