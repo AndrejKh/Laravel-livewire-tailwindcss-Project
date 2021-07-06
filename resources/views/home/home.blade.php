@@ -5,6 +5,8 @@
 @endsection
 
 @section('header')
+    <!-- Styles Carousel Lybrary -->
+    <script src="{{ asset('vendor/carouseljs/owl.carousel.min.js') }}" async></script>
     {{-- precargar imagenes --}}
     <link rel="preload" href="{{ asset( 'home.webp' ) }}" as="image">
 
@@ -24,8 +26,7 @@
 
     {{-- url canonical --}}
     <link rel="canonical" href="https://kabasto.com/" />
-    <!-- Styles Carousel Lybrary -->
-    <script src="{{ asset('vendor/carouseljs/owl.carousel.min.js') }}"></script>
+
 @endsection
 
 @section('content')

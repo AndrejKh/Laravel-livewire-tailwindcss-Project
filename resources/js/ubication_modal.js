@@ -1,6 +1,6 @@
-const modalUbication = document.getElementById('modalUbication');
 
 document.addEventListener("DOMContentLoaded", function() {
+    const modalUbication = document.getElementById('modalUbication');
     const ubication = localStorage.getItem('ubication');
     if( ubication === null ){
 

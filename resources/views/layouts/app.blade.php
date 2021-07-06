@@ -7,7 +7,7 @@
         {{-- Facebook --}}
         <meta name="facebook-domain-verification" content="g2sprhx1aauu2l7e2kdeipenk0bze7" />
         <!-- Google Tag Manager -->
-        <script>
+        <script defer>
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
