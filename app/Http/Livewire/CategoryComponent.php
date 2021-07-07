@@ -73,7 +73,7 @@ class CategoryComponent extends Component
         Category::create([
             'category' => $this->category,
             'description' => $this->description,
-            'slug' => SlugService::createSlug(Category::class, 'slug', $this->category),
+            'slug' => SlugService::createSlug(Category::class, 'slug', trim($this->category)),
             'photo' => $path_imagen,
             'padre_id' => $this->padre_id
         ]);
@@ -86,7 +86,7 @@ class CategoryComponent extends Component
 
     public function edit(Category $category)
     {
-        $this->category = $category->category;
+        $this->category = trim($category->category);
         $this->description = $category->description;
         /* $this->photo = $category->photo; */
         $this->padre_id = $category->padre_id;
@@ -116,7 +116,7 @@ class CategoryComponent extends Component
             $category->update([
                 'category' => $this->category,
                 'description' => $this->description,
-                'slug' => SlugService::createSlug(Category::class, 'slug', $this->category),
+                'slug' => SlugService::createSlug(Category::class, 'slug', trim($this->category)),
                 'photo' => $path_imagen,
                 'padre_id' => $this->padre_id
             ]);
