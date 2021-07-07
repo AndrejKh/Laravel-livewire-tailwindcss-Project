@@ -76,7 +76,7 @@ class ProductComponent extends Component
         Product::create([
             'title' => $this->title,
             'description' => $this->description,
-            'slug' => SlugService::createSlug(Product::class, 'slug', $this->title),
+            'slug' => SlugService::createSlug(Product::class, 'slug', trim($this->title)),
             'photo_main_product' => $path_imagen,
             'thumbnail' => $path_thumbnail,
             'category_id' => $this->category_id
@@ -115,7 +115,7 @@ class ProductComponent extends Component
             $product->update([
                 'title' => $this->title,
                 'description' => $this->description,
-                'slug' => SlugService::createSlug(Product::class, 'slug', $this->title),
+                'slug' => SlugService::createSlug(Product::class, 'slug', trim($this->title)),
                 'category_id' => $this->category_id
             ]);
         }
@@ -132,7 +132,7 @@ class ProductComponent extends Component
             $product->update([
                 'title' => $this->title,
                 'description' => $this->description,
-                'slug' => SlugService::createSlug(Product::class, 'slug', $this->title),
+                'slug' => SlugService::createSlug(Product::class, 'slug', trim($this->title)),
                 'photo_main_product' => $path_imagen,
                 'category_id' => $this->category_id
             ]);
@@ -151,7 +151,7 @@ class ProductComponent extends Component
             $product->update([
                 'title' => $this->title,
                 'description' => $this->description,
-                'slug' => SlugService::createSlug(Product::class, 'slug', $this->title),
+                'slug' => SlugService::createSlug(Product::class, 'slug', trim($this->title)),
                 'thumbnail' => $path_imagen_thumbnail,
                 'category_id' => $this->category_id
             ]);
