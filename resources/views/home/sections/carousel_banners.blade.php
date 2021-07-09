@@ -21,12 +21,6 @@
             }
         })
     </script>
-    <script>
-        const buttons = document.getElementById('carousel_banners_home')
-        console.log(buttons)
-        console.log("asfdasdf")
-
-    </script>
 @endif
 
 
