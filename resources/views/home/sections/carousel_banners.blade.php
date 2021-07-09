@@ -3,7 +3,7 @@
 
         @foreach ($carousel_banners as $banner)
 
-            <a class="item" href="{{ $banner->slug }}">
+            <a class="item" href="{{ $banner->slug }}" aria-label="ir a promocion">
                 <div class="h-28 sm:h-40 md:h-60 lg:h-72 xl:h-80 bg-no-repeat bg-cover bg-top w-full overflow-hidden z-10 shadow-md"
                 style="background-image: url('/storage/{{ $banner->banner }}');">
                 </div>
