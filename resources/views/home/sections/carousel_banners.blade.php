@@ -13,7 +13,7 @@
             loop:true,
             margin:0,
             nav:true,
-            navText: ['<img src="{{asset('arrow_left.svg')}}" alt="anterior imagen"/>', '<img src="{{asset('arrow_right.svg')}}" alt="siguiente imagen"/>'],
+            navText: ['<img src="{{asset('arrow_left.svg')}}" alt="anterior imagen" width="25px" height="25px"/>', '<img src="{{asset('arrow_right.svg')}}" alt="siguiente imagen" width="25px" height="25px"/>'],
             responsive:{
                 0:{
                     items:1
