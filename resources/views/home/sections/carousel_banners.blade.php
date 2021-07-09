@@ -21,6 +21,11 @@
             }
         })
     </script>
+    <script>
+        const buttons = document.getElementById('carousel_banners_home').querySelectorAll('.owl-nav button')
+        console.log(buttons)
+
+    </script>
 @endif
 
 
