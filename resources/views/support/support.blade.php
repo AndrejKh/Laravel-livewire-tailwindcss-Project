@@ -72,7 +72,7 @@
             <br>
         </p>
 
-        <hr class="my-6">
+        {{-- <hr class="my-6">
 
         <h2 class="text-lg mt-2 font-semibold">
             ¿A qué hora puedo escribir?
@@ -105,7 +105,7 @@
             Seria excelente! <br>
             Nos encantaría poder escuchar todas tus ideas de mejora. <br>
             Estamos en constante creciemiento y tus sugerencias serían una prioridad para nosotros.
-        </p>
+        </p> --}}
 
         <hr class="my-6">
 
