@@ -141,28 +141,24 @@
                 @endauth
             </div>
 
-
-
             @auth
-                    <div class="mt-3 space-y-1">
+                <div class="mt-3 space-y-1">
 
-                        <!-- Account Management -->
-                        <x-jet-responsive-nav-link class="text-center" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                            Resumen
+                    <!-- Account Management -->
+                    <x-jet-responsive-nav-link class="text-center" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        Resumen
+                    </x-jet-responsive-nav-link>
+                    <x-jet-responsive-nav-link class="text-center" href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                        Perfil
+                    </x-jet-responsive-nav-link>
+
+                    @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                        <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
+                            {{ __('API Tokens') }}
                         </x-jet-responsive-nav-link>
-                        <x-jet-responsive-nav-link class="text-center" href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                            Perfil
-                        </x-jet-responsive-nav-link>
+                    @endif
 
-                        @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                            <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
-                                {{ __('API Tokens') }}
-                            </x-jet-responsive-nav-link>
-                        @endif
-
-
-
-                    </div>
+                </div>
             @else
             <div class="text-lg font-bold text-green-600 text-center">Inicia sesión para continuar</span>
                     <div class="mt-3 space-y-1 text-center">
@@ -197,7 +193,6 @@
                 <!-- Authentication -->
                 <form method="POST" class="text-center bg-gray-100" action="{{ route('logout') }}">
                     @csrf
-
                     <x-jet-responsive-nav-link href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                     this.closest('form').submit();">

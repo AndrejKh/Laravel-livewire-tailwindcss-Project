@@ -11,7 +11,6 @@
                 <div class="bg-no-repeat bg-cover bg-center w-full h-24 md:h-36 xl:h-36 overflow-hidden z-10 rounded-md shadow-md" style="background-image: url('/storage/{{ $category->photo }}');"></div>
             </a>
         @endforeach
-
     </div>
     <script>
         $('#carousel_banners_categories').owlCarousel({
