@@ -41,7 +41,7 @@ class HomeController extends Controller
         if ( Cache::has('principal_categories') ) {
             $principal_categories = Cache::get('principal_categories');
         } else {
-            $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(5)->get();
+            $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(4)->get();
             Cache::put('principal_categories', $principal_categories);
         }
         // productos
