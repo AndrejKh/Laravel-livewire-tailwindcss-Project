@@ -22,8 +22,9 @@
         })
     </script>
     <script>
-        const buttons = document.getElementById('carousel_banners_home').querySelectorAll('.owl-nav button')
+        const buttons = document.getElementById('carousel_banners_home').querySelector('.owl-nav')
         console.log(buttons)
+        console.log("asfdasdf")
 
     </script>
 @endif
