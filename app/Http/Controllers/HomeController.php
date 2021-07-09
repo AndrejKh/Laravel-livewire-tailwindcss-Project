@@ -9,14 +9,10 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Delivery;
 use App\Models\Item;
-use App\Models\Order;
 use App\Models\Product;
 use App\Models\State;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Cache;
 // use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 class HomeController extends Controller
@@ -27,14 +23,45 @@ class HomeController extends Controller
 
     public function index()
     {
-        $carousel_banners = BannerPromocional::latest('id')->where('page', 'home')->where('status', 'active')->get();
-        $banners_promotionals = BannerPromocional::latest('id')->where('page', 'promotions')->where('status', 'active')->get();
-        $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(4)->get();
-        $products = Product::inRandomOrder()->where('status', 'active')->take(12)->get();
-        $states = State::all();
+        // Banners principales
+        if ( Cache::has('carousel_banners') ) {
+            $carousel_banners = Cache::get('carousel_banners');
+        } else {
+            $carousel_banners = BannerPromocional::latest('id')->where('page', 'home')->where('status', 'active')->get();
+            Cache::put('carousel_banners', $carousel_banners);
+        }
+        // Banners promocionales
+        if ( Cache::has('banners_promotionals') ) {
+            $banners_promotionals = Cache::get('banners_promotionals');
+        } else {
+            $banners_promotionals = BannerPromocional::latest('id')->where('page', 'promotions')->where('status', 'active')->get();
+            Cache::put('banners_promotionals', $banners_promotionals);
+        }
+        // categorias principales
+        if ( Cache::has('principal_categories') ) {
+            $principal_categories = Cache::get('principal_categories');
+        } else {
+            $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(5)->get();
+            Cache::put('principal_categories', $principal_categories);
+        }
+        // productos
+        if ( Cache::has('products') ) {
+            $products = Cache::get('products');
+        } else {
+            $products = Product::latest('id')->where('status', 'active')->take(12)->get();
+            Cache::put('products', $products);
+        }
+        // estados
+        if ( Cache::has('states') ) {
+            $states = Cache::get('states');
+        } else {
+            $states = State::all();
+            Cache::put('states', $states);
+        }
+
         $cities = City::where('state_id', 1)->get();
 
-        return view('home.home', compact('carousel_banners', 'principal_categories','products', 'banners_promotionals', 'states', 'cities'));
+        return view('home.home', compact('carousel_banners', 'principal_categories', 'products', 'banners_promotionals', 'states', 'cities'));
     }
 
     // Vitirna de productos, controlador del input search del navbar

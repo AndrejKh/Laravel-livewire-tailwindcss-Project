@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\BannerPromocional;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
 //clase para crear paginacion dinamica, sin que se recargue la pagina
@@ -68,6 +69,10 @@ class PromotionalBannerComponent extends Component
             'page' => $this->page_banner,
             'url' => $this->url
         ]);
+        // elimino el cache
+        Cache::forget('carousel_banners');
+        Cache::forget('banners_promotionals');
+
         //reinicio las propiedades
         $this->reset(['banner', 'page_banner', 'banner_id', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
@@ -114,6 +119,9 @@ class PromotionalBannerComponent extends Component
                 'url' => $this->url
             ]);
         }
+        // elimino el cache
+        Cache::forget('carousel_banners');
+        Cache::forget('banners_promotionals');
 
         //reinicio las propiedades
         $this->reset(['banner', 'page_banner', 'banner_id', 'show_alert', 'message_alert', 'color_alert']);

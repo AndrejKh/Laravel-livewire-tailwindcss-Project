@@ -6,7 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
 use Cviebrock\EloquentSluggable\Services\SlugService;
-
+use Illuminate\Support\Facades\Cache;
 //clase para crear paginacion dinamica, sin que se recargue la pagina
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
@@ -81,6 +81,8 @@ class ProductComponent extends Component
             'thumbnail' => $path_thumbnail,
             'category_id' => $this->category_id
         ]);
+        // elimino el cache
+        Cache::forget('products');
         //reinicio las propiedades
         $this->cancel();
         $this->show_alert = 'true';
@@ -157,6 +159,9 @@ class ProductComponent extends Component
             ]);
 
         }
+
+        // elimino el cache
+        Cache::forget('products');
 
         //reinicio las propiedades
         $this->cancel();

@@ -10,19 +10,16 @@
             Los mejores productos de todos abastos
         </p>
     </div>
-    <div class="owl-carousel owl-theme max-w-7xl mx-auto px-2 my-1 text-center relative" id="carousel_products_categories">
+    <div class="owl-carousel owl-theme max-w-7xl mx-auto px-2 my-1 text-center relative" id="carousel_products_destacados">
 
         @foreach ($products as $product)
-
             @include('components.card_product')
-
         @endforeach
 
     </div>
-
 @endif
 <script>
-    $('.carousel_products_categories').owlCarousel({
+    $('#carousel_products_destacados').owlCarousel({
         loop:true,
         margin:15,
         nav:false,

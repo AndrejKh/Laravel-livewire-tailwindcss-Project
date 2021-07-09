@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
 //clase para crear paginacion dinamica, sin que se recargue la pagina
@@ -77,6 +78,9 @@ class CategoryComponent extends Component
             'photo' => $path_imagen,
             'padre_id' => $this->padre_id
         ]);
+
+        // elimino el cache
+        Cache::forget('principal_categories');
         //reinicio las propiedades
         $this->reset(['category', 'description', 'action', 'slug', 'photo', 'category_id', 'padre_id','show_alert','message_alert','color_alert']);
         $this->show_alert = 'true';
@@ -136,6 +140,8 @@ class CategoryComponent extends Component
                 'padre_id' => $this->padre_id
             ]);
         }
+        // elimino el cache
+        Cache::forget('principal_categories');
 
         //reinicio las propiedades
         $this->reset(['category', 'description', 'action', 'slug', 'photo', 'category_id', 'padre_id','show_alert','message_alert','color_alert']);

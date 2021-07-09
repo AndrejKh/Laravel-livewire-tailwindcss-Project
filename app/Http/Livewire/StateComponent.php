@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\State;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
 //clase para crear paginacion dinamica, sin que se recargue la pagina
@@ -58,6 +59,9 @@ class StateComponent extends Component
             'state' => $this->state,
             'code' => $this->code
         ]);
+
+        // elimino el cache
+        Cache::forget('states');
         //reinicio las propiedades
         $this->reset(['state_id', 'state', 'code', 'action', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
@@ -85,6 +89,8 @@ class StateComponent extends Component
             'state' => $this->state,
             'code' => $this->code
         ]);
+        // elimino el cache
+        Cache::forget('states');
 
         //reinicio las propiedades
         $this->reset(['state_id', 'state', 'code', 'action', 'show_alert', 'message_alert', 'color_alert']);
