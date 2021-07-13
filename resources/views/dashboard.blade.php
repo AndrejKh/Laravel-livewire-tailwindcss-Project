@@ -35,11 +35,11 @@
 
                         <div class="flex flex-col justify-center mt-10 content-center rounded-lg shadow-lg overflow-hidden">
                             <div class="block font-semibold text-lg bg-green-400 text-white text-center py-1">
-                                Crea tu marca
+                                Crea tu tienda!
                             </div>
                             <span class="block text-lg bg-white px-3 md:px-8 py-4">
                                 Para poder empezar a vender tus productos con nosotros, debes primero
-                                <a class="text-blue-700" href="{{ route('cms.tiendas') }}">crear una marca</a>
+                                <a class="text-blue-700" href="{{ route('cms.tiendas') }}">crear tu tienda</a>
                             </span>
                         </div>
 
