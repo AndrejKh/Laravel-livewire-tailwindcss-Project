@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('html')itemscope itemtype="http://schema.org/Product"@endsection
 
 @section('title')
     {{ ucwords($product->title) }} - Kabasto.com
@@ -7,7 +8,8 @@
 @section('header')
     {{-- precargar imagenes --}}
     <link rel="preload" href="/storage/{{ $product->photo_main_product }}" as="image">
-
+    {{-- url canonical --}}
+    <link rel="canonical" href="https://kabasto.com/productos/{{$product->slug}}" />
     <meta name="robots" content="index,follow"/>
 
     <!-- Primary Meta Tags -->
@@ -15,15 +17,41 @@
     <meta name="description" content="Precios de {{ $product->title }} en los abastos y supermercados de tu ciudad - Kabasto.com">
     <meta name="keywords" content="precio de {{ $product->title }}">
 
+    <!-- MAacado Schema.org para Google+ -->
+    <meta itemprop="name" content="{{ $product->title }} - Kabasto.com">
+    <meta itemprop="description" content="Precios de {{ $product->title }} en los abastos y supermercados de tu ciudad - Kabasto.com">
+    <meta itemprop="image" content="https://kabasto.com/storage/{{ $product->thumbnail }}">
+
+    <!-- Open Graph para Facebook -->
+    <meta property="og:title" content="{{ $product->title }} - Kabasto.com" />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="https://kabasto.com/productos/{{$product->slug}}" />
+    <meta property="og:image" content="https://kabasto.com/storage/{{ $product->thumbnail }}" />
+    <meta property="og:description" content="Precios de {{ $product->title }} en los abastos y supermercados de tu ciudad - Kabasto.com" />
+    <meta property="og:site_name" content="Kabasto.com" />
+    {{-- <meta property="product:price:amount" content="30" />
+    <meta property="product:price:currency" content="EUR" /> --}}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="product">
+    <meta name="twitter:site" content="@kabasto_ve">
+    <meta name="twitter:title" content="{{ $product->title }} - Kabasto.com">
+    <meta name="twitter:description" content="Precios de {{ $product->title }} en los abastos y supermercados de tu ciudad - Kabasto.com">
+    <meta name="twitter:image:src" content="https://kabasto.com/storage/{{ $product->photo_main_product }}">
+    <meta name="twitter:creator" content="@kabasto_ve">
+    {{-- Precio del producto
+    <meta name="twitter:data1" content="$3">
+    <meta name="twitter:label1" content="Precio">
+    color del producto
+    <meta name="twitter:data2" content="Negro">
+    <meta name="twitter:label2" content="Color"> --}}
+
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
+    {{-- <meta property="og:type" content="website">
     <meta property="og:url" content="https://kabasto.com/productos/{{$product->slug}}">
     <meta property="og:title" content="{{ ucwords($product->title) }} - Kabasto">
     <meta property="og:description" content="Precios de {{ $product->title }} en los abastos y supermercados">
-    <meta property="og:image" content="/storage/{{ $product->photo_main_product }}">
-
-    {{-- url canonical --}}
-    <link rel="canonical" href="https://kabasto.com/productos/{{$product->slug}}" />
+    <meta property="og:image" content="/storage/{{ $product->photo_main_product }}"> --}}
 
     <!-- Styles Carousel Lybrary -->
     <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.carousel.min.css') }}">

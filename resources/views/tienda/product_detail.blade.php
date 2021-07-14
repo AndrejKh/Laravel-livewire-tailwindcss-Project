@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@php $price = number_format($item->price, 2, '.', ','); @endphp
 
 @section('title')
     {{ ucwords($product->title) }} - {{ $brand->brand }}
@@ -7,23 +8,40 @@
 @section('header')
     {{-- precargar imagenes --}}
     <link rel="preload" href="/storage/{{ $product->photo_main_product }}" as="image">
-
+    {{-- url canonical --}}
+    <link rel="canonical" href="https://kabasto.com/supermercado/{{$brand->slug}}/{{$product->slug}}" />
     <meta name="robots" content="index,follow"/>
 
     <!-- Primary Meta Tags -->
     <meta name="title" content="{{ ucwords($product->title) }} - Kabasto">
-    <meta name="description" content="Los precios de {{ $product->title }} en {{$brand->brand}} en {{$brand->address->city->city}}">
+    <meta name="description" content="Precio de {{ $product->title }} en {{$brand->brand}} en {{$brand->address->city->city}}">
     <meta name="keywords" content="precio de {{ $product->title }} en {{$brand->brand}}">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kabasto.com/supermercado/{{$brand->slug}}/{{$product->slug}}">
-    <meta property="og:title" content="{{ ucwords($product->title) }} - Kabasto">
-    <meta property="og:description" content="Los precios de {{ $product->title }} en {{$brand->brand}} en {{$brand->address->city->city}}">
-    <meta property="og:image" content="/storage/{{ $product->photo_main_product }}">
 
-    {{-- url canonical --}}
-    <link rel="canonical" href="https://kabasto.com/supermercado/{{$brand->slug}}/{{$product->slug}}" />
+    <!-- MAacado Schema.org para Google+ -->
+    <meta itemprop="name" content="{{ $product->title }} - Kabasto.com">
+    <meta itemprop="description" content="Precio de {{ $product->title }} en {{$brand->brand}} en {{$brand->address->city->city}}">
+    <meta itemprop="image" content="https://kabasto.com/storage/{{ $product->thumbnail }}">
+
+    <!-- Open Graph para Facebook -->
+    <meta property="og:title" content="{{ $product->title }} - Kabasto.com" />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="https://kabasto.com/productos/{{$product->slug}}" />
+    <meta property="og:image" content="https://kabasto.com/storage/{{ $product->thumbnail }}" />
+    <meta property="og:description" content="Precio de {{ $product->title }} en {{$brand->brand}} en {{$brand->address->city->city}}" />
+    <meta property="og:site_name" content="Kabasto.com" />
+    <meta property="product:price:amount" content="{{ $price }}" />
+    <meta property="product:price:currency" content="USD" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="product">
+    <meta name="twitter:site" content="@kabasto_ve">
+    <meta name="twitter:title" content="{{ $product->title }} - Kabasto.com">
+    <meta name="twitter:description" content="Precio de {{ $product->title }} en {{$brand->brand}} en {{$brand->address->city->city}}">
+    <meta name="twitter:image:src" content="https://kabasto.com/storage/{{ $product->photo_main_product }}">
+    <meta name="twitter:creator" content="@kabasto_ve">
+    <meta name="twitter:data1" content="${{ $price }}">
+    <meta name="twitter:label1" content="Precio">
 
     <!-- Styles Carousel Lybrary -->
     <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.carousel.min.css') }}">
@@ -93,7 +111,6 @@
 
                         <div class="">
                             <span class="text-3xl font-regular">
-                                @php $price = number_format($item->price, 2, '.', ','); @endphp
                                 <span id="priceProductDetailBrandView">
                                     {{ $price }}
                                 </span>
