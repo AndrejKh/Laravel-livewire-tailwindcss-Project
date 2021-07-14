@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Kabasto.com - Compara y compra en los diferentes abastos de tu ciudad
+    Compara y compra en los diferentes abastos de tu ciudad - Kabasto.com
 @endsection
 
 @section('header')
