@@ -190,16 +190,18 @@
                     Soporte
                 </x-jet-responsive-nav-link>
                 <hr />
-                <!-- Authentication -->
-                <form method="POST" class="text-center bg-gray-100" action="{{ route('logout') }}">
-                    @csrf
-                    <x-jet-responsive-nav-link href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                        {{ __('Cerrrar sesión') }}
-                    </x-jet-responsive-nav-link>
-                </form>
-                <hr />
+                @auth
+                    <!-- Authentication -->
+                    <form method="POST" class="text-center bg-gray-100" action="{{ route('logout') }}">
+                        @csrf
+                        <x-jet-responsive-nav-link href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                            {{ __('Cerrrar sesión') }}
+                        </x-jet-responsive-nav-link>
+                    </form>
+                    <hr />
+                @endauth
             </div>
         </div>
     </div>
