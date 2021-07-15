@@ -1,4 +1,4 @@
-<div class="max-w-xs rounded-md overflow-hidden shadow-md hover:shadow-lg my-2 bg-white relative">
+<div class="max-w-xs rounded-md overflow-hidden shadow-md hover:shadow-2xl my-2 bg-white relative">
     <a href="{{route('products.details.show', $product->slug)}}" aria-label="ver los precios del producto {{ $product->title }}">
         <img class="w-full" src="/storage/{{ $product->thumbnail }}" alt="{{ $product->title }}" width="250px" height="250px">
         <span class="absolute top-4 left-2 svgProdcutInShoppingCar hidden" title="Producto en carrito">
