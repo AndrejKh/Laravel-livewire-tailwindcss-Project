@@ -1,4 +1,5 @@
 @extends('layouts.app')
+    @section('html')itemscope itemtype="http://schema.org/WebPage"@endsection
 
     @section('title')
        Abastos y supermercados - Kabasto
@@ -7,7 +8,8 @@
     @section('header')
         {{-- precargar imagenes --}}
         <link rel="preload" href="{{ asset( 'home.png' ) }}" as="image">
-
+        {{-- url canonical --}}
+        <link rel="canonical" href="https://kabasto.com/supermercados" />
         <meta name="robots" content="index,follow"/>
 
         <!-- Primary Meta Tags -->
@@ -15,22 +17,32 @@
         <meta name="description" content="Selecciona el abasto o supermercado donde deseas comprar en tu ciudad. Elige la opción de tu preferencia - Kabasto.com">
         <meta name="keywords" content="precio de abastos y supermercados en venezuela">
 
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://kabasto.com/supermercados">
-        <meta property="og:title" content="Eligue el abasto de tu preferencia en nuestra red - Kabasto.com">
-        <meta property="og:description" content="Selecciona el abasto o supermercado donde deseas comprar en tu ciudad. Elige la opción de tu preferencia - Kabasto.com">
-        <meta property="og:image" content="{{ asset( 'home.webp' ) }}">
+        <!-- MAacado Schema.org para Google+ -->
+        <meta itemprop="name" content="Eligue el abasto de tu preferencia en nuestra red - Kabasto.com">
+        <meta itemprop="description" content="Selecciona el abasto o supermercado donde deseas comprar en tu ciudad. Elige la opción de tu preferencia - Kabasto.com">
+        <meta itemprop="image" content="{{ asset( 'home.png' ) }}">
 
-        {{-- url canonical --}}
-        <link rel="canonical" href="https://kabasto.com/supermercados" />
+        <!-- Open Graph para Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Eligue el abasto de tu preferencia en nuestra red - Kabasto.com" />
+        <meta property="og:url" content="https://kabasto.com/supermercados" />
+        <meta property="og:image" content="{{ asset( 'home.png' ) }}" />
+        <meta property="og:description" content="Selecciona el abasto o supermercado donde deseas comprar en tu ciudad. Elige la opción de tu preferencia - Kabasto.com" />
+        <meta property="og:site_name" content="Kabasto" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="product">
+        <meta name="twitter:site" content="@kabasto_ve">
+        <meta name="twitter:title" content="Eligue el abasto de tu preferencia en nuestra red - Kabasto.com">
+        <meta name="twitter:description" content="Selecciona el abasto o supermercado donde deseas comprar en tu ciudad. Elige la opción de tu preferencia - Kabasto.com">
+        <meta name="twitter:image:src" content="{{ asset( 'home.png' ) }}">
+        <meta name="twitter:creator" content="@kabasto_ve">
 
         <!-- Styles Carousel Lybrary -->
-    <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.carousel.min.css') }}">
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}" ></script>
-    <script src="{{ asset('vendor/carouseljs/owl.carousel.min.js') }}" ></script>
+        <link rel="stylesheet" href="{{ asset('vendor/carouseljs/owl.carousel.min.css') }}">
+        <script src="{{ asset('vendor/jquery/jquery.min.js') }}" ></script>
+        <script src="{{ asset('vendor/carouseljs/owl.carousel.min.js') }}" ></script>
     @endsection
-
 
 @section('content')
 

@@ -7,6 +7,8 @@
     @section('header')
         {{-- Meta No indexar --}}
         <meta name="robots" content="noindex,nofollow" />
+        {{-- url canonical --}}
+        <link rel="canonical" href="https://kabasto.com/" />
 
         <!-- Primary Meta Tags -->
         <meta name="title" content="Kabasto.com - Página no encontrada :\">

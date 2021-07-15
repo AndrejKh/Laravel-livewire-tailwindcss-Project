@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('html')itemscope itemtype="http://schema.org/Product"@endsection
 @php $price = number_format($item->price, 2, '.', ','); @endphp
 
 @section('title')
@@ -16,7 +17,6 @@
     <meta name="title" content="{{ ucwords($product->title) }} - Kabasto">
     <meta name="description" content="Precio de {{ $product->title }} en {{$brand->brand}} en {{$brand->address->city->city}}">
     <meta name="keywords" content="precio de {{ $product->title }} en {{$brand->brand}}">
-
 
     <!-- MAacado Schema.org para Google+ -->
     <meta itemprop="name" content="{{ $product->title }} - Kabasto.com">
