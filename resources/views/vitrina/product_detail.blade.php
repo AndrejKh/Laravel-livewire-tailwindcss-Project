@@ -115,7 +115,10 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-center md:justify-start my-2 md:my-6">
+                    <div class="text-center md:text-left text-base md:text-lg font-light md:mt-6">
+                        Cantidad
+                    </div>
+                    <div class="flex justify-center md:justify-start my-2 md:mb-6">
                         <div class="flex bg-white rounded-full">
                             <span class="flex-shrink-0 self-center bg-green-400 rounded-full p-2 cursor-pointer" id="subtractProduct">
                                 <svg class="fill-current text-white h-7 w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 5v11.17l-4.88-4.88c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0l6.59-6.59c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L13 16.17V5c0-.55-.45-1-1-1s-1 .45-1 1z"/></svg>
@@ -125,12 +128,6 @@
                                 <svg class="fill-current text-white h-7 w-7" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M13 19V7.83l4.88 4.88c.39.39 1.03.39 1.42 0 .39-.39.39-1.02 0-1.41l-6.59-6.59c-.39-.39-1.02-.39-1.41 0l-6.6 6.58c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L11 7.83V19c0 .55.45 1 1 1s1-.45 1-1z"/></svg>
                             </span>
                         </div>
-                    </div>
-                    <div class="hidden md:block">
-                        <h4 class="text-lg font-regular md:mt-10">Descripción del producto</h4>
-                        <p class="hidden md:block text-gray-500 mt-4 md:mt-4 text-base md:text-lg">
-                            @php echo nl2br($product->description); @endphp
-                        </p>
                     </div>
                 </div>
             </div>
@@ -162,17 +159,18 @@
         <a class="bg-green-500 text-white py-2 px-8 rounded-md shadow-md" href="{{ url()->previous() }}" aria-label="seguir agregando al carrito">Seguir agregando al carrito</a>
     </div>
 
-    <div class="block md:hidden max-w-7xl w-full px-2 mx-auto mb-1 mt-3">
+    {{-- Otros productos  --}}
+    @include('vitrina.other_products')
+
+    {{-- Descripcion del producto --}}
+    <div class="block max-w-7xl w-full px-2 mx-auto mb-10 mt-3">
         <h3 class="text-xl text-gray-900 font-semibold">
             Descripción del producto
         </h3>
-        <p class="text-gray-500 mt-4 md:mt-6 lg:mt-10 text-base md:text-lg">
+        <p class="text-gray-500 mt-4 text-base md:text-lg">
             @php echo nl2br($product->description); @endphp
         </p>
     </div>
-
-    {{-- Otros productos  --}}
-    @include('vitrina.other_products')
 
     {{-- Modal para compartir --}}
     <div class="fixed z-40 inset-0 overflow-y-auto ease-out duration-400" style="display:none;" id="shareModal" >
@@ -260,7 +258,7 @@
     </div>
 
 
-    {{-- Actualizar la cantidad del producto en carrito de compras, con local storage --}}
+    {{-- Actualizar la cantidad del producto en el DOM, desde el local storage --}}
     <script>
         const idProduct = document.getElementById('idproduct').textContent;
         const quantityProductDetail = document.getElementById('quantityProductDetail');
@@ -281,6 +279,11 @@
             });
 
         }
+
+        // Script para actualizar los precios de cada abasto al cambiar la cantidad dinamicamente
+        quantityProductDetail.addEventListener('change', event => {
+            alert("sdfasdffd")
+        })
     </script>
 
     {{-- Modal de compartir --}}

@@ -23,52 +23,34 @@
             </span> $USD
         </div>
         <div class="col-span-4 self-center">
-            <div class="grid grid-cols-6 gap-3">
-                <div class="col-span-1 hidden md:inline self-center">
-                    <div class="bg-no-repeat bg-cover bg-center w-12 h-12 md:w-16 md:h-16 overflow-hidden rounded-full mx-auto" style="background-image: url('/storage/{{ $item->brand->profile_photo_path_brand }}');"></div>
-                </div>
-                <div class="col-span-6 sm:col-span-4 md:col-span-3 self-center">
-
-                    <div class="flex items-center">
-                        <svg class="inline fill-current text-yellow-500" width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.3 0.126277L1.3 2.37628C0.52 2.67628 0 3.41628 0 4.25628V8.96628C0 14.0163 3.41 18.7263 8 19.8763C12.59 18.7263 16 14.0163 16 8.96628V4.25628C16 3.42628 15.48 2.67628 14.7 2.38628L8.7 0.136277C8.25 -0.0437232 7.75 -0.0437232 7.3 0.126277ZM6.23 12.6963L4.11 10.5763C3.72 10.1863 3.72 9.55628 4.11 9.16628C4.5 8.77628 5.13 8.77628 5.52 9.16628L6.93 10.5763L10.47 7.03628C10.86 6.64628 11.49 6.64628 11.88 7.03628C12.27 7.42628 12.27 8.05628 11.88 8.44628L7.64 12.6863C7.26 13.0863 6.62 13.0863 6.23 12.6963Z"/>
-                        </svg>
-                        <h6 class="text-lg md:text-xl inline ml-1 lg:ml-2">
-                            <a href="{{ route('brands.details.show', $item->brand->slug ) }}" aria-label="ir al abasto {{ $item->brand->brand }}">
-                                {{ $item->brand->brand }}
-                            </a>
-                        </h6>
-                    </div>
-                    <div class="flex self-center">
-                        <svg class="inline fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                        <span class="text-gray-400 font-light self-center text-sm md:text-md block ml-1 lg:ml-2">
-                            @isset( $item->brand->address->state->state )
-                                {{ $item->brand->address->state->state }}
-                            @endisset
-                            @isset( $item->brand->address->city->city )
-                                , {{ $item->brand->address->city->city }}
-                            @endisset
-                        </span>
-                    </div>
-                    <div class="flex items-center sm:hidden">
-                        <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
-                        <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
-                        <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
-                        <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M20 7.24L12.81 6.62L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27L16.18 19L14.55 11.97L20 7.24ZM10 13.4V4.1L11.71 8.14L16.09 8.52L12.77 11.4L13.77 15.68L10 13.4Z" fill="#34BA00"/></svg>
-                        <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M20 7.24L12.81 6.62L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27L16.18 19L14.55 11.97L20 7.24ZM10 13.4L6.24 15.67L7.24 11.39L3.92 8.51L8.3 8.13L10 4.1L11.71 8.14L16.09 8.52L12.77 11.4L13.77 15.68L10 13.4Z" fill="#34BA00"/></svg>
-                        <span class="text-base self-center ml-2">12</span>
-                    </div>
-                </div>
-                <div class="col-span-2 self-center text-center hidden sm:block">
-                    <div class="flex self-center justify-center">
-                        <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
-                        <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
-                        <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
-                        <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M20 7.24L12.81 6.62L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27L16.18 19L14.55 11.97L20 7.24ZM10 13.4V4.1L11.71 8.14L16.09 8.52L12.77 11.4L13.77 15.68L10 13.4Z" fill="#34BA00"/></svg>
-                        <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M20 7.24L12.81 6.62L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27L16.18 19L14.55 11.97L20 7.24ZM10 13.4L6.24 15.67L7.24 11.39L3.92 8.51L8.3 8.13L10 4.1L11.71 8.14L16.09 8.52L12.77 11.4L13.77 15.68L10 13.4Z" fill="#34BA00"/></svg>
-                    </div>
-                    <span class="hidden md:inline text-sm text-gray-500">125 calificaciones</span>
-                </div>
+            <div class="flex items-center mb-1">
+                <svg class="inline fill-current text-yellow-500" width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.3 0.126277L1.3 2.37628C0.52 2.67628 0 3.41628 0 4.25628V8.96628C0 14.0163 3.41 18.7263 8 19.8763C12.59 18.7263 16 14.0163 16 8.96628V4.25628C16 3.42628 15.48 2.67628 14.7 2.38628L8.7 0.136277C8.25 -0.0437232 7.75 -0.0437232 7.3 0.126277ZM6.23 12.6963L4.11 10.5763C3.72 10.1863 3.72 9.55628 4.11 9.16628C4.5 8.77628 5.13 8.77628 5.52 9.16628L6.93 10.5763L10.47 7.03628C10.86 6.64628 11.49 6.64628 11.88 7.03628C12.27 7.42628 12.27 8.05628 11.88 8.44628L7.64 12.6863C7.26 13.0863 6.62 13.0863 6.23 12.6963Z"/>
+                </svg>
+                <h6 class="text-lg md:text-xl inline ml-1 lg:ml-2">
+                    <a href="{{ route('brands.details.show', $item->brand->slug ) }}" aria-label="ir al abasto {{ $item->brand->brand }}">
+                        {{ $item->brand->brand }}
+                    </a>
+                </h6>
+            </div>
+            <div class="flex self-center">
+                <svg class="inline fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span class="text-gray-400 font-light self-center text-sm md:text-md block ml-1 lg:ml-2">
+                    @isset( $item->brand->address->state->state )
+                        {{ $item->brand->address->state->state }}
+                    @endisset
+                    @isset( $item->brand->address->city->city )
+                        , {{ $item->brand->address->city->city }}
+                    @endisset
+                </span>
+            </div>
+            <div class="flex items-center">
+                <span class="text-base self-center mr-1">4.3</span>
+                <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
+                <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
+                <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
+                <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M20 7.24L12.81 6.62L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27L16.18 19L14.55 11.97L20 7.24ZM10 13.4V4.1L11.71 8.14L16.09 8.52L12.77 11.4L13.77 15.68L10 13.4Z" fill="#34BA00"/></svg>
+                <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M20 7.24L12.81 6.62L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27L16.18 19L14.55 11.97L20 7.24ZM10 13.4L6.24 15.67L7.24 11.39L3.92 8.51L8.3 8.13L10 4.1L11.71 8.14L16.09 8.52L12.77 11.4L13.77 15.68L10 13.4Z" fill="#34BA00"/></svg>
             </div>
         </div>
         <div class="col-span-1 mx-auto self-center">

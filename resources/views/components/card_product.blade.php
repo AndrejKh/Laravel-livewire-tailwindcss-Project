@@ -1,10 +1,10 @@
-<div class="max-w-xs rounded-md overflow-hidden shadow-md hover:shadow-2xl my-2 bg-white relative">
+<div class="max-w-xs rounded-md overflow-hidden shadow-md hover:shadow-xl my-2 bg-white relative mb-6">
     <a href="{{route('products.details.show', $product->slug)}}" aria-label="ver los precios del producto {{ $product->title }}">
         <img class="w-full" src="/storage/{{ $product->thumbnail }}" alt="{{ $product->title }}" width="250px" height="250px">
         <span class="absolute top-4 left-2 svgProdcutInShoppingCar hidden" title="Producto en carrito">
             <img src="{{ asset('in_car.svg') }}" alt="imagen producto en carrito de compras">
         </span>
-        <div class="font-semibold text-xl text-gray-900 hover:text-gray-700 text-left px-2 pt-2">
+        <div class="font-semibold text-xl text-gray-900 text-left px-2 pt-2">
             {{ $product->title }}
         </div>
     </a>

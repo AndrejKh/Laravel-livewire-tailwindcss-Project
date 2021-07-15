@@ -1,6 +1,6 @@
 @foreach ($principal_categories as $category)
 
-    <div class="max-w-7xl w-full mx-auto mt-5 md:mt-10 px-2">
+    <div class="max-w-7xl w-full mx-auto mt-3 md:mt-10 px-2">
         <h2 class="font-bold text-xl text-gray-900 inline">
             {{ $category->category }} -
         </h2>
@@ -12,7 +12,7 @@
         </p>
     </div>
 
-    <div class="owl-carousel owl-theme max-w-7xl mx-auto px-2 my-1 text-center relative carousel_products">
+    <div class="owl-carousel owl-theme max-w-7xl mx-auto px-2 my-1 mb-5 text-center relative carousel_products">
 
         @foreach ($category->products as $product)
 
