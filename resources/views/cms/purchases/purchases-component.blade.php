@@ -158,7 +158,7 @@
                     @endif
                 @endif
                 <div class="mt-4">
-                    <a class="rounded-md shadow py-2 text-md text-green-500 block text-center" href="https://api.whatsapp.com/send?phone={{ $brand->user->phone }}" target="_blank" aria-label="compartir en whatsapp">
+                    <a class="rounded-md shadow py-2 text-md text-green-500 block text-center" href="https://api.whatsapp.com/send?phone={{ $brand->whatsapp }}" target="_blank" aria-label="compartir en whatsapp">
                         <svg class="inline fill-current text-green-500 " width="20px" heigth="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                         <g>	<g>
@@ -872,7 +872,7 @@
                             </div>
                             {{-- Finalizar compra en WS --}}
                             <div class="mt-3 mb-5">
-                                <a class="py-2 bg-green-500 text-white px-4 md:px-10 rounded-full shadow-md" href="https://api.whatsapp.com/send?phone={{ $new_order->brand->user->phone }}&text=Compra realizada en *Kabasto.com*%0A%0A*{{ $new_order->user->name }}*%0A%0A*{{ $new_order->user->email }}*" target="_blank" aria-label="compartir en whatsapp">
+                                <a class="py-2 bg-green-500 text-white px-4 md:px-10 rounded-full shadow-md" href="https://api.whatsapp.com/send?phone={{ $new_order->brand->whatsapp }}&text=Compra realizada en *Kabasto.com*%0A%0A*{{ $new_order->user->name }}*%0A%0A*{{ $new_order->user->email }}*" target="_blank" aria-label="compartir en whatsapp">
                                     <svg class="inline" width="20px" heigth="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                         viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                                     <g>	<g>
