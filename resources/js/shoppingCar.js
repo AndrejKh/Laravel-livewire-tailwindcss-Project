@@ -133,6 +133,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
                                     product.parentElement.querySelector('.quantityProductDetail').textContent = 0
 
+                                    updateBrandsPrice(0);
+
                                 });
 
                             }
@@ -279,6 +281,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Muestro el span que indica que hay producots en el carrito
                 updateTotalProductsShoppingCar(JSON.parse(newProductLocalStorage));
                 shownHideCompareFloatButton(newProductLocalStorage);
+                updateBrandsPrice(quantity);
                 // Almaceno el producto en el localStorage
                 localStorage.setItem('productsShoppingCar',newProductLocalStorage);
 
@@ -304,6 +307,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Muestro el span que indica que hay producots en el carrito
                     updateTotalProductsShoppingCar(arrayProductsLocalStorage);
                     shownHideCompareFloatButton(arrayProductsLocalStorage);
+                    updateBrandsPrice(quantity);
                     // Almaceno en local storage
                     localStorage.setItem('productsShoppingCar', JSON.stringify(arrayProductsLocalStorage));
 
@@ -359,6 +363,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Muestro el span que indica que hay producots en el carrito
                     updateTotalProductsShoppingCar(arrayProductsLocalStorage);
                     shownHideCompareFloatButton(arrayProductsLocalStorage);
+                    updateBrandsPrice(quantity);
 
                     // Agrego el precio del producto, en caso de tener una tienda seleccionada y estar en la vista de detalles del producto de la tienda
                     // Almaceno el producot en el localStorage
@@ -414,6 +419,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         // Muestro el span que indica que hay producots en el carrito
                         updateTotalProductsShoppingCar(arrayProductsLocalStorage);
                         shownHideCompareFloatButton(arrayProductsLocalStorage);
+                        updateBrandsPrice(quantity);
 
                         // Guardo en localstorage
                         localStorage.setItem('productsShoppingCar', JSON.stringify(arrayProductsLocalStorage));
@@ -500,6 +506,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     // actualizo el span de carrito de compras
                     updateTotalProductsShoppingCar(arrayProductsLocalStorage);
                     shownHideCompareFloatButton(arrayProductsLocalStorage);
+                    updateBrandsPrice(0);
                     // Almaceno el producot en el localStorage
                     localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
                     updateAmount();
@@ -780,6 +787,8 @@ function setQuantiyFromShoppingCar( editButton, typeSet ){
                             quantityProductDetail.textContent = quantity;
                         }
 
+                        updateBrandsPrice(quantity);
+
                     }
                 }
                 rootContainer.querySelector('.quantityCardProductShoppingCar').textContent = quantity;
@@ -820,4 +829,14 @@ function setNewProduct( product_id, title, quantity, price, image ){
         image: image
     }
     return newProduct;
+}
+
+// Funcion que actualiza los precios de las tiendas, en la vista de detalles de producto, dinamicamente cuando cambia la cantidad seleccionada
+function updateBrandsPrice(quantity){
+    // const priceBrandsInProdcutDetailView = localStorage.getItem('priceBrandsInProdcutDetailView')
+    // if(priceBrandsInProdcutDetailView !== null){
+    //     let arrayPricesBrandsProducts = JSON.parse(priceBrandsInProdcutDetailView);
+
+    // }
+
 }

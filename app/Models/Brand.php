@@ -17,7 +17,7 @@ class Brand extends Model
      * @var array
      */
     protected $fillable = [
-        'brand','user_id','state_id','city_id','address','description','profile_photo_path_brand','slug','status'
+        'brand','user_id','state_id','city_id','address','description','profile_photo_path_brand','whatsapp','slug','status'
     ];
     public function sluggable()
     {

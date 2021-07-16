@@ -17,7 +17,7 @@
 <article class="max-w-7xl w-full bg-white p-2 md:p-4 shadow-md rounded-lg mb-3">
     <div class="grid grid-cols-6 gap-1 md:gap-3">
         <div class="col-span-1 self-center text-center">
-            <span class="text-xl lg:text-4xl font-semibold text-gray-900">
+            <span class="text-xl lg:text-4xl font-semibold text-gray-900 priceBrandInProductDetailView">
                 @php $price = number_format($item->price, 2, '.', ','); @endphp
                 {{ $price }}
             </span> $USD
@@ -44,14 +44,14 @@
                     @endisset
                 </span>
             </div>
-            <div class="flex items-center">
+            {{-- <div class="flex items-center">
                 <span class="text-base self-center mr-1">(4.3)</span>
                 <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
                 <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
                 <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z" fill="#34BA00"/></svg>
                 <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M20 7.24L12.81 6.62L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27L16.18 19L14.55 11.97L20 7.24ZM10 13.4V4.1L11.71 8.14L16.09 8.52L12.77 11.4L13.77 15.68L10 13.4Z" fill="#34BA00"/></svg>
                 <svg class="inline h-5 w-5" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg"><path d="M20 7.24L12.81 6.62L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27L16.18 19L14.55 11.97L20 7.24ZM10 13.4L6.24 15.67L7.24 11.39L3.92 8.51L8.3 8.13L10 4.1L11.71 8.14L16.09 8.52L12.77 11.4L13.77 15.68L10 13.4Z" fill="#34BA00"/></svg>
-            </div>
+            </div> --}}
         </div>
         <div class="col-span-1 mx-auto self-center">
             @if ( count($item->brand->deliveries) > 0 )
@@ -84,4 +84,5 @@
             @endif
         </div>
     </div>
+    <span hidden class="idBrandInPrductDetailView">{{ $item->brand->id }}</span>
 </article>

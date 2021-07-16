@@ -22,12 +22,8 @@
 
             <!-- Contenido -->
             <div class="w-full p-0 md:p-3 lg:p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 max-w-7xl mt-2 gap-2">
-                    {{-- Agregar Marca --}}
-                    @livewire('brand-component',['user_id' => auth()->user()->id])
-                    {{-- Direccion de la marca --}}
-                    @livewire('address-component',['user_id' => auth()->user()->id])
-                </div>
+                {{-- Marca --}}
+                @livewire('brand-component',['user_id' => auth()->user()->id])
 
                 {{-- Banners de marca --}}
                 @livewire('banner-component',['user_id' => auth()->user()->id])
