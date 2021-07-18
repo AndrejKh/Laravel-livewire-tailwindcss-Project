@@ -2,19 +2,19 @@
     <div class="px-2 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-9 gap-1 max-w-7xl mx-auto">
 
         <div class="col-span-1 sm:col-span-3 items-center md:text-left mb-8 md:mb-0">
-            <img class="mx-auto md:mx-0" src="{{ asset('logo.svg') }}" alt="logo de kabasto" width="93" height="39" >
+            <img class="mx-auto md:mx-0" src="{{ asset('logo.svg') }}" alt="logo de kabasto" width="93" height="39" loading="lazy">
             <p class="mt-2 md:pr-10 text-white text-center md:text-left">
                 La plataforma enfocada en cambiar la manera de hacer mercado en Venezuela.
             </p>
             <div class="mt-3 text-center md:text-left">
                 <a class="p-3" href="https://www.facebook.com/kabasto.ve" target="_blank" rel="noreferrer" aria-label="ir al perfil de facebook de kabasto">
-                    <img class="inline" src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto" width="30px" height="30px">
+                    <img class="inline" src="{{ asset('facebook.svg') }}" alt="imagen facebook de kabasto" width="30px" height="30px" loading="lazy">
                 </a>
                 <a class="p-3" href="https://www.instagram.com/kabasto_ve/" target="_blank" rel="noreferrer" aria-label="ir al perfil de instagram de kabasto">
-                    <img class="inline" src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto" width="30px" height="30px">
+                    <img class="inline" src="{{ asset('instagram.svg') }}" alt="imagen instagram de kabasto" width="30px" height="30px" loading="lazy">
                 </a>
                 <a class="p-3" href="https://twitter.com/kabasto_ve" target="_blank" rel="noreferrer" aria-label="ir al perfil de twitter de kabasto">
-                    <img class="inline" src="{{ asset('twitter.svg') }}" alt="imagen twitter de kabasto" width="30px" height="30px">
+                    <img class="inline" src="{{ asset('twitter.svg') }}" alt="imagen twitter de kabasto" width="30px" height="30px" loading="lazy">
                 </a>
             </div>
         </div>
@@ -55,10 +55,10 @@
                 Pronto también en celulares
             </div>
             <div>
-                <img class="mx-auto md:mx-0" src="{{ asset('appstore.svg') }}" alt="imagen app store proximamente kabasto" width="158px" height="52px">
+                <img class="mx-auto md:mx-0" src="{{ asset('appstore.svg') }}" alt="imagen app store proximamente kabasto" width="158px" height="52px" loading="lazy">
             </div>
             <div class="pt-3">
-                <img class="mx-auto md:mx-0" src="{{ asset('googleplay.svg') }}" alt="imagen google play proximamente kabasto" width="158px" height="53px">
+                <img class="mx-auto md:mx-0" src="{{ asset('googleplay.svg') }}" alt="imagen google play proximamente kabasto" width="158px" height="53px" loading="lazy">
             </div>
         </div>
 
