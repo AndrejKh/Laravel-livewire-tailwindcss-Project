@@ -58,7 +58,7 @@
                     <span class="text-sm text-gray-900">
                         Categoría:
                     </span>
-                    <a class="text-sm text-gray-400" href="{{route('products.category.show', $product->category->slug)}}" aria-label="ver productos de la categoría {{ $product->category->category }}">
+                    <a class="text-sm text-gray-700" href="{{route('products.category.show', $product->category->slug)}}" aria-label="ver productos de la categoría {{ $product->category->category }}">
                         {{ $product->category->category }}
                     </a>
                 </div>
