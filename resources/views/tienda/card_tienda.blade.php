@@ -14,7 +14,7 @@
     <div class="col-span-1 self-center">
         <div class="bg-no-repeat bg-cover bg-center h-12 w-12 md:w-16 md:h-16 overflow-hidden rounded-full mx-auto" style="background-image: url('/storage/{{ $tienda->profile_photo_path_brand }}');" id="imageBrand"></div>
     </div>
-    <div class="col-span-3 md:col-span-3 lg:col-span-4">
+    <div class="col-span-3 md:col-span-3 lg:col-span-4 py-2">
         <div class="">
             <h1 class="font-bold text-lg inline" id="titleBrand">
                 {{ $tienda->brand }}
@@ -26,13 +26,13 @@
                 <svg class="inline h-4 md:h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#999"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                 <h2 class="inline font-semibold" id="addressBrand">
                     @isset( $tienda->address->state->state )
-                        {{ $tienda->address->state->state }}
+                        {{ $tienda->address->state->state }},
                     @endisset
                     @isset( $tienda->address->city->city )
-                        , {{ $tienda->address->city->city }}
+                        {{ $tienda->address->city->city }},
                     @endisset
                     @isset( $tienda->address->address )
-                        , {{ $tienda->address->address }}
+                        {{-- {{ $tienda->address->address }} --}}
                     @endisset
                 </h2>
             </span>
