@@ -104,4 +104,7 @@ Route::post('/post/cancel-order/', [OrderController::class, 'cancelOrder']);
 Route::post('/post/rating-seller/', [RatingsSellerController::class, 'createRating']);
 Route::post('/post/rating-buyer/', [RatingsBuyerController::class, 'createRating']);
 
+// Guardar en Sesion el estado y ciudad del usuario
+Route::get('/set/state-city/{state_id}/{city_id}', [HomeController::class, 'setStateAndCitySession']);
+
 /**************** FIN APis para llamdas internas via AXIOS ****************/

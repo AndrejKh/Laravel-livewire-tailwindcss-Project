@@ -1,8 +1,8 @@
 <div class="max-w-xs rounded-md overflow-hidden shadow-md hover:shadow-xl my-2 bg-white relative mb-6">
     <a href="{{route('products.details.show', $product->slug)}}" aria-label="ver los precios del producto {{ $product->title }}">
-        <img class="w-full" src="/storage/{{ $product->thumbnail }}" alt="{{ $product->title }}" width="250px" height="250px">
+        <img class="w-full" src="/storage/{{ $product->thumbnail }}" alt="{{ $product->title }}" width="250px" height="250px" loading="lazy">
         <span class="absolute top-4 left-2 svgProdcutInShoppingCar hidden" title="Producto en carrito">
-            <img src="{{ asset('in_car.svg') }}" alt="imagen producto en carrito de compras">
+            <img src="{{ asset('in_car.svg') }}" alt="imagen producto en carrito de compras" loading="lazy">
         </span>
         <div class="font-semibold text-xl text-gray-900 text-left px-2 pt-2">
             {{ $product->title }}

@@ -54,6 +54,13 @@ document.addEventListener("DOMContentLoaded", function() {
             // oculto el modal
             modalUbication.style.display = 'none';
 
+
+            // hago el llamdo axios para guardar los datos del estado y ciudad en variables de session php(backend)
+            axios.get('/set/state-city/'+state_id+'/'+city_id).then( function(response){
+                // alert(response)
+            });
+
+
         })
     }
 

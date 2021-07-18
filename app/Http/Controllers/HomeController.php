@@ -316,6 +316,7 @@ class HomeController extends Controller
     //Metodo que devulve la vista del detalle del producto
     public function productShow(Request $request){
         $product = Product::where('status', 'active')->where('slug', $request->slug)->first();
+        // buscar los items dependiendo de la ciudad seleccionada
         $items = Item::where('status','active')->where('product_id',$product->id)->get();
         // $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(9)->get();
         $other_products = Product::where('status', 'active')->take(10)->get();;
@@ -449,5 +450,20 @@ class HomeController extends Controller
     function register_seller() {
         $estados = State::where('status', 'active')->get();
         return view('auth.register_seller', compact('estados'));
+    }
+
+
+    // funcion que guarda en sesion el estado y la ciudad del usuario activo
+    function setStateAndCitySession( $state_id, $city_id){
+        session(['state_id' => $state_id]);
+        session(['city_id' => $city_id]);
+        return true;
+        // obtengo el valor del elemento 'key' guardado en session
+        // $value = session('key');
+
+        // Para ver si un elemento esta en la session
+        // if ($request->session()->has('users')) {
+        //     //
+        // }
     }
 }

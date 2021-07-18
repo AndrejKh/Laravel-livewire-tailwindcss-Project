@@ -41,3 +41,9 @@
       </div>
     </div>
   </div>
+<script>
+    const setUbication = document.getElementById('setUbication')
+    setUbication.addEventListener('click', event => {
+
+    })
+</script>
