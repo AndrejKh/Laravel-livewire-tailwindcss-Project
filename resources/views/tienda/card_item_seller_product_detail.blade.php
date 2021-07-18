@@ -1,6 +1,6 @@
 <div class="max-w-xs rounded-md overflow-hidden shadow-md my-2 bg-white relative cardProductBrand">
     <a href="{{route('brands.products.details.show', ['brand' => $tienda->slug, 'product' => $item->product->slug] ) }}" aria-label="ver detalle del producto {{ $item->product->title }}">
-        <img class="w-full srcImageProductBrand" src="/storage/{{ $item->product->thumbnail }}" alt="{{ $item->product->title }}">
+        <img class="w-full srcImageProductBrand" src="/storage/{{ $item->product->thumbnail }}" alt="{{ $item->product->title }}" width="250px" height="250px" loading="lazy">
     </a>
     <span class="absolute top-4 left-2 svgProdcutInShoppingCar hidden" title="Producto en carrito">
         <svg class="fill-current text-green-450" width="25" height="20" viewBox="0 0 202 185" fill="none" xmlns="http://www.w3.org/2000/svg">
