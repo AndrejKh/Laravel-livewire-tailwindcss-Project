@@ -48,7 +48,7 @@ class HomeController extends Controller
         if ( Cache::has('products') ) {
             $products = Cache::get('products');
         } else {
-            $products = Product::latest('id')->where('status', 'active')->take(12)->get();
+            $products = Product::latest('id')->where('status', 'active')->take(9)->get();
             Cache::put('products', $products);
         }
         // estados
