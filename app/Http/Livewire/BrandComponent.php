@@ -91,7 +91,7 @@ class BrandComponent extends Component
         Brand::create([
             'brand' => $this->brand,
             'user_id' => $this->user_id,
-            'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
+            'slug' => SlugService::createSlug(Brand::class, 'slug', trim($this->brand)),
             'profile_photo_path_brand' => $path_imagen,
             'whatsapp' => $whatsapp_number,
 
@@ -131,7 +131,7 @@ class BrandComponent extends Component
 
                 $brand->update([
                     'brand' => $this->brand,
-                    'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
+                    'slug' => SlugService::createSlug(Brand::class, 'slug', trim($this->brand)),
                     'profile_photo_path_brand' => $path_imagen,
                     'whatsapp' => $whatsapp_number,
                 ]);
@@ -147,7 +147,7 @@ class BrandComponent extends Component
 
             $brand->update([
                 'brand' => $this->brand,
-                'slug' => SlugService::createSlug(Brand::class, 'slug', $this->brand),
+                'slug' => SlugService::createSlug(Brand::class, 'slug', trim($this->brand)),
                 'whatsapp' => $whatsapp_number,
             ]);
 

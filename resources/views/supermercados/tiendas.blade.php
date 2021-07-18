@@ -54,7 +54,7 @@
                 <span class="hidden md:inline">({{ $total_tiendas_search }})</span>
                 Abastos y supermercados <span class="hidden md:inline">encontrados</span>
             </h1>
-            <span class="inline md:hidden text-gray-500 text-base px-2">({{ $total_tiendas_search }}) Resultados</span>
+            <span class="inline md:hidden text-gray-700 text-base px-2">({{ $total_tiendas_search }}) Resultados</span>
             <h2 class="text-gray-500 hidden md:block">Compara en nuestra red de abastos disponibles. Compra en el que más se adapte a ti.</h2>
         </div>
     </div>
