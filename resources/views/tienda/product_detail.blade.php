@@ -57,7 +57,7 @@
         <div class="max-w-7xl w-full px-2">
             <div class="grid grid-cols-1 md:grid-cols-6 gap-3">
                 <div class="block md:hidden max-w-7xl col-span-1 mx-2">
-                    <a class="text-blue-500 font-light text-xs" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ver detalles del abasto {{ $brand->brand }}">
+                    <a class="text-blue-700 font-light text-xs" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ver detalles del abasto {{ $brand->brand }}">
                         En: {{ $brand->brand }}
                     </a>
                     <div class="text-xl md:text-2xl text-gray-900 leading-5 font-semibold md:font-bold">
@@ -69,7 +69,7 @@
                     <span class="text-sm text-gray-900">
                         Categoría:
                     </span>
-                    <a class="text-sm text-gray-400" href="{{route('products.category.show', $product->category->slug)}}" aria-label="ver productos de la categoría {{ $product->category->category }}">
+                    <a class="text-sm text-gray-700" href="{{route('products.category.show', $product->category->slug)}}" aria-label="ver productos de la categoría {{ $product->category->category }}">
                         {{ $product->category->category }}
                     </a>
                 </div>
@@ -88,7 +88,7 @@
                                 Producto Disponible
                             </span>
                         @endisset
-                        <a class="text-left text-blue-500 font-light text-xs block mt-4" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ver detalles del abasto {{ $brand->brand }}">
+                        <a class="text-left text-blue-700 font-light text-xs block mt-4" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ver detalles del abasto {{ $brand->brand }}">
                             En: {{ $brand->brand }}
                         </a>
                         <div class="text-2xl text-gray-900 font-semibold text-left">
