@@ -99,7 +99,7 @@
                         </div>
                         <div class="text-left">
                             <a class="text-sm text-gray-900" href="{{route('products.category.show', $product->category->slug)}}" aria-label="ver los productos de la categoría {{ $product->category->category }}">
-                                Categoría: <span class="text-gray-400">{{ $product->category->category }}</span>
+                                Categoría: <span class="text-gray-700">{{ $product->category->category }}</span>
                             </a>
                         </div>
                     </div>
@@ -238,7 +238,7 @@
     </div>
     {{-- Boton volver - seguir comprando --}}
     <div class="text-center my-8">
-        <a class="block md:inline mx-2 bg-green-500 text-white py-3 px-8 rounded-md shadow-md" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ir a los productos del abasto">
+        <a class="block md:inline mx-2 bg-gray-900 text-white py-3 px-8 rounded-md shadow-md" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ir a los productos del abasto">
             Seguir agregando al carrito
             <img class="inline" src="{{ asset('rigth_arrow.svg') }}" alt="icono de seguir agregando al carrito">
         </a>
@@ -273,7 +273,7 @@
 
                 <div class="flex justify-center py-5 shareModal">
                     <div class="flex px-1 ">
-                        <a class="flex px-2 md:px-1 lg:px-2" href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" id="facebook" target="_blank" aria-label="compartir en facebook">
+                        <a class="flex px-2 md:px-1 lg:px-2" href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" id="facebook" target="_blank" aria-label="compartir en facebook" rel="noreferrer">
                             <svg class="inline" version="1.1" width="16px" heigth="16px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 155.139 155.139" style="enable-background:new 0 0 155.139 155.139;" xml:space="preserve">
                             <g>
@@ -285,7 +285,7 @@
                         </a>
                     </div>
                     <div class="flex px-1 ">
-                        <a class="px-2 md:px-1 lg:px-2" href="https://web.whatsapp.com/send?text={{ Request::url() }}" id="whastapp" target="_blank" aria-label="compartir en whatsapp">
+                        <a class="px-2 md:px-1 lg:px-2" href="https://web.whatsapp.com/send?text={{ Request::url() }}" id="whastapp" target="_blank" aria-label="compartir en whatsapp" rel="noreferrer">
                             <svg class="inline" width="16px" heigth="16px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                             <g>	<g>
@@ -310,7 +310,7 @@
                         </a>
                     </div>
                     <div class="flex px-1">
-                        <a class="px-2 md:px-1 lg:px-2" href="https://twitter.com/intent/tweet?text={{ $product->title }}&url={{ Request::url() }}" id="twitter" target="_blank" aria-label="compartir en twitter">
+                        <a class="px-2 md:px-1 lg:px-2" href="https://twitter.com/intent/tweet?text={{ $product->title }}&url={{ Request::url() }}" id="twitter" target="_blank" aria-label="compartir en twitter" rel="noreferrer">
                             <svg class="inline" version="1.1" width="16px" heigth="16px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                             <path style="fill:#03A9F4;" d="M512,97.248c-19.04,8.352-39.328,13.888-60.48,16.576c21.76-12.992,38.368-33.408,46.176-58.016
