@@ -229,9 +229,9 @@
 
 
     <div class="block max-w-7xl w-full px-2 mx-auto mb-1 mt-3">
-        <h3 class="text-lg text-gray-900 font-semibold">
+        <h2 class="text-lg text-gray-900 font-semibold">
             Descripción del producto
-        </h3>
+        </h2>
         <p class="text-gray-600 mt-2 text-base md:text-lg">
             @php echo nl2br($product->description); @endphp
         </p>
