@@ -25,6 +25,12 @@
                 }
             }
         })
+        // agregar accesibilidad a los botones
+        const buttons = document.querySelectorAll('.owl-nav button');
+        buttons.forEach(element => {
+            element.setAttribute('aria-label', 'siguiente banner');
+        });
+
     </script>
 @endif
 
