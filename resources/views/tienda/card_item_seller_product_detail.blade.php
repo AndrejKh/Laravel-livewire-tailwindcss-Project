@@ -15,12 +15,12 @@
         </div>
     </div>
     <div class="grid grid-cols-3 gap-1 px-2 mb-2">
-        <div class="col-span-2 text-sm px-0 text-left">
+        <div class="col-span-1 text-sm px-0 text-left">
             {{-- <a class="text-gray-600 hover:text-gray-900" href="" aria-label="ver productos de la categoría {{ $item->product->category->category }}">
                 {{ $item->product->category->category }}
             </a> --}}
         </div>
-        <div class="col-span-1 font-bold text-sm text-blue-500 text-right">
+        <div class="col-span-2 font-bold text-sm text-blue-500 text-right">
             <div class="text-md font-base text-gray-700">
                 <strong>{{$item->quantity}}</strong>
                 <span class="inline" title="Disponibles">Disp.</span>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="px-2 text-center">
-        <span class="text-xl font-semibold text-blue-900">
+        <span class="text-lg md:text-xl font-semibold text-blue-900">
             @php $price = number_format($item->price, 2, '.', ','); @endphp
             <span class="priceItem">{{ $price }}</span> USD$
         </span>
