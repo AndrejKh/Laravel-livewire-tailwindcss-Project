@@ -24,7 +24,6 @@
             margin:15,
             nav:false,
             dots:false,
-            navText: ['<img src="{{asset('arrow_left.svg')}}"/>', '<img src="{{asset('arrow_right.svg')}}"/>'],
             responsive:{
                 0:{
                     items:2
