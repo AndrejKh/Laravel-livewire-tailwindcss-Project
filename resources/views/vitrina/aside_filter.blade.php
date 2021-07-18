@@ -32,7 +32,7 @@
                 {{-- Modelo de categorias hijos --}}
                 <div hidden id="modelCategoryChild">
                     <div class="col-span-1 my-1 text-sm pl-1">
-                        <a class="text-gray-500 hover:text-blue-600 slugCategoryChild" href="" aria-label="seleccionar a subcategoria">
+                        <a class="text-gray-500 hover:text-blue-600 slugCategoryChild" href="#" aria-label="seleccionar a subcategoria">
                             <span class="titleCategoryChild categoryPrincipal"></span>
                             <span class="text-gray-400 quantityProductsCategoryChild"> </span>
                         </a>

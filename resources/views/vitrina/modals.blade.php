@@ -31,7 +31,7 @@
 
         <div id="cardCategoryModalExample">
             <div class="col-span-1 my-1 text-sm pl-1">
-                <a class="text-lg lg:text-lg text-gray-500 hover:text-blue-600 slugCategoryChild" href="" aria-label="categoría seleccionada">
+                <a class="text-lg lg:text-lg text-gray-500 hover:text-blue-600 slugCategoryChild" href="#" aria-label="categoría seleccionada">
                     <span class="categoryTitle"></span>
                     <span class="text-gray-400 quantityProductsCategory"> </span>
                 </a>
