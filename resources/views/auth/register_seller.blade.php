@@ -30,6 +30,9 @@
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
+            <div class="text-gray-900 text-center">
+                Únete y vende todos tus productos
+            </div>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
