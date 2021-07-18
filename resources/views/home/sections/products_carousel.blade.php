@@ -1,5 +1,5 @@
 @if ( $products && count($products) > 0)
-    <div class="max-w-7xl w-full mx-auto mt-5 md:mt-10 px-2">
+    <div class="max-w-7xl w-full mx-auto mt-2 md:mt-4 px-2">
         <h2 class="font-bold text-xl text-gray-900 inline">
             Productos destacados -
         </h2>

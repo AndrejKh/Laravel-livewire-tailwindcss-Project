@@ -8,11 +8,11 @@
         </p>
     </div>
 
-    <div class="owl-carousel owl-theme max-w-7xl my-4 text-center mx-auto px-2" id="carousel_banners_promotionals">
+    <div class="owl-carousel owl-theme max-w-7xl mt-4 text-center mx-auto px-2" id="carousel_banners_promotionals">
 
         @foreach ($banners_promotionals as $banner)
             <a href="{{ $banner->url }}" aria-label="ir a la url de la promoción">
-                <div class="bg-no-repeat bg-cover bg-center w-full h-24 md:h-36 xl:h-40 overflow-hidden z-10 rounded-md shadow-md" style="background-image: url('/storage/{{ $banner->banner }}');"></div>
+                <div class="bg-no-repeat bg-cover bg-center w-full h-24 md:h-36 xl:h-40 overflow-hidden z-10 rounded-md shadow-md hover:shadow-xl mb-8" style="background-image: url('/storage/{{ $banner->banner }}');"></div>
             </a>
         @endforeach
 

@@ -1,7 +1,7 @@
 @auth
 @else
 
-    <div class="max-w-7xl bg-white py-7 px-2 lg:hidden">
+    <div class="max-w-7xl bg-white py-7 px-2 lg:hidden mb-4">
 
         <span class="text-lg font-semibold text-gray-900 mb-4 text-left">Registrate gratis y compra</span>
 
