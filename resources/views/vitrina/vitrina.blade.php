@@ -129,14 +129,14 @@
                 </h2>
             @else
                 @isset($category_selected)
-                <h2 class="hidden md:inline">
-                    Categoria seleccionada:
-                    <strong class="font-semibold">
-                        {{ $category_selected->category }}
-                    </strong>
-                </h2>
+                    <h2 class="hidden md:inline">
+                        Categoria seleccionada:
+                        <strong class="font-semibold">
+                            {{ $category_selected->category }}
+                        </strong>
+                    </h2>
                 @else
-                    <h2>
+                    <h2 class="hidden md:block">
                         Encuentra los productos disponibles en tu ciudad.
                     </h2>
                 @endisset
