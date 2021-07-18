@@ -1,8 +1,8 @@
 @if ( $principal_categories && count($principal_categories) > 0)
     <div class="max-w-7xl w-full mx-auto mt-3 px-2">
-        <h3 class="text-lg text-gray-800 inline">
+        <div class="text-lg text-gray-800 inline">
             Algunas categorías para tí -
-        </h3>
+        </div>
         <a class="inline text-blue-700 text-sm" href="{{ route('categorias') }}" aria-label="ver todas las categorías de kabasto">Ver todas</a>
         <p class="text-sm font-semibold text-gray-600">Encuentra los diversos productos que estas buscando</p>
     </div>
