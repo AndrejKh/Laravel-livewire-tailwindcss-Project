@@ -16,9 +16,9 @@
     </div>
     <div class="grid grid-cols-3 gap-1 px-2 mb-2">
         <div class="col-span-2 text-sm px-0 text-left">
-            <a class="text-gray-600 hover:text-gray-900" href="" aria-label="ver productos de la categoría {{ $item->product->category->category }}">
+            {{-- <a class="text-gray-600 hover:text-gray-900" href="" aria-label="ver productos de la categoría {{ $item->product->category->category }}">
                 {{ $item->product->category->category }}
-            </a>
+            </a> --}}
         </div>
         <div class="col-span-1 font-bold text-sm text-blue-500 text-right">
             <div class="text-md font-base text-gray-700">
