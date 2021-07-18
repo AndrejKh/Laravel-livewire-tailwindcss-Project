@@ -57,9 +57,9 @@
 
         <div class="flex justify-center mt-3">
             <div class="max-w-7xl w-full">
-                <h4 class="font-bold text-xl text-gray-900 px-2 md:px-0">
+                <h2 class="font-bold text-xl text-gray-900 px-2 md:px-0">
                     ({{count($items)}}) Productos Disponibles
-                </h4>
+                </h2>
             </div>
         </div>
 
