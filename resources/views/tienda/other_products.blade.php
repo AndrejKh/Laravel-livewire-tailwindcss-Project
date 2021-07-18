@@ -1,8 +1,8 @@
 <div class="flex justify-center mt-4 px-2">
     <div class="max-w-7xl w-full">
-        <h4 class="font-regular text-xl text-gray-900 inline">
+        <h3 class="font-regular text-xl text-gray-900 inline">
             Otros productos de {{ $brand->brand }}
-        </h4>
+        </h3>
         <p class="text-sm font-semibold text-gray-600">
             También te podrian interesar
         </p>

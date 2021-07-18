@@ -1,8 +1,8 @@
 <div class="flex justify-center mt-10 px-2">
     <div class="max-w-7xl w-full">
-        <h3 class="font-regular text-xl text-gray-900 inline">
+        <h2 class="font-regular text-xl text-gray-900 inline">
             Otros productos que te podrían interesar
-        </h3>
+        </h2>
         <p class="text-sm font-semibold text-gray-600">
             Recuerda que al final puedes comparar en diferentes abastos o supermercados de tu ciudad
         </p>
