@@ -73,8 +73,13 @@
 
         @livewireScripts
         @include('common.footer')
-
-        @include('common.modal_ubication')
+        @php
+            $ruta = Route::currentRouteName();
+            $rutaArray = explode(".", $ruta);
+        @endphp
+        @if ( !in_array('profile', $rutaArray) )
+            @include('common.modal_ubication')
+        @endif
 
     </body>
 </html>

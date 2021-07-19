@@ -50,7 +50,8 @@
 
     <div class="flex justify-center mt-3">
         <div class="max-w-7xl w-full px-2">
-            <div class="grid grid-cols-1 md:grid-cols-6 gap-3">
+            <div class="grid grid-cols-1 md:grid-cols-7 gap-3">
+
                 <div class="block md:hidden max-w-7xl col-span-1">
                     <h1 class="text-xl md:text-2xl text-gray-900 font-bold md:mb-5 lg:mb-6" id="titleProduct">
                         {{ $product->title }}
@@ -62,6 +63,7 @@
                         {{ $product->category->category }}
                     </a>
                 </div>
+
                 <div class="max-w-7xl col-span-1 md:col-span-3 rounded-xl shadow-md overflow-hidden relative h-44 md:h-auto" style="background-color:#fff!important;">
                     <img class="mx-auto h-full md:h-52" src="/storage/{{ $product->photo_main_product }}" alt="{{ $product->title }}" id="srcImageProduct" loading="lazy">
                     <span class="absolute top-7 right-7 z-20 cursor-pointer" id="openShareModal">
@@ -69,7 +71,7 @@
                     </span>
                 </div>
 
-                <div class="max-w-7xl col-span-1 md:col-span-3 relative px-3 mt-0 lg:mt-4">
+                <div class="max-w-7xl col-span-1 md:col-span-4 relative px-3 mt-0 lg:mt-4">
                     <div class="hidden md:block text-right">
                         @if ( count($items) > 0 )
                         <span class="bg-blue-500 text-white font-semibold rounded-sm shadow px-3 py-2">

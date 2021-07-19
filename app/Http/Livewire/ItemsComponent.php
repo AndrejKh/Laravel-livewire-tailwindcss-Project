@@ -74,6 +74,7 @@ class ItemsComponent extends Component
             // el usuario no tiene marca
         } else {
             $items = [];
+            $total_items = 0;
         }
 
         return view('cms.items.items-component', compact('items', 'total_items', 'user_id'));
