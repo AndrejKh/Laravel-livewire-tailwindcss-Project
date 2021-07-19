@@ -214,8 +214,16 @@ class HomeController extends Controller
 
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(9)->get();
         $category_selected = null;
+        // estados
+        if ( Cache::has('states') ) {
+            $states = Cache::get('states');
+        } else {
+            $states = State::all();
+            Cache::put('states', $states);
+        }
+        $cities = City::where('state_id', 1)->get();
 
-        return view('vitrina.vitrina', compact('principal_categories', 'products', 'total_products_search', 'query', 'category_selected', 'state_selected', 'city_selected'));
+        return view('vitrina.vitrina', compact('states', 'cities', 'principal_categories', 'products', 'total_products_search', 'query', 'category_selected', 'state_selected', 'city_selected'));
     }
 
     // Metodo para obtener los productos por la categoria elegida
@@ -309,8 +317,16 @@ class HomeController extends Controller
 
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(7)->get();
         $query = null;
+        // estados
+        if ( Cache::has('states') ) {
+            $states = Cache::get('states');
+        } else {
+            $states = State::all();
+            Cache::put('states', $states);
+        }
+        $cities = City::where('state_id', 1)->get();
 
-        return view('vitrina.vitrina', compact('principal_categories', 'products', 'total_products_search', 'query', 'category_selected', 'state_selected', 'city_selected'));
+        return view('vitrina.vitrina', compact('states', 'cities', 'principal_categories', 'products', 'total_products_search', 'query', 'category_selected', 'state_selected', 'city_selected'));
     }
 
     //Metodo que devulve la vista del detalle del producto
@@ -320,8 +336,16 @@ class HomeController extends Controller
         $items = Item::where('status','active')->where('product_id',$product->id)->get();
         // $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(9)->get();
         $other_products = Product::where('status', 'active')->take(10)->get();;
+        // estados
+        if ( Cache::has('states') ) {
+            $states = Cache::get('states');
+        } else {
+            $states = State::all();
+            Cache::put('states', $states);
+        }
+        $cities = City::where('state_id', 1)->get();
 
-        return view('vitrina.product_detail', compact('other_products','product','items'));
+        return view('vitrina.product_detail', compact('states', 'cities', 'other_products','product','items'));
     }
 
     // Metodo que devuelve la vista del detalle de producto, viniendo desde la vista de supermrecado
@@ -335,8 +359,16 @@ class HomeController extends Controller
         $item = Item::where('product_id', $product->id)->first();
         $other_products_of_brand = Item::where('status', 'active')->where('brand_id', $brand_id)->take(10)->get();
         $deliveries = Delivery::where('status','active')->where('brand_id',$brand_id)->get();
+        // estados
+        if ( Cache::has('states') ) {
+            $states = Cache::get('states');
+        } else {
+            $states = State::all();
+            Cache::put('states', $states);
+        }
+        $cities = City::where('state_id', 1)->get();
 
-        return view('tienda.product_detail', compact('brand', 'product','item', 'other_products_of_brand', 'deliveries'));
+        return view('tienda.product_detail', compact('states', 'cities', 'brand', 'product','item', 'other_products_of_brand', 'deliveries'));
 
     }
 
@@ -344,7 +376,17 @@ class HomeController extends Controller
     function categorias() {
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->get();
         $categories_children = Category::where('status', 'active')->where('padre_id', '<>' , 0)->get();
-        return view('vitrina.categories', compact('principal_categories','categories_children'));
+
+        // estados
+        if ( Cache::has('states') ) {
+            $states = Cache::get('states');
+        } else {
+            $states = State::all();
+            Cache::put('states', $states);
+        }
+        $cities = City::where('state_id', 1)->get();
+
+        return view('vitrina.categories', compact('states', 'cities', 'principal_categories','categories_children'));
     }
 
     // Vitirna de supermemrcados
@@ -360,8 +402,16 @@ class HomeController extends Controller
         }
         $carousel_banners = BannerPromocional::latest('id')->where('page', 'tiendas')->where('status', 'active')->get();
         $principal_categories = Category::where('status', 'active')->where('padre_id', 0)->take(9)->get();
+        // estados
+        if ( Cache::has('states') ) {
+            $states = Cache::get('states');
+        } else {
+            $states = State::all();
+            Cache::put('states', $states);
+        }
+        $cities = City::where('state_id', 1)->get();
 
-        return view('supermercados.tiendas', compact('principal_categories','tiendas', 'total_tiendas_search', 'carousel_banners'));
+        return view('supermercados.tiendas', compact('states', 'cities', 'principal_categories','tiendas', 'total_tiendas_search', 'carousel_banners'));
     }
 
     //Metodo que devulve la vista del detalle del producto
@@ -375,7 +425,16 @@ class HomeController extends Controller
             $deliveries = Delivery::where('status','active')->where('brand_id',$tienda->id)->get();
         }
 
-        return view('tienda.tienda', compact('tienda','items','banners_promotionals','deliveries'));
+        // estados
+        if ( Cache::has('states') ) {
+            $states = Cache::get('states');
+        } else {
+            $states = State::all();
+            Cache::put('states', $states);
+        }
+        $cities = City::where('state_id', 1)->get();
+
+        return view('tienda.tienda', compact('states', 'cities', 'tienda','items','banners_promotionals','deliveries'));
 
     }
 
