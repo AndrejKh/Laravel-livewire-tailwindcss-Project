@@ -15,6 +15,12 @@
                             <x-jet-application-mark class="block h-9 w-auto" />
                         </a>
                     </div>
+                    <div class="flex-shrink-0 self-center ml-6 hidden lg:inline">
+                        <button class="border border-gray-700 text-gray-800 rounded-md px-3 py-1 hover:bg-green-500 align-baseline ubicationTag">
+                            <svg class="inline fill-current text-gray-800 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            <span class="font-medium leading-5 text-sm ubicationText">Ubicación</span>
+                        </button>
+                    </div>
 
                     @include('common.search_input_nabvar')
                 </div>
@@ -30,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="hidden md:flex md:items-center md:ml-6">
+            <div class="hidden lg:flex lg:items-center lg:ml-6">
                 <div class="ml-3 relative">
                     <a class="shoppingCarButtonOpenModal" href="#" aria-label="mostrar carrito de compras">
                         <img src="{{ asset('shopping_car.svg') }}" alt="icono del carrito de compras" width="30px" height="25px">
@@ -107,7 +113,7 @@
             </div>
 
             <!-- Hamburger -->
-            <div class="-mr-2 flex items-center md:hidden">
+            <div class="-mr-2 flex items-center lg:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 focus:outline-none focus:text-gray-800 transition duration-150 ease-in-out" aria-label="desplegar menu para celulares">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -119,7 +125,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="bg-white md:hidden hidden absolute z-50 w-full">
+    <div :class="{'block': open, 'hidden': ! open}" class="bg-white lg:hidden hidden absolute z-50 w-full">
 
 
         <!-- Responsive Settings Options -->
