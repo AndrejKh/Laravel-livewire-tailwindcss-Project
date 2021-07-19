@@ -552,6 +552,16 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+
+    // cerrar modal de carrito de compras al dar click fuera de el
+    const contentModalShopinngCar = document.getElementById('contentModalShopinngCar')
+    const backgroundModalShoppingCar = document.getElementById('backgroundModalShoppingCar')
+    backgroundModalShoppingCar.addEventListener('click', event => {
+        if( !contentModalShopinngCar.contains(event.target) ){
+            modalShoppingCar.style.display = 'none';
+        }
+    })
+
 }, {passive: true});
 
 // Funcion para eliminar el card element del producto en el carrito de compras

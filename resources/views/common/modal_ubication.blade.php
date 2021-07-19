@@ -2,13 +2,13 @@
 
     <div class="flex md:items-end justify-center md:pt-4 md:px-4 pb-20 text-center sm:block sm:p-0">
 
-      <div class="fixed inset-0 transition-opacity">
+      <div class="fixed inset-0 transition-opacity" id="backgroundModalUbication">
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
       </div>
 
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
 
-      <div class="max-w-7xl w-full sm:max-w-xl md:max-w-lg inline-block align-bottom md:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle bg-gray-100" role="dialog" aria-modal="true" aria-labelledby="modal-headline" id="contentModalShopinngCar">
+      <div class="max-w-7xl w-full sm:max-w-xl md:max-w-lg inline-block align-bottom md:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle bg-gray-100" role="dialog" aria-modal="true" aria-labelledby="modal-headline" id="contentModalUbication">
 
         <div class="grid grid-cols-5 px-3 py-5">
             <h3 class="col-span-4 text-xl font-bold text-gray-900">¿En que lugar te encuentras?</h3>
@@ -38,6 +38,7 @@
                 <img class="ml-2" src="{{ asset('arrow_finally.svg') }}" alt="icono de comparar precios de supermercados" width="24px" height="24px">
             </div>
         </div>
+
       </div>
     </div>
   </div>

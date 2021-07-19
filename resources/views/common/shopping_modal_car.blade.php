@@ -2,7 +2,7 @@
 
     <div class="flex md:items-end justify-center min-h-screen md:pt-4 md:px-4 pb-20 text-center sm:block sm:p-0">
 
-      <div class="fixed inset-0 transition-opacity">
+      <div class="fixed inset-0 transition-opacity" id="backgroundModalShoppingCar">
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
       </div>
 
@@ -136,5 +136,6 @@
             </div>
         </form>
       </div>
+
     </div>
   </div>

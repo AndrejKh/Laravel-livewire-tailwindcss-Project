@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const modalUbication = document.getElementById('modalUbication');
     const ubication = localStorage.getItem('ubication');
+
     if( ubication === null ){
 
         modalUbication.style.display = 'block';
@@ -87,6 +88,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const modalUbicationButtonClose = document.getElementById('modalUbicationButtonClose');
     modalUbicationButtonClose.addEventListener('click', event => {
         modalUbication.style.display = 'none';
+    })
+
+    // cerrar modal al dar click fuera del modal
+    const contentModalUbication = document.getElementById('contentModalUbication')
+    const backgroundModalUbication = document.getElementById('backgroundModalUbication')
+    backgroundModalUbication.addEventListener('click', event => {
+        if( !contentModalUbication.contains(event.target) ){
+            modalUbication.style.display = 'none';
+        }
     })
 
 });
