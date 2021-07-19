@@ -66,6 +66,4 @@
     {{-- Categorias cads con detalle --}}
     @include('home.sections.carousel_categories_card_details')
 
-    @include('common.modal_ubication')
-
 @endsection

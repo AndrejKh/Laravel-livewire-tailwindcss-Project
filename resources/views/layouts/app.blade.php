@@ -73,5 +73,8 @@
 
         @livewireScripts
         @include('common.footer')
+
+        @include('common.modal_ubication')
+
     </body>
 </html>
