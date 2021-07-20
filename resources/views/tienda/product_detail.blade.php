@@ -55,7 +55,8 @@
 
     <div class="flex justify-center mt-3">
         <div class="max-w-7xl w-full px-2">
-            <div class="grid grid-cols-1 md:grid-cols-6 gap-3">
+
+            <div class="grid grid-cols-1 md:grid-cols-7 gap-3">
                 <div class="block md:hidden max-w-7xl col-span-1 mx-2">
                     <a class="text-blue-700 font-light text-xs" href="{{ route('brands.details.show', [$brand->slug]) }}" aria-label="ver detalles del abasto {{ $brand->brand }}">
                         En: {{ $brand->brand }}
@@ -73,14 +74,15 @@
                         {{ $product->category->category }}
                     </a>
                 </div>
+
                 <div class="max-w-7xl col-span-1 md:col-span-3 rounded-xl shadow-md overflow-hidden relative h-64 md:h-auto mx-2 md:mx-4" style="background-color:#fff!important;">
-                    <img class="mx-auto h-full md:h-52" src="/storage/{{ $product->photo_main_product }}" alt="{{ $product->title }}" id="srcImageProduct" loading="lazy">
+                    <img class="mx-auto h-full" src="/storage/{{ $product->photo_main_product }}" alt="{{ $product->title }}" id="srcImageProduct" loading="lazy">
                     <span class="absolute top-7 right-7 z-20 cursor-pointer" id="openShareModal">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
                     </span>
                 </div>
 
-                <div class="max-w-7xl col-span-1 md:col-span-3 relative px-2 md:px-3 mt-0 lg:mt-4">
+                <div class="max-w-7xl col-span-1 md:col-span-4 relative px-2 md:px-3 mt-0 lg:mt-4">
                     <div class="hidden md:block text-right">
                         @isset ( $item )
                             <span class="bg-blue-500 text-white font-semibold rounded-sm shadow px-3 py-2">
@@ -223,6 +225,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
