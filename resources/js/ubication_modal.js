@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // hago el llamdo axios para guardar los datos del estado y ciudad en variables de session php(backend)
         axios.get('/set/state-city/'+state_id+'/'+city_id).then( function(response){
+            console.log(response);
             // Veo si estoy en la vista de vitrina de productos o supermercados
             // en caso de si, debo actualizar la vista
 
