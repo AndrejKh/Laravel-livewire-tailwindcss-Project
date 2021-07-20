@@ -39,9 +39,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // Almaceno el producot en el localStorage
         localStorage.setItem('ubication',JSON.stringify(objectUbicationLocalStorage));
 
-        // oculto el modal
-        modalUbication.style.display = 'none';
-
         // Agregar la ciudad en el DOM
         const ubicationText = document.querySelectorAll('.ubicationText')
         ubicationText.forEach(element => {
@@ -53,6 +50,9 @@ document.addEventListener("DOMContentLoaded", function() {
         axios.get('/set/state-city/'+state_id+'/'+city_id).then( function(response){
             // Veo si estoy en la vista de vitrina de productos o supermercados
             // en caso de si, debo actualizar la vista
+
+            // oculto el modal
+            modalUbication.style.display = 'none';
         });
 
 

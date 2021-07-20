@@ -75,9 +75,11 @@ class HomeController extends Controller
 
         if( isset($request->q) ){
             $query = $request->q;
+            // return 'hay busqueda';
 
             // Obtengo los productos filtrados por la busqueda 'search' y el estado
             if( session()->has('state_id') ){
+                return 'hay busqueda y estado';
 
                 if( session()->has('city_id') ){
                     // Obtengo los productos filtrados por la busqueda 'search' y la ciudad
@@ -151,9 +153,12 @@ class HomeController extends Controller
 
             }
         }else {
+            // return session('state_id');
+            // return session()->has('state_id');
 
             // Obtengo los productos filtrados por la busqueda 'search' y el estado
             if( session()->has('state_id') ){
+                // return 'aqui';
 
                 if( session()->has('city_id') ){
 
@@ -625,15 +630,9 @@ class HomeController extends Controller
 
     // funcion que guarda en sesion el estado y la ciudad del usuario activo
     function setStateAndCitySession( $state_id, $city_id){
+
         session(['state_id' => $state_id]);
         session(['city_id' => $city_id]);
         return true;
-        // obtengo el valor del elemento 'key' guardado en session
-        // $value = session('key');
-
-        // Para ver si un elemento esta en la session
-        // if ($request->session()->has('users')) {
-        //     //
-        // }
     }
 }

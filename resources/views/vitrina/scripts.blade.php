@@ -76,104 +76,104 @@
 
        //----------------- Cargo los estados y las ciudades en el DOM ----------------//
 
-       // Obtengo el elemento de ejemplo
-       const modelStateAndCity = document.getElementById('modelStateAndCity');
+    //    // Obtengo el elemento de ejemplo
+    //    const modelStateAndCity = document.getElementById('modelStateAndCity');
 
-       // cargo los estados, y coloco el que se tiene en localstorage
-       const containerEstados = document.getElementById('containerEstados');
-       // OBTENGO LOS ESTADO
-       axios.get('/get/states/').then( function(response){
-           const {data} = response;
-           let cont = 0;
-           data.every( state => {
+    //    // cargo los estados, y coloco el que se tiene en localstorage
+    //    const containerEstados = document.getElementById('containerEstados');
+    //    // OBTENGO LOS ESTADO
+    //    axios.get('/get/states/').then( function(response){
+    //        const {data} = response;
+    //        let cont = 0;
+    //        data.every( state => {
 
-               // Funcion para colocar el estado en el dom y agregarle un evento click
-               setElementToDom( modelStateAndCity, containerEstados, state.state, state.id, 'estado' );
+    //            // Funcion para colocar el estado en el dom y agregarle un evento click
+    //            setElementToDom( modelStateAndCity, containerEstados, state.state, state.id, 'estado' );
 
-               // Contador para solo mostrar los 10 primeros estados
-               ++cont;
-               if ( cont >= 10 ) {
-                   return false;
-               }else{
-                   return true;
-               }
+    //            // Contador para solo mostrar los 10 primeros estados
+    //            ++cont;
+    //            if ( cont >= 10 ) {
+    //                return false;
+    //            }else{
+    //                return true;
+    //            }
 
-           });
-       });
+    //        });
+    //    });
 
-       /**** Obtengo la direccion del localstorage ****/
-       const ubicationStorage = localStorage.getItem('ubication');
-       const listCitiesFilter = document.getElementById('listCitiesFilter');
+    //    /**** Obtengo la direccion del localstorage ****/
+    //    const ubicationStorage = localStorage.getItem('ubication');
+    //    const listCitiesFilter = document.getElementById('listCitiesFilter');
 
-       if(ubicationStorage !== null ){
-            listCitiesFilter.style.display = 'block';
+    //    if(ubicationStorage !== null ){
+    //         listCitiesFilter.style.display = 'block';
 
-           const ubication = JSON.parse(ubicationStorage);
-           const stateLocalStorage = ubication.state;
-           const cityLocalStorage = ubication.city;
-           const stateIdLocalStorge = ubication.state_id;
-           const cityIdLocalStorge = ubication.city_id;
+    //        const ubication = JSON.parse(ubicationStorage);
+    //        const stateLocalStorage = ubication.state;
+    //        const cityLocalStorage = ubication.city;
+    //        const stateIdLocalStorge = ubication.state_id;
+    //        const cityIdLocalStorge = ubication.city_id;
 
-           // OBTENGO LAS CIUDADES DEL ESTADO
-           // cargo las ciudades, dependiendo del estaod que se tiene en localstorage
-           const containerCiudades = document.getElementById('containerCiudades');
-           // Busco las ciudades del estado
-           axios.get('/get/cities-state/'+stateIdLocalStorge).then( function( response ){
-               const data = response.data;
-               let cont = 0;
+    //        // OBTENGO LAS CIUDADES DEL ESTADO
+    //        // cargo las ciudades, dependiendo del estaod que se tiene en localstorage
+    //        const containerCiudades = document.getElementById('containerCiudades');
+    //        // Busco las ciudades del estado
+    //        axios.get('/get/cities-state/'+stateIdLocalStorge).then( function( response ){
+    //            const data = response.data;
+    //            let cont = 0;
 
-               data.every( city => {
+    //            data.every( city => {
 
-                   // Funcion para colocar el estado en el dom y agregarle un evento click
-                   setElementToDom( modelStateAndCity, containerCiudades, city.city, city.id, 'ciudad' );
+    //                // Funcion para colocar el estado en el dom y agregarle un evento click
+    //                setElementToDom( modelStateAndCity, containerCiudades, city.city, city.id, 'ciudad' );
 
-                   // Contador para solo mostrar las 10 primers ciudades
-                   ++cont;
-                   if ( cont >= 10 ) {
-                       return false;
-                   }else{
-                       return true;
-                   }
+    //                // Contador para solo mostrar las 10 primers ciudades
+    //                ++cont;
+    //                if ( cont >= 10 ) {
+    //                    return false;
+    //                }else{
+    //                    return true;
+    //                }
 
-               });
-           });
+    //            });
+    //        });
 
-           /* Configuro el formulario para filtrar y muestro u oculto los badges si existe estdo y ciudad en el localstorage */
-           // Muestro los badges en el filtro
-           const badgeStateSelected = document.getElementById('badgeStateSelected');
-           const badgeCitySelected = document.getElementById('badgeCitySelected');
-           // span que contendran el nombre del estado y ciudad del localstorage
-           const stateSelected = document.getElementById('stateSelected');
-           const citySelected = document.getElementById('citySelected');
-
-
-           // Agrego el estado y ciudad a los inputs del formulario
-           stateSelectedForm.value = stateLocalStorage;
-           citySelectedForm.value = cityLocalStorage;
+    //        /* Configuro el formulario para filtrar y muestro u oculto los badges si existe estdo y ciudad en el localstorage */
+    //        // Muestro los badges en el filtro
+    //        const badgeStateSelected = document.getElementById('badgeStateSelected');
+    //        const badgeCitySelected = document.getElementById('badgeCitySelected');
+    //        // span que contendran el nombre del estado y ciudad del localstorage
+    //        const stateSelected = document.getElementById('stateSelected');
+    //        const citySelected = document.getElementById('citySelected');
 
 
-           // configuro los badges
-           if ( stateLocalStorage ) {
-               badgeStateSelected.style.display = 'block';
-               stateSelected.textContent = stateLocalStorage;
-           }else{
-               badgeStateSelected.style.display = 'none';
-           }
+    //        // Agrego el estado y ciudad a los inputs del formulario
+    //        stateSelectedForm.value = stateLocalStorage;
+    //        citySelectedForm.value = cityLocalStorage;
 
-           if ( cityLocalStorage ) {
-               badgeCitySelected.style.display = 'block';
-               citySelected.textContent = cityLocalStorage;
-           }else{
-               badgeCitySelected.style.display = 'none';
-           }
 
-       }else{
-           // Oculto la lista de ciudades
-           listCitiesFilter.style.display = 'none';
-           // No existe ubicacion en el localstorage, oculto los badges
-           badgeStateSelected.style.display = 'none';
-           badgeCitySelected.style.display = 'none';
-       }
+    //        // configuro los badges
+    //        if ( stateLocalStorage ) {
+    //            badgeStateSelected.style.display = 'block';
+    //            stateSelected.textContent = stateLocalStorage;
+    //        }else{
+    //            badgeStateSelected.style.display = 'none';
+    //        }
+
+    //        if ( cityLocalStorage ) {
+    //            badgeCitySelected.style.display = 'block';
+    //            citySelected.textContent = cityLocalStorage;
+    //        }else{
+    //            badgeCitySelected.style.display = 'none';
+    //        }
+
+    //    }else{
+    //        // Oculto la lista de ciudades
+    //        listCitiesFilter.style.display = 'none';
+    //        // No existe ubicacion en el localstorage, oculto los badges
+    //        badgeStateSelected.style.display = 'none';
+    //        badgeCitySelected.style.display = 'none';
+    //    }
 
    }
 
@@ -227,78 +227,78 @@
    //-------------- End Modal de categorias ---------------------//
 
 
-   //-------------- Modal de Estados ---------------------//
-   const modalStates = document.querySelectorAll('.modalStates');
-   const statesModal = document.getElementById('statesModal');
-   const closeModalState = document.getElementById('closeModalState');
+//    //-------------- Modal de Estados ---------------------//
+//    const modalStates = document.querySelectorAll('.modalStates');
+//    const statesModal = document.getElementById('statesModal');
+//    const closeModalState = document.getElementById('closeModalState');
 
-   modalStates.forEach(item => {
-       item.addEventListener('click', event => {
-           const cardStateModalExample = document.getElementById('cardStateModalExample');
-           const stateModalContainer = document.getElementById('stateModalContainer');
-           stateModalContainer.textContent = '';
+//    modalStates.forEach(item => {
+//        item.addEventListener('click', event => {
+//            const cardStateModalExample = document.getElementById('cardStateModalExample');
+//            const stateModalContainer = document.getElementById('stateModalContainer');
+//            stateModalContainer.textContent = '';
 
-           // Busco las categorias principales
-           axios.get('/get/states/').then( function( response ){
-               const {data} = response;
+//            // Busco las categorias principales
+//            axios.get('/get/states/').then( function( response ){
+//                const {data} = response;
 
-               data.forEach( state => {
-                   // Funcion para colocar el estado en el dom y agregarle un evento click
-                   setElementToDom( cardStateModalExample, stateModalContainer, state.state, state.id, 'estado' );
+//                data.forEach( state => {
+//                    // Funcion para colocar el estado en el dom y agregarle un evento click
+//                    setElementToDom( cardStateModalExample, stateModalContainer, state.state, state.id, 'estado' );
 
-               });
-           });
+//                });
+//            });
 
-           statesModal.style.display = 'block';
-       });
-   });
-   closeModalState.addEventListener('click', event => {
-       statesModal.style.display = 'none';
-   })
-   //-------------- End Modal de Estados ---------------------//
-
-
-
-   //-------------- Modal de Ciudades ---------------------//
-   const modalCities = document.querySelectorAll('.modalCities');
-   const citiesModal = document.getElementById('citiesModal');
-   const closeModalCity = document.getElementById('closeModalCity');
-   const subtitleStateModalCity = document.getElementById('subtitleStateModalCity');
-   // Obtengo la direccion del localstorage
-   const ubicationStorage = localStorage.getItem('ubication');
-   if(ubicationStorage !== null ){
-       const ubication = JSON.parse(ubicationStorage);
-       const state_id = ubication.state_id;
-       const state = ubication.state;
-
-       subtitleStateModalCity.textContent = state;
-
-       modalCities.forEach(item => {
-           item.addEventListener('click', event => {
-               const cardCityModalExample = document.getElementById('cardCityModalExample');
-               const cityModalContainer = document.getElementById('cityModalContainer');
-               cityModalContainer.textContent = '';
-
-               // Busco las categorias principales
-               axios.get('/get/cities-state/'+state_id).then( function( response ){
-                   const {data} = response;
-
-                   data.forEach( city => {
-
-                       // Funcion para colocar el estado en el dom y agregarle un evento click
-                       setElementToDom( cardCityModalExample, cityModalContainer, city.city, state.id, 'ciudad' );
-
-                   });
-               });
+//            statesModal.style.display = 'block';
+//        });
+//    });
+//    closeModalState.addEventListener('click', event => {
+//        statesModal.style.display = 'none';
+//    })
+//    //-------------- End Modal de Estados ---------------------//
 
 
-               citiesModal.style.display = 'block';
-           });
-       });
-   }
-   closeModalCity.addEventListener('click', event => {
-       citiesModal.style.display = 'none';
-   })
+
+//    //-------------- Modal de Ciudades ---------------------//
+//    const modalCities = document.querySelectorAll('.modalCities');
+//    const citiesModal = document.getElementById('citiesModal');
+//    const closeModalCity = document.getElementById('closeModalCity');
+//    const subtitleStateModalCity = document.getElementById('subtitleStateModalCity');
+//    // Obtengo la direccion del localstorage
+//    const ubicationStorage = localStorage.getItem('ubication');
+//    if(ubicationStorage !== null ){
+//        const ubication = JSON.parse(ubicationStorage);
+//        const state_id = ubication.state_id;
+//        const state = ubication.state;
+
+//        subtitleStateModalCity.textContent = state;
+
+//        modalCities.forEach(item => {
+//            item.addEventListener('click', event => {
+//                const cardCityModalExample = document.getElementById('cardCityModalExample');
+//                const cityModalContainer = document.getElementById('cityModalContainer');
+//                cityModalContainer.textContent = '';
+
+//                // Busco las categorias principales
+//                axios.get('/get/cities-state/'+state_id).then( function( response ){
+//                    const {data} = response;
+
+//                    data.forEach( city => {
+
+//                        // Funcion para colocar el estado en el dom y agregarle un evento click
+//                        setElementToDom( cardCityModalExample, cityModalContainer, city.city, state.id, 'ciudad' );
+
+//                    });
+//                });
+
+
+//                citiesModal.style.display = 'block';
+//            });
+//        });
+//    }
+//    closeModalCity.addEventListener('click', event => {
+//        citiesModal.style.display = 'none';
+//    })
 
    //-------------- End Modal de Ciudades ---------------------//
 
@@ -307,50 +307,50 @@
 {{-- Badge Elimnar --}}
 <script>
     // Al elminar el badge de Estado
-    const removeStateSelected = document.querySelectorAll('.removeStateSelected');
-    removeStateSelected.forEach( item => {
-        item.addEventListener('click', event => {
-            // Elimino la propiedad ubication del localstorage
-            localStorage.removeItem('ubication');
-            // Configuro el fromulario para enviarlo
-            const formQueryFilter = document.getElementById('formQueryFilter');
-            const stateSelectedForm = document.getElementById('stateSelectedForm');
-            const citySelectedForm = document.getElementById('citySelectedForm');
-            stateSelectedForm.value = '';
-            citySelectedForm.value = '';
-            // envio el formulario, porq fue elegido un estado para filtrar
-            formQueryFilter.submit();
-        });
-   });
+//     const removeStateSelected = document.querySelectorAll('.removeStateSelected');
+//     removeStateSelected.forEach( item => {
+//         item.addEventListener('click', event => {
+//             // Elimino la propiedad ubication del localstorage
+//             localStorage.removeItem('ubication');
+//             // Configuro el fromulario para enviarlo
+//             const formQueryFilter = document.getElementById('formQueryFilter');
+//             const stateSelectedForm = document.getElementById('stateSelectedForm');
+//             const citySelectedForm = document.getElementById('citySelectedForm');
+//             stateSelectedForm.value = '';
+//             citySelectedForm.value = '';
+//             // envio el formulario, porq fue elegido un estado para filtrar
+//             formQueryFilter.submit();
+//         });
+//    });
 
-   // Al elminar el badge de Ciudad
-   const removeCitySelected = document.querySelectorAll('.removeCitySelected');
-   removeCitySelected.forEach( item => {
-        item.addEventListener('click', event => {
-            // Obtengo el estado del LocalStorage
-            const ubicationStorage = localStorage.getItem('ubication');
-            const ubication = JSON.parse(ubicationStorage);
-            const stateLocalStorage = ubication.state;
-            const stateIdLocalStorge = ubication.state_id;
+//    // Al elminar el badge de Ciudad
+//    const removeCitySelected = document.querySelectorAll('.removeCitySelected');
+//    removeCitySelected.forEach( item => {
+//         item.addEventListener('click', event => {
+//             // Obtengo el estado del LocalStorage
+//             const ubicationStorage = localStorage.getItem('ubication');
+//             const ubication = JSON.parse(ubicationStorage);
+//             const stateLocalStorage = ubication.state;
+//             const stateIdLocalStorge = ubication.state_id;
 
-            // Cargo el nuevo estado en el LocalStorage
-            newUbicationLocalStorage = {
-                state_id: stateIdLocalStorge,
-                state: stateLocalStorage,
-                city: null,
-                city_id: null
-            };
-            // Almaceno el estado en el localStorage
-            localStorage.setItem('ubication',JSON.stringify(newUbicationLocalStorage));
+//             // Cargo el nuevo estado en el LocalStorage
+//             newUbicationLocalStorage = {
+//                 state_id: stateIdLocalStorge,
+//                 state: stateLocalStorage,
+//                 city: null,
+//                 city_id: null
+//             };
+//             // Almaceno el estado en el localStorage
+//             localStorage.setItem('ubication',JSON.stringify(newUbicationLocalStorage));
 
-            // Configuro el fromulario para enviarlo
-            const formQueryFilter = document.getElementById('formQueryFilter');
-            const citySelectedForm = document.getElementById('citySelectedForm');
-            citySelectedForm.value = '';
-            // envio el formulario, porq fue elegido un estado para filtrar
-            formQueryFilter.submit();
-        });
-   });
+//             // Configuro el fromulario para enviarlo
+//             const formQueryFilter = document.getElementById('formQueryFilter');
+//             const citySelectedForm = document.getElementById('citySelectedForm');
+//             citySelectedForm.value = '';
+//             // envio el formulario, porq fue elegido un estado para filtrar
+//             formQueryFilter.submit();
+//         });
+//    });
 </script>
 
 {{-- Funciones  --}}
