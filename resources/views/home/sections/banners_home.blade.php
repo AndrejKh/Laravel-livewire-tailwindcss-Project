@@ -1,13 +1,14 @@
-@if ( $carousel_banners && count($carousel_banners) > 0)
+@if ( $banners_home && count($banners_home) > 0)
     <div class="owl-carousel owl-theme w-full" id="carousel_banners_home">
 
-        @foreach ($carousel_banners as $banner)
+        @foreach ($banners_home as $banner)
 
             <a class="item" href="{{ $banner->url }}" aria-label="ir a promocion">
                 <div class="h-28 sm:h-40 md:h-60 lg:h-72 xl:h-80 bg-no-repeat bg-cover bg-top w-full overflow-hidden z-10 shadow-md"
                 style="background-image: url('/storage/{{ $banner->banner }}');">
                 </div>
             </a>
+
         @endforeach
 
     </div>
@@ -26,10 +27,10 @@
             }
         })
         // agregar accesibilidad a los botones
-        const buttons = document.querySelectorAll('.owl-nav button');
-        buttons.forEach(element => {
-            element.setAttribute('aria-label', 'siguiente banner');
-        });
+        // const buttons = document.querySelectorAll('.owl-nav button');
+        // buttons.forEach(element => {
+        //     element.setAttribute('aria-label', 'siguiente banner');
+        // });
 
     </script>
 @endif

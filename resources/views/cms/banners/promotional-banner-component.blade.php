@@ -15,7 +15,7 @@
                     <option value="">Selecciona una pagina</option>
                     <option value="home">Home</option>
                     <option value="promotions">Promociones</option>
-                    {{-- <option value="tiendas">Tiendas</option> --}}
+                    <option value="tiendas">Listado de tiendas</option>
                 </select>
                 @error('page_banner')
                     <small class="text-red-400 italic">{{$message}}</small>

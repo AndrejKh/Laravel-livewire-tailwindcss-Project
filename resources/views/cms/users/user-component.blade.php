@@ -32,7 +32,7 @@
     </div>
     @if ($usuarios->count())
         <div class="bg-white rounded-lg shadow overflow-hidden w-full mx-auto mb-8">
-            <table >
+            <table class="table-auto">
                 <thead class="bg-gray-50 border-b border-gray-200">
                     <tr class="text-xs font-medium text-gray-500 uppercase text-left tracking-wider">
                         <th class="p-3">Id</th>

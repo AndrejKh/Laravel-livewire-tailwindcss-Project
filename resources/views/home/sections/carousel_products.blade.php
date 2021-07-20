@@ -1,4 +1,4 @@
-@foreach ($principal_categories as $category)
+@foreach ($home_categories as $category)
 
     <div class="max-w-7xl w-full mx-auto mt-3 md:mt-10 px-2">
         <h2 class="font-bold text-xl text-gray-900 inline">

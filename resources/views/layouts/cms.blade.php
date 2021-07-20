@@ -54,6 +54,8 @@
 
         @stack('modals')
 
+        @include('common.navbar_movil_perfil')
+
         @livewireScripts
     </body>
 </html>

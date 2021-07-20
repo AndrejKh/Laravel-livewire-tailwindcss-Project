@@ -28,6 +28,13 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased bg-gray-100 overflow-y-auto">
+        @php
+            $ruta = Route::currentRouteName();
+            $rutaArray = explode(".", $ruta);
+            function validateURL( $rutaArray ){
+                return !in_array('cms', $rutaArray) && !in_array('profile', $rutaArray) && !in_array('dashboard', $rutaArray) && !in_array('comparar', $rutaArray);
+            }
+        @endphp
         <!-- Google Tag Manager (noscript) -->
         {{-- <noscript>
             <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQG59HF" height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -52,10 +59,6 @@
             </main>
 
             {{-- Verifico si estoy en el administrador, no deberia verse el carrito aqui --}}
-            @php
-                $ruta = Route::currentRouteName();
-                $rutaArray = explode(".", $ruta);
-            @endphp
             @if ( !in_array('profile', $rutaArray) && !in_array('comparar', $rutaArray) )
 
                 {{-- Boton flotante de carrito de compras --}}
@@ -73,11 +76,7 @@
 
         @livewireScripts
         @include('common.footer')
-        @php
-            $ruta = Route::currentRouteName();
-            $rutaArray = explode(".", $ruta);
-        @endphp
-        @if ( !in_array('profile', $rutaArray) )
+        @if ( validateURL( $rutaArray ) )
             @include('common.modal_ubication')
         @endif
 

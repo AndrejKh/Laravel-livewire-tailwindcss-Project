@@ -70,8 +70,9 @@ class PromotionalBannerComponent extends Component
             'url' => $this->url
         ]);
         // elimino el cache
-        Cache::forget('carousel_banners');
+        Cache::forget('banners_home');
         Cache::forget('banners_promotionals');
+        Cache::forget('banners_brands_list');
 
         //reinicio las propiedades
         $this->reset(['banner', 'page_banner', 'banner_id', 'show_alert', 'message_alert', 'color_alert']);
@@ -120,8 +121,9 @@ class PromotionalBannerComponent extends Component
             ]);
         }
         // elimino el cache
-        Cache::forget('carousel_banners');
+        Cache::forget('banners_home');
         Cache::forget('banners_promotionals');
+        Cache::forget('banners_brands_list');
 
         //reinicio las propiedades
         $this->reset(['banner', 'page_banner', 'banner_id', 'show_alert', 'message_alert', 'color_alert']);
@@ -138,6 +140,10 @@ class PromotionalBannerComponent extends Component
     public function destroy(BannerPromocional $banner)
     {
         $banner->delete();
+        // elimino el cache
+        Cache::forget('banners_home');
+        Cache::forget('banners_promotionals');
+        Cache::forget('banners_brands_list');
         //reinicio las propiedades
         $this->reset(['banner', 'page_banner', 'banner_id', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';

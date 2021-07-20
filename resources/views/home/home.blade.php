@@ -46,7 +46,7 @@
 @section('content')
 
     {{-- Carousel principal --}}
-    @include('home.sections.carousel_banners')
+    @include('home.sections.banners_home')
 
     {{-- Banners promocionales --}}
     @include('home.sections.banners_promotionals')

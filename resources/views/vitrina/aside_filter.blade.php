@@ -3,11 +3,11 @@
     <hr>
     <ul class="mt-6">
         {{-- categorias --}}
-        @if ( count($principal_categories) > 0 )
+        @if ( count($filter_categories) > 0 )
             <li class="mb-8">
                 <h3 class="font-bold text-gray-900 text-lg mb-1"> Categorias </h3>
 
-                @foreach ($principal_categories as $category)
+                @foreach ($filter_categories as $category)
                     <div>
                         <div class="flex text-gray-700 font-semibold my-1 text-md">
                             <a class="hover:text-blue-600" href="{{ route('products.category.show', $category->slug) }}"  aria-label="categoría seleccionada {{ $category->category }}">
@@ -40,17 +40,19 @@
                     </div>
                 </div>
 
-                <div class="text-blue-600 font-semibold my-1 text-md">
-                    <button class="hover:text-blue-600 modalCategories" aria-label="ver más categorías">
-                        Ver más
-                    </button>
-                </div>
+                @if ( count($filter_categories) > 9 )
+                    <div class="text-blue-600 font-semibold my-1 text-md">
+                        <button class="hover:text-blue-600 modalCategories" aria-label="ver más categorías">
+                            Ver más
+                        </button>
+                    </div>
+                @endif
             </li>
             <hr>
         @endif
 
         {{-- estaods --}}
-        <li class=" mb-8">
+        {{-- <li class=" mb-8">
             <h3 class="font-bold text-gray-900 text-lg mb-1"> Estados </h3>
 
             <div class="w-full" id="badgeStateSelected" style="display:none;">
@@ -71,10 +73,10 @@
             </div>
 
         </li>
-        <hr>
+        <hr> --}}
 
         {{-- Ciudades --}}
-        <li class="" id="listCitiesFilter" style="display:none;">
+        {{-- <li class="" id="listCitiesFilter" style="display:none;">
             <h3 class="font-bold text-gray-900 text-lg mb-1"> Ciudades </h3>
 
             <div class="w-full" id="badgeCitySelected" style="display:none;">
@@ -94,7 +96,7 @@
                 </button>
             </div>
 
-        </li>
+        </li> --}}
 
         <div id="modelStateAndCity">
             <div class="text-gray-700 font-semibold my-1 text-md">

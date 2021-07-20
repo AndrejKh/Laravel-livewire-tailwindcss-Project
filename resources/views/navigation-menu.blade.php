@@ -1,3 +1,10 @@
+@php
+    $ruta = Route::currentRouteName();
+    $rutaArray = explode(".", $ruta);
+    function inURL( $rutaArray ){
+        return !in_array('cms', $rutaArray) && !in_array('profile', $rutaArray) && !in_array('dashboard', $rutaArray) && !in_array('comparar', $rutaArray);
+    }
+@endphp
 <nav x-data="{ open: false }" class="bg-green-400 shadow">
     <!-- Primary Navigation Menu -->
     <div class="max-w-screen-2xl mx-auto px-4 md:px-6 lg:px-8">
@@ -7,7 +14,7 @@
                     <!-- Logo -->
                     <div class="flex-shrink-0 flex sm:hidden items-center">
                         <a href="{{ route('home') }}" aria-label="ir al inicio de kabasto">
-                            <img src=" {{ asset('logo_nav.svg') }} " alt="logo de Kabasto" width="22px" height="33px">
+                            <img src=" {{ asset('logo_nav.svg') }} " alt="logo de Kabasto" width="22px" height="33px" loading="lazy">
                         </a>
                     </div>
                     <div class="flex-shrink-0 hidden sm:flex items-center">
@@ -15,12 +22,14 @@
                             <x-jet-application-mark class="block h-9 w-auto" />
                         </a>
                     </div>
-                    <div class="flex-shrink-0 self-center ml-6 hidden lg:inline">
-                        <button class="border border-gray-700 text-gray-800 rounded-md px-3 py-1 hover:bg-green-500 align-baseline ubicationTag">
-                            <svg class="inline fill-current text-gray-800 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            <span class="font-medium leading-5 text-sm ubicationText">Ubicación</span>
-                        </button>
-                    </div>
+                    @if ( inURL( $rutaArray ) )
+                        <div class="flex-shrink-0 self-center ml-6 hidden lg:inline">
+                            <button class="border border-gray-700 text-gray-800 rounded-md px-3 py-1 hover:bg-green-500 align-baseline ubicationTag">
+                                <svg class="inline fill-current text-gray-800 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                <span class="font-medium leading-5 text-sm ubicationText">Ubicación</span>
+                            </button>
+                        </div>
+                    @endif
 
                     @include('common.search_input_nabvar')
                 </div>
@@ -39,7 +48,7 @@
             <div class="hidden lg:flex lg:items-center lg:ml-6">
                 <div class="ml-3 relative">
                     <a class="shoppingCarButtonOpenModal" href="#" aria-label="mostrar carrito de compras">
-                        <img src="{{ asset('shopping_car.svg') }}" alt="icono del carrito de compras" width="30px" height="25px">
+                        <img src="{{ asset('shopping_car.svg') }}" alt="icono del carrito de compras" width="30px" height="25px" loading="lazy">
                     </a>
                     <span class="w-2 h-2 absolute -top-1 -right-1 rounded-full bg-blue-600 hidden" id="badgeIconShoppingCarNavbar"></span>
                 </div>
@@ -50,7 +59,7 @@
                             <x-slot name="trigger">
                                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                     <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
-                                        <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                        <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" loading="lazy"/>
                                     </button>
                                 @else
                                     <span class="inline-flex rounded-md">
@@ -135,7 +144,7 @@
 
                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                         <div class="flex-shrink-0 mr-3">
-                            <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                            <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" loading="lazy" />
                         </div>
                     @endif
 

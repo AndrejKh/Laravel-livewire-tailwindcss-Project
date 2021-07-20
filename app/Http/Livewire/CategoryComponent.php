@@ -80,7 +80,11 @@ class CategoryComponent extends Component
         ]);
 
         // elimino el cache
+        Cache::forget('home_categories');
+        Cache::forget('filter_categories');
         Cache::forget('principal_categories');
+        Cache::forget('categories_children');
+
         //reinicio las propiedades
         $this->reset(['category', 'description', 'action', 'slug', 'photo', 'category_id', 'padre_id','show_alert','message_alert','color_alert']);
         $this->show_alert = 'true';
@@ -141,7 +145,10 @@ class CategoryComponent extends Component
             ]);
         }
         // elimino el cache
+        Cache::forget('home_categories');
+        Cache::forget('filter_categories');
         Cache::forget('principal_categories');
+        Cache::forget('categories_children');
 
         //reinicio las propiedades
         $this->reset(['category', 'description', 'action', 'slug', 'photo', 'category_id', 'padre_id','show_alert','message_alert','color_alert']);
@@ -158,6 +165,11 @@ class CategoryComponent extends Component
     public function destroy(Category $category)
     {
         $category->delete();
+        // elimino el cache
+        Cache::forget('home_categories');
+        Cache::forget('filter_categories');
+        Cache::forget('principal_categories');
+        Cache::forget('categories_children');
         //reinicio las propiedades
         $this->reset(['category', 'description', 'action', 'slug', 'photo', 'category_id', 'padre_id','show_alert','message_alert','color_alert']);
         $this->show_alert = 'true';

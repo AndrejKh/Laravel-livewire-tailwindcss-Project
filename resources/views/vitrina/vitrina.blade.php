@@ -84,7 +84,7 @@
                     Categorias
                 </span>
             @endisset
-            @isset($state_selected)
+            {{-- @isset($state_selected)
                 <span class="flex flex-shrink bg-green-500 text-white rounded-full shadow px-3 py-1 mb-2 ml-2 cursor-pointer">
                     <span class="inline self-center text-sm mr-1 modalStates">{{ $state_selected }}</span>
                     <svg class="fill-current text-white stroke-current stroke-2 cursor-pointer h-3 inline self-center ml-auto removeStateSelected" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg" >
@@ -109,7 +109,7 @@
                     Ciudades
                 </span>
                 @endisset
-            @endisset
+            @endisset --}}
         </div>
     </div>
 

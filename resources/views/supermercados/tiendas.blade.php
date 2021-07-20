@@ -46,11 +46,11 @@
 
 @section('content')
 
-    @include('home.sections.carousel_banners')
+    @include('supermercados.sections.banner_brands')
 
     <div class="flex justify-center mt-3">
         <div class="max-w-7xl w-full">
-            <h1 class="font-bold text-xl text-gray-900 px-2 md:px-0">
+            <h1 class="font-bold text-xl text-gray-900 px-2 md:px-0 mt-2 md:mt-5">
                 <span class="hidden md:inline">({{ $total_tiendas_search }})</span>
                 Abastos y supermercados <span class="hidden md:inline">encontrados</span>
             </h1>
@@ -62,7 +62,7 @@
         <div class="max-w-7xl w-full px-2">
                 @foreach ($tiendas as $tienda)
 
-                    @include('supermercados.card_tienda')
+                    @include('supermercados.sections.card_tienda')
 
                 @endforeach
             <div class="flex justify-center mt-4" id="pagination_nav">
@@ -71,7 +71,7 @@
         </div>
     </div>
 
-    @include('home.sections.carousel_categories_card_details')
+    {{-- @include('home.sections.carousel_categories_card_details') --}}
 
 
 @endsection
