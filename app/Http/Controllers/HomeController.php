@@ -136,14 +136,15 @@ class HomeController extends Controller
             }else {
 
                 // Obtengo los productos filtrados por la busqueda 'search', sin filtr de estado ni ciudad
-                $products = Product::where('title', 'LIKE', '%'.$query.'%')
+                $productsDB = Product::where('title', 'LIKE', '%'.$query.'%')
                         ->join('items', 'products.id', '=', 'items.product_id')
                         ->where('items.quantity', '>', 0)
                         ->where('products.status', 'active')
                         ->select('products.*')
                         ->get();
+                $products = $this->noDuplicatedArray($productsDB);
 
-                $total_products_search = $products->count();
+                $total_products_search = count($products);
 
                 $city_selected = null;
                 $state_selected = null;
@@ -203,13 +204,14 @@ class HomeController extends Controller
             }else {
 
                 // Obtengo todos los productos, sin filtro des estado o ciudad
-                $products = Product::where('products.status', 'active')
+                $productsDB = Product::where('products.status', 'active')
                         ->join('items', 'products.id', '=', 'items.product_id')
                         ->where('items.quantity', '>', 0)
                         ->select('products.*')
                         ->get();
+                $products = $this->noDuplicatedArray($productsDB);
 
-                $total_products_search = $products->count();
+                $total_products_search = count($products);
 
                 // Variables que se retornan a la vista, estas variables se usan para el form de filtro
                 $city_selected = null;
@@ -309,25 +311,30 @@ class HomeController extends Controller
             }else {
 
                 // Todos los productos de una categoria sin filtro
-                $products = Product::where('products.category_id', $category_id)
+                $productsDB = Product::where('products.category_id', $category_id)
                         ->join('items', 'products.id', '=', 'items.product_id')
                         ->where('items.quantity', '>', 0)
                         ->where('products.status', 'active')
                         ->select('products.*')
                         ->get();
-                $total_products_search = $products->count();
+
+                $products = $this->noDuplicatedArray($productsDB);
+
+                $total_products_search = count($products);
 
             }
 
         }else {
 
             // Todos los productos sin filtro
-            $products = Product::where('products.status', 'active')
+            $productsDB = Product::where('products.status', 'active')
                         ->join('items', 'products.id', '=', 'items.product_id')
                         ->where('items.quantity', '>', 0)
                         ->select('products.*')
                         ->get();
-            $total_products_search = $products->count();
+            $products = $this->noDuplicatedArray($productsDB);
+
+            $total_products_search = count($products);
 
             $category_selected = null;
 
