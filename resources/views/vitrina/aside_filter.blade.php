@@ -40,13 +40,11 @@
                     </div>
                 </div>
 
-                @if ( count($filter_categories) > 9 )
-                    <div class="text-blue-600 font-semibold my-1 text-md">
-                        <button class="hover:text-blue-600 modalCategories" aria-label="ver más categorías">
-                            Ver más
-                        </button>
-                    </div>
-                @endif
+                <div class="text-blue-600 font-semibold my-1 text-md">
+                    <button class="hover:text-blue-600 modalCategories" aria-label="ver más categorías">
+                        Ver más
+                    </button>
+                </div>
             </li>
             <hr>
         @endif
