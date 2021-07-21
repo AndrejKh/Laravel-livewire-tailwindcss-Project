@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\City;
 use App\Models\State;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
 use Livewire\WithPagination;
@@ -62,6 +63,8 @@ class CityComponent extends Component
             'city' => $this->city,
             'state_id' => $this->state_id
         ]);
+        // elimino el cache
+        Cache::forget('cities_first');
         //reinicio las propiedades
         $this->reset(['city', 'state_id', 'action', 'city_id', 'show_alert', 'message_alert', 'color_alert']);
         $this->show_alert = 'true';
@@ -89,6 +92,8 @@ class CityComponent extends Component
             'city' => $this->city,
             'state_id' => $this->state_id
         ]);
+        // elimino el cache
+        Cache::forget('cities_first');
 
         //reinicio las propiedades
         $this->reset(['city', 'state_id', 'action', 'city_id', 'show_alert', 'message_alert', 'color_alert']);
