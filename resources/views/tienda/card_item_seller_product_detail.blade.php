@@ -22,7 +22,7 @@
         </div>
         <div class="col-span-2 font-bold text-sm text-blue-500 text-right">
             <div class="text-md font-base text-gray-700">
-                <strong>{{$item->quantity}}</strong>
+                <strong class="quantityAvailable">{{$item->quantity}}</strong>
                 <span class="inline" title="Disponibles">Disp.</span>
             </div>
         </div>

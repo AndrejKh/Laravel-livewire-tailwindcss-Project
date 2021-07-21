@@ -165,6 +165,7 @@
                         const titleProduct = rootCardProduct.querySelector('.titleProductBrand').textContent;
                         const srcImageProduct = rootCardProduct.querySelector('.srcImageProductBrand').src;
                         const priceItem = rootCardProduct.querySelector('.priceItem').textContent;
+                        const quantityAvailable = parseInt(rootCardProduct.querySelector('.quantityAvailable').textContent);
 
                         // El carrito tiene productos?
                         if( ProductsLocalStorage === null ){
@@ -197,41 +198,43 @@
                                 if (idProduct == product.id ){
                                     productInShppingCar = true;
                                     quantity++;
-                                    quantityProductElement.textContent = quantity;
                                     product.quantity = quantity;
                                 }
                             });
 
                             // El producto estaba en el carrito de compras?
-                            if (productInShppingCar){
-
-                                // Muestro el span que indica que hay producots en el carrito
-                                updateTotalProductsShoppingCar(arrayProductsLocalStorage);
-                                shownHideCompareFloatButton(arrayProductsLocalStorage);
-                                // Almaceno en local storage
-                                localStorage.setItem('productsShoppingCar', JSON.stringify(arrayProductsLocalStorage));
-
-                                // El producto no estaba en el carrito de compras, es nuevo!
-                            }else{
-
-                                quantity++;
+                            if( quantityAvailable >= quantity ){
                                 quantityProductElement.textContent = quantity;
+                                if (productInShppingCar){
 
-                                let newProduct = {
-                                    id: idProduct,
-                                    title: titleProduct.trim(),
-                                    quantity: quantity,
-                                    price: priceItem,
-                                    image: srcImageProduct
+                                    // Muestro el span que indica que hay producots en el carrito
+                                    updateTotalProductsShoppingCar(arrayProductsLocalStorage);
+                                    shownHideCompareFloatButton(arrayProductsLocalStorage);
+                                    // Almaceno en local storage
+                                    localStorage.setItem('productsShoppingCar', JSON.stringify(arrayProductsLocalStorage));
+
+                                    // El producto no estaba en el carrito de compras, es nuevo!
+                                }else{
+
+                                    quantity++;
+                                    quantityProductElement.textContent = quantity;
+
+                                    let newProduct = {
+                                        id: idProduct,
+                                        title: titleProduct.trim(),
+                                        quantity: quantity,
+                                        price: priceItem,
+                                        image: srcImageProduct
+                                    }
+
+                                    arrayProductsLocalStorage.push(newProduct);
+                                    // Muestro el span que indica que hay producots en el carrito
+                                    updateTotalProductsShoppingCar(arrayProductsLocalStorage);
+                                    shownHideCompareFloatButton(arrayProductsLocalStorage);
+                                    // Almaceno el producot en el localStorage
+                                    localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
+
                                 }
-
-                                arrayProductsLocalStorage.push(newProduct);
-                                // Muestro el span que indica que hay producots en el carrito
-                                updateTotalProductsShoppingCar(arrayProductsLocalStorage);
-                                shownHideCompareFloatButton(arrayProductsLocalStorage);
-                                // Almaceno el producot en el localStorage
-                                localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
-
                             }
 
                         }
