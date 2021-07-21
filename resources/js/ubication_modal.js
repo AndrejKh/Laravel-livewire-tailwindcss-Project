@@ -20,8 +20,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     //   guardar la ubicacion y cerrar el modal
-    const setUbication = document.getElementById('setUbication')
-    setUbication.addEventListener('click', event => {
+    const formUbication = document.getElementById('formUbication')
+    formUbication.addEventListener('submit', event => {
+
         const selectState = document.getElementById('selectState');
         const selectCity = document.getElementById('selectCity');
         let state_id = selectState.value;
@@ -45,19 +46,21 @@ document.addEventListener("DOMContentLoaded", function() {
             element.textContent = city;
         });
 
-
         // hago el llamdo axios para guardar los datos del estado y ciudad en variables de session php(backend)
         axios.get('/set/state-city/'+state_id+'/'+city_id).then( function(response){
-            console.log(response);
-            // Veo si estoy en la vista de vitrina de productos o supermercados
-            // en caso de si, debo actualizar la vista
-
             // oculto el modal
             modalUbication.style.display = 'none';
         });
 
+        const url = window.location.pathname;
 
-    })
+        // Pregunto si estoy en una vista donde se requiere actualizar la vista
+        // En caso de si, envio el formulario
+        if( url != '/supermercados' && !url.includes('productos') ){
+            event.preventDefault();
+        }
+
+    });
 
 
     const selectState = document.getElementById('selectState');

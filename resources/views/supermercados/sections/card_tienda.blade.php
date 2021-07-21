@@ -9,7 +9,7 @@
                 @endif
             @endforeach
         @endisset
-<article class="grid grid-cols-6 md:grid-cols-5 lg:grid-cols-6 p-1 md:p-3 lg:p-4 shadow-md hover:shadow-lg rounded-md bg-white mb-4">
+<article class="grid grid-cols-6 md:grid-cols-5 lg:grid-cols-6 p-1 md:p-3 lg:p-4 shadow-md hover:shadow-lg rounded-md bg-white mb-4 py-2">
     <div class="col-span-1 self-center">
         <div class="bg-no-repeat bg-cover bg-center w-12 h-12 md:w-16 md:h-16 overflow-hidden rounded-full mx-auto" style="background-image: url('/storage/{{ $tienda->profile_photo_path_brand }}');"></div>
     </div>

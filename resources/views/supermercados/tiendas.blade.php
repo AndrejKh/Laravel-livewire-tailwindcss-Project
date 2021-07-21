@@ -71,7 +71,4 @@
         </div>
     </div>
 
-    {{-- @include('home.sections.carousel_categories_card_details') --}}
-
-
 @endsection

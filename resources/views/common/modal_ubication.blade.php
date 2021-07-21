@@ -17,7 +17,7 @@
             </span>
         </div>
 
-        <form class="px-3" action="">
+        <form class="px-3" action="" id="formUbication">
 
             <span class="text-lg font-semibold mb-3">Selecciona el estado y ciudad</span>
             <div class="grid grid-cols-2 gap-2 mt-3">
@@ -33,7 +33,7 @@
                 </select>
             </div>
 
-            <button class="inline-flex justify-center w-full rounded-md border cursor-pointer border-transparent my-5 py-2 bg-gray-900 text-white font-semibold text-base leading-6 shadow-md hover:bg-gray-800 focus:outline-none focus:blue-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 items-center" aria-label="continuar" id="setUbication">
+            <button type="submit" class="inline-flex justify-center w-full rounded-md border cursor-pointer border-transparent my-5 py-2 bg-gray-900 text-white font-semibold text-base leading-6 shadow-md hover:bg-gray-800 focus:outline-none focus:blue-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 items-center" aria-label="continuar" id="">
                 Continuar
             </button>
         </form>
