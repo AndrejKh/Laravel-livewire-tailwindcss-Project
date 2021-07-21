@@ -23,6 +23,7 @@
             <div class="w-full p-6">
 
                 @livewire('city-component')
+
             </div>
         </div>
     </div>

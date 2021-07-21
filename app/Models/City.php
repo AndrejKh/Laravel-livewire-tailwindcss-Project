@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Date\Date;
@@ -9,7 +8,6 @@ use Jenssegers\Date\Date;
 class City extends Model
 {
     use HasFactory;
-    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,16 +15,8 @@ class City extends Model
      * @var array
      */
     protected $fillable = [
-        'city','slug','status','state_id'
+        'city','status','state_id'
     ];
-    public function sluggable()
-    {
-        return [
-            'slug' => [
-                'source' => 'city'
-            ]
-        ];
-    }
 
     public function getCreatedAtAttribute($date){
         return new Date($date);

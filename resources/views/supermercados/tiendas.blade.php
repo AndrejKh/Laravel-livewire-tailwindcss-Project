@@ -66,7 +66,7 @@
 
                 @endforeach
             <div class="flex justify-center mt-4" id="pagination_nav">
-                {!! $tiendas->links() !!}
+                {{-- {!! $tiendas->links() !!} --}}
             </div>
         </div>
     </div>

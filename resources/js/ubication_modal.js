@@ -64,8 +64,8 @@ document.addEventListener("DOMContentLoaded", function() {
     selectState.addEventListener('change', event => {
         const state_id = selectState.value;
         const selectCity = document.getElementById('selectCity');
+        selectCity.innerHTML = ''
         axios.get('/get/cities-state/'+state_id).then( function(response){
-            selectCity.innerHTML = ''
 
             let cities = response.data;
             cities.forEach(city => {

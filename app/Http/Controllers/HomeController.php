@@ -75,11 +75,9 @@ class HomeController extends Controller
 
         if( isset($request->q) ){
             $query = $request->q;
-            // return 'hay busqueda';
 
             // Obtengo los productos filtrados por la busqueda 'search' y el estado
             if( session()->has('state_id') ){
-                return 'hay busqueda y estado';
 
                 if( session()->has('city_id') ){
                     // Obtengo los productos filtrados por la busqueda 'search' y la ciudad
@@ -153,12 +151,9 @@ class HomeController extends Controller
 
             }
         }else {
-            // return session('state_id');
-            // return session()->has('state_id');
 
             // Obtengo los productos filtrados por la busqueda 'search' y el estado
             if( session()->has('state_id') ){
-                // return 'aqui';
 
                 if( session()->has('city_id') ){
 
@@ -460,16 +455,54 @@ class HomeController extends Controller
     }
 
     // Vitirna de supermemrcados
-    public function brands(Request $request) {
-        if(isset($request->q))
-        {
-            $query = $request->q;
-            $tiendas = Brand::latest('id')->where('status', 'active')->where('brand', 'LIKE', '%'.$query.'%')->paginate($this->perPage);
-            $total_tiendas_search = count(Brand::where('status', 'active')->where('brand', 'LIKE', '%'.$query.'%')->get());
-        }else {
-            $tiendas = Brand::latest('id')->where('status', 'active')->paginate($this->perPage);
-            $total_tiendas_search = count(Brand::where('status', 'active')->get());
+    public function brands() {
+
+        if( session()->has('state_id') ){
+
+            if( session()->has('city_id') ){
+
+                $city_id = session('city_id');
+
+                $tiendasDBUbication = Brand::where('brands.status', 'active')
+                        ->join('address_brands', 'brands.id', '=', 'address_brands.brand_id')
+                        ->where('address_brands.city_id', $city_id)
+                        ->select('brands.*')
+                        ->get();
+
+                $tiendasDBDeliveries = Brand::where('brands.status', 'active')
+                    ->join('deliveries', 'brands.id', '=', 'deliveries.brand_id')
+                    ->where('deliveries.city_id', $city_id)
+                    ->select('brands.*')
+                    ->get();
+
+
+            }else{
+
+                $state_id = session('state_id');
+
+                $tiendasDBUbication = Brand::where('brands.status', 'active')
+                        ->join('address_brands', 'brands.id', '=', 'address_brands.brand_id')
+                        ->where('address_brands.state_id', $state_id)
+                        ->select('brands.*')
+                        ->get();
+
+                $tiendasDBDeliveries = Brand::where('brands.status', 'active')
+                    ->join('deliveries', 'brands.id', '=', 'deliveries.brand_id')
+                    ->where('deliveries.state_id', $state_id)
+                    ->select('brands.*')
+                    ->get();
+
+            }
+
+            $tiendasDB = $tiendasDBUbication->merge($tiendasDBDeliveries);
+            $tiendas = $this->noDuplicatedArray($tiendasDB);
+        }else{
+
+            $tiendas = Brand::where('status', 'active')->get();
+
         }
+
+        $total_tiendas_search = count( $tiendas );
 
         // estados
         if ( Cache::has('banners_brands_list') ) {
