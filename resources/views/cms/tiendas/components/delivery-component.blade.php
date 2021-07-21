@@ -110,7 +110,7 @@
 
                     <div class="col-span-2">
                         <x-jet-label class="font-bold" for="state" value="Estado" />
-                        <select wire:model="state_id" wire:click="changeState" id="state" autocomplete="state" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                        <select wire:model.defer="state_id" wire:click="changeState" id="state" autocomplete="state" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
                             @foreach ($estados as $estado)
                                 <option value="{{$estado->id}}" > {{$estado->state}} </option>
                             @endforeach
@@ -122,7 +122,7 @@
 
                     <div class="col-span-2">
                         <x-jet-label class="font-bold" for="city" value="Municipio" />
-                        <select wire:model="city_id" id="city" autocomplete="city" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                        <select wire:model.defer="city_id" id="city" autocomplete="city" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
                             <option selected>Selecciona el municipio</option>
                             @foreach ($cities as $city)
                                 <option value="{{$city->id}}"> {{$city->city}} </option>
@@ -135,7 +135,7 @@
 
                     <div class="col-span-2">
                         <x-jet-label class="font-bold" for="delivery_free" value="¿Haces delivery gratis?" />
-                        <select wire:model="delivery_free" wire:change="setLabelAmountDelivery()" id="delivery_free" autocomplete="delivery_free" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                        <select wire:model.defer="delivery_free" wire:change="setLabelAmountDelivery()" id="delivery_free" autocomplete="delivery_free" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
                             <option value="">Seleccionar respuesta</option>
                             <option class="text-gray-800" value="0"> No </option>
                             <option class="text-green-500" value="1"> Si </option>
@@ -159,7 +159,7 @@
                     <div class="col-span-2 md:col-span-6 mb-0 md:mb-2">
                             <x-jet-label class="font-bold mb-2" value="Selecciona los días en que haces delivery" />
                             @foreach ($days_week as $day)
-                                <input class="cursor-pointer" type="checkbox" wire:model="days" value="{{$day->day}}" id="{{$day->day}}">
+                                <input class="cursor-pointer" type="checkbox" wire:model.defer="days" value="{{$day->day}}" id="{{$day->day}}">
                                 <label class="cursor-pointer mr-1" for="{{ $day->day }}">{{ ucfirst($day->day) }}</label>
                             @endforeach
                             @error('days')

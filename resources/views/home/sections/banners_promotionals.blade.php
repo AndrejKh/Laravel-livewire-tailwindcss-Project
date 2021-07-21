@@ -1,10 +1,12 @@
 @if ( $banners_promotionals && count($banners_promotionals) > 0)
     <div class="max-w-7xl w-full mx-auto mt-5 md:mt-10 px-2">
-        <h1 class="font-semibold md:font-bold text-lg md:text-xl text-gray-900 inline">
-            Compara los diferentes abastos y supermercados de tu ciudad
-        </h1>
-        <p class="text-sm font-semibold text-gray-600">
+        <h1 class="font-semibold md:font-bold text-lg md:text-xl text-gray-900 hidden md:block">Compara los diferentes abastos y supermercados de tu ciudad</h1>
+        <h1 class="font-semibold md:font-bold text-lg md:text-xl text-gray-900 block md:hidden">Compra en diferentes supermercados</h1>
+        <p class="text-sm font-semibold text-gray-600 hidden md:block">
             Haz tus compras en el abasto que mejor se adapte a ti.
+        </p>
+        <p class="text-sm font-regular text-gray-600 block md:hidden">
+            Busca los mejores precios
         </p>
     </div>
 
