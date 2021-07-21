@@ -126,7 +126,7 @@
 
                         <div class="col-span-2 md:col-span-1">
                             <x-jet-label class="font-bold" for="state" value="Estado*" />
-                            <select wire:model="state_id" wire:click="changeState" id="state" autocomplete="state" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                            <select wire:model.defer="state_id" wire:click="changeState" id="state" autocomplete="state" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
                                 @foreach ($estados as $estado)
                                     <option value="{{$estado->id}}"> {{$estado->state}} </option>
                                 @endforeach
@@ -138,7 +138,7 @@
 
                         <div class="col-span-2 md:col-span-1">
                             <x-jet-label class="font-bold" for="city" value="Municipio*" />
-                            <select wire:model="city_id" id="city" autocomplete="city" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                            <select wire:model.defer="city_id" id="city" autocomplete="city" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
                                 <option selected>Selecciona el municipio</option>
                                 @if ($cities)
 
@@ -273,7 +273,7 @@
 
                         <div class="col-span-2 md:col-span-1">
                             <x-jet-label class="font-bold" for="state" value="Estado*" />
-                            <select wire:model="state_id" wire:click="changeState" id="state" autocomplete="state" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                            <select wire:model.defer="state_id" wire:click="changeState" id="state" autocomplete="state" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
                                 @foreach ($estados as $estado)
                                     <option value="{{$estado->id}}"> {{$estado->state}} </option>
                                 @endforeach
@@ -285,7 +285,7 @@
 
                         <div class="col-span-2 md:col-span-1">
                             <x-jet-label class="font-bold" for="city" value="Municipio*" />
-                            <select wire:model="city_id" id="city" autocomplete="city" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
+                            <select wire:model.defer="city_id" id="city" autocomplete="city" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
                                 <option selected>Selecciona el municipio</option>
                                 @if ($cities)
 
