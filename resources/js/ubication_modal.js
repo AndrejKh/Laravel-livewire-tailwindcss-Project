@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Pregunto si estoy en una vista donde se requiere actualizar la vista
         // En caso de si, envio el formulario
-        if( url != '/supermercados' && !url.includes('productos') ){
+        if( url != '/supermercados' && !url.includes('productos') && !url.includes('categorias')){
             event.preventDefault();
         }
 
