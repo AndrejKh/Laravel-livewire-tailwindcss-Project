@@ -17,6 +17,7 @@
             loop:true,
             margin:0,
             nav:true,
+            dots:false,
             autoplay: true,
             autoplayTimeout: 5000,
             navText: ['<img src="{{asset('arrow_left.svg')}}" alt="anterior imagen" width="25px" height="25px" loading="lazy"/>', '<img src="{{asset('arrow_right.svg')}}" alt="siguiente imagen" width="25px" height="25px" loading="lazy"/>'],
