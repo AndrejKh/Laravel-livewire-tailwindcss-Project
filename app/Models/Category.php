@@ -20,7 +20,8 @@ class Category extends Model
     protected $fillable = [
         'category','description','padre_id','photo','slug','status'
     ];
-    public function sluggable()
+
+    public function sluggable(): array
     {
         return [
             'slug' => [

@@ -20,7 +20,7 @@ class Product extends Model
     protected $fillable = [
         'title','description','slug','thumbnail','photo_main_product','category_id','status'
     ];
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [

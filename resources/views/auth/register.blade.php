@@ -7,7 +7,7 @@
         {{-- precargar imagenes --}}
         <link rel="preload" href="{{ asset( 'home.png' ) }}" as="image">
 
-        <meta name="robots" content="index,follow"/>
+        <meta name="robots" content="noindex,nofollow"/>
 
         <!-- Primary Meta Tags -->
         <meta name="title" content="Registrate y compra en los diferentes abastos de tu ciudad - Kabasto.com">
