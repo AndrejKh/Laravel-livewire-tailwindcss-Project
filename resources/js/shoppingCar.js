@@ -282,6 +282,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 updateTotalProductsShoppingCar(JSON.parse(newProductLocalStorage));
                 shownHideCompareFloatButton(newProductLocalStorage);
                 updateBrandsPrice(quantity);
+                console.log('siiiiii');
                 // Almaceno el producto en el localStorage
                 localStorage.setItem('productsShoppingCar',newProductLocalStorage);
 
