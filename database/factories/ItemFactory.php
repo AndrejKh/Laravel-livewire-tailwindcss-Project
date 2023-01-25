@@ -22,7 +22,10 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'product_id' => rand(1, 138),
+            'brand_id'   => rand(1, 6),
+            'quantity'   => rand(1, 20),
+            'price'      => rand(5, 25),
         ];
     }
 }

@@ -22,12 +22,12 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-        $category = $this->faker->name();
+        // $category = $this->faker->name();
         return [
-            'category' => $category,
-            'description' => $this->faker->text(),
-            'slug' => Str::slug($category),
-            'photo' => $this->faker->imageUrl(640, 480, 'animals', true),
+            // 'category' => $category,
+            // 'description' => $this->faker->text(),
+            // 'slug' => Str::slug($category),
+            // 'photo' => $this->faker->imageUrl(640, 480, 'animals', true),
         ];
     }
 }

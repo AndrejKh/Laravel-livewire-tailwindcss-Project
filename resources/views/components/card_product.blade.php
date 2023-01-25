@@ -13,5 +13,3 @@
     </a>
     <span class="idProductCard" hidden>{{$product->id}}</span>
 </div>
-
-
