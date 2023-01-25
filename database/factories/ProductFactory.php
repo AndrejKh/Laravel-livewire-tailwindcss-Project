@@ -24,7 +24,7 @@ class ProductFactory extends Factory
     {
         $title = $this->faker->name();
         return [
-            'category_id' => rand(1, 25),
+            'category_id' => rand(1, 10),
             'title' => $title,
             'description' => $this->faker->text(),
             'slug' => Str::slug($title),
