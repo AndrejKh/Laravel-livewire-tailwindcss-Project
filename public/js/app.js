@@ -4800,6 +4800,13 @@ function setNewProduct(product_id, title, quantity, price, image) {
     image: image
   };
   return newProduct;
+} // Funcion que actualiza los precios de las tiendas, en la vista de detalles de producto, dinamicamente cuando cambia la cantidad seleccionada
+
+
+function updateBrandsPrice(quantity) {// const priceBrandsInProdcutDetailView = localStorage.getItem('priceBrandsInProdcutDetailView')
+  // if(priceBrandsInProdcutDetailView !== null){
+  //     let arrayPricesBrandsProducts = JSON.parse(priceBrandsInProdcutDetailView);
+  // }
 }
 
 /***/ }),
