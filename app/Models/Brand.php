@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Models;
-// use Cviebrock\EloquentSluggable\Sluggable;
-use Cviebrock\EloquentSluggable\SlugService;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Date\Date;
@@ -10,7 +9,7 @@ use Jenssegers\Date\Date;
 class Brand extends Model
 {
     use HasFactory;
-    // use SlugService;
+    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +19,7 @@ class Brand extends Model
     protected $fillable = [
         'brand','user_id','state_id','city_id','address','description','profile_photo_path_brand','whatsapp','slug','status'
     ];
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [
