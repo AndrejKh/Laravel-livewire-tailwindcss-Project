@@ -29,34 +29,30 @@
                 @enderror
             </div>
         </div>
-
-
-
-
-            <div class="mb-3">
-                <span>Selecciona la imagen del banner</span> <label class="text-green-600 cursor-pointer mb-2" for="banner">aqui</label>
-                <input type="file" class="hidden" id="banner" wire:model="banner">
-                <span class="text-green-500" wire:loading wire:target="banner">
-                    Cargando...
-                </span>
-                @if ($banner)
-                <div class="rounded-md max-w-md overflow-hidden shadow mx-auto h-48">
-                    <img class="w-full" src="{{ $banner->temporaryUrl() }}">
-                </div>
-
-                @endif
-                @error('banner')
-                    <small class="text-red-400 italic">{{$message}}</small>
-                @enderror
-
+        <div class="mb-3">
+            <span>Selecciona la imagen del banner</span> <label class="text-green-600 cursor-pointer mb-2" for="banner">aqui</label>
+            <input type="file" class="hidden" id="banner" wire:model="banner">
+            <span class="text-green-500" wire:loading wire:target="banner">
+                Cargando...
+            </span>
+            @if ($banner)
+            <div class="rounded-md max-w-md overflow-hidden shadow mx-auto h-48">
+                <img class="w-full" src="{{ $banner->temporaryUrl() }}">
             </div>
 
-            @if ($action === 'store')
-                <button wire:click="agregar" class="btn-primary">Guardar</button>
-            @else
-                <button wire:click="update" class="btn-primary">Actualizar</button>
-                <button wire:click="cancel" class="btn-delete">Cancelar</button>
             @endif
+            @error('banner')
+                <small class="text-red-400 italic">{{$message}}</small>
+            @enderror
+
+        </div>
+
+        @if ($action === 'store')
+            <button wire:click="agregar" class="btn-primary">Guardar</button>
+        @else
+            <button wire:click="update" class="btn-primary">Actualizar</button>
+            <button wire:click="cancel" class="btn-delete">Cancelar</button>
+        @endif
     </div>
 
     {{-- Listado de banners --}}

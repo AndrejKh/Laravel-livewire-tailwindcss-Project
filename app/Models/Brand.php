@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Models;
-use Cviebrock\EloquentSluggable\Sluggable;
+// use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SlugService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Date\Date;
@@ -9,7 +10,7 @@ use Jenssegers\Date\Date;
 class Brand extends Model
 {
     use HasFactory;
-    use Sluggable;
+    // use SlugService;
 
     /**
      * The attributes that are mass assignable.
